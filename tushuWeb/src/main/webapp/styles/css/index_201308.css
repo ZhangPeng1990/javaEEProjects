@@ -1,0 +1,36 @@
+    .b1d6{border:1px solid #d6d6d6;}
+    .b1c{border:1px solid #ccc;}
+    .mt9{margin-top:9px;}
+    .mt10{margin-top:10px;}
+	.mt20{margin-top:20px;}
+    .ml8{margin-left:8px;}
+    .ml10{margin-left:10px;}
+    .ml11{margin-left:11px;}
+	.pb30{padding-bottom:30px;}
+    .made_box{border:1px solid #d4d4d4;background:url(../images/made.jpg) no-repeat left center;}
+    .made_box a.l{width:675px;height:100px;}
+    .made_box a.r{width:300px;height:100px;}
+    h2{height:42px;line-height:42px;border-bottom-width:2px;border-bottom-style:solid;}
+    h2 strong{font:normal 24px/42px "microsoft yahei"}
+    h2 span{color:#bebcbc;font:normal 18px/24px "microsoft yahei";margin-left:9px;}
+    h2 .more{background:url(../images/jia.png) no-repeat right center;padding-right:22px;font:normal 14px/42px "microsoft yahei";color:#666;}
+    .h2_orange{color:#fa6017;border-bottom-color:#fa6017;}
+    .h2_blue{color:#34ccd7;border-bottom-color:#34ccd7;}
+    .h2_orange2{color:#ff7f01;border-bottom-color:#ff7f01;}
+    .h2_pink{color:#fa768f;border-bottom-color:#fa768f;}
+	.h2_green{color:#2bbb93;border-bottom-color:#2bbb93;}
+    .img_list{overflow:hidden;*height:1%;}
+    .img_list li{float:left;background:#fff;}
+    .img_list li img{display:block;}
+    .img_list li a:hover img{border-color:#fcaa83;opacity:0.7;filter:alpha(opacity=70);}
+    .list{width:338px;border:1px solid #e1e1e1;overflow:hidden;*height:1%;}
+    .list li{float:left;width:100%;height:43px;text-indent:20px;}
+    .bgc_g{background-color:#f5f5f5;}
+    .list li a{font-size:14px;line-height:43px;color:#888}
+    .list li a span{cursor:pointer;}
+    .list li a:hover{color:#fb784a;text-decoration:none;}
+    .banner{width:636px;height:282px;}
+    .banner li{margin:0 0 15px 22px;float:left;}
+    .banner li a img{border:1px solid #dddfe3;}
+
+    body{background:#fff;}

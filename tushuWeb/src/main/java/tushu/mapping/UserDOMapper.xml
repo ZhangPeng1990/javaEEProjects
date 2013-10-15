@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tushu.user.mapper.UserDOMapper" >
+  <resultMap id="BaseResultMap" type="tushu.model.UserDO" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="INSERT_TIME" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="userState" property="userstate" jdbcType="CHAR" />
+    
+    <result column="nickname" property="nick_Nname" jdbcType="VARCHAR" />
+    <result column="imageId" property="image_Id" jdbcType="INTEGER" />
+    <result column="realName" property="real_Name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="birthday" property="birth_Day" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_NAME, PASSWORD, INSERT_TIME, UPDATE_TIME, userState, nick_Nname, 
+    image_Id, real_Name, sex, birth_Day
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_user
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="getAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from base_user 
+    order by userState 
+  </select>
+  
+  <select id="checkUserByNameAndPass" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_user
+    where USER_NAME = #{userName,jdbcType=VARCHAR} 
+    AND 
+    PASSWORD = #{passWord,jdbcType=VARCHAR} 
+  </select>
+  
+  <select id="findByName" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select count(0) as c 
+    from base_user
+    where USER_NAME = #{userName,jdbcType=VARCHAR} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from base_user
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <insert id="insert" parameterType="tushu.model.UserDO" >
+    insert into base_user (ID, USER_NAME, PASSWORD, 
+      INSERT_TIME, UPDATE_TIME, userState, nick_Nname, 
+      image_Id, real_Name, sex, birth_Day
+      )
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{insertTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{userstate,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{imageId,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=VARCHAR} 
+      )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="tushu.model.UserDO" >
+    insert into base_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="insertTime != null" >
+        INSERT_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="userstate != null" >
+        userState,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userstate != null" >
+        #{userstate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="tushu.model.UserDO" >
+    update base_user
+    <set >
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userstate != null" >
+        userState = #{userstate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="tushu.model.UserDO" >
+    update base_user
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      userState = #{userstate,jdbcType=VARCHAR},
+      
+      nick_Nname = #{nickname,jdbcType=VARCHAR},
+      image_Id = #{imageId,jdbcType=INTEGER},
+      real_Name = #{realName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birth_Day = #{birthday,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
