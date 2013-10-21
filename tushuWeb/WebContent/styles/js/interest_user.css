@@ -1,0 +1,61 @@
+/* 修改头像 */
+.reg_box{width:440px;background:url(/js/avatar/image/interest/regist/box.jpg) no-repeat;overflow:hidden;zoom:1;margin:5px;}
+.firstLogin{overflow:hidden;*zoom:1;padding:20px 0;}
+.firstLogin .noBorder{ border:0 none!important}
+.firstLogin .text{ display:inline; float:left;color:#990000}
+.firstLogin .jump{ color:#3366cc;}
+.firstLogin .jump a{color:#3366cc; text-decoration:underline; display:inline}
+.ibtn_img{width:90px; height:33px; background:url(/js/avatar/image/class/ibtn_img.png) no-repeat; border:none; color:#ffffff; font: bold 14px/30px '宋体'; letter-spacing:7px; cursor:pointer;}
+.ibtn{border:0;background:url(/js/avatar/image/regist/login_btn.png) no-repeat;width:80px;height:23px;color:#3366cc;font:normal 12px/24px "宋体";margin-right:10px;cursor:pointer; float:left; margin-left:10px;}
+.ibtnFalse{border:0;background:url(/js/avatar/image/regist/login_btn.png) no-repeat;width:80px;height:23px;color:#999;font:normal 14px/27px "黑体";margin-left:10px;margin-right:10px;cursor:default;}
+.sbtn{width:auto;margin-left:10px;margin-right:10px;padding:2px 5px;cursor:pointer;}
+
+.reg_photoBox{background:url(/js/avatar/image/photo_inputBg.png) no-repeat left center;overflow:hidden;*zoom:1;}
+.bindBox a{}
+
+.weibo_photo{float:left;height:35px;width:320px;background:url(/js/avatar/image/bg_headblog.gif) no-repeat left top #fff;display:none1;}
+.weibo_text{width:190px;border:0;height:34px;padding-left:4px;font-size:16px;background:transparent;line-height:34px;float:left;}
+.weibo_btn{width:108px;height:34px;opacity:0;filter:alpha(opacity=0);float:left;cursor:pointer;}
+
+.iFileBox{height:48px;width:156px;background:url(/images/bg/form.png) no-repeat -156px 0;text-align:center;font:normal 15px/48px "Microsoft Yahei";color:#444;margin-bottom:20px;}
+.iFile{height:48px;width:156px;line-height:48px;}
+.iFile em{height: 48px;width:156px;display:block;position:relative;}
+.iFile .fileInput{background:#FF00FF;cursor:pointer;display:block;height:22px;margin: -15px 0 0 -25px;opacity:0;filter:alpha(opacity=0);z-index:10000001;overflow: hidden;text-align:right;position:absolute;width:73px;}
+.iFile .fileInput input{border:0;cursor: pointer;height:25px;outline:medium none;width:73px;margin:-3px 0 0 -2px;display:block;}
+
+.f_photoBox{float:right;}
+.f_photoBox .f_photo100{width:100px;height:100px;border:1px solid #999;margin:0 auto;background-color:#fff;overflow:hidden;}
+
+.f_photoBox .f_photoBtn{display:block;padding-top:20px;text-align:center;}
+.fpb_loading{position:absolute;background:url(/js/avatar/image/loading.gif) no-repeat center center;width:220px;height:220px;margin-top:-221px;text-indent:-9999em;display:none;}
+.f_photoCut{float:left;}
+.f_photoCut .paddingLR{padding:10px 0 5px;height:26px;line-height:26px;}
+.headBox{ text-align:center;background:#ccc;height:235px;width:235px;border:1px solid #999;line-height:220px;}
+.headBox #photo{width:235px;height:235px;float:none;}
+/* imgAreaSelect default style */
+.imgareaselect-border1 {background: url(/js/avatar/image/border-anim-v.gif) repeat-y left top;}
+.imgareaselect-border2 {background: url(/js/avatar/image/border-anim-h.gif) repeat-x left top;}
+.imgareaselect-border3 {background: url(/js/avatar/image/border-anim-v.gif) repeat-y right top;}
+.imgareaselect-border4 {background: url(/js/avatar/image/border-anim-h.gif) repeat-x left bottom;}
+.imgareaselect-border1, .imgareaselect-border2,
+.imgareaselect-border3, .imgareaselect-border4 { filter: alpha(opacity=50);pacity: 0.5;}
+.imgareaselect-handle {background-color: #fff;border: solid 1px #000;filter: alpha(opacity=50);opacity: 0.5;}
+.imgareaselect-outer {background-color: #000000;filter: alpha(opacity=60);opacity: 0.6; width:300px; height:300px; overflow:hidden}
+
+/* -绑定新浪腾讯人人- */
+.bind_web_box{border-top:2px solid #e0e0e0;padding:30px 0 30px 67px; }
+.bind_web{padding:50px 0 0 0;}
+.bind_box{margin-right: 60px;}
+.bind_boxr{padding-left: 9px;line-height: 18px;margin:-5px 0 15px;}
+
+.rm_bind{width: 164px;height: 41px;display:block;background-color:#f0efef;border:1px solid #d1d1d1;line-height: 41px;text-align:center;border-radius:2px;}
+.rm_bind:hover{text-decoration:none;}
+.inpBox2{width:232px;height:35px;background-color:#fff;border:1px solid #f19c19;padding:2px;border-radius:2px;}
+
+
+
+/* 网友上传 */
+.upload_bottom{border-top:1px solid #e0e0e0;width:759px;padding-top:10px;margin-top:40px}
+.upload_bottom h2{font-weight:normal;font-size:20px;padding-top:30px;}
+.upload_bottom ul{padding:20px 0 40px 56px;}
+.upload_bottom ul li{font-size:14px;line-height:26px;list-style:disc;text-indent:15px;}
