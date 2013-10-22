@@ -7,14 +7,15 @@
     <link rel="stylesheet" type="text/css" href="css/editor_base.css?v=20130909">
     <link rel="stylesheet" type="text/css" href="css/upgrade.css?v=201300419">
     <link rel="stylesheet" type="text/css" href="css/lightbox.css">
-    <link href="/css/header.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
     <style type="text/css">
         #header-wrapper
         {
             display: none;
         }
     </style>
-    <script src="http://www.google-analytics.com/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+    <script src="http://www.google-analytics.com/ga.js" async="" type="text/javascript"></script>
+    <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-9580877-1']);
         _gaq.push(['_setDomainName', 'mimoprint.com']);
@@ -27,12 +28,12 @@
     </script>
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>
-    <script type="text/javascript" src="js/mimo_base.js?v=20130427"></script>
-    <script type="text/javascript" src="js/mimo_editor.js?v=20130909"></script>
-    <script type="text/javascript" src="js/book_layout.js?v=20130909"></script>
-    <script type="text/javascript" src="js/upgrade.js?v=20130403"></script>
+    <script type="text/javascript" src="js/mimo_base.js"></script>
+    <script type="text/javascript" src="js/mimo_editor.js"></script>
+    <script type="text/javascript" src="js/book_layout.js"></script>
+    <script type="text/javascript" src="js/upgrade.js"></script>
     <script type="text/javascript" src="js/swfobject.js"></script>
-    <script type="text/javascript" src="js/uploader.js?v=20130715"></script>
+    <script type="text/javascript" src="js/uploader.js"></script>
     <script type="text/javascript" src="js/json2.js"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
     <script type="text/javascript">
@@ -47,7 +48,7 @@
         var EndDate = '2013/11/21';
         var JSONPrice = {"1000_48_4":68.0,"1005_64_4":188.0,"1000_48_6":88.0,"1001_24_6":98.0,"1006_26_4":58.0,"1001_80_4":158.0,"1001_24_4":78.0,"1001_80_6":208.0,"1004_64_6":298.0,"1005_36_4":128.0,"1005_64_6":228.0,"1003_8_4":12.0,"1001_96_6":248.0,"1001_32_4":88.0,"1001_96_4":188.0,"1004_96_6":378.0,"1004_96_4":318.0,"1004_36_6":198.0,"1004_72_6":328.0,"1004_36_4":168.0,"1004_72_4":258.0,"1000_24_4":48.0,"1005_72_4":198.0,"1000_24_6":68.0,"1005_56_4":168.0,"1005_72_6":248.0,"1001_64_4":128.0,"1001_64_6":168.0,"1000_36_4":58.0,"1004_28_4":148.0,"1004_64_4":238.0,"1004_28_6":178.0,"1004_20_4":128.0,"1005_48_6":188.0,"1004_20_6":148.0,"1002_1_4":3.6,"1006_1_4":250.0,"1005_36_6":168.0,"1002_30_4":108.0,"1005_56_6":208.0,"1001_32_6":108.0,"1001_48_4":98.0,"1001_48_6":128.0,"1000_36_6":78.0,"1004_48_4":198.0,"1004_48_6":238.0,"1004_56_6":268.0,"1005_80_4":208.0,"1004_56_4":218.0,"1005_80_6":248.0,"1005_96_6":298.0,"1006_26_6":68.0,"1005_48_4":148.0,"1005_96_4":228.0};
     </script>
-<link name="" href="/static/css/upload.css" rel="stylesheet" type="text/css">
+<link href="css/upload.css" rel="stylesheet" type="text/css">
 <style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
 /** reset styling **/
 .firebugResetStyles {
@@ -248,7 +249,7 @@
             <!-- end of header -->
         </div>
     </div>
-    <script src="/static/script/calculatePayTime.js?v=20130925"></script>
+    <script src="js/calculatePayTime.js"></script>
     <script type="text/javascript">
         $(function () {
             CalculatPayTime.ReceiveDate("usercenterheader");
@@ -285,7 +286,17 @@
                     <div id="mod_thumbnail" class="pic_theme_list">
                         <a id="mod_thumbnail_btn_prev" class="arrow_lf btn_arrow btn lf"></a>
                         <div class="thumbnail_warp customer_scrollbar">
-                            <ul style="left: 0px; width: 86px;" id="mod_thumbnail_list" class="thumbnail lf">            <li class="">                <img class="j_thumbnail ui-draggable" title="点击查看大图" id="imageid_2355126" data-imageid="2355126" data-path="imagedata/691/91/103691/168664/2013102221183381893214" data-original_height="768" data-original_width="1024" src="/imagedata/691/91/103691/168664/2013102221183381893214_thumb.jpg" data-url="/imagedata/691/91/103691/168664/2013102221183381893214" used_num="1">                <span class="counter" id="counter_2355126" title="图像被使用次数">1</span><span class="thumbnail_operats"><a title="旋转" href="javascript:;" class="btn_rotate_left" data-imageid="2355126"></a><a title="旋转" href="javascript:;" class="btn_rotate_right" data-imageid="2355126"></a><a title="删除" href="javascript:;" class="btn_delete" data-imageid="2355126"></a></span>            </li></ul>
+                            <ul style="left: 0px; width: 86px;" id="mod_thumbnail_list" class="thumbnail lf">            
+                            <li class="">
+                            <img class="j_thumbnail ui-draggable" title="点击查看大图" id="imageid_2355126" data-imageid="2355126" data-path="imagedata/691/91/103691/168664/2013102221183381893214" data-original_height="768" data-original_width="1024" src="/imagedata/691/91/103691/168664/2013102221183381893214_thumb.jpg" data-url="/imagedata/691/91/103691/168664/2013102221183381893214" used_num="1">                
+                            <span class="counter" id="counter_2355126" title="图像被使用次数">1</span>
+                            <span class="thumbnail_operats">
+	                            <a title="旋转" href="javascript:;" class="btn_rotate_left" data-imageid="2355126"></a>
+	                            <a title="旋转" href="javascript:;" class="btn_rotate_right" data-imageid="2355126"></a>
+	                            <a title="删除" href="javascript:;" class="btn_delete" data-imageid="2355126"></a>
+                            </span>            
+                            </li>
+                            </ul>
                         </div>
                         <a id="mod_thumbnail_btn_next" class="arrow_rt btn btn_arrow lf"></a>
                     </div>
