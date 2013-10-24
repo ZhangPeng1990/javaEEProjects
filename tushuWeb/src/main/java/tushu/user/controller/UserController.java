@@ -172,13 +172,13 @@ public class UserController extends BaseController {
 			}
 		}
 		user = this.userService.getUserById(Integer.parseInt(user.getId().toString()));
-		System.out.println("¸¶¿îÈË£º" + user.getUserName());
-		System.out.println("Ó¦¸¶¿î½ğ¶î£º" + totalPayNum);
+		System.out.println("ä»˜æ¬¾äººï¼š" + user.getUserName());
+		System.out.println("åº”ä»˜æ¬¾é‡‘é¢ï¼š" + totalPayNum);
 		
 		List<AddressMessage> addresses = user.getAddresses();
 		AddressMessage address = null;
 		if(addresses != null && addresses.size() > 0){
-			address = addresses.get(0);//ÏÖÔÚÃ»ÓĞÄ¬ÈÏµØÖ·¹¦ÄÜ£¬ËùÒÔÒÔµÚÒ»¸öµØÖ·ÎªÄ¬ÈÏµØÖ·£¬ºó±ßÔÙÍêÉÆ
+			address = addresses.get(0);//ç°åœ¨æ²¡æœ‰é»˜è®¤åœ°å€åŠŸèƒ½ï¼Œæ‰€ä»¥ä»¥ç¬¬ä¸€ä¸ªåœ°å€ä¸ºé»˜è®¤åœ°å€ï¼Œåè¾¹å†å®Œå–„
 		}
 		mm.addAttribute("addresses", addresses);
 		mm.addAttribute("address", address);
@@ -206,7 +206,7 @@ public class UserController extends BaseController {
 		ExpressMessage em = expressMessageService.getById(id);
 		shouldPayMoney = shouldPayMoney + em.getExpressPrice();
 		mm.addAttribute("shouldPayMoney", shouldPayMoney);
-		//Ë¢ĞÂ¹ºÎï³µ
+		//åˆ·æ–°è´­ç‰©è½¦
 		List<OrderForm> list = orderFormService.getOrders(userService.getUserById(userId), OrderType.SHOPPING_CART);
 		request.getSession().setAttribute(Constans.Shoping_Cart, list);
 		
@@ -261,23 +261,23 @@ public class UserController extends BaseController {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;    
         Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
         String ctxPath = this.getUserPath(multipartRequest, userId);
-        //´´½¨ÎÄ¼ş¼Ğ  
+        //åˆ›å»ºæ–‡ä»¶å¤¹  
         File file = new File(ctxPath);    
         if (!file.exists()) {    
             file.mkdirs();    
         }    
         String fileName = null;
         for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {
-            // ÉÏ´«ÎÄ¼şÃû    
+            // ä¸Šä¼ æ–‡ä»¶å    
             MultipartFile mf = entity.getValue();
             fileName = URLDecoder.decode(mf.getOriginalFilename(), "UTF-8");
             
             File uploadFile = new File(ctxPath + File.separator + fileName);    
             try {  
                 FileCopyUtils.copy(mf.getBytes(), uploadFile); 
-                responseStr="ÉÏ´«³É¹¦";
+                responseStr="ä¸Šä¼ æˆåŠŸ";
         } catch (IOException e) {
-            responseStr="ÉÏ´«Ê§°Ü";  
+            responseStr="ä¸Šä¼ å¤±è´¥";  
             e.printStackTrace();
         }    
         }   
