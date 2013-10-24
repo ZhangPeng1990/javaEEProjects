@@ -127,7 +127,7 @@ mimo.Editor.Guider = {
     },
 
     show: function () {
-        $("#dialog_selector").show();
+//        $("#dialog_selector").show();
         mimo.UI.setCenter($("#dialog_selector"));
         mimo.Editor.showMaskLayout();
     },

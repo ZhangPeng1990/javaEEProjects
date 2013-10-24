@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>mimoprint-米莫印品 照片书编辑器</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/editor_base.css">
+    <link rel="stylesheet" type="text/css" href="css/upgrade.css">
+    <link rel="stylesheet" type="text/css" href="css/lightbox.css">
+    <link href="css/header.css" rel="stylesheet">
+    <style type="text/css">
+        #header-wrapper
+        {
+            display: none;
+        }
+    </style>
+    <script src="http://www.google-analytics.com/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-9580877-1']);
+        _gaq.push(['_setDomainName', 'mimoprint.com']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>
+    <script type="text/javascript" src="js/mimo_base.js"></script>
+    <script type="text/javascript" src="js/mimo_editor.js"></script>
+    <script type="text/javascript" src="js/book_layout.js"></script>
+    <script type="text/javascript" src="js/upgrade.js"></script>
+    <script type="text/javascript" src="js/swfobject.js"></script>
+    <script type="text/javascript" src="js/uploader.js"></script>
+    <script type="text/javascript" src="js/json2.js"></script>
+    <script type="text/javascript" src="js/lightbox.js"></script>
+    <script type="text/javascript">
+        var JSONBookInfo = {"complete_page":"0","page":"45","author_info":null,"copyright_info":null,"spine_info":null,"page_list":[{"num":"cover","finish":"false","template_name":"C1","page_side":null,"page_data":null},{"num":"0","finish":"false","template_name":"T1","page_side":null,"page_data":null},{"num":"1","finish":"false","template_name":"T8","page_side":null,"page_data":null},{"num":"2","finish":"false","template_name":"T2","page_side":null,"page_data":null},{"num":"3","finish":"false","template_name":"T7","page_side":null,"page_data":null},{"num":"4","finish":"false","template_name":"T8","page_side":null,"page_data":null},{"num":"5","finish":"false","template_name":"T8","page_side":null,"page_data":null},{"num":"6","finish":"false","template_name":"T5","page_side":null,"page_data":null},{"num":"7","finish":"false","template_name":"T3","page_side":null,"page_data":null},{"num":"8","finish":"false","template_name":"T3","page_side":null,"page_data":null},{"num":"9","finish":"false","template_name":"T4","page_side":null,"page_data":null},{"num":"10","finish":"false","template_name":"T2","page_side":null,"page_data":null},{"num":"11","finish":"false","template_name":"T2","page_side":null,"page_data":null},{"num":"12","finish":"false","template_name":"T6","page_side":null,"page_data":null},{"num":"13","finish":"false","template_name":"T7","page_side":null,"page_data":null},{"num":"14","finish":"false","template_name":"T7","page_side":null,"page_data":null},{"num":"15","finish":"false","template_name":"T5","page_side":null,"page_data":null},{"num":"16","finish":"false","template_name":"T6","page_side":null,"page_data":null},{"num":"17","finish":"false","template_name":"T6","page_side":null,"page_data":null},{"num":"18","finish":"false","template_name":"T3","page_side":null,"page_data":null},{"num":"19","finish":"false","template_name":"T8","page_side":null,"page_data":null},{"num":"20","finish":"false","template_name":"T2","page_side":null,"page_data":null},{"num":"21","finish":"false","template_name":"T2","page_side":null,"page_data":null},{"num":"22","finish":"false","template_name":"T6","page_side":null,"page_data":null},{"num":"23","finish":"false","template_name":"T4","page_side":null,"page_data":null},{"num":"24","finish":"false","template_name":"T4","page_side":null,"page_data":null},{"num":"25","finish":"false","template_name":"T5","page_side":null,"page_data":null},{"num":"26","finish":"false","template_name":"T3","page_side":null,"page_data":null},{"num":"27","finish":"false","template_name":"T3","page_side":null,"page_data":null},{"num":"28","finish":"false","template_name":"T4","page_side":null,"page_data":null},{"num":"29","finish":"false","template_name":"T8","page_side":null,"page_data":null},{"num":"30","finish":"false","template_name":"T8","page_side":null,"page_data":null},{"num":"31","finish":"false","template_name":"T6","page_side":null,"page_data":null},{"num":"32","finish":"false","template_name":"T7","page_side":null,"page_data":null},{"num":"33","finish":"false","template_name":"T7","page_side":null,"page_data":null},{"num":"34","finish":"false","template_name":"T4","page_side":null,"page_data":null},{"num":"35","finish":"false","template_name":"T2","page_side":null,"page_data":null},{"num":"36","finish":"false","template_name":"T3","page_side":null,"page_data":null},{"num":"37","finish":"false","template_name":"T3","page_side":null,"page_data":null},{"num":"38","finish":"false","template_name":"T7","page_side":null,"page_data":null},{"num":"39","finish":"false","template_name":"T2","page_side":null,"page_data":null},{"num":"40","finish":"false","template_name":"T2","page_side":null,"page_data":null},{"num":"41","finish":"false","template_name":"T6","page_side":null,"page_data":null},{"num":"42","finish":"false","template_name":"T4","page_side":null,"page_data":null},{"num":"43","finish":"false","template_name":"T4","page_side":null,"page_data":null},{"num":"44","finish":"false","template_name":"T5","page_side":null,"page_data":null}]};
+        var JSONBookPreview = {"preview_list":[{"num":"cover","path":"","storage_type":"","type":null},{"num":"0","path":"","storage_type":"","type":null},{"num":"1","path":"","storage_type":"","type":null},{"num":"2","path":"","storage_type":"","type":null},{"num":"3","path":"","storage_type":"","type":null},{"num":"4","path":"","storage_type":"","type":null},{"num":"5","path":"","storage_type":"","type":null},{"num":"6","path":"","storage_type":"","type":null},{"num":"7","path":"","storage_type":"","type":null},{"num":"8","path":"","storage_type":"","type":null},{"num":"9","path":"","storage_type":"","type":null},{"num":"10","path":"","storage_type":"","type":null},{"num":"11","path":"","storage_type":"","type":null},{"num":"12","path":"","storage_type":"","type":null},{"num":"13","path":"","storage_type":"","type":null},{"num":"14","path":"","storage_type":"","type":null},{"num":"15","path":"","storage_type":"","type":null},{"num":"16","path":"","storage_type":"","type":null},{"num":"17","path":"","storage_type":"","type":null},{"num":"18","path":"","storage_type":"","type":null},{"num":"19","path":"","storage_type":"","type":null},{"num":"20","path":"","storage_type":"","type":null},{"num":"21","path":"","storage_type":"","type":null},{"num":"22","path":"","storage_type":"","type":null},{"num":"23","path":"","storage_type":"","type":null},{"num":"24","path":"","storage_type":"","type":null},{"num":"25","path":"","storage_type":"","type":null},{"num":"26","path":"","storage_type":"","type":null},{"num":"27","path":"","storage_type":"","type":null},{"num":"28","path":"","storage_type":"","type":null},{"num":"29","path":"","storage_type":"","type":null},{"num":"30","path":"","storage_type":"","type":null},{"num":"31","path":"","storage_type":"","type":null},{"num":"32","path":"","storage_type":"","type":null},{"num":"33","path":"","storage_type":"","type":null},{"num":"34","path":"","storage_type":"","type":null},{"num":"35","path":"","storage_type":"","type":null},{"num":"36","path":"","storage_type":"","type":null},{"num":"37","path":"","storage_type":"","type":null},{"num":"38","path":"","storage_type":"","type":null},{"num":"39","path":"","storage_type":"","type":null},{"num":"40","path":"","storage_type":"","type":null},{"num":"41","path":"","storage_type":"","type":null},{"num":"42","path":"","storage_type":"","type":null},{"num":"43","path":"","storage_type":"","type":null},{"num":"44","path":"","storage_type":"","type":null}]};
+        var UserId = 103691;
+        var BookId = 153267;
+        var WorksId = 169348;
+        var ProductId = "1001";
+        var BookName = "";
+        var IsFirst = 1;
+        var EndDate = '2013/11/23';
+        var JSONPrice = {"1000_48_4":68.0,"1005_64_4":188.0,"1000_48_6":88.0,"1001_24_6":98.0,"1006_26_4":58.0,"1001_80_4":158.0,"1001_24_4":78.0,"1001_80_6":208.0,"1004_64_6":298.0,"1005_36_4":128.0,"1005_64_6":228.0,"1003_8_4":12.0,"1001_96_6":248.0,"1001_32_4":88.0,"1001_96_4":188.0,"1004_96_6":378.0,"1004_96_4":318.0,"1004_36_6":198.0,"1004_72_6":328.0,"1004_36_4":168.0,"1004_72_4":258.0,"1000_24_4":48.0,"1005_72_4":198.0,"1000_24_6":68.0,"1005_56_4":168.0,"1005_72_6":248.0,"1001_64_4":128.0,"1001_64_6":168.0,"1000_36_4":58.0,"1004_28_4":148.0,"1004_64_4":238.0,"1004_28_6":178.0,"1004_20_4":128.0,"1005_48_6":188.0,"1004_20_6":148.0,"1002_1_4":3.6,"1006_1_4":250.0,"1005_36_6":168.0,"1002_30_4":108.0,"1005_56_6":208.0,"1001_32_6":108.0,"1001_48_4":98.0,"1001_48_6":128.0,"1000_36_6":78.0,"1004_48_4":198.0,"1004_48_6":238.0,"1004_56_6":268.0,"1005_80_4":208.0,"1004_56_4":218.0,"1005_80_6":248.0,"1005_96_6":298.0,"1006_26_6":68.0,"1005_48_4":148.0,"1005_96_4":228.0};
+    </script>
+<link href="css/upload.css" rel="stylesheet" type="text/css">
+<style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
+/** reset styling **/
+.firebugResetStyles {
+    z-index: 2147483646 !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    border: 0 none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    outline: 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    position: fixed !important;
+    transform: rotate(0deg) !important;
+    transform-origin: 50% 50% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent none !important;
+    pointer-events: none !important;
+    white-space: normal !important;
+}
+
+.firebugBlockBackgroundColor {
+    background-color: transparent !important;
+}
+
+.firebugResetStyles:before, .firebugResetStyles:after {
+    content: "" !important;
+}
+/**actual styling to be modified by firebug theme**/
+.firebugCanvas {
+    display: none !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.firebugLayoutBox {
+    width: auto !important;
+    position: static !important;
+}
+
+.firebugLayoutBoxOffset {
+    opacity: 0.8 !important;
+    position: fixed !important;
+}
+
+.firebugLayoutLine {
+    opacity: 0.4 !important;
+    background-color: #000000 !important;
+}
+
+.firebugLayoutLineLeft, .firebugLayoutLineRight {
+    width: 1px !important;
+    height: 100% !important;
+}
+
+.firebugLayoutLineTop, .firebugLayoutLineBottom {
+    width: 100% !important;
+    height: 1px !important;
+}
+
+.firebugLayoutLineTop {
+    margin-top: -1px !important;
+    border-top: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineRight {
+    border-right: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineBottom {
+    border-bottom: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineLeft {
+    margin-left: -1px !important;
+    border-left: 1px solid #999999 !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.firebugLayoutBoxParent {
+    border-top: 0 none !important;
+    border-right: 1px dashed #E00 !important;
+    border-bottom: 1px dashed #E00 !important;
+    border-left: 0 none !important;
+    position: fixed !important;
+    width: auto !important;
+}
+
+.firebugRuler{
+    position: absolute !important;
+}
+
+.firebugRulerH {
+    top: -15px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 14px !important;
+    background: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%13%88%00%00%00%0E%08%02%00%00%00L%25a%0A%00%00%00%04gAMA%00%00%D6%D8%D4OX2%00%00%00%19tEXtSoftware%00Adobe%20ImageReadyq%C9e%3C%00%00%04%F8IDATx%DA%EC%DD%D1n%E2%3A%00E%D1%80%F8%FF%EF%E2%AF2%95%D0D4%0E%C1%14%B0%8Fa-%E9%3E%CC%9C%87n%B9%81%A6W0%1C%A6i%9A%E7y%0As8%1CT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AATE9%FE%FCw%3E%9F%AF%2B%2F%BA%97%FDT%1D~K(%5C%9D%D5%EA%1B%5C%86%B5%A9%BDU%B5y%80%ED%AB*%03%FAV9%AB%E1%CEj%E7%82%EF%FB%18%BC%AEJ8%AB%FA'%D2%BEU9%D7U%ECc0%E1%A2r%5DynwVi%CFW%7F%BB%17%7Dy%EACU%CD%0E%F0%FA%3BX%FEbV%FEM%9B%2B%AD%BE%AA%E5%95v%AB%AA%E3E5%DCu%15rV9%07%B5%7F%B5w%FCm%BA%BE%AA%FBY%3D%14%F0%EE%C7%60%0EU%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5JU%88%D3%F5%1F%AE%DF%3B%1B%F2%3E%DAUCNa%F92%D02%AC%7Dm%F9%3A%D4%F2%8B6%AE*%BF%5C%C2Ym~9g5%D0Y%95%17%7C%C8c%B0%7C%18%26%9CU%CD%13i%F7%AA%90%B3Z%7D%95%B4%C7%60%E6E%B5%BC%05%B4%FBY%95U%9E%DB%FD%1C%FC%E0%9F%83%7F%BE%17%7DkjMU%E3%03%AC%7CWj%DF%83%9An%BCG%AE%F1%95%96yQ%0Dq%5Dy%00%3Et%B5'%FC6%5DS%95pV%95%01%81%FF'%07%00%00%00%00%00%00%00%00%00%F8x%C7%F0%BE%9COp%5D%C9%7C%AD%E7%E6%EBV%FB%1E%E0(%07%E5%AC%C6%3A%ABi%9C%8F%C6%0E9%AB%C0'%D2%8E%9F%F99%D0E%B5%99%14%F5%0D%CD%7F%24%C6%DEH%B8%E9rV%DFs%DB%D0%F7%00k%FE%1D%84%84%83J%B8%E3%BA%FB%EF%20%84%1C%D7%AD%B0%8E%D7U%C8Y%05%1E%D4t%EF%AD%95Q%BF8w%BF%E9%0A%BF%EB%03%00%00%00%00%00%00%00%00%00%B8vJ%8E%BB%F5%B1u%8Cx%80%E1o%5E%CA9%AB%CB%CB%8E%03%DF%1D%B7T%25%9C%D5(%EFJM8%AB%CC'%D2%B2*%A4s%E7c6%FB%3E%FA%A2%1E%80~%0E%3E%DA%10x%5D%95Uig%15u%15%ED%7C%14%B6%87%A1%3B%FCo8%A8%D8o%D3%ADO%01%EDx%83%1A~%1B%9FpP%A3%DC%C6'%9C%95gK%00%00%00%00%00%00%00%00%00%20%D9%C9%11%D0%C0%40%AF%3F%EE%EE%92%94%D6%16X%B5%BCMH%15%2F%BF%D4%A7%C87%F1%8E%F2%81%AE%AAvzr%DA2%ABV%17%7C%E63%83%E7I%DC%C6%0Bs%1B%EF6%1E%00%00%00%00%00%00%00%00%00%80cr%9CW%FF%7F%C6%01%0E%F1%CE%A5%84%B3%CA%BC%E0%CB%AA%84%CE%F9%BF)%EC%13%08WU%AE%AB%B1%AE%2BO%EC%8E%CBYe%FE%8CN%ABr%5Dy%60~%CFA%0D%F4%AE%D4%BE%C75%CA%EDVB%EA(%B7%F1%09g%E5%D9%12%00%00%00%00%00%00%00%00%00H%F6%EB%13S%E7y%5E%5E%FB%98%F0%22%D1%B2'%A7%F0%92%B1%BC%24z3%AC%7Dm%60%D5%92%B4%7CEUO%5E%F0%AA*%3BU%B9%AE%3E%A0j%94%07%A0%C7%A0%AB%FD%B5%3F%A0%F7%03T%3Dy%D7%F7%D6%D4%C0%AAU%D2%E6%DFt%3F%A8%CC%AA%F2%86%B9%D7%F5%1F%18%E6%01%F8%CC%D5%9E%F0%F3z%88%AA%90%EF%20%00%00%00%00%00%00%00%00%00%C0%A6%D3%EA%CFi%AFb%2C%7BB%0A%2B%C3%1A%D7%06V%D5%07%A8r%5D%3D%D9%A6%CAu%F5%25%CF%A2%99%97zNX%60%95%AB%5DUZ%D5%FBR%03%AB%1C%D4k%9F%3F%BB%5C%FF%81a%AE%AB'%7F%F3%EA%FE%F3z%94%AA%D8%DF%5B%01%00%00%00%00%00%00%00%00%00%8E%FB%F3%F2%B1%1B%8DWU%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*UiU%C7%BBe%E7%F3%B9%CB%AAJ%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5*%AAj%FD%C6%D4%5Eo%90%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5%86%AF%1B%9F%98%DA%EBm%BBV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%AD%D6%E4%F58%01%00%00%00%00%00%00%00%00%00%00%00%00%00%40%85%7F%02%0C%008%C2%D0H%16j%8FX%00%00%00%00IEND%AEB%60%82") repeat-x !important;
+    border-top: 1px solid #BBBBBB !important;
+    border-right: 1px dashed #BBBBBB !important;
+    border-bottom: 1px solid #000000 !important;
+}
+
+.firebugRulerV {
+    top: 0 !important;
+    left: -15px !important;
+    width: 14px !important;
+    height: 100% !important;
+    background: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%0E%00%00%13%88%08%02%00%00%00%0E%F5%CB%10%00%00%00%04gAMA%00%00%D6%D8%D4OX2%00%00%00%19tEXtSoftware%00Adobe%20ImageReadyq%C9e%3C%00%00%06~IDATx%DA%EC%DD%D1v%A20%14%40Qt%F1%FF%FF%E4%97%D9%07%3BT%19%92%DC%40(%90%EEy%9A5%CB%B6%E8%F6%9Ac%A4%CC0%84%FF%DC%9E%CF%E7%E3%F1%88%DE4%F8%5D%C7%9F%2F%BA%DD%5E%7FI%7D%F18%DDn%BA%C5%FB%DF%97%BFk%F2%10%FF%FD%B4%F2M%A7%FB%FD%FD%B3%22%07p%8F%3F%AE%E3%F4S%8A%8F%40%EEq%9D%BE8D%F0%0EY%A1Uq%B7%EA%1F%81%88V%E8X%3F%B4%CEy%B7h%D1%A2E%EBohU%FC%D9%AF2fO%8BBeD%BE%F7X%0C%97%A4%D6b7%2Ck%A5%12%E3%9B%60v%B7r%C7%1AI%8C%BD%2B%23r%00c0%B2v%9B%AD%CA%26%0C%1Ek%05A%FD%93%D0%2B%A1u%8B%16-%95q%5Ce%DCSO%8E%E4M%23%8B%F7%C2%FE%40%BB%BD%8C%FC%8A%B5V%EBu%40%F9%3B%A72%FA%AE%8C%D4%01%CC%B5%DA%13%9CB%AB%E2I%18%24%B0n%A9%0CZ*Ce%9C%A22%8E%D8NJ%1E%EB%FF%8F%AE%CAP%19*%C3%BAEKe%AC%D1%AAX%8C*%DEH%8F%C5W%A1e%AD%D4%B7%5C%5B%19%C5%DB%0D%EF%9F%19%1D%7B%5E%86%BD%0C%95%A12%AC%5B*%83%96%CAP%19%F62T%86%CAP%19*%83%96%CA%B8Xe%BC%FE)T%19%A1%17xg%7F%DA%CBP%19*%C3%BA%A52T%86%CAP%19%F62T%86%CA%B0n%A9%0CZ%1DV%C6%3D%F3%FCH%DE%B4%B8~%7F%5CZc%F1%D6%1F%AF%84%F9%0F6%E6%EBVt9%0E~%BEr%AF%23%B0%97%A12T%86%CAP%19%B4T%86%CA%B8Re%D8%CBP%19*%C3%BA%A52huX%19%AE%CA%E5%BC%0C%7B%19*CeX%B7h%A9%0C%95%E1%BC%0C%7B%19*CeX%B7T%06%AD%CB%5E%95%2B%BF.%8F%C5%97%D5%E4%7B%EE%82%D6%FB%CF-%9C%FD%B9%CF%3By%7B%19%F62T%86%CA%B0n%D1R%19*%A3%D3%CA%B0%97%A12T%86uKe%D0%EA%B02*%3F1%99%5DB%2B%A4%B5%F8%3A%7C%BA%2B%8Co%7D%5C%EDe%A8%0C%95a%DDR%19%B4T%C66%82fA%B2%ED%DA%9FC%FC%17GZ%06%C9%E1%B3%E5%2C%1A%9FoiB%EB%96%CA%A0%D5qe4%7B%7D%FD%85%F7%5B%ED_%E0s%07%F0k%951%ECr%0D%B5C%D7-g%D1%A8%0C%EB%96%CA%A0%A52T%C6)*%C3%5E%86%CAP%19%D6-%95A%EB*%95q%F8%BB%E3%F9%AB%F6%E21%ACZ%B7%22%B7%9B%3F%02%85%CB%A2%5B%B7%BA%5E%B7%9C%97%E1%BC%0C%EB%16-%95%A12z%AC%0C%BFc%A22T%86uKe%D0%EA%B02V%DD%AD%8A%2B%8CWhe%5E%AF%CF%F5%3B%26%CE%CBh%5C%19%CE%CB%B0%F3%A4%095%A1%CAP%19*Ce%A8%0C%3BO*Ce%A8%0C%95%A12%3A%AD%8C%0A%82%7B%F0v%1F%2FD%A9%5B%9F%EE%EA%26%AF%03%CA%DF9%7B%19*Ce%A8%0C%95%A12T%86%CA%B8Ze%D8%CBP%19*Ce%A8%0C%95%D1ae%EC%F7%89I%E1%B4%D7M%D7P%8BjU%5C%BB%3E%F2%20%D8%CBP%19*Ce%A8%0C%95%A12T%C6%D5*%C3%5E%86%CAP%19*Ce%B4O%07%7B%F0W%7Bw%1C%7C%1A%8C%B3%3B%D1%EE%AA%5C%D6-%EBV%83%80%5E%D0%CA%10%5CU%2BD%E07YU%86%CAP%19*%E3%9A%95%91%D9%A0%C8%AD%5B%EDv%9E%82%FFKOee%E4%8FUe%A8%0C%95%A12T%C6%1F%A9%8C%C8%3D%5B%A5%15%FD%14%22r%E7B%9F%17l%F8%BF%ED%EAf%2B%7F%CF%ECe%D8%CBP%19*Ce%A8%0C%95%E1%93~%7B%19%F62T%86%CAP%19*Ce%A8%0C%E7%13%DA%CBP%19*Ce%A8%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4h%A9%0C%B3E%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4h%A9%0C%B3E%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4%AE%A4%F5%25%C0%00%DE%BF%5C'%0F%DA%B8q%00%00%00%00IEND%AEB%60%82") repeat-y !important;
+    border-left: 1px solid #BBBBBB !important;
+    border-right: 1px solid #000000 !important;
+    border-bottom: 1px dashed #BBBBBB !important;
+}
+
+.overflowRulerX > .firebugRulerV {
+    left: 0 !important;
+}
+
+.overflowRulerY > .firebugRulerH {
+    top: 0 !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.fbProxyElement {
+    position: fixed !important;
+    pointer-events: auto !important;
+}
+</style></head>
+<body class="viewbook">
+    
+<div class="compatable" id="browser_tips" style="display: none">
+    <p>
+        !!!您的浏览器版本太古老，无法正常使用网站的全部功能。您需要
+<a href="http://windows.microsoft.com/zh-CN/internet-explorer/products/ie/home" target="_blank">升级您的 IE 浏览器</a>
+        或使用
+<a href="http://membookstatic.b0.upaiyun.com/download/chrome_mimoprint.exe" target="_blank">谷歌浏览器</a>
+        等更棒的浏览器
+    </p>
+</div>
+<div id="toptoolbar-wrapper">
+    <div id="toptoolbar">
+
+        <div class="shopbox-toptoolbar">
+                <ul id="sddm">
+                    <li id="memu_mimo">
+                        <a href="/usercenter">我的印品 <span class="more"></span></a>
+                        <div id="m1" class="children">
+                            <a href="/usercenter">我的印品</a>
+                            <a href="/usercenter/myorder">订单跟踪</a>
+                            <a href="/usercenter/userinfo">我的资料</a>
+                            <a href="/usercenter/promotion">我的优惠券</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            <div class="faq">
+                <a href="/about/help">帮助</a>
+            </div>
+                <div class="faq">
+                    <a href="/user/logout">注销</a>
+                </div>
+
+        </div>
+        <!-- end of top toolbar -->
+            <div class="nickname-toptoolbar">
+                <a href="/usercenter">欢迎你：舞动</a>
+            </div>
+            <!-- end of top nickname-toptoolbar -->
+
+    </div>
+</div>
+<!--header-wrapper-->
+<div id="header-wrapper">
+    <div id="header-pattern">
+        <div id="header">
+            <a id="headerlogo" href="/" title="logo"></a>
+            <div id="main-menu">
+                <div class="menu-header">
+                    <ul id="navig">
+                        <li class="home"><a class="current" title="首页" href="/">首页</a></li>
+                        <li class="product"><a title="印刷介绍" href="/product">印品介绍</a></li>
+                        <li class="stage"><a title="stage" href="/stage">作品展厅</a></li>
+                        <li class="usercenter"><a title="立即创作" href="/usercenter">我的印品</a></li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <span>今天下单</span>
+                    <p id="header_receive_date">10月28日</p>
+                    <span>预计出货</span>
+                </div>
+                <!-- end of main menu -->
+            </div>
+            <!-- end of header -->
+        </div>
+    </div>
+    <script src="/static/script/calculatePayTime.js?v=20130925"></script>
+    <script type="text/javascript">
+        $(function () {
+            CalculatPayTime.ReceiveDate("usercenterheader");
+        });
+    </script>
+    <!-- end of header wrapper -->
+</div>
+
+
+
+    <div id="outwrap">
+        <!--begin 顶部logo和工具栏 -->
+        <div id="logo_tools_bar">
+            <a href="/"><span id="logo"></span></a>
+            <span id="works_title" class="works_title"></span>
+            <div id="tools_bar">
+
+                &nbsp;&nbsp;<a href="#" id="btn_preview" class="btn" title="预览">预览</a>
+                <a href="#" id="btn_save" class="btn" title="保存">保存</a>
+                <a href="#" id="btn_setting" class="btn btn4" title="书本设置">页数设置</a>
+                <a href="#" id="btn_check" class="btn" title="印前检查">检查</a>
+                <a href="#" id="btn_print" class="btn btn_reg_green" title="印刷">印刷</a>
+            </div>
+        </div>
+        <!--end -->
+        <div id="inwrap">
+            <!--顶部边框 -->
+            <div id="inwrap_pre"></div>
+            <!--begin 编辑区域 -->
+            <div class="sections">
+                <!--begin 上传和图像缩略图 -->
+                <div id="section_upload_thumnail" class="section">
+                    <a id="btn_upload" class="btn" title="上传照片"></a>
+                    <div id="mod_thumbnail" class="pic_theme_list">
+                        <a id="mod_thumbnail_btn_prev" class="arrow_lf btn_arrow btn lf"></a>
+                        <div class="thumbnail_warp customer_scrollbar">
+                            <ul style="left: 0px; width: 86px;" id="mod_thumbnail_list" class="thumbnail lf">            <li class="">                <img class="j_thumbnail ui-draggable" title="点击查看大图" id="imageid_2373689" data-imageid="2373689" data-path="imagedata/691/91/103691/169348/103691_20131024102824423" data-original_height="768" data-original_width="1024" src="/imagedata/691/91/103691/169348/103691_20131024102824423_thumb.jpg" data-url="/imagedata/691/91/103691/169348/103691_20131024102824423" used_num="0">                <span class="counter" id="counter_2373689" title="图像被使用次数">0</span><span class="thumbnail_operats"><a title="旋转" href="javascript:;" class="btn_rotate_left" data-imageid="2373689"></a><a title="旋转" href="javascript:;" class="btn_rotate_right" data-imageid="2373689"></a><a title="删除" href="javascript:;" class="btn_delete" data-imageid="2373689"></a></span>            </li></ul>
+                        </div>
+                        <a id="mod_thumbnail_btn_next" class="arrow_rt btn btn_arrow lf"></a>
+                    </div>
+                </div>
+                <!--end -->
+
+                <div id="section_thumnail_info" class="section section_thumnail_info">
+                    <span class="upload_bar_holder" id="upload_bar_holder" style="display: none">
+                        <span class="name">已上传<em class="img_page" id="upload_totalPage">1</em>张  进度(<em id="bar_percent">100</em>%)：</span>
+                        <span class="bar_outer" id="bar_outer">
+                            <span style="width: 200px;" class="bar" id="upload_curr_bar"></span>
+                        </span>
+                    </span>
+                    <span>共 <b id="thumbnail_count">0</b> 张，已使用 <b id="thumbnail_used_count">0</b> 张&nbsp;&nbsp;<label><input id="chk_hide_used" type="checkbox">隐藏已使用的照片</label>
+                    </span><span class="thumbnail_order">排序方式：<a href="#" class="cur" action="filename">按文件名</a><a href="#" action="phototime">按拍照时间</a><a href="#" action="uploadtime">按上传时间</a></span>
+                </div>
+
+                <!--begin 版式自定义编辑 -->
+                <div id="section_layout_edit" class="edit_spine">
+                    <div id="edit_area_warp" class="edit_area_warp edit_area_warp_right">
+                        <div id="spine" class="spine" num="spine">
+                            <div class="text_box txt1" id="spine_txt1" name="txt1" x="79" y="18" width="4" height="180" space="0" leading="9.6" max_line="1" max_length="25" pt="8" px="6" direction="vertical" style="left: 8px; top: 10px; width: 10px; height: 204px; font-size: 7px; letter-spacing: 4px;" tips_info="在此输入作品主标题" align="left" contenteditable="true">在此输入作品主标题</div>
+                            <div class="text_box txt2" id="spine_txt2" name="txt1" x="79" y="18" width="4" height="180" space="0" leading="9.6" max_line="1" max_length="14" pt="8" px="6" direction="vertical" style="left: 8px; top: 227px; width: 10px; height: 112px; font-size: 7px; letter-spacing: 4px;" tips_info="在此输入作者信息" align="left" contenteditable="true">在此输入作者信息</div>
+                        </div>
+                        <div id="author_info" class="author_info" num="author_info">
+                        </div>
+                        <div id="style_info" class="style_info" num="style_info">
+                            <div class="trim_line_top"></div>
+                            <div class="trim_line_left"></div>
+                            <div class="trim_line_bottom"></div>
+                        </div>
+                        <div class="backbone_bg"></div>
+                        <div class="pagelayout_left_side_warp">
+                            <div style="background-color: rgb(255, 255, 255);" id="pagelayout_left_side_edit" class="pagelayout_edit"><div class="trim_line_top"></div><div class="trim_line_left"></div><div class="trim_line_bottom"></div><div class="trim_line_right"></div></div>
+                        </div>
+                        <div class="pagelayout_right_side_warp">
+                            <div style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); width: 455px; height: 327px;" color="#000000" background_color="#ffffff" side_type="M" margin_type="A" space_type="A" product_type="VIEW" page_type="C" height="148" width="206" name="C1" num="cover" has_edited="false" id="pagelayout_right_side_edit" class="pagelayout_edit pageedit_cover"><div class="trim_line_top"></div><div class="trim_line_left"></div><div class="trim_line_bottom"></div><div class="trim_line_right"></div><div style="left: 0px; top: 0px; width: 455px; height: 327px;" height="148" width="206" y="0" x="0" name="img1" id="img1" class="image_box img1 ui-droppable"><div class="drag_here"></div><div class="dpi_info">2028x1457</div></div><div style="left: 42px; top: 274px; width: 354px; height: 18px; font-size: 15px; letter-spacing: 3px;" px="15" pt="20" max_length="20" max_line="1" leading="0" space="100" height="8" width="160" y="124" x="19" name="txt1" id="txt1" class="text_box text_box_background txt1" align="left">在此输入文字~</div><div style="left: 42px; top: 296px; width: 354px; height: 12px; font-size: 9px; letter-spacing: 2px;" px="6" pt="8" max_length="50" max_line="1" leading="0" space="100" height="3" width="160" y="134" x="19" name="txt2" id="txt2" class="text_box text_box_background txt2" align="left">在此输入文字~</div></div>
+                        </div>
+                        <div class="layout_tools">
+                            <ul class="tool_bot">
+                                <li class="lf left_btn">
+                                    <a href="javascript:;" id="background_color_picker_btn" class="editor_bg"><span>底色</span><i></i></a>
+                                    <a href="#" id="text_color_picker_btn" class="editor_color"><span>文字颜色</span><i></i></a>
+                                </li>
+                                <li class="rt right_btn">
+                                    <a href="#" id="pagelayout_picker_btn" class="editor_format"><span>&nbsp;</span><i></i></a>
+                                </li>
+                            </ul>
+                            <ul id="background_color_bar" class="color_bar" style="display: none;">
+                                <li class="white_bg color_page" data-color="#ffffff" title="白色"></li>
+                                <li class="black_bg color_page" data-color="#000000" title="黑色"></li>
+                                <li class="yanghong_bg" data-color="#EF006B" title="洋红"></li>
+                                <li class="qing_bg" data-color="#009FE0" title="青色"></li>
+                                <li class="ningmeng_bg" data-color="#FFC400" title="柠檬"></li>
+                                <li class="juzi_bg" data-color="#F98C00" title="橘子"></li>
+                                <li class="dahong_bg" data-color="#DF0000" title="大红"></li>
+                                <li class="caodi_bg" data-color="#93BC00" title="草地"></li>
+                                <li class="naicha_bg" data-color="#C2891B" title="奶茶"></li>
+                                <li class="kafei_bg" data-color="#77420D" title="咖啡"></li>
+                                <li class="yingtao_bg" data-color="#B90000" title="樱桃"></li>
+                                <li class="senlin_bg" data-color="#175724" title="森林"></li>
+                                <li class="nuanhui_bg" data-color="#CABCAB" title="暖灰"></li>
+                                <li class="lenghui_bg" data-color="#A8BCC2" title="冷灰"></li>
+                                <li class="yanzhi_bg" data-color="#FABBAB" title="胭脂"></li>
+                                <li class="wuye_bg" data-color="#6688A4" title="午夜"></li>
+                                <li class="xiangya_bg" data-color="#F8F2E5" title="象牙"></li>
+                                <li class="mise_bg" data-color="#E4DED6" title="米色"></li>
+                                <li class="fenhong_bg" data-color="#F9DBDA" title="粉红"></li>
+                                <li class="fenlan_bg" data-color="#D6E9F2" title="粉蓝"></li>
+                                <li class="naihuang_bg" data-color="#FFEA9D" title="奶黄"></li>
+                                <li class="youzi_bg" data-color="#FCDBAA" title="柚子"></li>
+                                <li class="taohong_bg" data-color="#FBE6D4" title="桃红"></li>
+                                <li class="suancheng_bg" data-color="#D2DCA0" title="酸橙"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--end版式自定义编辑 -->
+            </div>
+            <!--end 编辑区域 -->
+
+            <div id="mod_tools" class="sections mod_tools">
+                <div class="section">
+                    <span class="btn_area">工具栏：
+                        <a id="btn_page_manager" class="btn_round_mid btn" title="管理页面顺序">页面管理</a>                    </span>
+
+                    <div id="page_count" class="page_controll" style="display: none;">
+                        <a href="#" id="btn_add_page" class="add">&nbsp;
+                        </a>
+                        <a href="#" id="btn_minus_page" class="minus">&nbsp;
+                        </a>
+                        &nbsp;&nbsp;<span>加减页数</span>
+                    </div>
+                    <span class="page_info">已完成&nbsp;<span id="complete_count">0</span>P，可编辑&nbsp;<span id="edit_count">45</span>P，总共&nbsp;<span id="total_count">48</span>P&nbsp;</span>
+                </div>
+            </div>
+
+            <!-- begin 页面预览 -->
+            <div id="mod_preview_thumnail" class="inwrap_aft gray_wrap_aft">
+                <div id="layout_theme">
+                    <a id="mod_preview_thumnail_btn_pre" class="arrow_retangle_lf btn lf"></a>
+                    <div class="preview_thumbnail">
+                        <ul id="mod_preview_thumnail_list" class="blk">        <li class="active" index="0">            <a class="pagelayout_bg blank" id="page_bottom" href="javascript:;" num="bottom" page_side="left" page_type="none">            </a>             <em class="img_page">封底</em>            <a class="pagelayout_bg c1_r" id="page_cover" href="javascript:;" num="cover" page_side="right" page_type="COVER" template_name="C1">                            </a>            <em class="img_page_right">封面</em>        </li>        <li index="1">            <a class="pagelayout_bg blank" id="page_0left" href="javascript:;" num="0left" page_side="left" _template_name="AUTHORINFO">            </a>            <em class="img_page">封面折页</em>            <a class="pagelayout_bg t1_r" id="page_0" href="javascript:;" num="0" page_side="right" template_name="T1">                            </a>            <em class="img_page_right">扉页</em>        </li>        <li index="2">            <a class="pagelayout_bg blank" id="page_1_left" href="javascript:;" num="1_left" page_side="left">            </a>            <em class="img_page">扉页对页</em>            <a class="pagelayout_bg t8_r" id="page_1" href="javascript:;" num="1" page_side="right" template_name="T8">                            </a>            <em class="img_page_right">1</em>        </li>                <li index="3">                    <a class="pagelayout_bg t2_l" id="page_2" href="javascript:;" num="2" page_side="left" template_name="T2">                                            </a>                    <em class="img_page">2</em>                    <a class="pagelayout_bg t7_r" id="page_3" href="javascript:;" num="3" page_side="right" template_name="T7">                                            </a>                    <em class="img_page_right">3</em>                </li>                <li index="4">                    <a class="pagelayout_bg t8_l" id="page_4" href="javascript:;" num="4" page_side="left" template_name="T8">                                            </a>                    <em class="img_page">4</em>                    <a class="pagelayout_bg t8_r" id="page_5" href="javascript:;" num="5" page_side="right" template_name="T8">                                            </a>                    <em class="img_page_right">5</em>                </li>                <li index="5">                    <a class="pagelayout_bg t5_l" id="page_6" href="javascript:;" num="6" page_side="left" template_name="T5">                                            </a>                    <em class="img_page">6</em>                    <a class="pagelayout_bg t3_r" id="page_7" href="javascript:;" num="7" page_side="right" template_name="T3">                                            </a>                    <em class="img_page_right">7</em>                </li>                <li index="6">                    <a class="pagelayout_bg t3_l" id="page_8" href="javascript:;" num="8" page_side="left" template_name="T3">                                            </a>                    <em class="img_page">8</em>                    <a class="pagelayout_bg t4_r" id="page_9" href="javascript:;" num="9" page_side="right" template_name="T4">                                            </a>                    <em class="img_page_right">9</em>                </li>                <li index="7">                    <a class="pagelayout_bg t2_l" id="page_10" href="javascript:;" num="10" page_side="left" template_name="T2">                                            </a>                    <em class="img_page">10</em>                    <a class="pagelayout_bg t2_r" id="page_11" href="javascript:;" num="11" page_side="right" template_name="T2">                                            </a>                    <em class="img_page_right">11</em>                </li>                <li index="8">                    <a class="pagelayout_bg t6_l" id="page_12" href="javascript:;" num="12" page_side="left" template_name="T6">                                            </a>                    <em class="img_page">12</em>                    <a class="pagelayout_bg t7_r" id="page_13" href="javascript:;" num="13" page_side="right" template_name="T7">                                            </a>                    <em class="img_page_right">13</em>                </li>                <li index="9">                    <a class="pagelayout_bg t7_l" id="page_14" href="javascript:;" num="14" page_side="left" template_name="T7">                                            </a>                    <em class="img_page">14</em>                    <a class="pagelayout_bg t5_r" id="page_15" href="javascript:;" num="15" page_side="right" template_name="T5">                                            </a>                    <em class="img_page_right">15</em>                </li>                <li index="10">                    <a class="pagelayout_bg t6_l" id="page_16" href="javascript:;" num="16" page_side="left" template_name="T6">                                            </a>                    <em class="img_page">16</em>                    <a class="pagelayout_bg t6_r" id="page_17" href="javascript:;" num="17" page_side="right" template_name="T6">                                            </a>                    <em class="img_page_right">17</em>                </li>                <li index="11">                    <a class="pagelayout_bg t3_l" id="page_18" href="javascript:;" num="18" page_side="left" template_name="T3">                                            </a>                    <em class="img_page">18</em>                    <a class="pagelayout_bg t8_r" id="page_19" href="javascript:;" num="19" page_side="right" template_name="T8">                                            </a>                    <em class="img_page_right">19</em>                </li>                <li index="12">                    <a class="pagelayout_bg t2_l" id="page_20" href="javascript:;" num="20" page_side="left" template_name="T2">                                            </a>                    <em class="img_page">20</em>                    <a class="pagelayout_bg t2_r" id="page_21" href="javascript:;" num="21" page_side="right" template_name="T2">                                            </a>                    <em class="img_page_right">21</em>                </li>                <li index="13">                    <a class="pagelayout_bg t6_l" id="page_22" href="javascript:;" num="22" page_side="left" template_name="T6">                                            </a>                    <em class="img_page">22</em>                    <a class="pagelayout_bg t4_r" id="page_23" href="javascript:;" num="23" page_side="right" template_name="T4">                                            </a>                    <em class="img_page_right">23</em>                </li>                <li index="14">                    <a class="pagelayout_bg t4_l" id="page_24" href="javascript:;" num="24" page_side="left" template_name="T4">                                            </a>                    <em class="img_page">24</em>                    <a class="pagelayout_bg t5_r" id="page_25" href="javascript:;" num="25" page_side="right" template_name="T5">                                            </a>                    <em class="img_page_right">25</em>                </li>                <li index="15">                    <a class="pagelayout_bg t3_l" id="page_26" href="javascript:;" num="26" page_side="left" template_name="T3">                                            </a>                    <em class="img_page">26</em>                    <a class="pagelayout_bg t3_r" id="page_27" href="javascript:;" num="27" page_side="right" template_name="T3">                                            </a>                    <em class="img_page_right">27</em>                </li>                <li index="16">                    <a class="pagelayout_bg t4_l" id="page_28" href="javascript:;" num="28" page_side="left" template_name="T4">                                            </a>                    <em class="img_page">28</em>                    <a class="pagelayout_bg t8_r" id="page_29" href="javascript:;" num="29" page_side="right" template_name="T8">                                            </a>                    <em class="img_page_right">29</em>                </li>                <li index="17">                    <a class="pagelayout_bg t8_l" id="page_30" href="javascript:;" num="30" page_side="left" template_name="T8">                                            </a>                    <em class="img_page">30</em>                    <a class="pagelayout_bg t6_r" id="page_31" href="javascript:;" num="31" page_side="right" template_name="T6">                                            </a>                    <em class="img_page_right">31</em>                </li>                <li index="18">                    <a class="pagelayout_bg t7_l" id="page_32" href="javascript:;" num="32" page_side="left" template_name="T7">                                            </a>                    <em class="img_page">32</em>                    <a class="pagelayout_bg t7_r" id="page_33" href="javascript:;" num="33" page_side="right" template_name="T7">                                            </a>                    <em class="img_page_right">33</em>                </li>                <li index="19">                    <a class="pagelayout_bg t4_l" id="page_34" href="javascript:;" num="34" page_side="left" template_name="T4">                                            </a>                    <em class="img_page">34</em>                    <a class="pagelayout_bg t2_r" id="page_35" href="javascript:;" num="35" page_side="right" template_name="T2">                                            </a>                    <em class="img_page_right">35</em>                </li>                <li index="20">                    <a class="pagelayout_bg t3_l" id="page_36" href="javascript:;" num="36" page_side="left" template_name="T3">                                            </a>                    <em class="img_page">36</em>                    <a class="pagelayout_bg t3_r" id="page_37" href="javascript:;" num="37" page_side="right" template_name="T3">                                            </a>                    <em class="img_page_right">37</em>                </li>                <li index="21">                    <a class="pagelayout_bg t7_l" id="page_38" href="javascript:;" num="38" page_side="left" template_name="T7">                                            </a>                    <em class="img_page">38</em>                    <a class="pagelayout_bg t2_r" id="page_39" href="javascript:;" num="39" page_side="right" template_name="T2">                                            </a>                    <em class="img_page_right">39</em>                </li>                <li index="22">                    <a class="pagelayout_bg t2_l" id="page_40" href="javascript:;" num="40" page_side="left" template_name="T2">                                            </a>                    <em class="img_page">40</em>                    <a class="pagelayout_bg t6_r" id="page_41" href="javascript:;" num="41" page_side="right" template_name="T6">                                            </a>                    <em class="img_page_right">41</em>                </li>                <li index="23">                    <a class="pagelayout_bg t4_l" id="page_42" href="javascript:;" num="42" page_side="left" template_name="T4">                                            </a>                    <em class="img_page">42</em>                    <a class="pagelayout_bg t4_r" id="page_43" href="javascript:;" num="43" page_side="right" template_name="T4">                                            </a>                    <em class="img_page_right">43</em>                </li>                <li index="24">                    <a class="pagelayout_bg t5_l" id="page_44" href="javascript:;" num="44" page_side="left" template_name="T5">                                            </a>                    <em class="img_page">44</em>                    <a class="pagelayout_bg blank" id="page_blank" href="javascript:;" num="last" data-side="right">                    </a>                    <em class="img_page_right"></em>                </li>                <li index="25">                    <a class="pagelayout_bg copyright" id="page_copyright" href="javascript:;" num="copyright" page_side="left" template_name="COPYRIGHT">                                            </a>                    <em class="img_page">版权</em>                    <a class="pagelayout_bg blank" id="page_blank" href="javascript:;" num="last_bottom" data-side="right">                    </a>                    <em class="img_page_right">封底</em>                </li></ul>
+                    </div>
+                    <a id="mod_preview_thumnail_btn_next" class="arrow_retangle_rt btn_arrow btn lf"></a>
+                </div>
+            </div>
+            <!-- end -->
+        </div>
+        <div id="bot"></div>
+        <!--缩略图预览-->
+        <div id="thumbnail_big" class="thumbnail_big" style="display: none;">
+            <div class="thumbnail_big_bd">
+                <a class="close" href="#"></a>
+                <img>
+                <div class="block"></div>
+                <div class="info">ddd.jpg 1800*900px</div>
+            </div>
+        </div>
+        <!--文本编辑-->
+        <div id="text_editor" class="text_editor" style="display: none;">
+            <h2>您最多可以输入<span id="text_count">30</span>个字符</h2>
+            <ul>
+                <li>
+                    <button id="text_align_left_btn">左对齐</button></li>
+                <li>
+                    <button id="text_align_center_btn">居中</button></li>
+                <li>
+                    <button id="text_align_right_btn">右对齐</button></li>
+            </ul>
+            <textarea id="text_area" rows="1" cols="1"></textarea>
+            <ul>
+                <li>
+                    <button class="confirm">确定</button></li>
+                <li>
+                    <button class="cancel">取消</button></li>
+            </ul>
+        </div>
+    </div>
+    <!--预览-->
+    <div id="preview_dialog" class="preview_dialog" style="display: none;">
+        <div class="box">
+            <div class="backbone"></div>
+            <div class="page left_page"></div>
+            <div class="page right_page"></div>
+        </div>
+        <div class="tools">
+            <div><a class="big big_left"></a><a class="edit edit_left"></a><a class="big big_right"></a><a class="edit edit_right"></a></div>
+            <div class="close_bar">
+                <a class="prev"></a>
+                <a class="close"></a>
+                <a class="next"></a>
+            </div>
+        </div>
+    </div>
+    <div id="preview_2x" class="preview_2x" style="display: none;">
+        <img title="点击关闭">
+    </div>
+    <div id="check_step2" class="popup_dialog" style="width: 555px; display: none;">
+        <div class="title">
+            <h2>页面检查</h2>
+            <a class="close" href="#"></a>
+        </div>
+        <div class="content">
+            <div style="padding: 30px; background-color: #ffffff;">
+                <table class="info_table">
+                    <tbody><tr class="hl">
+                        <th style="width: 42px;">序号</th>
+                        <th style="width: 90px;">错误级别</th>
+                        <th>信息提示</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>自己看着办</td>
+                        <td>第2页面没有编辑</td>
+                    </tr>
+                    <tr class="hl">
+                        <td>2</td>
+                        <td>自己看着办</td>
+                        <td>第2页面没有编辑</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>自己看着办</td>
+                        <td>第2页面没有编辑</td>
+                    </tr>
+                    <tr class="hl">
+                        <td>4</td>
+                        <td>自己看着办</td>
+                        <td>第2页面没有编辑</td>
+                    </tr>
+                </tbody></table>
+                <div style="margin-top: 30px;"><a id="checker_go_step1" class="btn_primary mr5" href="#">返回</a><a id="checker_edit" class="btn_second mr5" href="#">立即去修改</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="check_step1" class="popup_dialog" style="width: 555px; display: none;">
+        <div class="title">
+            <h2>交付印刷前最终检查</h2>
+            <a class="close" href="#"></a>
+        </div>
+        <div class="content">
+            <div style="padding: 30px; background-color: #ffffff;">
+                <h2 style="font-size: 16px; color: #227f04; margin-bottom: 15px;">恭喜您,您的作品终于要出版了!</h2>
+                <p style="line-height: 35px; font-size: 16px;">别着急,为确保印刷质量,建议您一定要完成以下两件事情</p>
+                <p style="line-height: 30px; font-size: 14px;">1.浏览"印前检查清单",解决其中的错误与警告 <a id="step1_check" class="btn_primary mr5" href="#">立即检查</a></p>
+                <p style="line-height: 30px; font-size: 14px;">2.利用"预览"功能,从头到尾完整预览一遍 <a id="step1_preview" class="btn_second mr5" href="#">立即预览</a></p>
+                <div style="margin-top: 30px;"><a id="step1_go" class="btn_primary mr5" href="#">我知道了,继续出版</a><a id="step1_edit" class="btn_second mr5" href="#">返回编辑</a></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mask_layout" style="position: absolute; top: 0px; left: 0px; margin-left: 0px; margin-top: 0px; background-color: rgb(0, 0, 0); height: 775px; opacity: 0.8; overflow: hidden; width: 1349px; z-index: 1000; display: none;"></div>
+
+    <div id="pop_page_manager" class="popup_dialog" style="width: 915px; position: absolute; z-index: 9999; display: none;">
+        <div class="title">
+            <h2>页面管理</h2>
+            <a class="close" href="#"></a>
+        </div>
+        <div class="content">
+            <div class="page_manager" style="padding: 30px 0px 30px 0px; background-color: #D9D9D9; background: #f9f9f9 url(../../static/images/bg.png);">
+                <div class="tips">您可以按住鼠标左键,拖动页面进行排序</div>
+                <div class="page_manager_tab">
+                    <b>排序方式:</b>
+                    <label>
+                        <input id="page_sort_cross" name="page_sort_type" value="2" type="radio">跨页排序</label>
+                    <label>
+                        <input id="page_sort_single" name="page_sort_type" value="1" type="radio">单页排序</label>
+                </div>
+                <ul class="page_manager_list cross ui-sortable" id="page_manager_list">
+                </ul>
+                <div style="clear: both; margin-top: 30px; margin-left: 24px;"><a class="confirm btn_primary mr5" href="#">确定</a><a class="cancel btn_second mr5" href="#">取消</a><span id="page_manager_doing" style="display: none;"><img src="/static/images/loading_bar.gif">正在努力的调整页面顺序,该操作任务有点繁重,请耐心的等待哦~</span></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="succeed" style="display: none; position: absolute; top: 190px; left: 50%; z-index: 500; margin-left: -90px;" id="action_success">保存成功</div>
+    <div id="pop_texteditor" class="pop_texteditor" style="display: none;">
+        <div class="pop-inner">
+            <span id="arrow_out" class="pop-arrow-down"></span><span id="arrow_in" class="pop-arrow-down-in"></span><a href="javascript:void(0);" class="close j-close"><i class="icon i-pop-close"></i></a>
+            <div class="pop-bd">
+                <div class="text_edit">
+                    <div class="tools_bar">
+                        <h2 id="pop_texteditor_tips">你还可以输入<span>30/35</span>个字符</h2>
+                        <a class="right" href="#"></a>
+                        <a class="center" href="#"></a>
+                        <a class="left" href="#"></a>
+                    </div>
+                    <div class="edit_area">
+                        <input type="text">
+                        <textarea></textarea>
+                    </div>
+                    <div class="bottom_bar"><a class="confirm btn_primary mr5" href="#" style="width: 46px; text-align: center;">&nbsp;确定&nbsp;</a><a class="cancel btn_second" href="#">&nbsp;取消&nbsp;</a><span class="text_tips">文字排版有偏差，请以预览图为准，特殊符号无法印刷</span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pop_setting" class="pop_setting" style="position: absolute; z-index: 9999; display: none;">
+        <div class="pop-inner">
+            <span class="pop-arrow-up"></span><span class="pop-arrow-up-in"></span><a href="javascript:void(0);" class="close j-close"><i class="icon i-pop-close"></i></a>
+            <div class="pop-bd">
+                <div style="background-color: #ffffff; padding: 10px">
+                    <table>
+                        <tbody><tr style="display: none;">
+                            <td>是否印页码:</td>
+                            <td>
+                                <label>
+                                    <input name="print_num" type="radio">是</label>
+                                <label>
+                                    <input name="print_num" type="radio">否</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>页数设置:</td>
+                            <td>
+                                <select id="select_page_p">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">共<span id="total_p_count">48</span>P,可编辑<span id="edit_p_count">45</span>P <a style="color: #712030;" href="#">【其它细节见P数说明】</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span style="color: red;">!!注:减少P数,被减少的部分内容会被丢弃,请谨慎操作</span>
+                            </td>
+                        </tr>
+                        <tr style="display: none;">
+                            <td>全书字体设置:</td>
+                            <td></td>
+                        </tr>
+                        <tr style="display: none;">
+                            <td>全书页面底色:</td>
+                            <td></td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div class="bottom_bar"><a class="confirm btn_primary mr5" href="#">&nbsp;确定&nbsp;</a><a class="cancel btn_second" href="#">&nbsp;取消&nbsp;</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="pop_layout" class="pop_layout" style="position: absolute; display: none; z-index: 9999">
+        <div class="pop-inner">
+            <span id="layout_arrow_out" class="pop-arrow-down"></span><span id="layout_arrow_in" class="pop-arrow-down-in"></span><a href="javascript:void(0);" class="close j-close"><i class="icon i-pop-close"></i></a>
+            <div class="pop-bd">
+                <div id="pop_layout_bd" style="background-color: #fff;">
+                    <ul class="blk layout_list bg_cont pagelayout_minibook" style="display: none;">
+                        <li class="pagelayout_C C1">
+                            <a class="pagelayout_bg c1_r" href="#" name="C1" type="COVER"></a>
+                        </li>
+
+                        <li class="pagelayout_C C2">
+                            <a class="pagelayout_bg c2_r" href="#" name="C2" type="COVER"></a>
+                        </li>
+
+                        <li class="pagelayout_P T1">
+                            <a class="pagelayout_bg t1_r" href="#" name="T1" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T2">
+                            <a class="pagelayout_bg t2_r" href="#" name="T2" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T3">
+                            <a class="pagelayout_bg t3_r" href="#" name="T3" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T4">
+                            <a class="pagelayout_bg t4_r" href="#" name="T4" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T5">
+                            <a class="pagelayout_bg t5_r" href="#" name="T5" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T6">
+                            <a class="pagelayout_bg t6_r" href="#" name="T6" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T7">
+                            <a class="pagelayout_bg t7_r" href="#" name="T7" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T8">
+                            <a class="pagelayout_bg t8_r" href="#" name="T8" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T9">
+                            <a class="pagelayout_bg t9_r" href="#" name="T9" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T10">
+                            <a class="pagelayout_bg t10_r" href="#" name="T10" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T11">
+                            <a class="pagelayout_bg t11_r" href="#" name="T11" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T12">
+                            <a class="pagelayout_bg t12_r" href="#" name="T12" type="PAGE"></a>
+                        </li>
+                    </ul>
+                    <ul class="blk layout_list bg_cont pagelayout_viewbook" style="">
+                        <li class="pagelayout_C C1">
+                            <a class="pagelayout_bg c1_r" href="#" name="C1" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_C C2">
+                            <a class="pagelayout_bg c2_r" href="#" name="C2" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_C C3">
+                            <a class="pagelayout_bg c3_r" href="#" name="C3" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_P T1">
+                            <a class="pagelayout_bg t1_r" href="#" name="T1" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T2">
+                            <a class="pagelayout_bg t2_r" href="#" name="T2" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T3">
+                            <a class="pagelayout_bg t3_r" href="#" name="T3" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T4">
+                            <a class="pagelayout_bg t4_r" href="#" name="T4" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T5">
+                            <a class="pagelayout_bg t5_r" href="#" name="T5" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T6">
+                            <a class="pagelayout_bg t6_r" href="#" name="T6" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T7">
+                            <a class="pagelayout_bg t7_r" href="#" name="T7" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T8">
+                            <a class="pagelayout_bg t8_r" href="#" name="T8" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T9">
+                            <a class="pagelayout_bg t9_r" href="#" name="T9" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T10">
+                            <a class="pagelayout_bg t10_r" href="#" name="T10" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T11">
+                            <a class="pagelayout_bg t11_r" href="#" name="T11" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T12">
+                            <a class="pagelayout_bg t12_r" href="#" name="T12" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T13">
+                            <a class="pagelayout_bg t13_r" href="#" name="T13" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T14">
+                            <a class="pagelayout_bg t14_r" href="#" name="T14" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T15">
+                            <a class="pagelayout_bg t15_r" href="#" name="T15" type="PAGE"></a>
+                        </li>
+                    </ul>
+                    <ul class="blk layout_list bg_cont pagelayout_widebook" style="display: none;">
+                        <li class="pagelayout_C C1">
+                            <a class="pagelayout_bg t2_r" href="#" name="C1" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_C C2">
+                            <a class="pagelayout_bg t3_r" href="#" name="C2" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_P T1">
+                            <a class="pagelayout_bg t1_r" href="#" name="T1" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T31">
+                            <a class="pagelayout_bg t31_r" href="#" name="T31" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T32">
+                            <a class="pagelayout_bg t32_r" href="#" name="T32" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T4">
+                            <a class="pagelayout_bg t4_r" href="#" name="T4" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T5">
+                            <a class="pagelayout_bg t5_r" href="#" name="T5" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T6">
+                            <a class="pagelayout_bg t6_r" href="#" name="T6" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T7">
+                            <a class="pagelayout_bg t7_r" href="#" name="T7" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T8">
+                            <a class="pagelayout_bg t8_r" href="#" name="T8" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T9">
+                            <a class="pagelayout_bg t9_r" href="#" name="T9" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T10">
+                            <a class="pagelayout_bg t10_r" href="#" name="T10" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T11">
+                            <a class="pagelayout_bg t11_r" href="#" name="T11" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T12">
+                            <a class="pagelayout_bg t12_r" href="#" name="T12" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T13">
+                            <a class="pagelayout_bg t13_r" href="#" name="T13" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T14">
+                            <a class="pagelayout_bg t14_r" href="#" name="T14" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T15">
+                            <a class="pagelayout_bg t15_r" href="#" name="T15" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T16">
+                            <a class="pagelayout_bg t16_r" href="#" name="T16" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T17">
+                            <a class="pagelayout_bg t17_r" href="#" name="T17" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T18">
+                            <a class="pagelayout_bg t18_r" href="#" name="T18" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T19">
+                            <a class="pagelayout_bg t19_r" href="#" name="T19" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T20">
+                            <a class="pagelayout_bg t20_r" href="#" name="T20" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T21">
+                            <a class="pagelayout_bg t21_r" href="#" name="T21" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T22">
+                            <a class="pagelayout_bg t22_r" href="#" name="T22" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T23">
+                            <a class="pagelayout_bg t23_r" href="#" name="T23" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T24">
+                            <a class="pagelayout_bg t24_r" href="#" name="T24" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T25">
+                            <a class="pagelayout_bg t25_r" href="#" name="T25" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T26">
+                            <a class="pagelayout_bg t26_r" href="#" name="T26" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T27">
+                            <a class="pagelayout_bg t27_r" href="#" name="T27" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T28">
+                            <a class="pagelayout_bg t28_r" href="#" name="T28" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T29">
+                            <a class="pagelayout_bg t29_r" href="#" name="T29" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T30">
+                            <a class="pagelayout_bg t30_r" href="#" name="T30" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T201">
+                            <a class="pagelayout_bg t201 cross_layout" href="#" name="T201" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T202">
+                            <a class="pagelayout_bg t202 cross_layout" href="#" name="T202" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T203">
+                            <a class="pagelayout_bg t203 cross_layout" href="#" name="T203" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T204">
+                            <a class="pagelayout_bg t204 cross_layout" href="#" name="T204" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T205">
+                            <a class="pagelayout_bg t205 cross_layout" href="#" name="T205" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T206">
+                            <a class="pagelayout_bg t206 cross_layout" href="#" name="T206" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T207">
+                            <a class="pagelayout_bg t207 cross_layout" href="#" name="T207" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T208">
+                            <a class="pagelayout_bg t208 cross_layout" href="#" name="T208" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T209">
+                            <a class="pagelayout_bg t209 cross_layout" href="#" name="T209" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T210">
+                            <a class="pagelayout_bg t210 cross_layout" href="#" name="T210" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T211">
+                            <a class="pagelayout_bg t211 cross_layout" href="#" name="T211" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T212">
+                            <a class="pagelayout_bg t212 cross_layout" href="#" name="T212" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T213">
+                            <a class="pagelayout_bg t213 cross_layout" href="#" name="T213" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T214">
+                            <a class="pagelayout_bg t214 cross_layout" href="#" name="T214" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T215">
+                            <a class="pagelayout_bg t215 cross_layout" href="#" name="T215" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T216">
+                            <a class="pagelayout_bg t216 cross_layout" href="#" name="T216" type="PAGE"></a>
+                        </li>
+                    </ul>
+                    <ul class="blk layout_list bg_cont pagelayout_mpadbook" style="display: none;">
+                        <li class="pagelayout_C C1">
+                            <a class="pagelayout_bg c1_r" href="#" name="C1" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_C C2">
+                            <a class="pagelayout_bg c2_r" href="#" name="C2" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_C C3">
+                            <a class="pagelayout_bg c3_r" href="#" name="C3" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_C C4">
+                            <a class="pagelayout_bg c4_r" href="#" name="C4" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_C C5">
+                            <a class="pagelayout_bg c5_r" href="#" name="C5" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_C C6">
+                            <a class="pagelayout_bg c6_r" href="#" name="C6" type="COVER"></a>
+                        </li>
+                        <li class="pagelayout_P T1">
+                            <a class="pagelayout_bg t1_r" href="#" name="T1" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T1">
+                            <a class="pagelayout_bg t2_r" href="#" name="T2" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T1">
+                            <a class="pagelayout_bg t3_r" href="#" name="T3" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T4">
+                            <a class="pagelayout_bg t4_r" href="#" name="T4" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T5">
+                            <a class="pagelayout_bg t5_r" href="#" name="T5" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T6">
+                            <a class="pagelayout_bg t6_r" href="#" name="T6" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T7">
+                            <a class="pagelayout_bg t7_r" href="#" name="T7" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T8">
+                            <a class="pagelayout_bg t8_r" href="#" name="T8" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T9">
+                            <a class="pagelayout_bg t9_r" href="#" name="T9" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T10">
+                            <a class="pagelayout_bg t10_r" href="#" name="T10" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T11">
+                            <a class="pagelayout_bg t11_r" href="#" name="T11" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T12">
+                            <a class="pagelayout_bg t12_r" href="#" name="T12" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T13">
+                            <a class="pagelayout_bg t13_r" href="#" name="T13" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T14">
+                            <a class="pagelayout_bg t14_r" href="#" name="T14" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T15">
+                            <a class="pagelayout_bg t15_r" href="#" name="T15" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T16">
+                            <a class="pagelayout_bg t16_r" href="#" name="T16" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T17">
+                            <a class="pagelayout_bg t17_r" href="#" name="T17" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T18">
+                            <a class="pagelayout_bg t18_r" href="#" name="T18" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T19">
+                            <a class="pagelayout_bg t19_r" href="#" name="T19" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T20">
+                            <a class="pagelayout_bg t20_r" href="#" name="T20" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T21">
+                            <a class="pagelayout_bg t21_r" href="#" name="T21" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T200">
+                            <a class="pagelayout_bg t200_r cross_layout" href="#" name="T200" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T201">
+                            <a class="pagelayout_bg t201_r cross_layout" href="#" name="T201" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T202">
+                            <a class="pagelayout_bg t202_r cross_layout" href="#" name="T202" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T203">
+                            <a class="pagelayout_bg t203_r cross_layout" href="#" name="T203" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T204">
+                            <a class="pagelayout_bg t204_r cross_layout" href="#" name="T204" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T205">
+                            <a class="pagelayout_bg t205_r cross_layout" href="#" name="T205" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T206">
+                            <a class="pagelayout_bg t206_r cross_layout" href="#" name="T206" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T207">
+                            <a class="pagelayout_bg t207_r cross_layout" href="#" name="T207" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T208">
+                            <a class="pagelayout_bg t208_r cross_layout" href="#" name="T208" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T209">
+                            <a class="pagelayout_bg t209_r cross_layout" href="#" name="T209" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T210">
+                            <a class="pagelayout_bg t210_r cross_layout" href="#" name="T210" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T211">
+                            <a class="pagelayout_bg t211_r cross_layout" href="#" name="T211" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T212">
+                            <a class="pagelayout_bg t212_r cross_layout" href="#" name="T212" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T213">
+                            <a class="pagelayout_bg t213_r cross_layout" href="#" name="T213" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T214">
+                            <a class="pagelayout_bg t214_r cross_layout" href="#" name="T214" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T215">
+                            <a class="pagelayout_bg t215_r cross_layout" href="#" name="T215" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T216">
+                            <a class="pagelayout_bg t216_r cross_layout" href="#" name="T216" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T217">
+                            <a class="pagelayout_bg t217_r cross_layout" href="#" name="T217" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T218">
+                            <a class="pagelayout_bg t218_r cross_layout" href="#" name="T218" type="PAGE"></a>
+                        </li>
+                        <li class="pagelayout_P T219">
+                            <a class="pagelayout_bg t219_r cross_layout" href="#" name="T219" type="PAGE"></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="image_tools" class="image_tools" style="display: none;">
+        <div class="content">
+            <h2 id="image_tools_tips">图像工具</h2>
+            <a class="btn_close" href="#"></a>
+            <ul>
+                <li><a tips="放大" class="zoom_out" href="#"></a></li>
+                <li><a tips="缩小" class="zoom_in" href="#"></a></li>
+                <li><a action="ajustFrame" tips="填满" class="ajust_frame" href="#"></a></li>
+                <li><a action="ajustImage" tips="适应" class="ajust_image" href="#"></a></li>
+                <li><a style="display: none;" action="roateLeft" tips="向左旋转" class="roate_left" href="#"></a></li>
+                <li><a style="display: none;" action="roateRight" tips="向右旋转" class="roate_right" href="#"></a></li>
+                <li><a action="deleteImage" tips="移除图片" class="delete" href="#"></a></li>
+                <li><a action="findImage" tips="查找图片" class="find" href="#"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="end_date" style="border-radius: 10px 10px 10px 10px; position: absolute; left: 50%; margin-left: -250px; top: 260px; text-align: center; background-color: rgb(255, 229, 153); border: 1px solid rgb(255, 147, 38); width: 500px; height: 30px; line-height: 30px; z-index: 9999; display: none;">您的作品的截稿日期已经延长到 <b>2013/11/23</b>, 请抓紧时间完成作品出版哦!</div>
+    <span class="upload-tips" id="upload_tips" style="z-index: 9999; left: 925px; top: 887px; opacity: 0;"></span>
+
+    
+    <script type="text/javascript">
+        $(function() {
+            Uploader.extend.event(1,0,16934833827372);           
+        });
+    </script>
+
+
+<div id="dialog_selector" class="dialog_selector" style="position: absolute; left: 50%; top: 79px; margin-left: -242.5px; display: none;">    <div class="title">        <h2>开始创作</h2>    </div>    <div class="content">        <div class="tab_view" id="tab1">            <div class="bookdetail">                <div class="product">                    <h2 class="product_name">| VIEW照片书</h2>                    <div class="detail">                        <img class="c_img" src="/static/images/upgrade/1001.jpg" height="198" width="272">                    </div>                </div>                <div class="pagecount">                    <h2>选择页数:</h2>                    <ul class="j_page_count"><li><a href="#" page_count="24" class="j_page_count_24">24P</a></li><li><a href="#" page_count="32" class="j_page_count_32">32P</a></li><li><a href="#" page_count="48" class="j_page_count_48 cur">48P</a></li><li><a href="#" page_count="64" class="j_page_count_64">64P</a></li><li><a href="#" page_count="80" class="j_page_count_80">80P</a></li><li><a href="#" page_count="96" class="j_page_count_96">96P</a></li></ul>                </div>                <div class="info">                    <h2 class="info_title">您选择的是:48P（可编辑45P） 四色<span>98</span>元 / 六色<span>128</span>元</h2>                    <h2 style="display: block;" class="info_tips">推荐！厚度、翻阅手感好，性价比高！</h2>                </div>            </div>            <div class="operator_bar">                <h2>如果您有兑换券，请 <a class="btn_to_exchange" href="#">点击这里</a></h2>                <a class="btn_go" href="#">开始创作</a>            </div>        </div>        <div class="tab_view" id="tab2" style="display:none;">            <div class="exchange">                <h2>请输入兑换券编码：</h2>                <div class="exchange_input">                    <a class="btn_exchange" href="#"></a>                    <input>                </div>            </div>            <div class="exchange_bar">                <a class="btn_second btn_back" href="#">返回</a>            </div>        </div>    </div></div><div style="display: none;" id="lightboxOverlay"></div><div style="display: none;" id="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image"><div class="lb-nav"><a class="lb-prev"></a><a class="lb-next"></a></div><div class="lb-loader"><a class="lb-cancel"><img src="/static/lightbox/images/loading.gif"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"><img src="/static/lightbox/images/close.png"></a></div></div></div></div><!--图像上传--><div is_init="true" id="uploader_dialog" class="uploader_dialog ui-draggable" style="position: absolute; top: 26px; margin-top: -10000px;"><div class="uploader_dialog_title"><a class="uploader_close" href="javascript:;"></a><h2 style="width: 500px;">1.您正在制作的是照片书产品，最多可上传500张相片。2.单次最多可选择80张相片</h2></div><div class="uploader_dialog_content" style="position:relative;height:528px;"><p style="position:absolute;left:217px;top:20px; font-size:12px;">如果您普通上传看不到东西,可能是由于Flash插件太旧或者没安装导致,请点击<a style="color:blue;" href="http://www.adobe.com/go/getflash" targer="_blank">这里</a>安装或升级，安装完成后重新打开本页面即可。</p><div class="upload_type_list"><div class="nav on" ref="#upload_flash" title="flash 上传">普通上传</div><div class="nav" ref="#upload_qq" id="qqupload" title="QQ传送">QQ传送</div></div><div class="upload_item_list"><div class="upload_item_show" id="upload_flash"><div class="zip_uploader"><object style="visibility: visible;" data="/static/swf/uploader_file.swf?ver=20130524" name="zip_uploader" id="zip_uploader" type="application/x-shockwave-flash" align="middle" height="536" width="900"><param value="high" name="quality"><param value="#ffffff" name="bgcolor"><param value="true" name="allowfullscreen"><param value="always" name="allowScriptAccess"><param value="transparent" name="wmode"><param value="true" name="hasPriority"><param value="uploadUrl=http://upload.mimoprint.com/userimage/uploadfile&amp;userId=103691&amp;worksId=169348&amp;bookId=153267&amp;maxCount=200" name="flashvars"></object></div></div>                <div class="upload_item_show" style="top: -523px; display: none;overflow-y:scroll;" id="upload_qq">                    <div class="upload_item_content">                        <ul class="upload_qq_tab">                            <li><a id="zip" class="cur" href="#">以压缩文件方式</a></li>                            <li><a id="floder" href="#">以文件夹方式</a></li>                        </ul>                        <div class="upload_item_tips tab_floder" style="display:none;">                            <h2>文件夹方式:</h2>                            <p>实时看到上传的图片,传送一张系统自动拉取一张,支持<b>边编辑边上传</b>。<br>                               开始传送后，可以关闭本弹出框。每当一张图片传送成功后，在编辑器顶部可以看到成功上传的图片。<br>                              【PS:推荐着急编辑的用户使用】                            </p>                        </div>                        <div class="upload_item_tips tab_zip">                            <h2></h2>                            <p>推荐加QQ：1204055612 为好友，用离线文件方式传送，压缩包最大不能超过2G。过大请分批传送。                                <br>【PS:必须加QQ好友，才能发送离线文件哦。】                            </p>                        </div>                        <div class="upload_item_filename">                            <span class="action_name">压缩包名称：</span><input style="font-size:24px;letter-spacing:2px;"><a href="#" class="btn_copy"></a><a href="tencent://message?uin=1204055612" class="btn_send"></a><span>(上传的文件或者文件夹名称必须和左边的数字一样才可以!!)</span>                        </div>                        <div class="upload_item_guide tab_zip">                            <h2>以下是"以压缩文件方式传送"示例</h2>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step1"></i><b>新建文件夹</b>,并以上面提供的名称命名</h2>                                <img src="/static/images/upload/upload_qq_zip_1.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step2"></i>将要上传的图片，<b>复制到</b>刚才创建的文件夹内</h2>                                <img src="/static/images/upload/upload_qq_zip_2.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step3"></i>在文件夹点击鼠标右边，选择添加到“xxx.rar”，<b>压缩文件夹</b>（支持rar、zip等格式）。</h2>                                <img src="/static/images/upload/upload_qq_zip_3.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step4"></i><b>发送到QQ号码</b>：1204055612 <a href="tencent://message?uin=1204055612">[点击发送]</a></h2>                                <img src="/static/images/upload/upload_qq_zip_4_2.jpg">                            </div>                        </div>                        <div class="upload_item_guide tab_floder" style="display:none;">                            <h2>以下是"以文件夹方式传送"示例</h2>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step1"></i><b>新建文件夹</b>,并以上面提供的名称命名</h2>                                <img src="/static/images/upload/upload_qq_zip_1.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step2"></i>将要上传的图片，<b>复制到</b>刚才创建的文件夹内</h2>                                <img src="/static/images/upload/upload_qq_zip_2.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step3"></i><b>发送到QQ号码</b>：1204055612 <a href="tencent://message?uin=1204055612">[点击发送]</a></h2>                                <img src="/static/images/upload/upload_qq_floder_3_2.jpg">                            </div>                        </div>                    </div>                </div></div></div></div><!--图像上传最小化--><div class="uploader_dialog_min" style="display: none;"><span>上传图像中...<span id="uploader_dialog_min_progress">30</span>%</span></div></body>
+</html>
