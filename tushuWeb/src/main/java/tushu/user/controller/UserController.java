@@ -142,6 +142,8 @@ public class UserController extends BaseController {
 	public String order(@PathVariable("userId") int userId, ModelMap mm, HttpServletRequest request){
 		List<OrderForm> list = orderFormService.getOrders(userService.getUserById(userId), OrderType.ACCOUNT_PAID, OrderType.NON_PAYMENT);
 		mm.addAttribute("list", list);
+		operation = UserOperation.ORDER.toString();
+		mm.addAttribute("operation", operation);
 		return "product/order";
 	}
 	

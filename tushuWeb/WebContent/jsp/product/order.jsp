@@ -292,68 +292,35 @@ $(document).ready(function(){
                         <th>金额</th>
                         <th class="w57">操作</th>
                     </tr>
+                    <c:forEach var="item" items="${list}">
                     <tr>
-                        <td>2521716</td>
-                        <td>
+                        <td width="20%"><a href="###">${item.orderNumber}</a></td>
+                        <td width="10%">
                             <div class="orderBox">
                                 <ul style="height: 85px;" true-h="85" class="clearfix orderList">
-                                        <li class="l"><a target="_blank" href="http://www.tushu.com/book-88059.html"><i class="icon_see"></i><img src="http://platform.tushu.com/book/88059?thumb&amp;wrap=70" alt=""></a></li>
+                                        <li class="l">
+	                                        <a target="_blank" href="###">
+	                                        <i class="icon_see"></i><img src="http://platform.tushu.com/book/88059?thumb&amp;wrap=70" alt="">
+	                                        </a>
+                                        </li>
                                     </ul>
                                 <div style="display: none;" class="clearfix h10"><a href="javascript:;" class="openOrder r" title="展开">open</a></div>
                             </div>
                         </td>
-                        <td>张飞</td>
-                        <td>2013-09-26 13:27:13</td>
-                        <td class="fc_orange">待支付</td>
-                        <td>￥19.90元</td>
-                        <td>
-                                                    <a href="javascript:;" onclick="pay_dialog('2521716')" class="orderBtn_orange">支付</a>
-                                                        <a href="javascript:;" onclick="order_detail(25217)" class="orderBtn_gray">详情</a>
+                        <td width="20%">${item.address.recipientsName}</td>
+                        <td width="20%"><fmt:formatDate value="${item.createTime}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
+                        <td width="10%" class="fc_orange">待支付</td>
+                        <td width="10%">￥${item.amountPayable}元</td>
+                        <td width="10%">
+                            <a href="javascript:;" onclick="pay_dialog('2521716')" class="orderBtn_orange">支付</a>
+                            <a href="javascript:;" onclick="order_detail(25217)" class="orderBtn_gray">详情</a>
                             <a href="javascript:;" onclick="kuaidi100('2521716')" class="orderBtn_gray">查看物流</a>
                         </td>
                     </tr>
-                                        <tr>
-                        <td>2521114</td>
-                        <td>
-                            <div class="orderBox">
-                                                                <ul style="height: 85px;" true-h="86" class="clearfix orderList">
-                                                                        <li class="l"><a target="_blank" href="http://www.tushu.com/book-86554.html"><i class="icon_see"></i><img src="http://platform.tushu.com/book/86554?thumb&amp;wrap=70" alt=""></a></li>
-                                                                    </ul>
-                                                                <div style="display: none;" class="clearfix h10"><a href="javascript:;" class="openOrder r" title="展开">open</a></div>
-                            </div>
-                        </td>
-                        <td>张飞</td>
-                        <td>2013-09-26 11:22:11</td>
-                        <td class="fc_orange">待支付</td>
-                        <td>￥29.80元</td>
-                        <td>
-                                                    <a href="javascript:;" onclick="pay_dialog('2521114')" class="orderBtn_orange">支付</a>
-                                                        <a href="javascript:;" onclick="order_detail(25211)" class="orderBtn_gray">详情</a>
-                            <a href="javascript:;" onclick="kuaidi100('2521114')" class="orderBtn_gray">查看物流</a>
-                        </td>
-                    </tr>
-                                        <tr>
-                        <td>2452866</td>
-                        <td>
-                            <div class="orderBox">
-                                                                <ul style="height: 85px;" true-h="85" class="clearfix orderList">
-                                                                        <li class="l"><a target="_blank" href="http://www.tushu.com/book-84985.html"><i class="icon_see"></i><img src="http://platform.tushu.com/book/84985?thumb&amp;wrap=70" alt=""></a></li>
-                                                                    </ul>
-                                                                <div style="display: none;" class="clearfix h10"><a href="javascript:;" class="openOrder r" title="展开">open</a></div>
-                            </div>
-                        </td>
-                        <td>王飞</td>
-                        <td>2013-09-15 22:03:46</td>
-                        <td class="fc_orange">待支付</td>
-                        <td>￥29.80元</td>
-                        <td>
-                                                    <a href="javascript:;" onclick="pay_dialog('2452866')" class="orderBtn_orange">支付</a>
-                                                        <a href="javascript:;" onclick="order_detail(24528)" class="orderBtn_gray">详情</a>
-                            <a href="javascript:;" onclick="kuaidi100('2452866')" class="orderBtn_gray">查看物流</a>
-                        </td>
-                    </tr>
-                                        </tbody></table>
-                                                        </div>
+                    </c:forEach>
+                </tbody>
+                </table>
+              </div>
             </div>
         </div>
     </div>
