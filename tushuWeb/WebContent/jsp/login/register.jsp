@@ -65,7 +65,7 @@
         },function(){
             $(this).children(".nav_link").removeClass("nav_link_hover");
             $(this).children(".nav_list").hide();
-        })
+        });
     </script>
 <div class="contentBox pt10 pb20">
     <div class="m w980">

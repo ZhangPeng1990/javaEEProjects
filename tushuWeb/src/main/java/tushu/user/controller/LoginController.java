@@ -1,22 +1,23 @@
 package tushu.user.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import tushu.business.user.object.Inform;
 import tushu.business.user.object.User;
-import tushu.produc.service.OrderFormService;
-import tushu.user.service.InformService;
-import tushu.user.service.UserService;
 import tushu.constans.Constans;
 import tushu.enums.OrderType;
 import tushu.enums.UserType;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import tushu.produc.service.OrderFormService;
+import tushu.user.service.InformService;
+import tushu.user.service.UserService;
 
 
 @Controller
@@ -57,7 +58,7 @@ public class LoginController extends BaseController {
 		}
 		
 		if (user == null) {
-			String message = "�û��������벻��ȷ";
+			String message = "无权限访问本页";
 			request.getSession().setAttribute("message", message);
 			state = "403";
 		}else{
@@ -101,7 +102,13 @@ public class LoginController extends BaseController {
 	{
 		String state = "200";
 		try {
-			this.userService.addUser(form.getUsername(), form.getPassword());
+			User user = this.userService.addUser(form.getUsername(), form.getPassword());
+			Inform inform = new Inform();
+			inform.setUser(user);//图书网
+			inform.setSender(userService.getUserById(3));
+			inform.setTitle("欢迎注册");
+			inform.setContent("Hi " + user.getUserName() + " , 欢迎注册本网站!");
+			this.informService.addInform(inform);
 		} catch (Exception e) {
 			state = "403";
 			e.printStackTrace();

@@ -1,6 +1,7 @@
 package tushu.user.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class InformServiceImpl implements InformService {
 	
 	@Override
 	public Inform addInform(Inform inform) {
+		inform.setInsertTime(new Date());
 		InformDO informDO = BeanCopyer.toInformDO(inform);
 		informDOMapper.insert(informDO);
 		inform = BeanCopyer.toInform(informDO);

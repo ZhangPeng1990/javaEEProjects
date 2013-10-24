@@ -6,9 +6,9 @@ import org.apache.ibatis.annotations.Param;
 
 import tushu.model.UserDO;
 
-public interface UserDOMapper {
+public interface UserDOMapper<T extends AbstractDO, PK extends java.io.Serializable> {
 	
-    int deleteByPrimaryKey(Long id);
+	PK deleteByPrimaryKey(Long id);
 
     int insert(UserDO record);
 

@@ -96,7 +96,7 @@
                 </div>
                 <div class="loginBottom mt30">
                     <input name="rewrite_url" value="" type="hidden">
-                    <a href="###" class="btn_gray1">立即注册</a>
+                    <a href="<%=path%>/login/returnRegister.html" class="btn_gray1">立即注册</a>
                 </div>
             </div>
         </div>

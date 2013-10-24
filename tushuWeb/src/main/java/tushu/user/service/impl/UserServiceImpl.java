@@ -79,7 +79,6 @@ public class UserServiceImpl implements UserService {
 		
 		UserDO userDO = BeanCopyer.toUserDO(user);
 		userMapper.insert(userDO);
-		
 		user = BeanCopyer.toUser(userDO);
 		return user;
 	}

@@ -54,7 +54,10 @@
     where ID = #{id,jdbcType=BIGINT}
   </delete>
   
-  <insert id="insert" parameterType="tushu.model.UserDO" >
+  <insert id="insert" parameterType="tushu.model.UserDO" useGeneratedKeys="true" keyProperty="id">
+  <selectKey resultType="long" order="AFTER" keyProperty="id">
+	select LAST_INSERT_ID() as id 
+  </selectKey>
     insert into base_user (ID, USER_NAME, PASSWORD, 
       INSERT_TIME, UPDATE_TIME, userState, nick_Nname, 
       image_Id, real_Name, sex, birth_Day
