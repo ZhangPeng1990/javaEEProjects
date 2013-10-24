@@ -1,6 +1,6 @@
-//View ∞Ê Ω ˝æ› begin
+//View ÁâàÂºèÊï∞ÊçÆ begin
 var VIEW_PAGELAYOUT_DATA = {};
-//∑‚√Ê∞Ê Ω ˝æ›
+//Â∞ÅÈù¢ÁâàÂºèÊï∞ÊçÆ
 VIEW_PAGELAYOUT_DATA.COVER = {};
 
 VIEW_PAGELAYOUT_DATA.COVER.L = {
@@ -15,7 +15,7 @@ VIEW_PAGELAYOUT_DATA.COVER.R = {
     "C3": { "name": "C3", "width": "206", "height": "148", "page_type": "C", "product_type": "VIEW", "space_type": "A", "margin_type": "A", "side_type": "M", "imageBoxList": [{ "name": "img1", "width": "206", "height": "111", "x": "0", "y": "37" }], "textBoxList": [{ "name": "txt1", "width": "160", "height": "8", "x": "16", "y": "13", "align": "left", "space": "100", "leading": "0", "max_line": "1", "max_length": "20", "pt": "20", "px": "15" }, { "name": "txt2", "width": "160", "height": "3", "x": "16", "y": "23", "align": "left", "space": "100", "leading": "0", "max_line": "1", "max_length": "50", "pt": "8", "px": "6" }] }
 };
 
-//ƒ⁄“≥∞Ê Ω ˝æ›
+//ÂÜÖÈ°µÁâàÂºèÊï∞ÊçÆ
 VIEW_PAGELAYOUT_DATA.PAGE = {};
 
 VIEW_PAGELAYOUT_DATA.PAGE.L = {
@@ -56,9 +56,9 @@ VIEW_PAGELAYOUT_DATA.PAGE.R = {
     "T15": { "name": "T15", "width": "206", "height": "148", "page_type": "P", "product_type": "VIEW", "space_type": "B", "margin_type": "B", "side_type": "R", "cross_type": "O", "imageBoxList": [{ "name": "img1", "width": "58", "height": "38.5", "x": "13", "y": "34" }, { "name": "img2", "width": "58", "height": "38.5", "x": "74", "y": "34" }, { "name": "img3", "width": "58", "height": "38.5", "x": "135", "y": "34" }, { "name": "img4", "width": "58", "height": "38.5", "x": "13", "y": "75.5" }, { "name": "img5", "width": "58", "height": "38.5", "x": "74", "y": "75.5" }, { "name": "img6", "width": "58", "height": "38.5", "x": "135", "y": "75.5" }], "textBoxList": [{ "name": "txt1", "width": "174", "height": "3", "x": "21", "y": "136", "align": "right", "space": "0", "leading": "0", "max_line": "1", "max_length": "60", "pt": "8", "px": "6", "direction": "horizontal", "defaultTxt": "", "editable": "1", "font": "", "color_rgb": "", "color_cmyk": "" }] }
 };
 
-//View ∞Ê Ω ˝æ› end
+//View ÁâàÂºèÊï∞ÊçÆ end
 
-//Mini ∞Ê Ω ˝æ› begin
+//Mini ÁâàÂºèÊï∞ÊçÆ begin
 var MINI_PAGELAYOUT_DATA = {};
 MINI_PAGELAYOUT_DATA.COVER = {};
 MINI_PAGELAYOUT_DATA.COVER.L = {
@@ -102,9 +102,9 @@ MINI_PAGELAYOUT_DATA.PAGE.R = {
     T11: { "name": "T11", "width": "146", "height": "146", "page_type": "P", "product_type": "MINI", "space_type": "A", "margin_type": "A", "side_type": "R", "cross_type": "O", "imageBoxList": [{ "name": "img1", "width": "54", "height": "80", "x": "18", "y": "33.5" }, { "name": "img2", "width": "54", "height": "80", "x": "74", "y": "33.5" }], "textBoxList": [{ "name": "txt1", "width": "110", "height": "4", "x": "18", "y": "132", "align": "right", "space": "0", "leading": "0", "max_line": "1", "max_length": "42", "pt": "8", "px": "6", "direction": "horizontal", "defaultTxt": "", "editable": "1", "font": "", "color_rgb": "", "color_cmyk": "" }] },
     T12: { "name": "T12", "width": "146", "height": "146", "page_type": "P", "product_type": "MINI", "space_type": "A", "margin_type": "A", "side_type": "R", "cross_type": "O", "imageBoxList": [{ "name": "img1", "width": "55", "height": "55", "x": "20", "y": "16.5" }, { "name": "img2", "width": "55", "height": "55", "x": "78", "y": "16.5" }, { "name": "img3", "width": "55", "height": "55", "x": "20", "y": "74.5" }, { "name": "img4", "width": "55", "height": "55", "x": "78", "y": "74.5" }], "textBoxList": [{ "name": "txt1", "width": "110", "height": "4", "x": "23", "y": "132.5", "align": "right", "space": "0", "leading": "0", "max_line": "1", "max_length": "42", "pt": "8", "px": "6", "direction": "horizontal", "defaultTxt": "", "editable": "1", "font": "", "color_rgb": "", "color_cmyk": "" }] }
 };
-//Mini ∞Ê Ω ˝æ› end
+//Mini ÁâàÂºèÊï∞ÊçÆ end
 
-//Wide∞Ê Ω ˝æ›
+//WideÁâàÂºèÊï∞ÊçÆ
 var WIDE_PAGELAYOUT_DATA = {};
 WIDE_PAGELAYOUT_DATA.COVER = {};
 WIDE_PAGELAYOUT_DATA.COVER.L = {
@@ -223,7 +223,7 @@ WIDE_PAGELAYOUT_DATA.PAGE.R = {
     T32: { "name": "T32", "width": "286", "height": "216", "page_type": "P", "product_type": "WIDE", "space_type": "B", "margin_type": "A", "side_type": "R", "cross_type": "O", "imageBoxList": [{ "name": "img1", "width": "286", "height": "216", "x": "0", "y": "0" }], "textBoxList": [{ "name": "txt1", "width": "240", "height": "7", "x": "28", "y": "196", "align": "right", "space": "0", "leading": "0", "max_line": "1", "max_length": "56", "pt": "12", "px": "10", "direction": "horizontal", "defaultTxt": "", "editable": "1", "font": "", "color_rgb": "", "color_cmyk": "" }] }
 };
 
-//mpadµƒ∞Â Ω ˝æ›
+//mpadÁöÑÊùøÂºèÊï∞ÊçÆ
 var MPAD_PAGELAYOUT_DATA = {};
 MPAD_PAGELAYOUT_DATA.COVER = {};
 MPAD_PAGELAYOUT_DATA.COVER.L = {

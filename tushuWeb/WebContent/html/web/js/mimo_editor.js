@@ -1,29 +1,29 @@
 "use strict"
 /*
-ÊÂ¼şÁĞ±í
+äº‹ä»¶åˆ—è¡¨
     
-    µ×²¿Ô¤ÀÀÍ¼±»µã»÷
+    åº•éƒ¨é¢„è§ˆå›¾è¢«ç‚¹å‡»
         MIMO_PAGE_PREVIEW_THUMBNAIL_CLICK_EVENT
-    ÎÄ±¾¿òµã»÷
+    æ–‡æœ¬æ¡†ç‚¹å‡»
         MIMO_TEXT_BOX_CLICK_EVENT
-    ±³¾°ÑÕÉ«µã»÷
+    èƒŒæ™¯é¢œè‰²ç‚¹å‡»
         MIMO_BACKGROUND_COLOR_PICKER_EVENT
-    ÎÄ×ÖÑÕÉ«Ñ¡Ôñ
+    æ–‡å­—é¢œè‰²é€‰æ‹©
         MIMO_TEXT_COLOR_PICKER_EVENT
-    Ò³Ãæ°æÊ½Ñ¡Ôñ
+    é¡µé¢ç‰ˆå¼é€‰æ‹©
         MIMO_PAGELAYOUT_PICKER_EVENT
-    ±à¼­ÊéÒÂÊÂ¼ş
+    ç¼–è¾‘ä¹¦è¡£äº‹ä»¶
      MIMO_EDIT_SPINE_EVENT
-    ±à¼­ÕÛÒ³ÊÂ¼ş
+    ç¼–è¾‘æŠ˜é¡µäº‹ä»¶
     MIMO_EDIT_AUTHORINFO_EVENT
 */
 var TRIM_LINE_HTML = '<div class="trim_line_top"></div><div class="trim_line_left"></div><div class="trim_line_bottom"></div><div class="trim_line_right"></div>';
 var AUTHORINFO_TRIM_LINE_HTML = '<div class="trim_line_top"></div><div class="trim_line_bottom"></div><div class="trim_line_right"></div>';
 
-// Êé¼®Êı¾İ
+// ä¹¦ç±æ•°æ®
 var BOOK_DATA = null;
 
-//ºÁÃ××ª»¯ÎªÏñËØ
+//æ¯«ç±³è½¬åŒ–ä¸ºåƒç´ 
 function mmToPx(mm) {
     var scale = 1;
     if (window.isView) {
@@ -45,18 +45,18 @@ function mmToPxByDPI(mm, dpi) {
 }
 var isSpine = false;
 /**
- * ±à¼­Æ÷
+ * ç¼–è¾‘å™¨
  * @author masa
  * @namespace mimo.Editor
- * @description ±à¼­Æ÷
+ * @description ç¼–è¾‘å™¨
  */
 mimo.Editor = {
-    //ÓÃ»§id
+    //ç”¨æˆ·id
     userId: 0,
-    //×÷Æ·id
+    //ä½œå“id
     worksId: 0,
     totalPage: 0,
-    //×îµÍÒ³Êı
+    //æœ€ä½é¡µæ•°
     minPage: 21,
     maxPage: 93,
     bootstrap: function () {
@@ -85,9 +85,9 @@ mimo.Editor = {
         }
 
     },
-    //ÀàĞÍ×ª»»
+    //ç±»å‹è½¬æ¢
     initSubType: function () {
-        //ÀàĞÍÊ¶±ğ
+        //ç±»å‹è¯†åˆ«
         if (window.ProductId == '1000') {
             window.isMini = true;
             window.create_guide_id = "step_create_mini";
@@ -120,7 +120,7 @@ mimo.Editor = {
 
         window.BOOK_DATA = window.JSONBookInfo
 
-        // °Ñlist×ª³Éhashmap
+        // æŠŠlistè½¬æˆhashmap
         BOOK_DATA.list = {};
         var item;
         for (var i = 0, len = BOOK_DATA.page_list.length; i < len; i++) {
@@ -130,7 +130,7 @@ mimo.Editor = {
         BOOK_DATA.list["author_info"] = BOOK_DATA.author_info;
         BOOK_DATA.list["copyright_info"] = BOOK_DATA.copyright_info;
 
-        // Ô¤ÀÀÍ¼
+        // é¢„è§ˆå›¾
         window.JSONBookPreview.list = {};
         var item;
         for (var i = 0, len = JSONBookPreview.preview_list.length; i < len; i++) {
@@ -169,14 +169,14 @@ mimo.Editor = {
         //$(".mask_layout").fadeOut(200);
     },
 
-    // ÏÔÊ¾ÉÏ´«Æ÷
+    // æ˜¾ç¤ºä¸Šä¼ å™¨
     showUploader: function () {
         if (window.Uploader) {
             Uploader.show(window.UserId, window.BookId, window.WorksId);
         }
     },
 
-    //ÏÔÊ¾ÌáÊ¾
+    //æ˜¾ç¤ºæç¤º
     showAlert: function (timeout, content) {
         var item = $("#action_success");
         //var topPx = ($(window).height() / 2 - item.height() / 2) + $(document).scrollTop();
@@ -184,7 +184,7 @@ mimo.Editor = {
         //    "top": topPx + "px",
         //    "margin-left": "-" + item.width() / 2 + "px"
         //});
-        //content = content || "±£´æ³É¹¦";
+        //content = content || "ä¿å­˜æˆåŠŸ";
         item.html(content);
         item.fadeIn('slow');
         if (timeout) {
@@ -194,23 +194,23 @@ mimo.Editor = {
         }
     },
 
-    // ÉèÖÃ±êÌâ
+    // è®¾ç½®æ ‡é¢˜
     setBookName: function (name) {
         var l;
         name = name || window.BookName;
         if (name) {
             l = name.length < 20 ? name.len : 20;
-            $("#works_title").html("¡¶" + name.substr(0, l) + (name.length > 20 ? "..." : "") + "¡·");
+            $("#works_title").html("ã€Š" + name.substr(0, l) + (name.length > 20 ? "..." : "") + "ã€‹");
         }
     },
 
-    // ÏÔÊ¾PÊıÏòµ¼
+    // æ˜¾ç¤ºPæ•°å‘å¯¼
     showCreateGuide: function () {
         if (window.IsFirst == 1) {
             mimo.Editor.Guider.bootstrap(window.ProductId);
         }
     },
-    // ÏÔÊ¾ÉèÖÃ
+    // æ˜¾ç¤ºè®¾ç½®
     showSettting: function (e) {
         var pop = $("#pop_setting");
         var btn = $(e.currentTarget);
@@ -288,55 +288,55 @@ mimo.Editor = {
 
     },
 
-    // ÏÔÊ¾½Ø¸åÈÕÆÚ
+    // æ˜¾ç¤ºæˆªç¨¿æ—¥æœŸ
     ShowEndDate: function () {
         var isFromPagemanger = location.search.indexOf("from_pagemanager") > -1;
         if (isFromPagemanger) {
             return;
         }
         if (window.EndDate) {
-            $("#end_date").html('ÄúµÄ×÷Æ·µÄ½Ø¸åÈÕÆÚÒÑ¾­ÑÓ³¤µ½ <b>' + window.EndDate + '</b>, Çë×¥½ôÊ±¼äÍê³É×÷Æ·³ö°æÅ¶!').show("slow");
+            $("#end_date").html('æ‚¨çš„ä½œå“çš„æˆªç¨¿æ—¥æœŸå·²ç»å»¶é•¿åˆ° <b>' + window.EndDate + '</b>, è¯·æŠ“ç´§æ—¶é—´å®Œæˆä½œå“å‡ºç‰ˆå“¦!').show("slow");
             setTimeout(function () { $("#end_date").hide("slow") }, 5000);
         }
     },
 
-    //Ìí¼ÓÊÂ¼ş
+    //æ·»åŠ äº‹ä»¶
     addEvent: function () {
         var p = mimo.Editor;
 
-        // Ô¤ÀÀ°´Å¥ÊÂ¼ş
+        // é¢„è§ˆæŒ‰é’®äº‹ä»¶
         $("#btn_preview").click(function (e) {
             e.preventDefault();
             p.Preview.show();
         });
 
-        // ±£´æ°´Å¥ÊÂ¼ş
+        // ä¿å­˜æŒ‰é’®äº‹ä»¶
         $("#btn_save").click(function (e) {
             e.preventDefault();
             p.PageEdit.saveCurrentPage("toolsbar");
         });
 
-        // ÉÏ´«°´Å¥
+        // ä¸Šä¼ æŒ‰é’®
         $("#btn_upload").click(function (e) {
             e.preventDefault();
             p.showUploader();
         });
 
-        // ÉèÖÃ
+        // è®¾ç½®
         $("#btn_setting").click(function (e) {
             e.preventDefault();
             mimo.Editor.showSettting(e);
             //window.location = "/order/step1?workId=" + window.WorksId;
         });
 
-        // Ó¡Ë¢
+        // å°åˆ·
         $("#btn_print").click(function (e) {
             e.preventDefault();
             mimo.Editor.Checker.showStep1();
             //window.location = "/order/step1?workId=" + window.WorksId;
         });
 
-        // ¼ì²é
+        // æ£€æŸ¥
         $("#btn_check").click(function (e) {
             e.preventDefault();
             mimo.Editor.Checker.check();
@@ -355,15 +355,15 @@ mimo.Editor = {
 }
 
 /**
- * ¹«ÓÃ·½·¨
+ * å…¬ç”¨æ–¹æ³•
  * @author masa
  * @namespace mimo.Editor.Common
- * @description ¹«ÓÃ·½·¨
+ * @description å…¬ç”¨æ–¹æ³•
  */
 mimo.Editor.Common = {
     layoutData: null,
 
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     init: function () {
         var p = mimo.Editor.Common;
         if (window.isMini) {
@@ -380,7 +380,7 @@ mimo.Editor.Common = {
     getLayoutData: function () {
         return mimo.Editor.Common.layoutData;
     },
-    //»ñÈ¡°æÊ½Êı¾İ
+    //è·å–ç‰ˆå¼æ•°æ®
     getLayoutInfo: function (num, template_name) {
         var p = mimo.Editor.Common;
         var pageType = num == "cover" ? "COVER" : "PAGE";
@@ -390,10 +390,10 @@ mimo.Editor.Common = {
 };
 
 /**
- * Ò³ÃæÄÚÈİ±à¼­Çø
+ * é¡µé¢å†…å®¹ç¼–è¾‘åŒº
  * @author masa
  * @namespace mimo.Editor.PageEdit
- * @description Ò³ÃæÄÚÈİ±à¼­Çø
+ * @description é¡µé¢å†…å®¹ç¼–è¾‘åŒº
  */
 mimo.Editor.PageEdit = {
     currentEditSide: "right",
@@ -405,7 +405,7 @@ mimo.Editor.PageEdit = {
         p.addEvent();
         p.lisentEvent();
     },
-    // ³õÊ¼»¯Êé¼¹Î»ÖÃ
+    // åˆå§‹åŒ–ä¹¦è„Šä½ç½®
     initSpine: function () {
         var p = mimo.Editor.PageEdit;
         if (window.isSpine) {
@@ -421,7 +421,7 @@ mimo.Editor.PageEdit = {
             }
         }
     },
-    //ÉèÖÃÊé¼¹ĞÅÏ¢
+    //è®¾ç½®ä¹¦è„Šä¿¡æ¯
     setSpineData: function () {
         var s = $(".spine");
         var t1 = $(".txt1", s).html();
@@ -441,62 +441,62 @@ mimo.Editor.PageEdit = {
 
     cacheCurrentPage: function (from) {
         var list = [];
-        // È¡³ö×ó°æÒ³ÃæÊı¾İ
+        // å–å‡ºå·¦ç‰ˆé¡µé¢æ•°æ®
         var left_page = $("#pagelayout_left_side_edit");
         if (typeof (left_page.attr("num")) != "undefined" && (from == "toolsbar" || left_page.attr("has_edited") == "true")) {
             list.push(left_page.attr("num"));
         }
 
-        // È¡³öÓÒ°æÒ³ÃæÊı¾İ
+        // å–å‡ºå³ç‰ˆé¡µé¢æ•°æ®
         var right_page = $("#pagelayout_right_side_edit");
         if (typeof (right_page.attr("num")) != "undefined" && (from == "toolsbar" || right_page.attr("has_edited") == "true")) {
             list.push(right_page.attr("num"));
         }
 
-        //ÕÛÒ³ĞÅÏ¢
+        //æŠ˜é¡µä¿¡æ¯
         var author_page = $("#author_info");
         if (typeof (author_page.attr("num")) != "undefined" && (from == "toolsbar" || author_page.attr("has_edited") == "true")) {
             list.push(author_page.attr("num"));
         }
 
-        // Ã»ÓĞĞèÒª±£´æµÄÊı¾İ
+        // æ²¡æœ‰éœ€è¦ä¿å­˜çš„æ•°æ®
         if (list.length == 0) {
             return;
         }
         mimo.Editor.DataCenter.cachePageData(list);
     },
 
-    //±£´æµ±Ç°±à¼­Ò³Ãæ
+    //ä¿å­˜å½“å‰ç¼–è¾‘é¡µé¢
     saveCurrentPage: function (from) {
 
         var list = [];
-        // È¡³ö×ó°æÒ³ÃæÊı¾İ
+        // å–å‡ºå·¦ç‰ˆé¡µé¢æ•°æ®
         var left_page = $("#pagelayout_left_side_edit");
         if (typeof (left_page.attr("num")) != "undefined" && (from == "toolsbar" || left_page.attr("has_edited") == "true")) {
             list.push(left_page.attr("num"));
         }
 
-        // È¡³öÓÒ°æÒ³ÃæÊı¾İ
+        // å–å‡ºå³ç‰ˆé¡µé¢æ•°æ®
         var right_page = $("#pagelayout_right_side_edit");
         if (typeof (right_page.attr("num")) != "undefined" && (from == "toolsbar" || right_page.attr("has_edited") == "true")) {
             list.push(right_page.attr("num"));
         }
 
         if (window.isSpine) {
-            // Êé¼¹ĞÅÏ¢
+            // ä¹¦è„Šä¿¡æ¯
             var spine_page = $(".spine");
             if (typeof (spine_page.attr("num")) != "undefined" && (from == "toolsbar" || spine_page.attr("has_edited") == "true")) {
                 list.push(spine_page.attr("num"));
             }
 
-            // ÕÛÒ³ĞÅÏ¢
+            // æŠ˜é¡µä¿¡æ¯
             var author_page = $("#author_info");
             if (typeof (author_page.attr("num")) != "undefined" && (from == "toolsbar" || author_page.attr("has_edited") == "true")) {
                 list.push(author_page.attr("num"));
             }
         }
 
-        // Ã»ÓĞĞèÒª±£´æµÄÊı¾İ
+        // æ²¡æœ‰éœ€è¦ä¿å­˜çš„æ•°æ®
         if (list.length == 0) {
             return;
         }
@@ -510,7 +510,7 @@ mimo.Editor.PageEdit = {
 
     },
 
-    // Çå¿ÕÒ³ÃæĞÅÏ¢
+    // æ¸…ç©ºé¡µé¢ä¿¡æ¯
     emptyPage: function (page) {
         var layout = page;
         layout.attr("class", "pagelayout_edit");
@@ -530,7 +530,7 @@ mimo.Editor.PageEdit = {
         $("#spine").removeAttr("has_edited");
     },
 
-    // °ÑÒ³Ãæ²¼¾Ö×ª»¯³Éjson
+    // æŠŠé¡µé¢å¸ƒå±€è½¬åŒ–æˆjson
     genPageData: function (num) {
         var page = $(".pageedit_" + num);
         if (num == "author_info") {
@@ -542,7 +542,7 @@ mimo.Editor.PageEdit = {
         var text_color = page.attr("color");
         var page_side = page.attr("page_side");
 
-        //ÕÒ³öÍ¼ÏóÁĞ±í
+        //æ‰¾å‡ºå›¾è±¡åˆ—è¡¨
         var imageBoxList = [];
         var imageBoxCount = $(".image_box", page).length;
         var imageBoxDataCount = 0;
@@ -570,7 +570,7 @@ mimo.Editor.PageEdit = {
                 }
 
 
-                //src´æÔÚ´ú±íÓĞÍ¼
+                //srcå­˜åœ¨ä»£è¡¨æœ‰å›¾
                 if (src) {
                     var imgObj = {
                         "name": name,
@@ -589,7 +589,7 @@ mimo.Editor.PageEdit = {
             }
         );
 
-        //ÕÒ³öÎÄ±¾ÁĞ±í
+        //æ‰¾å‡ºæ–‡æœ¬åˆ—è¡¨
         var textBoxList = [];
         var textBoxCount = $(".text_box", page).length;
         var textBoxDataCount = 0;
@@ -601,8 +601,8 @@ mimo.Editor.PageEdit = {
                 //var content = item[0].innerText || item[0].textContent || "";
                 var content = item.html();
 
-                //src´æÔÚ´ú±íÓĞÍ¼
-                if (content && content != "ÔÚ´ËÊäÈëÎÄ×Ö~") {
+                //srcå­˜åœ¨ä»£è¡¨æœ‰å›¾
+                if (content && content != "åœ¨æ­¤è¾“å…¥æ–‡å­—~") {
                     var textObj = {
                         "name": name,
                         "align": align,
@@ -613,7 +613,7 @@ mimo.Editor.PageEdit = {
                 }
             }
         );
-        // Ö»ÒªÍ¼Æ¬Ìî³ä,¾ÍËãÍê³É
+        // åªè¦å›¾ç‰‡å¡«å……,å°±ç®—å®Œæˆ
         var finish = (imageBoxCount == imageBoxDataCount) || (imageBoxCount == 0 && textBoxCount == textBoxDataCount);
         var pageObj = {
             "num": num,
@@ -629,7 +629,7 @@ mimo.Editor.PageEdit = {
         };
         return pageObj;
     },
-    //°Ñ°æÊ½json×ª»¯³ÉÒ³Ãæ²¼¾Ö
+    //æŠŠç‰ˆå¼jsonè½¬åŒ–æˆé¡µé¢å¸ƒå±€
     renderPage: function (pageObj, page, num, from) {
         var p = mimo.Editor.PageEdit;
         var page = $(page);
@@ -647,14 +647,14 @@ mimo.Editor.PageEdit = {
             num = page.attr("num");
         }
 
-        //Çå¿ÕÔ­À´µÄ²¼¾Ö
+        //æ¸…ç©ºåŸæ¥çš„å¸ƒå±€
         //$("#layout").empty();
         //$("#layout").append('<div id="layout_content" ></div>');
 
         //var layout = $("#layout_content");
         var layout = page;
         if (from == "layout") {
-            // ´Ó°æÊ½Ñ¡ÔñÆ÷¹ıÀ´µÄ,ËµÃ÷ÓĞ¸Ä±ä¿©
+            // ä»ç‰ˆå¼é€‰æ‹©å™¨è¿‡æ¥çš„,è¯´æ˜æœ‰æ”¹å˜å’¯
             layout.attr("has_edited", true);
         } else {
             layout.attr("has_edited", false);
@@ -689,14 +689,14 @@ mimo.Editor.PageEdit = {
         layout.css("height", mmToPx(height) + "px");
         //layout.css("border", "1px solid #808080");
         var list;
-        //äÖÈ¾Í¼Æ¬¿ò
+        //æ¸²æŸ“å›¾ç‰‡æ¡†
         if (pageObj.imageBoxList.length && num !="copyright") {
             list = pageObj.imageBoxList;
             for (var i = 0, len = list.length; i < len; i++) {
                 var data = list[i];
                 var box;
                 if (productType == "MINI" && name == "C1") {
-                    //MINIµÄC1°æÊ½ÊÇÔ²½ÇµÄ
+                    //MINIçš„C1ç‰ˆå¼æ˜¯åœ†è§’çš„
                     layout.append('<div class="image_box rouned10 {name}"><div class="drag_here"></div></div>'.replace("{name}", data.name));
                 }else{
                     layout.append('<div class="image_box {name}"><div class="drag_here"></div></div>'.replace("{name}", data.name));
@@ -721,7 +721,7 @@ mimo.Editor.PageEdit = {
         }
      
 
-        //äÖÈ¾ÎÄ±¾¿ò
+        //æ¸²æŸ“æ–‡æœ¬æ¡†
         if (pageObj.textBoxList.length) {
             list = pageObj.textBoxList;
             for (var i = 0, len = list.length; i < len; i++) {
@@ -748,7 +748,7 @@ mimo.Editor.PageEdit = {
                 box.attr("px", data.px);
                 box.attr("direction", data.direction);
 
-                //ÕâÀï×öÒ»ÏÂ×ª»»Å¶,Èç¹ûÌ«Ğ¡,·Å´óÒ»µãÀ²~
+                //è¿™é‡Œåšä¸€ä¸‹è½¬æ¢å“¦,å¦‚æœå¤ªå°,æ”¾å¤§ä¸€ç‚¹å•¦~
                 var px = data.px < 9 ? 9 : data.px;
                 var h = mmToPx(data.height) < 12 ? 12 : mmToPx(data.height);
                 box.css("left", mmToPx(data.x) + "px");
@@ -757,7 +757,7 @@ mimo.Editor.PageEdit = {
                 box.css("height", h + "px");
                 box.css("font-size", px + "px");
 
-                // 100 ×Ö¼ä¾à´ó¸ÅÊÇ2px
+                // 100 å­—é—´è·å¤§æ¦‚æ˜¯2px
                 if (!window.isWide &&  data.space) {
                     if (data.pt == 20 && data.space == 100) {
                         box.css("letter-spacing", "3px");
@@ -766,32 +766,32 @@ mimo.Editor.PageEdit = {
                     }
                 }
                 //debugger;
-                //ÊúÅÅ´¦Àí
+                //ç«–æ’å¤„ç†
                 if (data.direction == "vertical") {
                     box.css({ "width": 9, "letter-spacing":"4px" });
 
                 }
                 if (num != "copyright") {
-                    box.html("ÔÚ´ËÊäÈëÎÄ×Ö~");
+                    box.html("åœ¨æ­¤è¾“å…¥æ–‡å­—~");
                 }
                 
                 if (window.isMpad) {
                     if (num == "copyright" && data.name == "txt4") {
-                        box.html("°æÈ¨ÉùÃ÷£º±¾Êé´´×÷¼°ÄÚÈİ£¬ÓÉ×÷Õß±£ÁôÆä¶À¼ÒÖø×÷È¨¡£");
-                        box.attr("title", "°æÈ¨ÉùÃ÷£º±¾Êé´´×÷¼°ÄÚÈİ£¬ÓÉ×÷Õß±£ÁôÆä¶À¼ÒÖø×÷È¨¡£");
+                        box.html("ç‰ˆæƒå£°æ˜ï¼šæœ¬ä¹¦åˆ›ä½œåŠå†…å®¹ï¼Œç”±ä½œè€…ä¿ç•™å…¶ç‹¬å®¶è‘—ä½œæƒã€‚");
+                        box.attr("title", "ç‰ˆæƒå£°æ˜ï¼šæœ¬ä¹¦åˆ›ä½œåŠå†…å®¹ï¼Œç”±ä½œè€…ä¿ç•™å…¶ç‹¬å®¶è‘—ä½œæƒã€‚");
                         box.removeClass("text_box_background");
                     }
                 } else {
                     if (num == "copyright" && data.name == "txt3") {
-                        box.html("°æÈ¨ÉùÃ÷£º±¾ÊéÖ®´´×÷¼°ÄÚÈİ£¬ÓÉ×÷Õß±£ÁôÆä¶À¼ÒÖø×÷È¨¡£");
-                        box.attr("title", "°æÈ¨ÉùÃ÷£º±¾ÊéÖ®´´×÷¼°ÄÚÈİ£¬ÓÉ×÷Õß±£ÁôÆä¶À¼ÒÖø×÷È¨¡£");
+                        box.html("ç‰ˆæƒå£°æ˜ï¼šæœ¬ä¹¦ä¹‹åˆ›ä½œåŠå†…å®¹ï¼Œç”±ä½œè€…ä¿ç•™å…¶ç‹¬å®¶è‘—ä½œæƒã€‚");
+                        box.attr("title", "ç‰ˆæƒå£°æ˜ï¼šæœ¬ä¹¦ä¹‹åˆ›ä½œåŠå†…å®¹ï¼Œç”±ä½œè€…ä¿ç•™å…¶ç‹¬å®¶è‘—ä½œæƒã€‚");
                         box.removeClass("text_box_background");
                     }
                 }
             }
         }
 
-        //°ó¶¨ÊÂ¼ş
+        //ç»‘å®šäº‹ä»¶
         p.bindDropEvent(page);
         p.bindTextEvent(page);
 
@@ -811,10 +811,10 @@ mimo.Editor.PageEdit = {
             }
         }
         //debugger
-        //°ó¶¨Êı¾İ
+        //ç»‘å®šæ•°æ®
         var pageData;
         if (num == "copyright") {
-            // ìéÒ³ÓÃµÄÊÇ·âÃæµÄÊı¾İ
+            // æ‰‰é¡µç”¨çš„æ˜¯å°é¢çš„æ•°æ®
             pageData = BOOK_DATA.list["cover"] && BOOK_DATA.list["cover"].page_data;
             //pageData.background_color = "#ffffff";
             //pageData.text_color = "#000000";
@@ -822,7 +822,7 @@ mimo.Editor.PageEdit = {
             //    pageData = p.getStaticPagedata(pageData, num);
             //}
         } else if (num == "0") {
-            // Èç¹ûìéÒ³Ã»±à¼­¹ı
+            // å¦‚æœæ‰‰é¡µæ²¡ç¼–è¾‘è¿‡
             if (!BOOK_DATA.list[num] || !BOOK_DATA.list[num].page_data) {
                 if (BOOK_DATA.list["cover"] && BOOK_DATA.list["cover"].page_data) {
                     pageData = p.getStaticPagedata(BOOK_DATA.list["cover"].page_data, num);
@@ -840,20 +840,20 @@ mimo.Editor.PageEdit = {
             p.bindPageData(pageData, page, num, isSameTemplateName, from);
         }
 
-        //ÅÉ·¢ÊÂ¼ş
+        //æ´¾å‘äº‹ä»¶
         //if (isSpine) {
         //    mimo.Event.dispatch("MIMO_EDIT_AUTHORINFO_EVENT");
         //}
     },
 
-    // ±à¼­Êı¾İÖÃÈë
+    // ç¼–è¾‘æ•°æ®ç½®å…¥
     bindPageData: function (pageData, page, num, isSameTemplateName, from) {
         var p = mimo.Editor.PageEdit;
 
         var b_color = num == "copyright" ? "#ffffff" : pageData.background_color;
         var t_color = num == "copyright" ? "#000000" : pageData.text_color;
 
-        // ÉèÖÃÒ³ÃæÊôĞÔ
+        // è®¾ç½®é¡µé¢å±æ€§
         page.css("background-color", b_color)
         page.css("color", t_color);
 
@@ -862,7 +862,7 @@ mimo.Editor.PageEdit = {
 
         var item;
         var box;
-        //ÉèÖÃÍ¼Æ¬Êı¾İ
+        //è®¾ç½®å›¾ç‰‡æ•°æ®
         var imageBoxList = pageData.imagebox_list;
         if (imageBoxList.length && num != "copyright") {
             for (var i = 0, len = imageBoxList.length; i < len; i++) {
@@ -874,7 +874,7 @@ mimo.Editor.PageEdit = {
             }
         }
 
-        //ÉèÖÃÎÄ±¾Êı¾İ
+        //è®¾ç½®æ–‡æœ¬æ•°æ®
         var textBoxList = pageData.textbox_list;
         for (var i = 0, len = textBoxList.length; i < len; i++) {
             item = textBoxList[i];
@@ -897,7 +897,7 @@ mimo.Editor.PageEdit = {
                 var pd = BOOK_DATA["copyright_info"].page_data;
                 var bcolor = pd.background_color;
                 var tcolor = pd.text_color;
-                // ÉèÖÃÒ³ÃæÊôĞÔ
+                // è®¾ç½®é¡µé¢å±æ€§
                 page.css("background-color", bcolor)
                 page.css("color", tcolor);
 
@@ -913,7 +913,7 @@ mimo.Editor.PageEdit = {
             }
         }
     },
-    // »ñÈ¡Hardcode°æÊ½
+    // è·å–Hardcodeç‰ˆå¼
     getStaticPagedata: function (srcPageData, num) {
         if (num == "0") {
             var pageObj = {
@@ -932,7 +932,7 @@ mimo.Editor.PageEdit = {
         }
     },
 
-    //Ôö¼ÓloadingÏÔÊ¾
+    //å¢åŠ loadingæ˜¾ç¤º
     addImageLoading: function (imageBox) {
         imageBox = $(imageBox);
         imageBox.append('<img class="loading" src="http://membookstatic.b0.upaiyun.com/staticcontent/images/neweditor/loading.gif" />');
@@ -942,7 +942,7 @@ mimo.Editor.PageEdit = {
             "top": imageBox.height() / 2 - 32
         });
     },
-    //Òş²Øloading
+    //éšè—loading
     removeImageLoading: function (imageBox) {
         $(imageBox).children(".loading").remove();
     },
@@ -963,7 +963,7 @@ mimo.Editor.PageEdit = {
     },
     addEvent: function () {
         var p = mimo.Editor.PageEdit;
-        //¼àÌı×óÓÒ°æÃæµã»÷ÊÂ¼ş,Ñ¡¶¨µ±Ç°±à¼­°æÃæ
+        //ç›‘å¬å·¦å³ç‰ˆé¢ç‚¹å‡»äº‹ä»¶,é€‰å®šå½“å‰ç¼–è¾‘ç‰ˆé¢
         $(".pagelayout_right_side_warp, .pagelayout_left_side_warp").click(function (e) {
             e.preventDefault();
             var item = $(this);
@@ -975,12 +975,12 @@ mimo.Editor.PageEdit = {
             }
         });
 
-        //°ó¶¨½ÓÊÜÍ¼Æ¬ÊÂ¼ş
+        //ç»‘å®šæ¥å—å›¾ç‰‡äº‹ä»¶
         //p.bindDropEvent();
         //p.bindTextEvent();
 
     },
-    //°ó¶¨±»ÍÏÈëÍ¼Æ¬µÄÊÂ¼ş
+    //ç»‘å®šè¢«æ‹–å…¥å›¾ç‰‡çš„äº‹ä»¶
     bindDropEvent: function (page) {
         var p = mimo.Editor.PageEdit;
         $(".image_box", $(page)).droppable({
@@ -988,7 +988,7 @@ mimo.Editor.PageEdit = {
             activeClass: "ui-state-hover",
             drop: function (event, ui) {
 
-                //Í¼Æ¬¿ò
+                //å›¾ç‰‡æ¡†
                 var imgBox = $(this);
                 var imgBoxHeight = imgBox.height();
                 var imgBoxWidth = imgBox.width();
@@ -997,10 +997,10 @@ mimo.Editor.PageEdit = {
 
                 //debugger;
                 mimo.Editor.PageEdit.addImageLoading(imgBox);
-                //Ä¬ÈÏºáÏò¹ö¶¯
+                //é»˜è®¤æ¨ªå‘æ»šåŠ¨
                 var axis = "x";
                 var editImage = new Image();
-                //Í¼Æ¬¼ÓÔØÍêµÄÊÂ¼ş
+                //å›¾ç‰‡åŠ è½½å®Œçš„äº‹ä»¶
                 editImage.onload = function () {
                     var wScale = editImage.width / imgBoxWidth;
                     var hScale = editImage.height / imgBoxHeight;
@@ -1021,12 +1021,12 @@ mimo.Editor.PageEdit = {
                         y = (imgBoxHeight / 2) - (editImage.height / 2);
                     }
 
-                    //ÖÃÈëÍ¼Æ¬
+                    //ç½®å…¥å›¾ç‰‡
                     imgBox.empty().append(editImage);
                     $(editImage).css({ "left": x, "top": y });
                     mimo.Editor.PageEdit.cacheCurrentPage();
 
-                    //°ó¶¨Í¼Æ¬ÍÏ¶¯ÊÂ¼ş
+                    //ç»‘å®šå›¾ç‰‡æ‹–åŠ¨äº‹ä»¶
                     mimo.Editor.ImageTools.setDraggable(editImage.width, editImage.height, imgBox.width(), imgBox.height(), imgBox, $(editImage));
 
                     mimo.Editor.ImageTools.hide();
@@ -1044,13 +1044,13 @@ mimo.Editor.PageEdit = {
             }//end drop
         });
     },
-    //°ó¶¨Í¼Æ¬ÔÚimg_boxÄÚµÄÍÏ¶¯ÊÂ¼ş
+    //ç»‘å®šå›¾ç‰‡åœ¨img_boxå†…çš„æ‹–åŠ¨äº‹ä»¶
     bindDragEvent: function (imageBox, url, imageid, imageBoxData, isSameTemplateName, from) {
         if (url == 'null' || !url ) {
             return;
         }
         var p = mimo.Editor.PageEdit;
-        //Í¼Æ¬¿ò
+        //å›¾ç‰‡æ¡†
         var imgBox = $(imageBox);
         if (!imgBox[0]) {
             return;
@@ -1059,10 +1059,10 @@ mimo.Editor.PageEdit = {
         var imgBoxWidth = imgBox.width();
 
         mimo.Editor.PageEdit.addImageLoading(imgBox);
-        //Ä¬ÈÏºáÏò¹ö¶¯
+        //é»˜è®¤æ¨ªå‘æ»šåŠ¨
         var axis = "x";
         var editImage = new Image();
-        //Í¼Æ¬¼ÓÔØÍêµÄÊÂ¼ş
+        //å›¾ç‰‡åŠ è½½å®Œçš„äº‹ä»¶
         editImage.onload = function () {
             var wScale = editImage.width / imgBoxWidth;
             var hScale = editImage.height / imgBoxHeight;
@@ -1083,11 +1083,11 @@ mimo.Editor.PageEdit = {
                 y = (imgBoxHeight / 2) - (editImage.height / 2);
             }
 
-            //ÖÃÈëÍ¼Æ¬
+            //ç½®å…¥å›¾ç‰‡
             imgBox.empty().append(editImage);
             $(editImage).css({ "left": x, "top": y });
             
-            //°ó¶¨Í¼Æ¬ÍÏ¶¯ÊÂ¼ş
+            //ç»‘å®šå›¾ç‰‡æ‹–åŠ¨äº‹ä»¶
             mimo.Editor.ImageTools.setDraggable(editImage.width, editImage.height, imgBox.width(), imgBox.height(), imgBox, $(editImage));
             if (imageBoxData) {
                 var img = imgBox.children("img");
@@ -1097,7 +1097,7 @@ mimo.Editor.PageEdit = {
                     img.attr("width", imageBoxData.width);
                     img.attr("height", imageBoxData.height);
                 }
-                //°ó¶¨Í¼Æ¬ÍÏ¶¯ÊÂ¼ş
+                //ç»‘å®šå›¾ç‰‡æ‹–åŠ¨äº‹ä»¶
                 mimo.Editor.ImageTools.setDraggable(editImage.width, editImage.height, imgBox.width(), imgBox.height(), imgBox, $(editImage));
                 imgBox.children("img").click(function () {
                     mimo.Editor.ImageTools.fire($(this));
@@ -1111,7 +1111,7 @@ mimo.Editor.PageEdit = {
     },
 
     bindTextEvent: function (page) {
-        //hoverÊÂ¼ş
+        //hoveräº‹ä»¶
         var isFlybeaf = $(page).attr("num") == "copyright";
         $(".text_box", $(page)).hover(
             function () {
@@ -1138,12 +1138,12 @@ mimo.Editor.PageEdit = {
 
     checkDPIStatus: function (width, height, imageid) {
    
-        //ÅĞ¶ÏÏñËØÊÇ·ñ·ûºÏ
+        //åˆ¤æ–­åƒç´ æ˜¯å¦ç¬¦åˆ
         var boxWidth = width;
         var boxHeight = height;
         var size = mimo.Editor.ThumbnailList.getOriginalSize(imageid);
 
-        //Èç¹ûÃ»ÓĞÊı¾İ,³·ÍË
+        //å¦‚æœæ²¡æœ‰æ•°æ®,æ’¤é€€
         if(!size || (size && !size.width)){
             return true;
         }
@@ -1153,14 +1153,14 @@ mimo.Editor.PageEdit = {
         return true;
     },
 
-    // ¼ì²éÇåÎú¶Á
+    // æ£€æŸ¥æ¸…æ™°è¯»
     checkDPI: function (imgBox, imageid, isBindData) {
-        //ÅĞ¶ÏÏñËØÊÇ·ñ·ûºÏ
+        //åˆ¤æ–­åƒç´ æ˜¯å¦ç¬¦åˆ
         var boxWidth = imgBox.attr("width");
         var boxHeight = imgBox.attr("height");
         var size = mimo.Editor.ThumbnailList.getOriginalSize(imageid);
 
-        //Èç¹ûÃ»ÓĞÊı¾İ,³·ÍË
+        //å¦‚æœæ²¡æœ‰æ•°æ®,æ’¤é€€
         if(!size || (size && !size.width)){
             return;
         }
@@ -1169,7 +1169,7 @@ mimo.Editor.PageEdit = {
             var pxinfo = parseInt(mmToPxByDPI(boxWidth),10) + "*" + parseInt(mmToPxByDPI(boxHeight),10) + "px";
             imgBox.append('<a class="' + cn + '" href="javascript:;"></a>');
 
-            imgBox.append('<div class="warning_tips" style="display:none;"><p>¸ÃÏàÆ¬¿ÉÄÜ»áµ¼ÖÂÓ¡Ë¢Ğ§¹û²»¹»ÇåÎú£¬Çë¸ü»»¸ü¸ßÏñËØµÄÏàÆ¬»òÕßÇĞ»»ÎªĞ¡°æÊ½¡£<br /><br />¸Ã°æÊ½½¨ÒéÏàÆ¬¾«¶È´óÓÚ:<br />' + pxinfo + '</p></div>');
+            imgBox.append('<div class="warning_tips" style="display:none;"><p>è¯¥ç›¸ç‰‡å¯èƒ½ä¼šå¯¼è‡´å°åˆ·æ•ˆæœä¸å¤Ÿæ¸…æ™°ï¼Œè¯·æ›´æ¢æ›´é«˜åƒç´ çš„ç›¸ç‰‡æˆ–è€…åˆ‡æ¢ä¸ºå°ç‰ˆå¼ã€‚<br /><br />è¯¥ç‰ˆå¼å»ºè®®ç›¸ç‰‡ç²¾åº¦å¤§äº:<br />' + pxinfo + '</p></div>');
             var tips = $(".warning_tips", imgBox);
             if (!isBindData) {
                 
@@ -1180,7 +1180,7 @@ mimo.Editor.PageEdit = {
             }
 
 
-            // °ó¶¨ÊÂ¼ş
+            // ç»‘å®šäº‹ä»¶
             $(".warning", imgBox).hover(
                 function () {
                     // over
@@ -1196,15 +1196,15 @@ mimo.Editor.PageEdit = {
     },
 
 
-    //¼àÌıÊÂ¼ş
+    //ç›‘å¬äº‹ä»¶
     lisentEvent: function () {
         var p = mimo.Editor.PageEdit;
 
-        //¼àÌı±à¼­ÊéÒÂÊÂ¼ş
+        //ç›‘å¬ç¼–è¾‘ä¹¦è¡£äº‹ä»¶
         mimo.Event.addEventListener("MIMO_EDIT_SPINE_EVENT", function (eventObj, dataObj) {
             var t = BOOK_DATA.list["cover"];
 
-            //·âÃæÕÛÒ³
+            //å°é¢æŠ˜é¡µ
             $("#author_info").empty();
             var layout_info = mimo.Editor.Common.getLayoutInfo("99", "AUTHORINFO2");
             mimo.Editor.PageEdit.renderPage(layout_info, $("#author_info"), "author_info", "preview");
@@ -1213,13 +1213,13 @@ mimo.Editor.PageEdit = {
             if (t && t.page_data) {
                 var color = t.page_data.background_color;
                 var t_color = t.page_data.text_color;
-                // ÉèÖÃÊéÒÂ,ÕÛÒ³±³¾°
+                // è®¾ç½®ä¹¦è¡£,æŠ˜é¡µèƒŒæ™¯
                 $("#pagelayout_left_side_edit, #style_info, #author_info").css("background-color", color).attr("background_color", color);
                 if (window.isWide) {
                     $(".spine").css("background-color", color).attr("background_color", color);
                 }
 
-                //ÉèÖÃ×ÖÌåÑÕÉ«
+                //è®¾ç½®å­—ä½“é¢œè‰²
                 if (window.isWide) {
                     if (color == "#000000") {
                         $("#style_info, #author_info, .spine").css("color", "#ffffff");
@@ -1234,7 +1234,7 @@ mimo.Editor.PageEdit = {
             }
             
 
-            //ÉèÖÃlogo
+            //è®¾ç½®logo
             var s = "";
             if (window.isMpad) {
                 s = '<div class="img1 " name="img1" x="15.5" y="113" width="42" height="9.5" style="left: 181px; top: 309px; width: 93px; height: 21px;position: absolute;"><img id="bottom_img1" src="/static/images/m_logo.png" width="110" style="position: relative; left: 0px; top: 0px;" class="ui-draggable"></div>';
@@ -1260,7 +1260,7 @@ mimo.Editor.PageEdit = {
             
         });
 
-        //¼àÌı±à¼­ìéÒ³ºÍÊéÒÂ
+        //ç›‘å¬ç¼–è¾‘æ‰‰é¡µå’Œä¹¦è¡£
         mimo.Event.addEventListener("MIMO_EDIT_AUTHORINFO_EVENT", function (eventObj, dataObj) {
             var t = BOOK_DATA.list["cover"];
             if (t && t.page_data) {
@@ -1270,32 +1270,32 @@ mimo.Editor.PageEdit = {
             }
         });
 
-        //  ¼àÌıµ×É«±»Ñ¡ÖĞÊÂ¼ş
+        //  ç›‘å¬åº•è‰²è¢«é€‰ä¸­äº‹ä»¶
         mimo.Event.addEventListener("MIMO_BACKGROUND_COLOR_PICKER_EVENT", function (eventObj, dataObj) {
             var item = p.currentEditPage;
             item.attr("has_edited", true);
             item.css("background-color", dataObj.color);
             item.attr("background_color", dataObj.color);
 
-            // Èç¹ûÊÇÓĞÊéÒÂµÄ
+            // å¦‚æœæ˜¯æœ‰ä¹¦è¡£çš„
             if (isSpine && item.attr("num") == "cover") {
                 $("#pagelayout_left_side_edit, .spine, #style_info, #author_info").css("background-color", dataObj.color).attr("background_color", dataObj.color).attr("color", dataObj.color);
                 if (dataObj.color == "#000000") {
-                    //´¦Àílogo
+                    //å¤„ç†logo
                     $("#bottom_img1").attr("src", '/static/images/m_logo_b.png');
                     $("#page_bottom").removeClass("pagelayout_bg").removeClass("blank").css("background-color", "#000000");
 
-                    //´¦ÀíÕÛÒ³ºÍÊé¼¹×ÖÌåÑÕÉ«
+                    //å¤„ç†æŠ˜é¡µå’Œä¹¦è„Šå­—ä½“é¢œè‰²
                     $(".spine, #author_info").css("color", "#ffffff").attr("color", "#ffffff");
                 } else {
                     $("#bottom_img1").attr("src", '/static/images/m_logo.png');
                     $("#page_bottom").addClass("pagelayout_bg").addClass("blank").css("background-color", "#ffffff");
-                    //´¦ÀíÕÛÒ³ºÍÊé¼¹×ÖÌåÑÕÉ«
+                    //å¤„ç†æŠ˜é¡µå’Œä¹¦è„Šå­—ä½“é¢œè‰²
                     $(".spine, #author_info").css("color", "#000000").attr("color", "#000000")
                 }
             }
 
-            //ÕâÀïÌØÊâ´¦ÀíÏÂìéÒ³
+            //è¿™é‡Œç‰¹æ®Šå¤„ç†ä¸‹æ‰‰é¡µ
             if (item.attr("num") == "0" || item.attr("num") == "copyright") {
                 var color = dataObj.color;
                 var n_color;
@@ -1305,7 +1305,7 @@ mimo.Editor.PageEdit = {
                     n_color = "#ffffff";
                 }
                 item.css("color", n_color).attr("color", n_color);
-                //ÕâÀï´¦Àílogo
+                //è¿™é‡Œå¤„ç†logo
                 if (color == "#ffffff") {
                     $(".img1", item).children('img').attr("src", '/static/images/m_logo.png');
                 } else {
@@ -1314,11 +1314,11 @@ mimo.Editor.PageEdit = {
             }
         });
 
-        // ¼àÌı×ÖÌåÑÕÉ«ÊÂ¼ş
+        // ç›‘å¬å­—ä½“é¢œè‰²äº‹ä»¶
         mimo.Event.addEventListener("MIMO_TEXT_COLOR_PICKER_EVENT", function (eventObj, dataObj) {
             var item = p.currentEditPage
             if (item.attr("num") == "0" || item.attr("num") == "copyright") {
-                alert("ìéÒ³×ÖÌå¸ù¾İµ×É«×Ô¶¯µ÷Õû£¬ÎŞĞèÊÖ¶¯µ÷Õû¡£");
+                alert("æ‰‰é¡µå­—ä½“æ ¹æ®åº•è‰²è‡ªåŠ¨è°ƒæ•´ï¼Œæ— éœ€æ‰‹åŠ¨è°ƒæ•´ã€‚");
                 return;
             }
             item.attr("has_edited", true);
@@ -1331,7 +1331,7 @@ mimo.Editor.PageEdit = {
             }
             item.css("color", n_color).attr("color", n_color);
 
-            // Èç¹ûÊÇÓĞÊéÒÂµÄ
+            // å¦‚æœæ˜¯æœ‰ä¹¦è¡£çš„
             if (isSpine && item.attr("num") == "cover") {
                 //$("#pagelayout_left_side_edit, .spine").css("color", n_color).attr("color", n_color);
                 //if (window.isWide) {
@@ -1341,7 +1341,7 @@ mimo.Editor.PageEdit = {
             
         });
 
-        //¼àÌıËõÂÔÍ¼±»µã»÷ÊÂ¼ş
+        //ç›‘å¬ç¼©ç•¥å›¾è¢«ç‚¹å‡»äº‹ä»¶
         mimo.Event.addEventListener("MIMO_PAGE_PREVIEW_THUMBNAIL_CLICK_EVENT", function (eventObj, dataObj) {
             var side = dataObj.side;
             var num = dataObj.num;
@@ -1352,17 +1352,17 @@ mimo.Editor.PageEdit = {
             
             
             p.setSide(side);
-            //È»ºóÕâÀï¿ªÊ¼äÖÈ¾Ò³Ãæ¿© gogogo 
+            //ç„¶åè¿™é‡Œå¼€å§‹æ¸²æŸ“é¡µé¢å’¯ gogogo 
             layout_info = mimo.Editor.Common.getLayoutInfo(num, template);
 
-            //Èç¹ûÊÇ¿çÒ³°æÊ½
+            //å¦‚æœæ˜¯è·¨é¡µç‰ˆå¼
             if (layout_info.cross_type == "T") {
                 mimo.Editor.PreviewList.addCrossStyle();
             }
 
             p.renderPage(layout_info, mimo.Editor.PageEdit.currentEditPage, num, "preview");
 
-            // ÕâÀï¿ªÊ¼äÖÈ¾¹ØÁªÒ³Ãæ
+            // è¿™é‡Œå¼€å§‹æ¸²æŸ“å…³è”é¡µé¢
             var selectPage = $("#page_" + num);
             var relatePage;
             var relateEditPage;
@@ -1387,7 +1387,7 @@ mimo.Editor.PageEdit = {
             }
         });
 
-        //¼àÌı°æÊ½µã»÷ÊÂ¼ş
+        //ç›‘å¬ç‰ˆå¼ç‚¹å‡»äº‹ä»¶
         mimo.Event.addEventListener("MIMO_PAGELAYOUT_PICKER_EVENT", function (eventObj, dataObj) {
             var curEditPage = mimo.Editor.PageEdit.currentEditPage;
             var name = dataObj.name;
@@ -1411,21 +1411,21 @@ mimo.Editor.PageEdit = {
 }
 
 /**
- * ËõÂÔÍ¼×é¼ş
+ * ç¼©ç•¥å›¾ç»„ä»¶
  * @author masa
  * @namespace mimo.Editor.ThumbnailList
- * @description ËõÂÔÍ¼×é¼ş
+ * @description ç¼©ç•¥å›¾ç»„ä»¶
  */
 mimo.Editor.ThumbnailList = {
-    // ÕıÔÚĞı×ª
+    // æ­£åœ¨æ—‹è½¬
     isRoating:false,
-    //µ±Ç°Ò³Âë
+    //å½“å‰é¡µç 
     curIndex: 0,
-    //×ÜÍ¼Æ¬Êı
+    //æ€»å›¾ç‰‡æ•°
     totalCount: 32,
-    //Ã¿Ò»Ò³µÄÏñËØÆ«ÒÆ
+    //æ¯ä¸€é¡µçš„åƒç´ åç§»
     pagePx: 688,
-    //Ã¿Ò³ÏÔÊ¾ËõÂÔÍ¼ÊıÄ¿
+    //æ¯é¡µæ˜¾ç¤ºç¼©ç•¥å›¾æ•°ç›®
     count: 8,
     data: [],
     hash: {},
@@ -1443,11 +1443,11 @@ mimo.Editor.ThumbnailList = {
         }
     },
 
-    //¼ÆËã¿í¶È
+    //è®¡ç®—å®½åº¦
     computeWidth: function () {
         $("#mod_thumbnail_list").css("width", ($("#mod_thumbnail_list li").length) * 86);
     },
-    // »ñÈ¡Ô­Í¼³ß´ç
+    // è·å–åŸå›¾å°ºå¯¸
     getOriginalSize: function (imageid) {
         var t = mimo.Editor.ThumbnailList.hash[imageid];
         if (t) {
@@ -1459,14 +1459,14 @@ mimo.Editor.ThumbnailList = {
         }
         return null;
     },
-    // ÉèÖÃÊôĞÔ
+    // è®¾ç½®å±æ€§
     setProperty: function (obj) {
         var p = mimo.Editor.ThumbnailList;
         for (var k in obj) {
             p[k] = obj[k];
         }
     },
-    //À­È¡ËõÂÔÍ¼Êı¾İ
+    //æ‹‰å–ç¼©ç•¥å›¾æ•°æ®
     getData: function (order) {
         order = order || "filename";
         $.ajax({
@@ -1495,7 +1495,7 @@ mimo.Editor.ThumbnailList = {
         });
     },
     getImageUrl: function (obj) {
-        //±¾µØÍ¼Ïñ
+        //æœ¬åœ°å›¾åƒ
         if (obj.storage_type == 1 || obj.storage_type == 4 || obj.storage_type == 5) {
             obj.file_path = obj.file_path.replace(/\\/g, "/");
             obj.url = "/" + obj.file_path;
@@ -1503,12 +1503,12 @@ mimo.Editor.ThumbnailList = {
         }
         return obj;
     },
-    //»ñÈ¡html
+    //è·å–html
     getItemHTML: function (list) {
         var tpl = '\
             <li>\
-                <img class="j_thumbnail" title="µã»÷²é¿´´óÍ¼" id="imageid_{id}" data-imageid="{id}" data-path="{file_path}" data-original_height={original_height} data-original_width="{original_width}" src="{src}" data-url="{url}" used_num="{used_num}" />\
-                <span class="counter" id="counter_{id}" title="Í¼Ïñ±»Ê¹ÓÃ´ÎÊı">{used_num}</span><span class="thumbnail_operats"><a title="Ğı×ª" href="javascript:;" class="btn_rotate_left" data-imageid="{id}"></a><a title="Ğı×ª" href="javascript:;" class="btn_rotate_right" data-imageid="{id}"></a><a title="É¾³ı" href="javascript:;" class="btn_delete" data-imageid="{id}"></a></span>\
+                <img class="j_thumbnail" title="ç‚¹å‡»æŸ¥çœ‹å¤§å›¾" id="imageid_{id}" data-imageid="{id}" data-path="{file_path}" data-original_height={original_height} data-original_width="{original_width}" src="{src}" data-url="{url}" used_num="{used_num}" />\
+                <span class="counter" id="counter_{id}" title="å›¾åƒè¢«ä½¿ç”¨æ¬¡æ•°">{used_num}</span><span class="thumbnail_operats"><a title="æ—‹è½¬" href="javascript:;" class="btn_rotate_left" data-imageid="{id}"></a><a title="æ—‹è½¬" href="javascript:;" class="btn_rotate_right" data-imageid="{id}"></a><a title="åˆ é™¤" href="javascript:;" class="btn_delete" data-imageid="{id}"></a></span>\
             </li>';
 
         var arrHTML = [];
@@ -1519,7 +1519,7 @@ mimo.Editor.ThumbnailList = {
         }
         return arrHTML.join("");
     },
-    //ÏÔÊ¾
+    //æ˜¾ç¤º
     present: function (list) {
         var p = mimo.Editor.ThumbnailList;
         var html = p.getItemHTML(list);
@@ -1529,17 +1529,17 @@ mimo.Editor.ThumbnailList = {
         p.curIndex = 0;
         p.totalCount = list.length;
 
-        //É¾³ı°´Å¥
+        //åˆ é™¤æŒ‰é’®
         p.bindDelete(item);
 
-        //ÍÏ¶¯
+        //æ‹–åŠ¨
         p.bindDraggable();
-        //¼ÆËãÊ¹ÓÃ´ÎÊı
+        //è®¡ç®—ä½¿ç”¨æ¬¡æ•°
         p.computeUsedNum();
 
         p.computeWidth();
     },
-    //ÉÏÒ»Ò³
+    //ä¸Šä¸€é¡µ
     prePage: function () {
         var p = mimo.Editor.ThumbnailList;
         $(".thumbnail_warp").scrollLeft($(".thumbnail_warp").scrollLeft() - (8 * 86));
@@ -1552,7 +1552,7 @@ mimo.Editor.ThumbnailList = {
         //$("#mod_thumbnail_list").stop(true, false).animate({ left: -offsetLeft }, 200);
 
     },
-    //ÏÂÒ»Ò³
+    //ä¸‹ä¸€é¡µ
     nextPage: function () {
         //debugger
         var p = mimo.Editor.ThumbnailList;
@@ -1565,12 +1565,12 @@ mimo.Editor.ThumbnailList = {
         //var offsetLeft = p.curIndex * p.pagePx;
         //$("#mod_thumbnail_list").stop(true, false).animate({ left: -offsetLeft }, 200);
     },
-    //Ìí¼ÓÒ»¸öĞÂµÄËõÂÔÍ¼
+    //æ·»åŠ ä¸€ä¸ªæ–°çš„ç¼©ç•¥å›¾
     addThumbnail: function (obj) {
         
         var p = mimo.Editor.ThumbnailList;
         if (obj.ret == 1) {
-            //ĞÂÔö¶ÔÏó
+            //æ–°å¢å¯¹è±¡
             p.hash[obj.data.id] = obj.data;
             var html = p.getItemHTML([obj.data]);
             if (!$("#mod_thumbnail_list li")[0]) {
@@ -1583,7 +1583,7 @@ mimo.Editor.ThumbnailList = {
         }
         p.computeWidth();
     },
-    //É¾³ıÒ»ÕÅËõÂÔÍ¼
+    //åˆ é™¤ä¸€å¼ ç¼©ç•¥å›¾
     deleteThumbnail: function () {
         //var p = mimo.Editor.ThumbnailList;
     },
@@ -1601,10 +1601,10 @@ mimo.Editor.ThumbnailList = {
         if (!size.name) {
             size.name = "";
         }
-        $(".info", pop).html(size.name + "<br />Í¼Æ¬³ß´ç£¨¾«¶È£©"+size.width + "*" + size.height + "px");
+        $(".info", pop).html(size.name + "<br />å›¾ç‰‡å°ºå¯¸ï¼ˆç²¾åº¦ï¼‰"+size.width + "*" + size.height + "px");
         pop.show();
     },
-    //Òş²ØÒÑÊ¹ÓÃÍ¼Æ¬
+    //éšè—å·²ä½¿ç”¨å›¾ç‰‡
     hideUsed: function () {
         $("#mod_thumbnail_list li img").each(function () {
             var item = $(this);
@@ -1613,24 +1613,24 @@ mimo.Editor.ThumbnailList = {
             }
         });
     },
-    //ÏÔÊ¾ËùÓĞÍ¼Æ¬
+    //æ˜¾ç¤ºæ‰€æœ‰å›¾ç‰‡
     unHideUsed: function () {
 
         $("#mod_thumbnail_list li img").removeClass("opacity3");
     },
 
-    //¼ÆËãÍ¼ÏñµÄÊ¹ÓÃ´ÎÊı
+    //è®¡ç®—å›¾åƒçš„ä½¿ç”¨æ¬¡æ•°
     computeUsedNum: function () {
         var data = window.BOOK_DATA.list;
         var t, n, count = 0;
         var hash = {};
 
-        //ÏÈ¸´Î»ËùÓĞÍ¼ÏñÊ¹ÓÃ´ÎÊıĞÅÏ¢
+        //å…ˆå¤ä½æ‰€æœ‰å›¾åƒä½¿ç”¨æ¬¡æ•°ä¿¡æ¯
         $("#mod_thumbnail_list li img").attr("used_num", 0);
         $("#mod_thumbnail_list .counter").html(0);
 
         for (var k in data) {
-            if (data[k] &&¡¡data[k].page_data) {
+            if (data[k] && data[k].page_data) {
                 t = data[k].page_data.imagebox_list
                 if (t) {
                     for (var i = 0, len = t.length; i < len; i++) {
@@ -1647,20 +1647,20 @@ mimo.Editor.ThumbnailList = {
                 }
             }
         }
-        //ÉèÖÃÓÃ¹ıµÄÕÕÆ¬ÊıÄ¿
+        //è®¾ç½®ç”¨è¿‡çš„ç…§ç‰‡æ•°ç›®
         $("#thumbnail_used_count").html(count);
-        //ÅĞ¶ÏÊÇ·ñÒş²ØµÄÕÕÆ¬
+        //åˆ¤æ–­æ˜¯å¦éšè—çš„ç…§ç‰‡
         var chk = $("#chk_hide_used");
         if (chk.attr("checked") == "checked") {
             mimo.Editor.ThumbnailList.hideUsed();
         }
     },
 
-    // ËõÂÔÍ¼ÍÏ¶¯ÊÂ¼ş
+    // ç¼©ç•¥å›¾æ‹–åŠ¨äº‹ä»¶
     bindDraggable: function (item) {
         item = item || $("#mod_thumbnail_list img");
 
-        //°ó¶¨¿ÉÒÔÍÏ¶¯ÊÂ¼ş
+        //ç»‘å®šå¯ä»¥æ‹–åŠ¨äº‹ä»¶
         item.draggable(
             {
                 cursor: "move",
@@ -1672,13 +1672,13 @@ mimo.Editor.ThumbnailList = {
                     //todo 
                 }
             });
-        // ´óÍ¼Ô¤ÀÀ
+        // å¤§å›¾é¢„è§ˆ
         item.click(function (e) {
             e.preventDefault();
             mimo.Editor.ThumbnailList.showBigThumbnail(e);
         });
     },
-    // É¾³ıÊÂ¼ş
+    // åˆ é™¤äº‹ä»¶
     bindDelete: function (item, isLi) {
         var p = mimo.Editor.ThumbnailList;
         var li = isLi ? item : $("li", item);
@@ -1693,18 +1693,18 @@ mimo.Editor.ThumbnailList = {
                 $(this).removeClass("hover");
             }
         );
-        //É¾³ı°´Å¥
+        //åˆ é™¤æŒ‰é’®
         $(".btn_delete", item).click(function (e) {
             e.preventDefault();
             var item = $(this);
             var imageId = item.data("imageid");
 
-            if (!confirm("È·ÈÏÉ¾³ıÕÕÆ¬Âğ?")) {
+            if (!confirm("ç¡®è®¤åˆ é™¤ç…§ç‰‡å—?")) {
                 return;
             }
 
             if ($("#imageid_" + imageId).attr("used_num") > 0) {
-                alert("¸ÃÏàÆ¬ÒÑ±»Ê¹ÓÃ,ÎŞ·¨É¾³ı");
+                alert("è¯¥ç›¸ç‰‡å·²è¢«ä½¿ç”¨,æ— æ³•åˆ é™¤");
                 return;
             }
 
@@ -1722,7 +1722,7 @@ mimo.Editor.ThumbnailList = {
             });
         });
 
-        //×ó°´Å¥
+        //å·¦æŒ‰é’®
         $(".btn_rotate_left, .btn_rotate_right", item).click(function (e) {
             e.preventDefault();
             var item = $(this);
@@ -1731,12 +1731,12 @@ mimo.Editor.ThumbnailList = {
             mimo.Editor.ThumbnailList.computeUsedNum();
 
             if ($("#imageid_" + imageId).attr("used_num") > 0) {
-                alert("¸ÃÏàÆ¬ÒÑ±»Ê¹ÓÃ,½øĞĞĞŞ¸Ä");
+                alert("è¯¥ç›¸ç‰‡å·²è¢«ä½¿ç”¨,è¿›è¡Œä¿®æ”¹");
                 return;
             }
 
             if (p.isRoating) {
-                alert("ÓĞÍ¼Æ¬Ğı×ªÖĞ,ÇëÉÔºóÔÙÊÔÒ»ÊÔ");
+                alert("æœ‰å›¾ç‰‡æ—‹è½¬ä¸­,è¯·ç¨åå†è¯•ä¸€è¯•");
                 return;
             }
 
@@ -1767,34 +1767,34 @@ mimo.Editor.ThumbnailList = {
                             imgObj.original_width = oh;
 
                         }
-                        alert("Ğı×ª³É¹¦");
+                        alert("æ—‹è½¬æˆåŠŸ");
                     }
                     p.isRoating = false;
                 },
                 error: function () {
-                    alert("Ğı×ªÊ§°Ü");
+                    alert("æ—‹è½¬å¤±è´¥");
                     p.isRoating = false;
                 }
             });
         });
 
     },
-    //°ó¶¨ÊÂ¼ş
+    //ç»‘å®šäº‹ä»¶
     addEvent: function () {
         var p = mimo.Editor.ThumbnailList;
-        //ÉÏÒ»Ò³
+        //ä¸Šä¸€é¡µ
         $("#mod_thumbnail_btn_prev").click(function (e) {
             e.preventDefault();
             p.prePage();
         });
 
-        //ÏÂÒ»Ò³
+        //ä¸‹ä¸€é¡µ
         $("#mod_thumbnail_btn_next").click(function (e) {
             e.preventDefault();
             p.nextPage();
         });
 
-        //Òş²ØÒÑÊ¹ÓÃ°´Å¥
+        //éšè—å·²ä½¿ç”¨æŒ‰é’®
         $("#chk_hide_used").click(function (e) {
             //e.preventDefault();
             var item = $(this);
@@ -1812,22 +1812,22 @@ mimo.Editor.ThumbnailList = {
 
         });
 
-        // ÉèÖÃÃ¿´Î¹ö¶¯³¤¶È£¬µ¥Î» px
+        // è®¾ç½®æ¯æ¬¡æ»šåŠ¨é•¿åº¦ï¼Œå•ä½ px
         var scroll_width = 100;
         var scroll_events = "mousewheel DOMMouseScroll MozMousePixelScroll";
         $(".thumbnail_warp").on(scroll_events, function (e) {
             var delta = e.originalEvent.wheelDelta || e.originalEvent.detail;
-            // »¬ÂÖÏòÏÂ¹ö¶¯£¬¹ö¶¯ÌõÏòÓÒÒÆ¶¯£¬scrollleft+
+            // æ»‘è½®å‘ä¸‹æ»šåŠ¨ï¼Œæ»šåŠ¨æ¡å‘å³ç§»åŠ¨ï¼Œscrollleft+
             if (delta < 0) {
                 $(".thumbnail_warp").scrollLeft($(".thumbnail_warp").scrollLeft() - delta);
             }
-                // »¬ÂÖÏòÉÏ¹ö¶¯£¬¹ö¶¯ÌõÏò×ùÒÆ¶¯£¬scrollleft-
+                // æ»‘è½®å‘ä¸Šæ»šåŠ¨ï¼Œæ»šåŠ¨æ¡å‘åº§ç§»åŠ¨ï¼Œscrollleft-
             else {
                 $(".thumbnail_warp").scrollLeft($(".thumbnail_warp").scrollLeft() - delta);
             }
         });
 
-        //ÅÅĞòÊÂ¼ş
+        //æ’åºäº‹ä»¶
         $(".thumbnail_order a").click(function (e) {
             e.preventDefault();
             var t = $(this);
@@ -1842,10 +1842,10 @@ mimo.Editor.ThumbnailList = {
 };
 
 /**
- * µ×É«Ñ¡Ôñ×é¼ş
+ * åº•è‰²é€‰æ‹©ç»„ä»¶
  * @author masa
  * @namespace mimo.Editor.BackgroundPicker
- * @description µ×É«Ñ¡Ôñ×é¼ş
+ * @description åº•è‰²é€‰æ‹©ç»„ä»¶
  */
 mimo.Editor.BackgroundPicker = {
     closeTimer: null,
@@ -1855,7 +1855,7 @@ mimo.Editor.BackgroundPicker = {
     },
     addEvent: function () {
         var p = mimo.Editor.BackgroundPicker;
-        //Ìí¼Óµ×É«°´Å¥ÊÂ¼ş
+        //æ·»åŠ åº•è‰²æŒ‰é’®äº‹ä»¶
         //$("#background_color_picker_btn").click(function () {
         //    var item = $("#background_color_picker");
         //    if (item.css("display") == "none") {
@@ -1866,13 +1866,13 @@ mimo.Editor.BackgroundPicker = {
         //    return false;
         //}); 
 
-        //Ìí¼Ó¹Ø±Õ°´Å¥ÊÂ¼ş
+        //æ·»åŠ å…³é—­æŒ‰é’®äº‹ä»¶
         $("#background_color_picker_close_btn").click(function (e) {
             e.preventDefault();
             $("#background_color_picker").hide();
         });
 
-        ////Ìí¼Óµ×É«°´Å¥ÊÂ¼ş
+        ////æ·»åŠ åº•è‰²æŒ‰é’®äº‹ä»¶
         //$("#background_color_picker_btn").click(function () {
         //    var item = $("#background_color_bar");
         //    if (item.css("display") == "none") {
@@ -1887,7 +1887,7 @@ mimo.Editor.BackgroundPicker = {
         $("#background_color_picker_btn").hover(
             function () {
                 // over
-                // ·âÃæºÍÄÚÒ³µÄÑÕÉ«²»Ò»Ñù
+                // å°é¢å’Œå†…é¡µçš„é¢œè‰²ä¸ä¸€æ ·
                 var isCover = mimo.Editor.PageEdit.currentEditPage.attr("num") == "cover";
                 if (isCover) {
                     $("li", bar).show();
@@ -1933,24 +1933,24 @@ mimo.Editor.BackgroundPicker = {
             }
         );
 
-        //Ìí¼ÓÑÕÉ«±»µã»÷ÊÂ¼ş
+        //æ·»åŠ é¢œè‰²è¢«ç‚¹å‡»äº‹ä»¶
         $("#background_color_picker .color_list li,.color_bar li").each(
             function () {
                 var item = $(this);
-                //Ìí¼Óµã»÷ÊÂ¼ş
+                //æ·»åŠ ç‚¹å‡»äº‹ä»¶
                 item.click(function (e) {
                     e.preventDefault();
                     var color = $(this).data("color");
-                    //ÅÉ·¢ÑÕÉ«Ñ¡ÖĞÊÂ¼ş
+                    //æ´¾å‘é¢œè‰²é€‰ä¸­äº‹ä»¶
                     mimo.Event.dispatch("MIMO_BACKGROUND_COLOR_PICKER_EVENT", { color: color });
                 });
             }
         );
 
-        // ÎÄ×ÖÑÕÉ«°´Å¥
+        // æ–‡å­—é¢œè‰²æŒ‰é’®
         $("#text_color_picker_btn").click(function (e) {
             e.preventDefault();
-            //ÅÉ·¢×ÖÌåÑÕÉ«ÊÂ¼ş
+            //æ´¾å‘å­—ä½“é¢œè‰²äº‹ä»¶
             mimo.Event.dispatch("MIMO_TEXT_COLOR_PICKER_EVENT", {});
         });
     }
@@ -1958,10 +1958,10 @@ mimo.Editor.BackgroundPicker = {
 };
 
 /**
- * °æÊ½Ñ¡Ôñ×é¼ş
+ * ç‰ˆå¼é€‰æ‹©ç»„ä»¶
  * @author masa
  * @namespace mimo.Editor.PagelayoutPicker
- * @description °æÊ½Ñ¡Ôñ×é¼ş
+ * @description ç‰ˆå¼é€‰æ‹©ç»„ä»¶
  */
 mimo.Editor.PagelayoutPicker = {
     closeTimer:null,
@@ -1970,7 +1970,7 @@ mimo.Editor.PagelayoutPicker = {
         p.filterBySubType();
         p.addEvent();
     },
-    // ¸ü¾ßÍ¼Æ¬¹ıÂË°æÊ½
+    // æ›´å…·å›¾ç‰‡è¿‡æ»¤ç‰ˆå¼
     filterBySubType: function () {
         if (window.isMini) {
             $(".pagelayout_minibook").show();
@@ -1982,7 +1982,7 @@ mimo.Editor.PagelayoutPicker = {
             $(".pagelayout_mpadbook").show();
         }
     },
-    // ÉèÖÃÎ»ÖÃ
+    // è®¾ç½®ä½ç½®
     setPosition: function () {
         var pop = $("#pop_layout");
         var btn = $("#pagelayout_picker_btn");
@@ -2023,28 +2023,28 @@ mimo.Editor.PagelayoutPicker = {
     addEvent: function () {
         var p = mimo.Editor.PagelayoutPicker;
 
-        //Ìí¼Ó°´Å¥ÊÂ¼ş
+        //æ·»åŠ æŒ‰é’®äº‹ä»¶
         $("#pagelayout_picker_btn").click(function (e) {
             e.preventDefault();
 
 
             var item = $("#pop_layout");
             if (item.css("display") == "none") {
-                //´¦ÀíÏÂ·âÃæºÍÄÚÒ³°æÊ½µÄÉ¸Ñ¡
+                //å¤„ç†ä¸‹å°é¢å’Œå†…é¡µç‰ˆå¼çš„ç­›é€‰
                 var curPage = $(mimo.Editor.PageEdit.currentEditPage);
                 var pageType = curPage.attr("page_type");
 
-                //´¦ÀíÏÂìéÒ³µÄÑ¡Ôñ
+                //å¤„ç†ä¸‹æ‰‰é¡µçš„é€‰æ‹©
                 if (curPage.attr("num") == "0") {
-                    alert("ìéÒ³²»Ö§³Ö¸ü»»°æÊ½");
+                    alert("æ‰‰é¡µä¸æ”¯æŒæ›´æ¢ç‰ˆå¼");
                     return;
                 }
 
-                // ´¦ÀíÏÂ°æÊ½µÄÑ¡ÖĞ×´Ì¬
+                // å¤„ç†ä¸‹ç‰ˆå¼çš„é€‰ä¸­çŠ¶æ€
                 $("#pop_layout_bd li").removeClass("hl_border");
                 $("." + curPage.attr("name"), item).addClass("hl_border");
 
-                //µ±Ç°Ñ¡ÔñµÄÊÇ·âÃæ
+                //å½“å‰é€‰æ‹©çš„æ˜¯å°é¢
                 if (pageType == "C") {
                     $(".pagelayout_C", item).show();
                     $(".pagelayout_P", item).hide();
@@ -2085,17 +2085,17 @@ mimo.Editor.PagelayoutPicker = {
             }
         );
 
-        //Ìí¼Ó¹Ø±Õ°´Å¥ÊÂ¼ş
+        //æ·»åŠ å…³é—­æŒ‰é’®äº‹ä»¶
         $("#pagelayout_picker_close_btn").click(function (e) {
             e.preventDefault();
             $("#pagelayout_picker").hide();
         });
 
-        //Ìí¼ÓÑÕÉ«±»µã»÷ÊÂ¼ş
+        //æ·»åŠ é¢œè‰²è¢«ç‚¹å‡»äº‹ä»¶
         $("#pagelayout_picker li a,#pop_layout_bd li a").each(
             function () {
                 var item = $(this);
-                //Ìí¼Óµã»÷ÊÂ¼ş
+                //æ·»åŠ ç‚¹å‡»äº‹ä»¶
                 item.click(function (e) {
                     e.preventDefault();
                     $("#pop_layout_bd li").removeClass("hl_border");
@@ -2103,23 +2103,23 @@ mimo.Editor.PagelayoutPicker = {
                     var name = $(this).attr("name");
                     var type = $(this).attr("type");
 
-                    //ÓÒ±ß°æÊ½
+                    //å³è¾¹ç‰ˆå¼
                     if (mimo.Editor.PageEdit.currentEditSide == "right") {
                         if (name.length > 3) {
-                            alert("ÓÒ±ßÒ³Ãæ²»Ö§³Ö¿çÒ³°æÊ½Å¶,ÇëÑ¡Ôñ×ó±ßÒ³Ãæ");
+                            alert("å³è¾¹é¡µé¢ä¸æ”¯æŒè·¨é¡µç‰ˆå¼å“¦,è¯·é€‰æ‹©å·¦è¾¹é¡µé¢");
                             return;
                         }
                     }
 
-                    //×îºóÒ»Ò³
+                    //æœ€åä¸€é¡µ
                     var t = mimo.Editor.PageEdit.currentEditPage;
                     if(t && (t.attr("num") == BOOK_DATA.page - 1)){
                         if (name.length > 3) {
-                            alert("×îºóÒ»Ò³Ö»ÓĞµ¥Ãæ,²»Ö§³Ö¿çÒ³°æÊ½");
+                            alert("æœ€åä¸€é¡µåªæœ‰å•é¢,ä¸æ”¯æŒè·¨é¡µç‰ˆå¼");
                             return;
                         }
                     }
-                    //ÅÉ·¢ÑÕÉ«Ñ¡ÖĞÊÂ¼ş
+                    //æ´¾å‘é¢œè‰²é€‰ä¸­äº‹ä»¶
                     mimo.Event.dispatch("MIMO_PAGELAYOUT_PICKER_EVENT", { name: name, type: type });
                 });
             }
@@ -2129,10 +2129,10 @@ mimo.Editor.PagelayoutPicker = {
 };
 
 /**
- * ×÷Æ·¹¤¾ßÀ¸
+ * ä½œå“å·¥å…·æ 
  * @author masa
  * @namespace mimo.Editor.ToolsBar
- * @description ×÷Æ·¹¤¾ßÀ¸
+ * @description ä½œå“å·¥å…·æ 
  */
 mimo.Editor.ToolsBar = {
     init: function () {
@@ -2140,14 +2140,14 @@ mimo.Editor.ToolsBar = {
         p.setCompleteCount(p.getCompleteCount());
         p.addEvent();
     },
-    //ÉèÖÃÍê³ÉÂÊ
+    //è®¾ç½®å®Œæˆç‡
     setCompleteCount: function (count) {
         window.BOOK_DATA.complete_page = count;
         $("#complete_count").html(window.BOOK_DATA.complete_page);
         $("#edit_count").html(window.BOOK_DATA.page);
         $("#total_count").html(window.BOOK_DATA.page - 0 + 3);
     },
-    //»ñÈ¡Íê³ÉÊıÄ¿
+    //è·å–å®Œæˆæ•°ç›®
     getCompleteCount: function () {
         var data = window.BOOK_DATA.list;
         var count = 0;
@@ -2157,7 +2157,7 @@ mimo.Editor.ToolsBar = {
                 continue;
             }
             if (!isNaN(k)) {
-                //ÓÒ°æ
+                //å³ç‰ˆ
                 if (k != 0 && k != 1 && k % 2 == 1) {
                     if (t = data[k - 1]) {
                         if (t.template_name.length > 3) {
@@ -2168,7 +2168,7 @@ mimo.Editor.ToolsBar = {
                 }
             }
 
-            // ìéÒ³²»Ëã±à¼­Ò³Ãæ
+            // æ‰‰é¡µä¸ç®—ç¼–è¾‘é¡µé¢
             if (k != "0" && data[k] && data[k].finish === "true") {
                 count++;
             }
@@ -2197,22 +2197,22 @@ mimo.Editor.ToolsBar = {
 };
 
 /**
- * Ô¤ÀÀÁĞ±í
+ * é¢„è§ˆåˆ—è¡¨
  * @author masa
  * @namespace mimo.Editor.PreviewList
- * @description Ô¤ÀÀÁĞ±í
+ * @description é¢„è§ˆåˆ—è¡¨
  */
 mimo.Editor.PreviewList = {
-    //µ±Ç°Ò³Âë
+    //å½“å‰é¡µç 
     curIndex: 0,
-    //×ÜÒ³Êı
+    //æ€»é¡µæ•°
     totalCount: 32,
-    //Ã¿Ò»Ò³µÄÏñËØÆ«ÒÆ
+    //æ¯ä¸€é¡µçš„åƒç´ åç§»
     pagePx: 865,
-    //Ã¿Ò³ÏÔÊ¾¿çÒ³ÊıÄ¿
+    //æ¯é¡µæ˜¾ç¤ºè·¨é¡µæ•°ç›®
     count: 10,
     data: [],
-    // µ±Ç°Ñ¡ÖĞµÄÒ³ÃæËõÂÔÍ¼
+    // å½“å‰é€‰ä¸­çš„é¡µé¢ç¼©ç•¥å›¾
     curPreview: null,
     init: function () {
         var p = mimo.Editor.PreviewList;
@@ -2221,29 +2221,29 @@ mimo.Editor.PreviewList = {
         p.lisentEvent();
         mimo.Editor.PreviewList.selectPage("cover", "init");
     },
-    //ÏÔÊ¾
+    //æ˜¾ç¤º
     present: function () {
         var p = mimo.Editor.PreviewList;
         var data = window.BOOK_DATA;
-        //×ÜÒ³Êı
+        //æ€»é¡µæ•°
         var pageCount = data.page;
         var previewHash = JSONBookPreview.list;
         p.totalCount = pageCount - 0;
 
-        //¿ªÊ¼²¼¾ÖÒ³ÃæËõÂÔÍ¼
+        //å¼€å§‹å¸ƒå±€é¡µé¢ç¼©ç•¥å›¾
         var html = [];
         var tmp;
 
-        // push ·âÃæ·âµ×
+        // push å°é¢å°åº•
         tmp = '\
         <li index="0">\
             <a class="pagelayout_bg blank" id="page_bottom" href="javascript:;" num="bottom" page_side="left" page_type="none">\
             </a>\
-             <em class="img_page">·âµ×</em>\
+             <em class="img_page">å°åº•</em>\
             <a class="pagelayout_bg {layout_class}" id="page_cover" class="right" href="javascript:;" num="cover" page_side="right" page_type="COVER" template_name="{template_name}">\
                 {preview_img}\
             </a>\
-            <em class="img_page_right">·âÃæ</em>\
+            <em class="img_page_right">å°é¢</em>\
         </li>';
         tmp = mimo.Template.format(tmp, {
             "template_name": data.list["cover"].template_name,
@@ -2252,16 +2252,16 @@ mimo.Editor.PreviewList = {
         });
         html.push(tmp);
 
-        // push ìéÒ³
+        // push æ‰‰é¡µ
         tmp = '\
         <li index="1">\
             <a class="pagelayout_bg blank" id="page_0left" href="javascript:;" num="0left" page_side="left" _template_name="AUTHORINFO">\
             </a>\
-            <em class="img_page">·âÃæÕÛÒ³</em>\
+            <em class="img_page">å°é¢æŠ˜é¡µ</em>\
             <a class="pagelayout_bg {layout_class}t1_r"  id="page_0" class="right" href="javascript:;" num="0" page_side="right" template_name="T1">\
                 {preview_img2}\
             </a>\
-            <em class="img_page_right">ìéÒ³</em>\
+            <em class="img_page_right">æ‰‰é¡µ</em>\
         </li>';
         tmp = mimo.Template.format(tmp, {
             "preview_img2": previewHash["0"] && previewHash["0"]["path"] ? '<img src="/' + previewHash["0"]["path"] + '_preview.jpg" />' : "",
@@ -2269,12 +2269,12 @@ mimo.Editor.PreviewList = {
         });
         html.push(tmp);
 
-        // push µÚÒ»Ò³
+        // push ç¬¬ä¸€é¡µ
         tmp = '\
         <li index="2">\
             <a class="pagelayout_bg blank" id="page_1_left" href="javascript:;" num="1_left" page_side="left">\
             </a>\
-            <em class="img_page">ìéÒ³¶ÔÒ³</em>\
+            <em class="img_page">æ‰‰é¡µå¯¹é¡µ</em>\
             <a class="pagelayout_bg {layout_class}"  id="page_1" class="right" href="javascript:;" num="1" page_side="right" template_name="{template_name}">\
                 {preview_img}\
             </a>\
@@ -2288,7 +2288,7 @@ mimo.Editor.PreviewList = {
             });
         html.push(tmp);
 
-        //ÆäËüÒ³Ãæ
+        //å…¶å®ƒé¡µé¢
         var p1;
         var p2;
         var template_name1;
@@ -2376,8 +2376,8 @@ mimo.Editor.PreviewList = {
         {
             index: index + 1,
             p1: "copyright",
-            p_num1: "°æÈ¨",
-            p_num2:"·âµ×",
+            p_num1: "ç‰ˆæƒ",
+            p_num2:"å°åº•",
             template_name1: "COPYRIGHT",
             layout_class1: (window.isWide || window.isMpad ? "p" : ""),
             preview_img1: ""
@@ -2389,15 +2389,15 @@ mimo.Editor.PreviewList = {
         //
         p.presentCross();
 
-        //Í¼Æ¬µã»÷
+        //å›¾ç‰‡ç‚¹å‡»
         $("#mod_preview_thumnail_list a").click(function (e) {
             e.preventDefault();
             var num = $(e.currentTarget).attr("num");
-            //´«µİµã»÷pageÊÂ¼ş
+            //ä¼ é€’ç‚¹å‡»pageäº‹ä»¶
             p.selectPage(num, "previewlist");
         });
     },
-    //´¦Àí¿çÒ³ËõÂÔÍ¼
+    //å¤„ç†è·¨é¡µç¼©ç•¥å›¾
     presentCross: function () {
         var layout_info;
         var num;
@@ -2413,7 +2413,7 @@ mimo.Editor.PreviewList = {
             }
         });
     },
-    // »ñÈ¡ĞÂµÄbookinfo
+    // è·å–æ–°çš„bookinfo
     rebuildBookInfo: function (response) {
         var p = mimo.Editor.PreviewList;
         window.JSONBookInfo = response.book_info;
@@ -2421,7 +2421,7 @@ mimo.Editor.PreviewList = {
         mimo.Editor.initData();
         p.present();
     },
-    //¸Ä±äPÊı
+    //æ”¹å˜Pæ•°
     changePage: function (count) {
         count = count - 3;
         var data = {
@@ -2438,14 +2438,14 @@ mimo.Editor.PreviewList = {
             success: function (response) {
                 if (response && response.ret == 1) {
                     window.BOOK_DATA.page = count;
-                    mimo.Editor.showAlert(1000, "ÉèÖÃ³É¹¦");
+                    mimo.Editor.showAlert(1000, "è®¾ç½®æˆåŠŸ");
                     mimo.Editor.ToolsBar.setCompleteCount();
                     mimo.Editor.PreviewList.rebuildBookInfo(response);
                 }
             }
         });
     },
-    // ¹ö¶¯µ½Ä³Ò³
+    // æ»šåŠ¨åˆ°æŸé¡µ
     rollToPage: function (index) {
         var item = $("#mod_preview_thumnail_list li");
         var pos = $($("#mod_preview_thumnail_list li").get(index)).position();
@@ -2460,11 +2460,11 @@ mimo.Editor.PreviewList = {
         var curIndex = Math.ceil((index-0 + 1) / 5) - 1;
         mimo.Editor.PreviewList.curIndex = curIndex;
     },
-    //ÉÏÒ»Ò³
+    //ä¸Šä¸€é¡µ
     prePage: function () {
         var p = mimo.Editor.PreviewList;
         if (p.curIndex == 0) {
-            // Èç¹ûÊÇµÚÒ»Ò³,ÇÒÓĞÆ«ÒÆ,¸´Î»ÏÂ
+            // å¦‚æœæ˜¯ç¬¬ä¸€é¡µ,ä¸”æœ‰åç§»,å¤ä½ä¸‹
             if ($("#mod_preview_thumnail_list").position().left < 0) {
                 $("#mod_preview_thumnail_list").stop(true, false).animate({ left: 0 }, 200);
             }
@@ -2475,7 +2475,7 @@ mimo.Editor.PreviewList = {
         $("#mod_preview_thumnail_list").stop(true, false).animate({ left: -offsetLeft }, 200);
 
     },
-    //ÏÂÒ»Ò³
+    //ä¸‹ä¸€é¡µ
     nextPage: function () {
         
         var p = mimo.Editor.PreviewList;
@@ -2488,20 +2488,20 @@ mimo.Editor.PreviewList = {
 
     },
 
-    //±ä³É¿çÒ³
+    //å˜æˆè·¨é¡µ
     addCrossStyle: function () {
         $('.edit_area_warp .pagelayout_left_side_warp').addClass('cross_pagelayout_left_side_warp');
         $('.tool_bot').addClass('cross_tool_bot');
         $('.edit_area_warp .pagelayout_right_side_warp').hide();
     },
 
-    //»Ö¸´µ¥Ò³
+    //æ¢å¤å•é¡µ
     removeCrossStyle: function () {
         $('.edit_area_warp .pagelayout_left_side_warp').removeClass('cross_pagelayout_left_side_warp');
         $('.tool_bot').removeClass('cross_tool_bot');
         $('.edit_area_warp .pagelayout_right_side_warp').show();
     },
-    //µã»÷Ò³Ãæ
+    //ç‚¹å‡»é¡µé¢
     selectPage: function (num, from) {
         var p = mimo.Editor.PreviewList;
         if (num == "bottom") {
@@ -2516,15 +2516,15 @@ mimo.Editor.PreviewList = {
             }
         }
         p.removeCrossStyle();
-        //´ÓÔ¤ÀÀÍ¼ÇĞ»»µÄ,Òª±£´æÒ»ÏÂÅ¶
+        //ä»é¢„è§ˆå›¾åˆ‡æ¢çš„,è¦ä¿å­˜ä¸€ä¸‹å“¦
         if (from == "previewlist") {
             mimo.Editor.PageEdit.saveCurrentPage();
         }
 
-        //È¡ÏûÖ®Ç°µÄ¸ßÁÁ
+        //å–æ¶ˆä¹‹å‰çš„é«˜äº®
         $("#mod_preview_thumnail_list li.active").removeClass("active");
 
-        //×ó²à²»¿É±à¼­Ò³ÃæÁĞ±í
+        //å·¦ä¾§ä¸å¯ç¼–è¾‘é¡µé¢åˆ—è¡¨
         var blankList = {
             "bottom": ["cover", "left"],
             "0left": ["0", "left"],
@@ -2538,9 +2538,9 @@ mimo.Editor.PreviewList = {
 
         var lastPage = BOOK_DATA.page - 1;
 
-        //Èç¹ûµã»÷µÄÊÇ×ó²à²»¿É±à¼­Ò³Ãæ,ÄÇÃ´¿É±à¼­µÄ»¹ÊÇÓÒ±ß
+        //å¦‚æœç‚¹å‡»çš„æ˜¯å·¦ä¾§ä¸å¯ç¼–è¾‘é¡µé¢,é‚£ä¹ˆå¯ç¼–è¾‘çš„è¿˜æ˜¯å³è¾¹
         if (num == lastPage || num in blankList) {
-            //Çå¿Õ¿Õ°×±à¼­ÇøÓò
+            //æ¸…ç©ºç©ºç™½ç¼–è¾‘åŒºåŸŸ
             if (blankList[num] && blankList[num][1] == "left") {
                 mimo.Editor.PageEdit.emptyPage($("#pagelayout_left_side_edit"));
                 $("#pagelayout_left_side_edit").html(TRIM_LINE_HTML);
@@ -2550,7 +2550,7 @@ mimo.Editor.PreviewList = {
             }
 
 
-            //µã»÷µÄÊÇ×îºóÒ»Ò³
+            //ç‚¹å‡»çš„æ˜¯æœ€åä¸€é¡µ
             if (num == "last") {
                 num = lastPage;
             } else {
@@ -2568,12 +2568,12 @@ mimo.Editor.PreviewList = {
         } else {
             page_type = "PAGE";
         }
-        //Ìí¼Ó¸ßÁÁ
+        //æ·»åŠ é«˜äº®
         page.parent().addClass("active");
 
         mimo.Editor.PreviewList.rollToPage(page.parent().attr("index"));
 
-        //ÅÉ·¢Ä³¸öÒ³Ãæ±»µã»÷ÊÂ¼ş
+        //æ´¾å‘æŸä¸ªé¡µé¢è¢«ç‚¹å‡»äº‹ä»¶
         mimo.Event.dispatch("MIMO_PAGE_PREVIEW_THUMBNAIL_CLICK_EVENT",
             {
                 "num": num,
@@ -2586,7 +2586,7 @@ mimo.Editor.PreviewList = {
         mimo.Editor.TextEditor.hide();
         mimo.Editor.ImageTools.hide();
     },
-    //ÉèÖÃÔ¤ÀÀÍ¼
+    //è®¾ç½®é¢„è§ˆå›¾
     setPreviewImg: function (num) {
         
         var path;
@@ -2619,23 +2619,23 @@ mimo.Editor.PreviewList = {
             $('#page_' + num).parent('li').children('a').show();
         }
     },
-    //°ó¶¨ÊÂ¼ş
+    //ç»‘å®šäº‹ä»¶
     addEvent: function () {
         var p = mimo.Editor.PreviewList;
-        //ÉÏÒ»Ò³
+        //ä¸Šä¸€é¡µ
         $("#mod_preview_thumnail_btn_pre").click(function (e) {
             e.preventDefault();
             p.prePage();
         });
 
-        //ÏÂÒ»Ò³
+        //ä¸‹ä¸€é¡µ
         $("#mod_preview_thumnail_btn_next").click(function (e) {
             e.preventDefault();
             p.nextPage();
         });
     },
     lisentEvent: function () {
-        //¼àÌı°æÊ½µã»÷ÊÂ¼ş
+        //ç›‘å¬ç‰ˆå¼ç‚¹å‡»äº‹ä»¶
         mimo.Event.addEventListener("MIMO_PAGELAYOUT_PICKER_EVENT", function (eventObj, dataObj) {
             var curEditPage = mimo.Editor.PageEdit.currentEditPage;
             var name = dataObj.name;
@@ -2657,10 +2657,10 @@ mimo.Editor.PreviewList = {
 };
 
 /**
- * ´óÍ¼Ô¤ÀÀ
+ * å¤§å›¾é¢„è§ˆ
  * @author masa
  * @namespace mimo.Editor.Preview
- * @description ´óÍ¼Ô¤ÀÀ
+ * @description å¤§å›¾é¢„è§ˆ
  */
 mimo.Editor.Preview = {
     curLeftPage: null,
@@ -2671,7 +2671,7 @@ mimo.Editor.Preview = {
         var p = mimo.Editor.Preview;
         p.addEvent();
     },
-    // ³õÊ¼»¯Ô¤ÀÀĞòÁĞ
+    // åˆå§‹åŒ–é¢„è§ˆåºåˆ—
     initList: function () {
         var tmp = ["bottom", "cover", "0left", "0", "1_left", "1"];
         var pageCount = BOOK_DATA.page - 0;
@@ -2709,7 +2709,7 @@ mimo.Editor.Preview = {
         mimo.Editor.showMaskLayout();
 
         dialog.show();
-        //ÉèÖÃÎÄ±¾±à¼­Æ÷Î»ÖÃ
+        //è®¾ç½®æ–‡æœ¬ç¼–è¾‘å™¨ä½ç½®
         var topPx = ($(window).height() / 2 - dialog.height() / 2) + $(document).scrollTop();
         dialog.css({
             "top": topPx + "px"
@@ -2741,7 +2741,7 @@ mimo.Editor.Preview = {
         if (!window.isWide && !window.isMpad) {
             return;
         }
-        if (window.isMpad) { //Èç¹ûÊÇmpad
+        if (window.isMpad) { //å¦‚æœæ˜¯mpad
             if (num == "cover") {
                 $(".preview_dialog .page").css("height", 483);
                 $(".preview_dialog .box .backbone").css("height", 483);
@@ -2773,7 +2773,7 @@ mimo.Editor.Preview = {
         leftNum = leftNum || $("#pagelayout_left_side_edit").attr("num");
         rightNum = rightNum || $("#pagelayout_right_side_edit").attr("num");
 
-        //¼æÈİÂß¼­
+        //å…¼å®¹é€»è¾‘
         p.adjustWide(rightNum);
 
         var data = JSONBookPreview.list;
@@ -2782,7 +2782,7 @@ mimo.Editor.Preview = {
 
         data["copyright"] = { "num": "copyright", path: data["cover"].path };
         data["copyright"].path = data["cover"].path ? data["cover"].path + "_copyright" : "";
-        //¸´Î»
+        //å¤ä½
         $("#preview_dialog .backbone").show();
         left.empty();
         left.removeAttr("num");
@@ -2795,7 +2795,7 @@ mimo.Editor.Preview = {
         $(".big_left,.big_right").hide();
         $(".tools .edit").hide();
 
-        //ÉèÖÃ
+        //è®¾ç½®
         if (data[leftNum] && data[leftNum].path) {
             left.append('<img src="/' + data[leftNum].path + '_1x.jpg" />');
             left.attr("path", data[leftNum].path);
@@ -2890,12 +2890,12 @@ mimo.Editor.Preview = {
         mimo.Editor.PreviewList.selectPage(num)
         p.hide();
     },
-    // ÏÔÊ¾´óÍ¼
+    // æ˜¾ç¤ºå¤§å›¾
     showBig: function (path) {
         var p = mimo.Editor.Preview
         var item = $("#preview_2x");
         var height = 640;
-        //ÉèÖÃÎ»ÖÃ
+        //è®¾ç½®ä½ç½®
         var topPx = ($(window).height() / 2 - 640 / 2) + $(document).scrollTop();
         item.css({
             "top": topPx + "px"
@@ -2916,18 +2916,18 @@ mimo.Editor.Preview = {
             $("#preview_2x img").attr("src", "/" + path + "_2x.jpg");
         }
     },
-    // Òş²ØĞ¡Í¼
+    // éšè—å°å›¾
     hideBig: function (obj) {
         $("#preview_2x img").removeAttr("src");
         $("#preview_2x").hide();
         $("#preview_dialog").show();
     },
-    // »ñÈ¡ÓÒ±ßÒ³ÃæµÄnum
+    // è·å–å³è¾¹é¡µé¢çš„num
     getRightPageNum: function () {
         var right = $("#preview_dialog .right_page").attr("num");
         var left = $("#preview_dialog .left_page").attr("num");
 
-        //ÅĞ¶ÏÊÇ·ñ¿çÒ³
+        //åˆ¤æ–­æ˜¯å¦è·¨é¡µ
         var isCross;
         var layout_info;
         if (typeof left != "undefined") {
@@ -2948,7 +2948,7 @@ mimo.Editor.Preview = {
     getPageListNum: function (direcion) {
         var p = mimo.Editor.Preview;
         var pageCount = BOOK_DATA.page - 0;
-        // ÏòÏÂ·­Ò³
+        // å‘ä¸‹ç¿»é¡µ
         if (direcion == "next") {
             if (p.curIndex == p.list.length) {
                 return null;
@@ -2958,7 +2958,7 @@ mimo.Editor.Preview = {
             }
         }
 
-        //ÏòÉÏ
+        //å‘ä¸Š
         if (direcion == "prev") {
             if (p.curIndex == 0) {
                 return null;
@@ -2970,25 +2970,25 @@ mimo.Editor.Preview = {
     },
     addEvent: function () {
         var p = mimo.Editor.Preview;
-        // ¹Ø±Õ°´Å¥
+        // å…³é—­æŒ‰é’®
         $("#preview_dialog .close").click(function (e) {
             e.preventDefault();
             p.hide();
         });
 
-        // ÉÏÒ»Ò³
+        // ä¸Šä¸€é¡µ
         $("#preview_dialog .prev").click(function (e) {
             e.preventDefault();
             p.prev();
         });
 
-        // ÏÂÒ»Ò³
+        // ä¸‹ä¸€é¡µ
         $("#preview_dialog .next").click(function (e) {
             e.preventDefault();
             p.next();
         });
 
-        // ±à¼­
+        // ç¼–è¾‘
         $("#preview_dialog .edit").click(function (e) {
             e.preventDefault();
             p.edit();
@@ -2998,29 +2998,29 @@ mimo.Editor.Preview = {
 };
 
 /**
- * ÎÄ±¾±à¼­
+ * æ–‡æœ¬ç¼–è¾‘
  * @author masa
  * @namespace mimo.Editor.TextEditor
- * @description ÎÄ±¾±à¼­
+ * @description æ–‡æœ¬ç¼–è¾‘
  */
 mimo.Editor.TextEditor = {
-    //µ±Ç°±à¼­ÎÄ±¾¿ò
+    //å½“å‰ç¼–è¾‘æ–‡æœ¬æ¡†
     curTextBox: null,
-    //µ±Ç°ÎÄ±¾¿ò²ÎÊı
+    //å½“å‰æ–‡æœ¬æ¡†å‚æ•°
     curConfig: {},
     textArea: null,
     textEditor: null,
     curVal:null,
     init: function () {
         var p = mimo.Editor.TextEditor;
-        //ÏÈ°ó¶¨Ò»Ğ©Ôª¼şÏÈ
+        //å…ˆç»‘å®šä¸€äº›å…ƒä»¶å…ˆ
         p.textArea = $("#text_area");
         p.textEditor = $("#pop_texteditor");
 
         p.addEvent();
         p.lisentEvent();
     },
-    //ÏÔÊ¾ÎÄ±¾¿ò
+    //æ˜¾ç¤ºæ–‡æœ¬æ¡†
     show: function (textBox) {
         mimo.Editor.showMaskLayout(0.1);
         var p = mimo.Editor.TextEditor
@@ -3031,7 +3031,7 @@ mimo.Editor.TextEditor = {
         var tips_info = item.attr("tips_info");
         var content = item.html();
         p.curTextBox = item;
-        if (content == "ÔÚ´ËÊäÈëÎÄ×Ö~" || content == tips_info) {
+        if (content == "åœ¨æ­¤è¾“å…¥æ–‡å­—~" || content == tips_info) {
             content = "";
         }
         p.curVal = p.decode(content);
@@ -3048,7 +3048,7 @@ mimo.Editor.TextEditor = {
             textarea.hide();
         }
 
-        //±£´æÎÄ±¾ÅäÖÃ
+        //ä¿å­˜æ–‡æœ¬é…ç½®
         p.curConfig = {
             "max_line": line,
             "max_length": length,
@@ -3062,11 +3062,11 @@ mimo.Editor.TextEditor = {
         textArea.val(p.toRn(p.curVal));
         p.setAlignBtn(align);
 
-        //¼ì²é³¤¶È
+        //æ£€æŸ¥é•¿åº¦
         p.calculateInput(p.textArea);
 
 
-        //ÏÔÊ¾masklayout
+        //æ˜¾ç¤ºmasklayout
         //mimo.Editor.showMaskLayout();
         p.textEditor.show();
         textArea[0].focus();
@@ -3081,7 +3081,7 @@ mimo.Editor.TextEditor = {
         }
 
         p.setPosition(line);
-        //ÉèÖÃÎÄ±¾±à¼­Æ÷Î»ÖÃ
+        //è®¾ç½®æ–‡æœ¬ç¼–è¾‘å™¨ä½ç½®
         //var topPx = ($(window).height() / 2 - p.textEditor.height() / 2) + $(document).scrollTop();
         //p.textEditor.css({
         //    "top": topPx + "px"
@@ -3106,7 +3106,7 @@ mimo.Editor.TextEditor = {
         p.textEditor.hide();
         mimo.Editor.hideMaskLayout();
     },
-    // ÉèÖÃ¶ÔÆë°´Å¥
+    // è®¾ç½®å¯¹é½æŒ‰é’®
     setAlignBtn: function (align) {
         var str = "a." + align;
         $("#pop_texteditor .tools_bar a").removeClass("active");
@@ -3117,11 +3117,11 @@ mimo.Editor.TextEditor = {
         var p = mimo.Editor.TextEditor
         var val = isCancel ? content : p.textArea.val();
         if (val.length == 0) {
-            //Ã»ÓĞÄÚÈİ,Òª°Ñµ×É«¼ÓÉÏ
+            //æ²¡æœ‰å†…å®¹,è¦æŠŠåº•è‰²åŠ ä¸Š
             $(p.curTextBox[0]).addClass("text_box_background");
-            $(p.curTextBox[0]).html("ÔÚ´ËÊäÈëÎÄ×Ö~");
+            $(p.curTextBox[0]).html("åœ¨æ­¤è¾“å…¥æ–‡å­—~");
         } else {
-            //È¥µôµ×É«
+            //å»æ‰åº•è‰²
             $(p.curTextBox[0]).removeClass("text_box_background");
             if (isCancel) {
                 $(p.curTextBox[0]).html(p.toBr(p.encode(val.replace(/<br>/g,"\n"))));
@@ -3132,7 +3132,7 @@ mimo.Editor.TextEditor = {
         }
 
 
-        // ÉèÖÃ±à¼­×´Ì¬
+        // è®¾ç½®ç¼–è¾‘çŠ¶æ€
         p.curTextBox.parent(".pagelayout_edit, .spine, .author_info").attr("has_edited", true);
         //p.curTextBox.parent(".spine").attr("has_edited", true);
         //p.curTextBox.parent(".author_info").attr("has_edited", true);
@@ -3142,7 +3142,7 @@ mimo.Editor.TextEditor = {
         var p = mimo.Editor.TextEditor;
         var pos = $(p.curTextBox).offset();
 
-        // µ¥ĞĞÎÄ±¾
+        // å•è¡Œæ–‡æœ¬
         if (line == 1) {
             $("#pop_texteditor").css({
                 "left": pos.left + p.curTextBox.width() / 2 - $("#pop_texteditor").width() / 2 + "px",
@@ -3181,7 +3181,7 @@ mimo.Editor.TextEditor = {
             } else if(data.index){
                 var val = p.textArea.val();
                 p.selectRange(data.index, val.length);
-                alert("ÄãÊäÈëµÄÎÄ×Ö³¬³ö×î´óÏŞÖÆ,ÇëĞŞ¸Ä");
+                alert("ä½ è¾“å…¥çš„æ–‡å­—è¶…å‡ºæœ€å¤§é™åˆ¶,è¯·ä¿®æ”¹");
             }
         });
         
@@ -3201,7 +3201,7 @@ mimo.Editor.TextEditor = {
         var max_length = t.attr("max_length");
         var direction = t.attr("direction");
         var space = t.attr("space");
-        // Èç¹ûÊÇµ¥ĞĞ Ö±½Ó×ßÇ°¶ËĞ£Ñé
+        // å¦‚æœæ˜¯å•è¡Œ ç›´æ¥èµ°å‰ç«¯æ ¡éªŒ
         if (max_line == 1 && direction == "vertival") {
             callback({ index: 0 });
             return;
@@ -3232,7 +3232,7 @@ mimo.Editor.TextEditor = {
                 }
             },
             error: function () {
-                alert("³ö´íÀ²!\n" + p.textArea.val());
+                alert("å‡ºé”™å•¦!\n" + p.textArea.val());
             }
         });
 
@@ -3262,7 +3262,7 @@ mimo.Editor.TextEditor = {
         //' &#39;
         //" &quot;
         //& &amp;
-        //¿Õ¸ñ &nbsp;
+        //ç©ºæ ¼ &nbsp;
         content = content || "";
         return content.replace(/\&/g, "&amp;")
                         .replace(/\</g, "&lt;")
@@ -3280,7 +3280,7 @@ mimo.Editor.TextEditor = {
                         .replace(/&quot/g, "\"")
                         .replace(/&nbsp;/g, " ");
     },
-    // »ñÈ¡Ö¸¶¨³¤¶È×Ö·û
+    // è·å–æŒ‡å®šé•¿åº¦å­—ç¬¦
     getByteVal: function (val, max) {
         var returnValue = '';
         var byteValLen = 0;
@@ -3296,7 +3296,7 @@ mimo.Editor.TextEditor = {
         return returnValue;
     },
 
-    // »ñÈ¡×Ö·ûÊµ¼Ê³¤¶È
+    // è·å–å­—ç¬¦å®é™…é•¿åº¦
     getByteCount: function (val) {
         var byteValLen = 0;
         for (var i = 0; i < val.length; i++) {
@@ -3312,7 +3312,7 @@ mimo.Editor.TextEditor = {
         var input = $(e.currentTarget);
         mimo.Editor.TextEditor.calculateInput(input);
     },
-    // ¼ì²éÊäÈëµÄ³¤¶È
+    // æ£€æŸ¥è¾“å…¥çš„é•¿åº¦
     calculateInput: function (input) {
         var p = mimo.Editor.TextEditor;
         var texbox = mimo.Editor.TextEditor.curTextBox;
@@ -3324,20 +3324,20 @@ mimo.Editor.TextEditor = {
             var count = p.getByteCount(input.val());
             if (count > max_length * 2) {
                 input.val(p.getByteVal(input.val(), max_length * 2));
-                tips = mimo.Template.format('Äã»¹¿ÉÒÔÊäÈë{0}/{1}¸ö×Ö·û(¹²{2}¸öÖĞÎÄ)', max_length * 2 - count, max_length * 2, max_length);
+                tips = mimo.Template.format('ä½ è¿˜å¯ä»¥è¾“å…¥{0}/{1}ä¸ªå­—ç¬¦(å…±{2}ä¸ªä¸­æ–‡)', max_length * 2 - count, max_length * 2, max_length);
             } else {
-                tips = mimo.Template.format('Äã»¹¿ÉÒÔÊäÈë{0}/{1}¸ö×Ö·û(¹²{2}¸öÖĞÎÄ)', max_length * 2 - count, max_length * 2, max_length);
+                tips = mimo.Template.format('ä½ è¿˜å¯ä»¥è¾“å…¥{0}/{1}ä¸ªå­—ç¬¦(å…±{2}ä¸ªä¸­æ–‡)', max_length * 2 - count, max_length * 2, max_length);
             }
         } else if (max_line > 1) {
-            tips = mimo.Template.format('Äú×î¶à¿ÉÒÔÊäÈë{0}ĞĞÎÄ×Ö', max_line);
+            tips = mimo.Template.format('æ‚¨æœ€å¤šå¯ä»¥è¾“å…¥{0}è¡Œæ–‡å­—', max_line);
             //return;
             //var count = p.getByteCount(input.val());
             //var linecount = 0;
             //if (count > max_length * 2) {
             //    input.val(p.getByteVal(input.val(), max_length * 2));
-            //    tips = mimo.Template.format('Äã»¹¿ÉÒÔÊäÈë{0}/{1}¸ö×Ö·û»ò{3}/{4}ĞĞÎÄ×Ö(¹²{2}¸öÖĞÎÄ)', max_length * 2 - count, max_length * 2, max_length, max_line, max_line);
+            //    tips = mimo.Template.format('ä½ è¿˜å¯ä»¥è¾“å…¥{0}/{1}ä¸ªå­—ç¬¦æˆ–{3}/{4}è¡Œæ–‡å­—(å…±{2}ä¸ªä¸­æ–‡)', max_length * 2 - count, max_length * 2, max_length, max_line, max_line);
             //} else {
-            //    tips = mimo.Template.format('Äã»¹¿ÉÒÔÊäÈë{0}/{1}¸ö×Ö·û»ò{3}/{4}ĞĞÎÄ×Ö(¹²{2}¸öÖĞÎÄ)', max_length * 2 - count, max_length * 2, max_length, max_line, max_line);
+            //    tips = mimo.Template.format('ä½ è¿˜å¯ä»¥è¾“å…¥{0}/{1}ä¸ªå­—ç¬¦æˆ–{3}/{4}è¡Œæ–‡å­—(å…±{2}ä¸ªä¸­æ–‡)', max_length * 2 - count, max_length * 2, max_length, max_line, max_line);
             //}
         }
         $("#pop_texteditor_tips").html(tips);
@@ -3345,19 +3345,19 @@ mimo.Editor.TextEditor = {
     },
     addEvent: function () {
         var p = mimo.Editor.TextEditor;
-        //È¡Ïû
+        //å–æ¶ˆ
         $("#pop_texteditor .cancel").click(function (e) {
             e.preventDefault();
             p.setContent(true, p.curVal);
             p.hide();
         });
-        //È·¶¨
+        //ç¡®å®š
         $("#pop_texteditor .confirm").click(function (e) {
             e.preventDefault();
             p.confirm();
         });
 
-        //×ó¶ÔÆë
+        //å·¦å¯¹é½
         $("#pop_texteditor a.left").click(function (e) {
             e.preventDefault();
             p.setAlignBtn("left");
@@ -3366,7 +3366,7 @@ mimo.Editor.TextEditor = {
             p.curTextBox.attr("align", "left");
         });
 
-        //¾ÓÖĞ
+        //å±…ä¸­
         $("#pop_texteditor a.center").click(function (e) {
             e.preventDefault();
             p.setAlignBtn("center");
@@ -3375,7 +3375,7 @@ mimo.Editor.TextEditor = {
             p.curTextBox.attr("align", "center");
         });
 
-        //ÓÒ¶ÔÆë
+        //å³å¯¹é½
         $("#pop_texteditor a.right").click(function (e) {
             e.preventDefault();
             p.setAlignBtn("right");
@@ -3384,7 +3384,7 @@ mimo.Editor.TextEditor = {
             p.curTextBox.attr("align", "right");
         });
 
-        //ÊäÈë¿òÊÂ¼ş
+        //è¾“å…¥æ¡†äº‹ä»¶
         $("#pop_texteditor .edit_area input,#pop_texteditor .edit_area textarea").bind("keyup", function (e) {
             p.checkInput(e);
             p.setContent()
@@ -3392,7 +3392,7 @@ mimo.Editor.TextEditor = {
     },
     lisentEvent: function () {
         var p = mimo.Editor.TextEditor;
-        //¼àÌıÎÄ±¾¿òµã»÷
+        //ç›‘å¬æ–‡æœ¬æ¡†ç‚¹å‡»
         mimo.Event.addEventListener("MIMO_TEXT_BOX_CLICK_EVENT", function (eventObj, dataObj) {
             p.show(dataObj.textBox);
         });
@@ -3400,14 +3400,14 @@ mimo.Editor.TextEditor = {
 };
 
 /**
- * Êı¾İ½»»¥Ä£¿é
+ * æ•°æ®äº¤äº’æ¨¡å—
  * @author masa
  * @namespace mimo.Editor.DataCenter
- * @description Êı¾İ½»»¥Ä£¿é
+ * @description æ•°æ®äº¤äº’æ¨¡å—
  */
 mimo.Editor.DataCenter = {
 
-    // ¸üĞÂ»º´æÖĞµÄÊı¾İ
+    // æ›´æ–°ç¼“å­˜ä¸­çš„æ•°æ®
     cachePageData: function (list, callback) {
         var pageEdit = mimo.Editor.PageEdit;
         var obj;
@@ -3416,7 +3416,7 @@ mimo.Editor.DataCenter = {
             window.BOOK_DATA.list[list[i]] = obj;
         }
     },
-    // ±£´æÒ³ÃæÊı¾İ
+    // ä¿å­˜é¡µé¢æ•°æ®
     savePageData: function (list, callback) {
         var pageEdit = mimo.Editor.PageEdit;
         var data = {};
@@ -3424,12 +3424,12 @@ mimo.Editor.DataCenter = {
         data.user_id = window.UserId;
         data.book_id = window.BookId;
         data.works_id = window.WorksId;
-        //Ê×ÏÈÈ·¶¨ÓĞ¶àÉÙÒ³Òª save
+        //é¦–å…ˆç¡®å®šæœ‰å¤šå°‘é¡µè¦ save
         data.count = list.length;
         var s = [];
         var obj;
         for (var i = 0, len = list.length; i < len; i++) {
-            //Êé¼¹
+            //ä¹¦è„Š
             if (list[i] == "spine") {
                 mimo.Editor.PageEdit.setSpineData();
                 data.spine_info = JSON.stringify(BOOK_DATA.spine_info);
@@ -3441,19 +3441,19 @@ mimo.Editor.DataCenter = {
             window.BOOK_DATA.list[list[i]] = obj;
             s.push(list[i]);
 
-            //ÕâÀïÈ¡³ö±êÌâ
+            //è¿™é‡Œå–å‡ºæ ‡é¢˜
             if (list[i] == "cover") {
                 if (obj.page_data.textbox_list && obj.page_data.textbox_list[0] && obj.page_data.textbox_list[0].content) {
                     data.name = obj.page_data.textbox_list[0].content;
-                    //$("#works_title").html("¡¶" + mimo.Editor.TextEditor.encode(data.name) + "¡·");
+                    //$("#works_title").html("ã€Š" + mimo.Editor.TextEditor.encode(data.name) + "ã€‹");
                     mimo.Editor.setBookName(mimo.Editor.TextEditor.encode(data.name));
                 }
             } else if (list[i] == "author_info") {
-                // ×÷ÕßĞÅÏ¢
+                // ä½œè€…ä¿¡æ¯
                 window.BOOK_DATA.list["author_info"] = window.BOOK_DATA["author_info"] = obj;
                 //debugger;
             } else if (list[i] == "copyright") {
-                // °æÈ¨ĞÅÏ¢
+                // ç‰ˆæƒä¿¡æ¯
                 window.BOOK_DATA.list["copyright_info"] = window.BOOK_DATA["copyright_info"] = obj;
             }
 
@@ -3468,11 +3468,11 @@ mimo.Editor.DataCenter = {
             dataType: "json",
             success: function (response) {
                 if (response && response.ret == 1) {
-                    // ÉèÖÃÍê³ÉÂÊ
+                    // è®¾ç½®å®Œæˆç‡
                     window.BOOK_DATA.complete_page = data.complete_count;
                     mimo.Editor.ToolsBar.setCompleteCount(data.complete_count);
 
-                    // ¸üĞÂËõÂÔÍ¼ĞÅÏ¢
+                    // æ›´æ–°ç¼©ç•¥å›¾ä¿¡æ¯
                     if (response.preview_list && response.preview_list.length) {
                         
                         var item;
@@ -3497,22 +3497,22 @@ mimo.Editor.DataCenter = {
         });
     },
 
-    // À­È¡Ä³Ò»Ò³µÄÊı¾İ
+    // æ‹‰å–æŸä¸€é¡µçš„æ•°æ®
     getPageData: function (num, callback) {
 
     },
 
-    // ¸Ä±äPÊıÄ¿
+    // æ”¹å˜Pæ•°ç›®
     changeCount: function (num, callback) {
 
     }
 };
 
 /**
- * Êé¼®¼ì²éÄ£¿é
+ * ä¹¦ç±æ£€æŸ¥æ¨¡å—
  * @author masa
  * @namespace mimo.Editor.Checker
- * @description Êé¼®¼ì²éÄ£¿é
+ * @description ä¹¦ç±æ£€æŸ¥æ¨¡å—
  */
 mimo.Editor.Checker = {
     init: function () {
@@ -3520,16 +3520,16 @@ mimo.Editor.Checker = {
         p.addStep1Event()
         p.addStep2Event()
     },
-    // ´¥·¢¼ì²é
+    // è§¦å‘æ£€æŸ¥
     check: function () {
         var info = {};
-        //¿Õ°×Ò³Ãæ
+        //ç©ºç™½é¡µé¢
         info.blank = [];
-        //È±ÉÙÍ¼Æ¬
+        //ç¼ºå°‘å›¾ç‰‡
         info.image = [];
-        //¾«¶È
+        //ç²¾åº¦
         info.dpi = [];
-        //È±ÉÙÎÄ±¾
+        //ç¼ºå°‘æ–‡æœ¬
         info.text = [];
 
         var list = window.BOOK_DATA.list;
@@ -3538,7 +3538,7 @@ mimo.Editor.Checker = {
         var t;
         for (var k in list) {
             if (!isNaN(k)) {
-                //ÓÒ°æ
+                //å³ç‰ˆ
                 if (k != 0 && k != 1 && k % 2 == 1) {
                     if (t = list[k - 1]) {
                         if (t.template_name.length > 3) {
@@ -3557,33 +3557,33 @@ mimo.Editor.Checker = {
             } else {
                 pageObj = mimo.Editor.Checker.getTemplateByName(pageInfo);
                 if (pageObj) {
-                    //È±ÉÙÎÄ×Ö
+                    //ç¼ºå°‘æ–‡å­—
                     if (pageObj.textBoxList) {
                         if (pageObj.textBoxList.length > pageInfo.page_data.textbox_list.length) {
                             info.text.push(k);
                         }
                     }
 
-                    //È±ÉÙÍ¼Ïñ
+                    //ç¼ºå°‘å›¾åƒ
                     if (pageObj.imageBoxList) {
                         if (pageObj.imageBoxList.length > pageInfo.page_data.imagebox_list.length) {
                             info.image.push(k);
                         }
                     }
 
-                    //¾«¶È²»¹»
+                    //ç²¾åº¦ä¸å¤Ÿ
                     if (pageObj.imageBoxList) {
                         
                         var imgDataHash = {};
                         var item;
 
-                        // ÏÈ°ÑÍ¼Æ¬Êı¾İÉ¸Ñ¡³öÀ´
+                        // å…ˆæŠŠå›¾ç‰‡æ•°æ®ç­›é€‰å‡ºæ¥
                         for (var i = 0; i < pageInfo.page_data.imagebox_list.length; i++) {
                             item = pageInfo.page_data.imagebox_list[i];
                             imgDataHash[item.name] = item;
                         }
 
-                        // Ñ­»·ÅĞ¶ÏÃ¿¸öDPIÊÇ·ñÂú×ã
+                        // å¾ªç¯åˆ¤æ–­æ¯ä¸ªDPIæ˜¯å¦æ»¡è¶³
                         for (var i = 0; i < pageObj.imageBoxList.length; i++) {
                             item = pageObj.imageBoxList[i];
                             if (imgDataHash[item.name] && !mimo.Editor.PageEdit.checkDPIStatus(item.width, item.height, imgDataHash[item.name].imageid)) {
@@ -3595,7 +3595,7 @@ mimo.Editor.Checker = {
                 }
             }
         }
-        var isOk = mimo.Editor.Checker.showInfo(info);//·µ»ØÊÇ·ñ¼ìÍ¨¹ı
+        var isOk = mimo.Editor.Checker.showInfo(info);//è¿”å›æ˜¯å¦æ£€é€šè¿‡
         mimo.Editor.Checker.showStep2();
         return isOk;
     },
@@ -3622,36 +3622,36 @@ mimo.Editor.Checker = {
         }
         return layoutData[pageType][side][pageinfo.template_name];
     },
-    // ÏÔÊ¾¼ì²éĞÅÏ¢
+    // æ˜¾ç¤ºæ£€æŸ¥ä¿¡æ¯
     showInfo: function (info) {
-        // ÓĞÈÎºÎÒ»¸ö¸æ¾¯ĞÅÏ¢
+        // æœ‰ä»»ä½•ä¸€ä¸ªå‘Šè­¦ä¿¡æ¯
         var html = [];
         html.push('<tr class="hl">\
-                    <th style="width:42px;">ĞòºÅ</th>\
-                    <th style="width:90px;">´íÎó¼¶±ğ</th>\
-                    <th>ĞÅÏ¢ÌáÊ¾</th>\
+                    <th style="width:42px;">åºå·</th>\
+                    <th style="width:90px;">é”™è¯¯çº§åˆ«</th>\
+                    <th>ä¿¡æ¯æç¤º</th>\
                    </tr>');
         if (info.blank.length || info.image.length || info.dpi.length || info.text.length) {
             if (info.blank.length) {
                 html.push('<tr>\
                     <td>1</td>\
-                    <td>½¨ÒéĞŞ¸Ä</td>\
-                    <td>µÚ '+ mimo.Editor.Checker.genClickEvent(info.blank) + ' Ò³,Ã»ÓĞ±à¼­</td>\
+                    <td>å»ºè®®ä¿®æ”¹</td>\
+                    <td>ç¬¬ '+ mimo.Editor.Checker.genClickEvent(info.blank) + ' é¡µ,æ²¡æœ‰ç¼–è¾‘</td>\
                    </tr>');
             }
             if (info.dpi.length) {
                 html.push('<tr>\
                     <td>3</td>\
-                    <td>½¨ÒéĞŞ¸Ä</td>\
-                    <td>µÚ ' + mimo.Editor.Checker.genClickEvent(info.dpi) + ' Ò³,Í¼Ïñ¾«¶È²»¹» <a style="color:blue;" href="/about/help#px" target="_blank">[²é¿´¾«¶ÈËµÃ÷]</a></td>\
+                    <td>å»ºè®®ä¿®æ”¹</td>\
+                    <td>ç¬¬ ' + mimo.Editor.Checker.genClickEvent(info.dpi) + ' é¡µ,å›¾åƒç²¾åº¦ä¸å¤Ÿ <a style="color:blue;" href="/about/help#px" target="_blank">[æŸ¥çœ‹ç²¾åº¦è¯´æ˜]</a></td>\
                    </tr>');
             }
 
             if (info.image.length) {
                 html.push('<tr">\
                     <td>2</td>\
-                    <td>¿´×Å°ì</td>\
-                    <td>µÚ '+ mimo.Editor.Checker.genClickEvent(info.image) + ' Ò³,È±ÉÙ±ØÒªÍ¼Ïñ</td>\
+                    <td>çœ‹ç€åŠ</td>\
+                    <td>ç¬¬ '+ mimo.Editor.Checker.genClickEvent(info.image) + ' é¡µ,ç¼ºå°‘å¿…è¦å›¾åƒ</td>\
                    </tr>');
             }
 
@@ -3659,8 +3659,8 @@ mimo.Editor.Checker = {
             if (info.text.length) {
                 html.push('<tr>\
                     <td>3</td>\
-                    <td>¿´×Å°ì</td>\
-                    <td>µÚ '+ mimo.Editor.Checker.genClickEvent(info.text) + ' Ò³,È±ÉÙ±ØÒªÎÄ×Ö</td>\
+                    <td>çœ‹ç€åŠ</td>\
+                    <td>ç¬¬ '+ mimo.Editor.Checker.genClickEvent(info.text) + ' é¡µ,ç¼ºå°‘å¿…è¦æ–‡å­—</td>\
                    </tr>');
             }
             $("#check_step2 .info_table").html(html.join(""));
@@ -3668,8 +3668,8 @@ mimo.Editor.Checker = {
         } else {
             html.push('<tr>\
                     <td>1</td>\
-                    <td>ÍêÃÀ!</td>\
-                    <td>ºÜÍêÃÀ,¿ÉÒÔ¼ÌĞøÔ¤ÀÀ»òÕß³ö°æ</td>\
+                    <td>å®Œç¾!</td>\
+                    <td>å¾ˆå®Œç¾,å¯ä»¥ç»§ç»­é¢„è§ˆæˆ–è€…å‡ºç‰ˆ</td>\
                    </tr>');
             $("#check_step2 .info_table").html(html.join(""));
         }
@@ -3681,9 +3681,9 @@ mimo.Editor.Checker = {
         for (var i = 0; i < list.length; i++) {
             tmp = list[i];
             if (list[i] == "cover") {
-                tmp = "·âÃæ";
+                tmp = "å°é¢";
             } else if (list[i] == "author_info") {
-                tmp = "ÕÛÒ³";
+                tmp = "æŠ˜é¡µ";
             } else if (list[i] == "copyright") {
                 continue;
             }
@@ -3696,10 +3696,10 @@ mimo.Editor.Checker = {
         mimo.Editor.Checker.hideStep2();
         mimo.Editor.PreviewList.selectPage(num);
     },
-    // ÏÔÊ¾¼ì²éĞÅÏ¢
+    // æ˜¾ç¤ºæ£€æŸ¥ä¿¡æ¯
     showStep2: function () {
         mimo.Editor.showMaskLayout();
-        //ÉèÖÃÎ»ÖÃ
+        //è®¾ç½®ä½ç½®
         var dialog = $("#check_step2");
         dialog.show();
         var topPx = ($(window).height() / 2 - dialog.height() / 2) + $(document).scrollTop();
@@ -3712,13 +3712,13 @@ mimo.Editor.Checker = {
         mimo.Editor.hideMaskLayout();
         var dialog = $("#check_step2").hide();
     },
-    //¼ÌĞø³ö°æ
+    //ç»§ç»­å‡ºç‰ˆ
     publish: function () {
-        //alert("¿ªÊ¼³ö°æÀ²");
+        //alert("å¼€å§‹å‡ºç‰ˆå•¦");
         window.location = "/order/step1?workId=" + window.WorksId;
         //mimo.Editor.Checker.hideStep2();
     },
-    // °ó¶¨ÊÂ¼ş
+    // ç»‘å®šäº‹ä»¶
     addStep2Event: function () {
         var p = mimo.Editor.Checker;
         $("#checker_go_step1").click(function (e) {
@@ -3737,10 +3737,10 @@ mimo.Editor.Checker = {
 
 
     },
-    /*ÒÔÏÂÊÇStep1Âß¼­*/
+    /*ä»¥ä¸‹æ˜¯Step1é€»è¾‘*/
     showStep1: function () {
         mimo.Editor.showMaskLayout();
-        //ÉèÖÃÎ»ÖÃ
+        //è®¾ç½®ä½ç½®
         var dialog = $("#check_step1");
         dialog.show();
         var topPx = ($(window).height() / 2 - dialog.height() / 2) + $(document).scrollTop();
@@ -3787,10 +3787,10 @@ mimo.Editor.Checker = {
 };
 
 /**
- * Ò³Ãæ¹ÜÀí
+ * é¡µé¢ç®¡ç†
  * @author masa
  * @namespace mimo.Editor.PageManager
- * @description Ò³Ãæ¹ÜÀí
+ * @description é¡µé¢ç®¡ç†
  */
 mimo.Editor.PageManager = {
     init: function () {
@@ -3803,7 +3803,7 @@ mimo.Editor.PageManager = {
         }
         p.addEvent();
     },
-    // ÏÔÊ¾
+    // æ˜¾ç¤º
     show: function () {
         $("#page_manager_list").css({
             "height": $(window).height() - 300
@@ -3812,7 +3812,7 @@ mimo.Editor.PageManager = {
         var p = mimo.Editor.PageManager;
         var pop = $("#pop_page_manager");
         p.presentCross();
-        //ÉèÖÃÎ»ÖÃ
+        //è®¾ç½®ä½ç½®
         pop.show();
         var topPx = ($(window).height() / 2 - pop.height() / 2) + $(document).scrollTop();
         pop.css({
@@ -3820,31 +3820,31 @@ mimo.Editor.PageManager = {
             "margin-left": "-" + pop.width() / 2 + "px"
         });
     },
-    //ÏÔÊ¾
+    //æ˜¾ç¤º
     presentCross: function () {
 
         $("#page_sort_cross").attr("checked", "checked");
         var p = mimo.Editor.PreviewList;
         var pm = mimo.Editor.PageManager;
         var data = window.BOOK_DATA;
-        //×ÜÒ³Êı
+        //æ€»é¡µæ•°
         var pageCount = data.page;
         var previewHash = JSONBookPreview.list;
         p.totalCount = pageCount - 0;
 
-        //¿ªÊ¼²¼¾ÖÒ³ÃæËõÂÔÍ¼
+        //å¼€å§‹å¸ƒå±€é¡µé¢ç¼©ç•¥å›¾
         var html = [];
         var tmp;
 
-        // push ·âÃæ·âµ×
+        // push å°é¢å°åº•
         tmp = '\
         <li class="ui_disable_sortable" style="cursor:not-allowed;" index="0">\
             <a class="pagelayout_bg blank"  style="cursor:not-allowed;" id="page_bottom" href="javascript:;" _num="bottom" page_side="left" page_type="none">\
-                <em class="img_page">·âµ×</em>\
+                <em class="img_page">å°åº•</em>\
             </a>\
             <a style="cursor:not-allowed;" class="pagelayout_bg {layout_class}" id="page_cover" class="right" href="javascript:;" num="cover" page_side="right" page_type="COVER" template_name="{template_name}">\
                 {preview_img}\
-                <em class="img_page_right">·âÃæ</em>\
+                <em class="img_page_right">å°é¢</em>\
             </a>\
         </li>';
         tmp = mimo.Template.format(tmp, {
@@ -3858,11 +3858,11 @@ mimo.Editor.PageManager = {
         tmp = '\
         <li class="ui_disable_sortable" style="cursor:not-allowed;" index="1">\
             <a class="pagelayout_bg blank" style="cursor:not-allowed;" id="page_0left" href="javascript:;" _num="0left" page_side="left">\
-                <em class="img_page">·âÃæÕÛÒ³</em>\
+                <em class="img_page">å°é¢æŠ˜é¡µ</em>\
             </a>\
             <a style="cursor:not-allowed;" class="pagelayout_bg {layout_class}t1_r"  id="page_0" class="right" href="javascript:;" num="0" page_side="right" template_name="T1">\
                 {preview_img}\
-                <em class="img_page_right">ìéÒ³</em>\
+                <em class="img_page_right">æ‰‰é¡µ</em>\
             </a>\
         </li>';
         tmp = mimo.Template.format(tmp, {
@@ -3871,11 +3871,11 @@ mimo.Editor.PageManager = {
         });
         html.push(tmp);
 
-        // push µÚÒ»Ò³
+        // push ç¬¬ä¸€é¡µ
         tmp = '\
         <li class="ui_disable_sortable" style="cursor:not-allowed;" index="2">\
             <a style="cursor:not-allowed;" id="page_1_left" href="javascript:;" _num="1_left" page_side="left">\
-                <em class="img_page">ìéÒ³¶ÔÒ³</em>\
+                <em class="img_page">æ‰‰é¡µå¯¹é¡µ</em>\
             </a>\
             <a style="cursor:not-allowed;" class="pagelayout_bg {layout_class}"  id="page_1" class="right" href="javascript:;" num="1" page_side="right" template_name="{template_name}">\
                 {preview_img}\
@@ -3890,7 +3890,7 @@ mimo.Editor.PageManager = {
             });
         html.push(tmp);
 
-        //ÆäËüÒ³Ãæ
+        //å…¶å®ƒé¡µé¢
         var p1;
         var p2;
         var template_name1;
@@ -3978,8 +3978,8 @@ mimo.Editor.PageManager = {
         {
             index: index + 1,
             p1: "copyright",
-            p_num1: "°æÈ¨",
-            p_num2: "·âµ×",
+            p_num1: "ç‰ˆæƒ",
+            p_num2: "å°åº•",
             template_name1: "copyright",
             layout_class1: (window.isWide ? "p" : ""),
             preview_img1: ""
@@ -3991,7 +3991,7 @@ mimo.Editor.PageManager = {
         pm.addSortEvent();
 
     },
-    // µ¥Ò³ÅÅĞò
+    // å•é¡µæ’åº
     changeToSingle: function () {
         var ul = $("#page_manager_list");
         var page = $("li a", ul);
@@ -4011,7 +4011,7 @@ mimo.Editor.PageManager = {
         ul.removeClass("cross");
     },
 
-    // ¿çÒ³ÅÅĞò
+    // è·¨é¡µæ’åº
     changeToCross: function () {
         var ul = $("#page_manager_list");
         var page = $("li a", ul);
@@ -4038,7 +4038,7 @@ mimo.Editor.PageManager = {
         ul.addClass("cross");
     },
 
-    //ÉèÖÃ¿çÒ³Ò³ÃæÑùÊ½
+    //è®¾ç½®è·¨é¡µé¡µé¢æ ·å¼
     setCrossStyle: function () {
         $("#page_manager_list li").each(function (i, v) {
             var l = $(v);
@@ -4058,7 +4058,7 @@ mimo.Editor.PageManager = {
 
         });
     },
-    //Ìí¼ÓÅÅĞòÊÂ¼ş
+    //æ·»åŠ æ’åºäº‹ä»¶
     addSortEvent: function () {
         $(".page_manager_list").sortable({
             items: "li:not(.ui_disable_sortable)",
@@ -4070,7 +4070,7 @@ mimo.Editor.PageManager = {
         });
         $("ul, li").disableSelection();
     },
-    //ÄÃµ½ĞÂµÄÅÅĞò
+    //æ‹¿åˆ°æ–°çš„æ’åº
     getNewSequence: function () {
         var ary = [];
         $("#page_manager_list a").each(function () {
@@ -4080,7 +4080,7 @@ mimo.Editor.PageManager = {
         })
         return ary;
     },
-    // Ìá½»Êı¾İ
+    // æäº¤æ•°æ®
     submit: function () {
         var p = mimo.Editor.PageManager;
         var sort_list = p.getNewSequence();
@@ -4093,7 +4093,7 @@ mimo.Editor.PageManager = {
                 if (response.ret == 1) {
                     window.location.href = window.location.href.replace("is_first=1", "") + '&from_pagemanager=1';
                 } else {
-                    alert("³ö´íÀ²");
+                    alert("å‡ºé”™å•¦");
                 }
             }
         });
@@ -4103,7 +4103,7 @@ mimo.Editor.PageManager = {
         $("#pop_page_manager .cancel").hide();
     },
 
-    // Òş²Ø
+    // éšè—
     hide: function () {
         mimo.Editor.hideMaskLayout();
         $("#pop_page_manager").hide();
@@ -4138,13 +4138,13 @@ mimo.Editor.ImageTools = {
     init: false,
     zoomOutTimer: 0,
     zoomInTimer: 0,
-    //µ±Ç°Í¼ÏñÊı¾İ
+    //å½“å‰å›¾åƒæ•°æ®
     curTarget: {
         image: null,
         imageBox: null
     },
 
-    //´¥·¢
+    //è§¦å‘
     fire: function (el) {
         var p = mimo.Editor.ImageTools;
         if (!p.init) {
@@ -4157,7 +4157,7 @@ mimo.Editor.ImageTools = {
         p.show(p.curTarget.imageBox);
     },
 
-    //Õ¹Ê¾
+    //å±•ç¤º
     show: function (imageBox) {
         var d = $("#image_tools");
 
@@ -4182,7 +4182,7 @@ mimo.Editor.ImageTools = {
         d.show();
     },
 
-    //Òş²Ø
+    //éšè—
     hide: function () {
         var p = mimo.Editor.ImageTools;
         $("#image_tools").hide();
@@ -4210,7 +4210,7 @@ mimo.Editor.ImageTools = {
                 $("#image_tools_tips").html(s);
             },
             function () {
-                $("#image_tools_tips").html("Í¼Ïñ¹¤¾ß");
+                $("#image_tools_tips").html("å›¾åƒå·¥å…·");
             }
         );
 
@@ -4262,7 +4262,7 @@ mimo.Editor.ImageTools = {
 
 
 
-        //Ëõ·Åµ½100% ºÍ 10%,²»ÔÙËõ·Å
+        //ç¼©æ”¾åˆ°100% å’Œ 10%,ä¸å†ç¼©æ”¾
         if (ch / oh > 1 || cw / ow > 1) {
             return;
         }
@@ -4345,14 +4345,14 @@ mimo.Editor.ImageTools = {
             h = bh;
             w = ow / hScale
 
-            //Ë®Æ½¾ÓÖĞ
+            //æ°´å¹³å±…ä¸­
             x = (bw / 2) - (w / 2);
             y = 0;
         } else {
             w = bw;
             h = oh / wScale;
 
-            //´¹Ö±¾ÓÖĞ
+            //å‚ç›´å±…ä¸­
             x = 0;
             y = (bh / 2) - (h / 2);
         }
@@ -4379,13 +4379,13 @@ mimo.Editor.ImageTools = {
 
         var w, h, scale, x, y;
 
-        //¸ß>¿í
+        //é«˜>å®½
         if (oh > ow) {
             h = bh;
             scale = h/oh;
             w = ow * scale;
 
-            //Î»ÖÃ¾ÓÖĞ
+            //ä½ç½®å±…ä¸­
             x = (bw/2) - (w/2);
             y = 0;
 
@@ -4396,17 +4396,17 @@ mimo.Editor.ImageTools = {
             scale = w / ow;
             h = oh * scale;
 
-            //Î»ÖÃ
+            //ä½ç½®
             x = 0;
             y = (bh / 2) - (h / 2);
 
         }else{
-            //Õı·½ĞÎµÄÇé¿ö
+            //æ­£æ–¹å½¢çš„æƒ…å†µ
             w = bw;
             scale = w / ow;
             h = oh * scale;
 
-            //Î»ÖÃ
+            //ä½ç½®
             x = 0;
             y = (bh / 2) - (h / 2);
         }
@@ -4420,7 +4420,7 @@ mimo.Editor.ImageTools = {
         p.setDraggable(w, h, bw, bh, box, image);
     },
     deleteImage: function () {
-        //if (!confirm("È·¶¨ÒÆ³ı¸ÃÍ¼Æ¬Âğ?")) {
+        //if (!confirm("ç¡®å®šç§»é™¤è¯¥å›¾ç‰‡å—?")) {
         //    return;
         //}
 
@@ -4446,7 +4446,7 @@ mimo.Editor.ImageTools = {
         }
     },
 
-    //ÉèÖÃÒÑ¾­±à¼­×´Ì¬
+    //è®¾ç½®å·²ç»ç¼–è¾‘çŠ¶æ€
     setIsEdited: function () {
         var imageBox = mimo.Editor.ImageTools.curTarget.imageBox;
         $(imageBox).parent(".pagelayout_edit, .author_info").attr("has_edited", true);
@@ -4476,7 +4476,7 @@ mimo.Editor.ImageTools = {
             v.v4 = y1;
         }
 
-        //ÖØĞÂ°ó¶¨ÍÏ¶¯ÊÂ¼ş
+        //é‡æ–°ç»‘å®šæ‹–åŠ¨äº‹ä»¶
         try {
             //image.draggable("destroy");
         } catch (ign) { }
@@ -4493,10 +4493,10 @@ mimo.Editor.ImageTools = {
 };
 
 /**
- * ½Ì³ÌÒıµ¼
+ * æ•™ç¨‹å¼•å¯¼
  * @author masa
  * @namespace mimo.Editor.Tutorial
- * @description ½Ì³ÌÒıµ¼
+ * @description æ•™ç¨‹å¼•å¯¼
  */
 mimo.Editor.Tutorial = {
     init:false,

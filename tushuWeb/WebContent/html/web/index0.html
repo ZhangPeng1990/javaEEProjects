@@ -191,6 +191,40 @@
         等更棒的浏览器
     </p>
 </div>
+<div id="toptoolbar-wrapper">
+    <div id="toptoolbar">
+
+        <div class="shopbox-toptoolbar">
+                <ul id="sddm">
+                    <li id="memu_mimo">
+                        <a href="/usercenter">我的印品 <span class="more"></span></a>
+                        <div id="m1" class="children">
+                            <a href="/usercenter">我的印品</a>
+                            <a href="/usercenter/myorder">订单跟踪</a>
+                            <a href="/usercenter/userinfo">我的资料</a>
+                            <a href="/usercenter/promotion">我的优惠券</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            <div class="faq">
+                <a href="/about/help">帮助</a>
+            </div>
+                <div class="faq">
+                    <a href="/user/logout">注销</a>
+                </div>
+
+        </div>
+        <!-- end of top toolbar -->
+            <div class="nickname-toptoolbar">
+                <a href="/usercenter">欢迎你：舞动</a>
+            </div>
+            <!-- end of top nickname-toptoolbar -->
+
+    </div>
+</div>
 <!--header-wrapper-->
 <div id="header-wrapper">
     <div id="header-pattern">
@@ -484,7 +518,7 @@
             <a class="close" href="#"></a>
         </div>
         <div class="content">
-            <div class="page_manager" style="padding: 30px 0px 30px 0px; background-color: #D9D9D9; background: #f9f9f9 url(images/bg.png);">
+            <div class="page_manager" style="padding: 30px 0px 30px 0px; background-color: #D9D9D9; background: #f9f9f9 url(../../static/images/bg.png);">
                 <div class="tips">您可以按住鼠标左键,拖动页面进行排序</div>
                 <div class="page_manager_tab">
                     <b>排序方式:</b>
@@ -992,254 +1026,23 @@
         });
     </script>
 
-<div id="dialog_selector" class="dialog_selector" style="position: absolute; left: 50%; top: 79px; margin-left: -242.5px; display: none;">
-		<div class="title">
-			<h2>开始创作</h2>
-		</div>
-		<div class="content">
-			<div class="tab_view" id="tab1">
-				<div class="bookdetail">
-					<div class="product">
-						<h2 class="product_name">| VIEW照片书</h2>
-						<div class="detail">
-							<img class="c_img" src="images/1001.jpg" height="198" width="272">
-						</div>
-					</div>
-					<div class="pagecount">
-						<h2>选择页数:</h2>
-						<ul class="j_page_count">
-							<li><a href="#" page_count="24" class="j_page_count_24">24P</a></li>
-							<li><a href="#" page_count="32" class="j_page_count_32">32P</a></li>
-							<li><a href="#" page_count="48" class="j_page_count_48 cur">48P</a></li>
-							<li><a href="#" page_count="64" class="j_page_count_64">64P</a></li>
-							<li><a href="#" page_count="80" class="j_page_count_80">80P</a></li>
-							<li><a href="#" page_count="96" class="j_page_count_96">96P</a></li>
-						</ul>
-					</div>
-					<div class="info">
-						<h2 class="info_title">
-							您选择的是:48P（可编辑45P） 四色<span>98</span>元 / 六色<span>128</span>元
-						</h2>
-						<h2 style="display: block;" class="info_tips">推荐！厚度、翻阅手感好，性价比高！</h2>
-					</div>
-				</div>
-				<div class="operator_bar">
-					<h2>
-						如果您有兑换券，请 <a class="btn_to_exchange" href="#">点击这里</a>
-					</h2>
-					<a class="btn_go" href="#">开始创作</a>
-				</div>
-			</div>
-			<div class="tab_view" id="tab2" style="display: none;">
-				<div class="exchange">
-					<h2>请输入兑换券编码：</h2>
-					<div class="exchange_input">
-						<a class="btn_exchange" href="#"></a> 
-						<input>
-					</div>
-				</div>
-				<div class="exchange_bar">
-					<a class="btn_second btn_back" href="#">返回</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="j_guide" id="guide_step_upload" style="left: 341.5px; top: 188px; z-index: 9999; position: absolute; width: 531px; height: 363px; background-image: url(&quot;images/guide_step_upload.png&quot;); display: none;">
-		<a class="j_guide_close" style="top: 72px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a> 
-		<a class="j_guide_next" next="color" style="bottom: 33px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;" href="#"></a>
-	</div>
-	
-	<div class="j_guide" id="guide_step_color" style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 370px; background-image: url(images/guide_step_color.png);">
-		<a class="j_guide_close" style="top: 0px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a> 
-		<a class="j_guide_next" next="textcolor" style="bottom: 110px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;"	href="#"></a>
-	</div>
-	<div class="j_guide" id="guide_step_textcolor" style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 370px; background-image: url(images/guide_step_textcolor.png);">
-		<a class="j_guide_close" style="top: 0px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a> 
-		<a class="j_guide_next" next="style" style="bottom: 110px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;"	href="#"></a>
-	</div>
-	<div class="j_guide" id="guide_step_style"
-		style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 617px; height: 290px; background-image: url(/static/images/editor/guide/guide_step_style.png);">
-		<a class="j_guide_close"
-			style="top: 0px; right: 81px; position: absolute; width: 45px; height: 35px; display: block;"
-			href="#"></a> <a class="j_guide_next" next="pagemanger"
-			style="bottom: 34px; right: 118px; position: absolute; width: 95px; height: 35px; display: block;"
-			href="#"></a>
-	</div>
-	<div class="j_guide" id="guide_step_pagemanager"
-		style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 374px; background-image: url(/static/images/editor/guide/guide_step_pagemanager.png);">
-		<a class="j_guide_close"
-			style="top: 0px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;"
-			href="#"></a> <a class="j_guide_next" next="pagecount"
-			style="bottom: 118px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;"
-			href="#"></a>
-	</div>
-	<div class="j_guide" id="guide_step_pagecount"
-		style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 354px; background-image: url(/static/images/editor/guide/guide_step_pagecount.png);">
-		<a class="j_guide_close"
-			style="top: 65px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;"
-			href="#"></a> <a class="j_guide_next" next="thumbnail"
-			style="bottom: 32px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;"
-			href="#"></a>
-	</div>
-	<div class="j_guide" id="guide_step_thumbnail"
-		style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 374px; background-image: url(/static/images/editor/guide/guide_step_thumbnail.png);">
-		<a class="j_guide_color"
-			style="top: 0px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;"
-			href="#"></a> <a class="j_guide_next"
-			style="bottom: 110px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;"
-			href="#"></a>
-	</div>
-	<div style="display: none;" id="lightboxOverlay"></div>
-	<div style="display: none;" id="lightbox">
-		<div class="lb-outerContainer">
-			<div class="lb-container">
-				<img class="lb-image">
-				<div class="lb-nav">
-					<a class="lb-prev"></a><a class="lb-next"></a>
-				</div>
-				<div class="lb-loader">
-					<a class="lb-cancel"><img
-						src="/static/lightbox/images/loading.gif"></a>
-				</div>
-			</div>
-		</div>
-		<div class="lb-dataContainer">
-			<div class="lb-data">
-				<div class="lb-details">
-					<span class="lb-caption"></span><span class="lb-number"></span>
-				</div>
-				<div class="lb-closeContainer">
-					<a class="lb-close"><img
-						src="/static/lightbox/images/close.png"></a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--图像上传-->
-	<div is_init="true" id="uploader_dialog" class="uploader_dialog ui-draggable"
-		style="position: absolute; top: 26px; margin-top: -10000px;">
-		<div class="uploader_dialog_title">
-			<a class="uploader_close" href="javascript:;"></a>
-			<h2 style="width: 500px;">1.您正在制作的是照片书产品，最多可上传500张相片。2.单次最多可选择80张相片</h2>
-		</div>
-		<div class="uploader_dialog_content"
-			style="position: relative; height: 528px;">
-			<p
-				style="position: absolute; left: 217px; top: 20px; font-size: 12px;">
-				如果您普通上传看不到东西,可能是由于Flash插件太旧或者没安装导致,请点击<a style="color: blue;"
-					href="http://www.adobe.com/go/getflash" targer="_blank">这里</a>安装或升级，安装完成后重新打开本页面即可。
-			</p>
-			<div class="upload_type_list">
-				<div class="nav on" ref="#upload_flash" title="flash 上传">普通上传</div>
-				<div class="nav" ref="#upload_qq" id="qqupload" title="QQ传送">QQ传送</div>
-			</div>
-			<div class="upload_item_list">
-				<div style="top: 0px;" class="upload_item_show" id="upload_flash">
-					<div class="zip_uploader">
-						<object style="visibility: visible;"
-							data="/static/swf/uploader_file.swf?ver=20130524"
-							name="zip_uploader" id="zip_uploader"
-							type="application/x-shockwave-flash" align="middle" height="536"
-							width="900">
-							<param value="high" name="quality">
-							<param value="#ffffff" name="bgcolor">
-							<param value="true" name="allowfullscreen">
-							<param value="always" name="allowScriptAccess">
-							<param value="transparent" name="wmode">
-							<param value="true" name="hasPriority">
-							<param
-								value="uploadUrl=http://upload.mimoprint.com/userimage/uploadfile&amp;userId=103691&amp;worksId=168664&amp;bookId=152719&amp;maxCount=200"
-								name="flashvars">
-						</object>
-					</div>
-				</div>
-				<div class="upload_item_show"
-					style="top: -472px; overflow-y: scroll; display: none;"
-					id="upload_qq">
-					<div class="upload_item_content">
-						<ul class="upload_qq_tab">
-							<li><a id="zip" class="cur" href="#">以压缩文件方式</a></li>
-							<li><a class="" id="floder" href="#">以文件夹方式</a></li>
-						</ul>
-						<div class="upload_item_tips tab_floder" style="display: none;">
-							<h2>文件夹方式:</h2>
-							<p>
-								实时看到上传的图片,传送一张系统自动拉取一张,支持<b>边编辑边上传</b>。<br>
-								开始传送后，可以关闭本弹出框。每当一张图片传送成功后，在编辑器顶部可以看到成功上传的图片。<br>
-								【PS:推荐着急编辑的用户使用】
-							</p>
-						</div>
-						<div style="display: block;" class="upload_item_tips tab_zip">
-							<h2></h2>
-							<p>
-								推荐加QQ：1204055612 为好友，用离线文件方式传送，压缩包最大不能超过2G。过大请分批传送。 <br>【PS:必须加QQ好友，才能发送离线文件哦。】
-							</p>
-						</div>
-						<div class="upload_item_filename">
-							<span class="action_name">压缩包名称：</span><input
-								style="font-size: 24px; letter-spacing: 2px;"><a
-								href="#" class="btn_copy"></a><a
-								href="tencent://message?uin=1204055612" class="btn_send"></a><span>(上传的文件或者文件夹名称必须和左边的数字一样才可以!!)</span>
-						</div>
-						<div style="display: block;" class="upload_item_guide tab_zip">
-							<h2>以下是"以压缩文件方式传送"示例</h2>
-							<div class="upload_item_section">
-								<h2>
-									<i class="upload_item_section_step1"></i><b>新建文件夹</b>,并以上面提供的名称命名
-								</h2>
-								<img src="images/upload_qq_zip_1.jpg">
-							</div>
-							<div class="upload_item_section">
-								<h2>
-									<i class="upload_item_section_step2"></i>将要上传的图片，<b>复制到</b>刚才创建的文件夹内
-								</h2>
-								<img src="images/upload_qq_zip_2.jpg">
-							</div>
-							<div class="upload_item_section">
-								<h2>
-									<i class="upload_item_section_step3"></i>在文件夹点击鼠标右边，选择添加到“xxx.rar”，<b>压缩文件夹</b>（支持rar、zip等格式）。
-								</h2>
-								<img src="images/upload_qq_zip_3.jpg">
-							</div>
-							<div class="upload_item_section">
-								<h2>
-									<i class="upload_item_section_step4"></i><b>发送到QQ号码</b>：1204055612
-									<a href="tencent://message?uin=1204055612">[点击发送]</a>
-								</h2>
-								<img src="images/upload_qq_zip_4_2.jpg">
-							</div>
-						</div>
-						<div class="upload_item_guide tab_floder" style="display: none;">
-							<h2>以下是"以文件夹方式传送"示例</h2>
-							<div class="upload_item_section">
-								<h2>
-									<i class="upload_item_section_step1"></i><b>新建文件夹</b>,并以上面提供的名称命名
-								</h2>
-								<img src="images/upload_qq_zip_1.jpg">
-							</div>
-							<div class="upload_item_section">
-								<h2>
-									<i class="upload_item_section_step2"></i>将要上传的图片，<b>复制到</b>刚才创建的文件夹内
-								</h2>
-								<img src="images/upload_qq_zip_2.jpg">
-							</div>
-							<div class="upload_item_section">
-								<h2>
-									<i class="upload_item_section_step3"></i><b>发送到QQ号码</b>：1204055612
-									<a href="tencent://message?uin=1204055612">[点击发送]</a>
-								</h2>
-								<img src="images/upload_qq_floder_3_2.jpg">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--图像上传最小化-->
-	<div class="uploader_dialog_min" style="display: none;">
-		<span>上传图像中...<span id="uploader_dialog_min_progress">30</span>%
-		</span>
-	</div>
+
+<div id="dialog_selector" class="dialog_selector" style="position: absolute; left: 50%; top: 79px; margin-left: -242.5px; display: none;">    
+<div class="title">        <h2>开始创作</h2>    </div>    <div class="content">        <div class="tab_view" id="tab1">            
+<div class="bookdetail">                <div class="product">                    <h2 class="product_name">| VIEW照片书</h2>                    
+<div class="detail">                        
+<img class="c_img" src="/static/images/upgrade/1001.jpg" height="198" width="272">                    </div>              
+  </div>                
+  <div class="pagecount">                    <h2>选择页数:</h2>                   
+   <ul class="j_page_count"><li><a href="#" page_count="24" class="j_page_count_24">24P</a></li>
+   <li><a href="#" page_count="32" class="j_page_count_32">32P</a></li>
+   <li><a href="#" page_count="48" class="j_page_count_48 cur">48P</a>
+   </li><li><a href="#" page_count="64" class="j_page_count_64">64P</a></li>
+   <li><a href="#" page_count="80" class="j_page_count_80">80P</a></li>
+   <li><a href="#" page_count="96" class="j_page_count_96">96P</a></li>
+   </ul>                </div>               
+    <div class="info">                    
+    <h2 class="info_title">您选择的是:48P（可编辑45P） 四色<span>98</span>元 / 六色<span>128</span>元</h2>                  
+      <h2 style="display: block;" class="info_tips">推荐！厚度、翻阅手感好，性价比高！</h2>                </div>            
+      </div>            <div class="operator_bar">                <h2>如果您有兑换券，请 <a class="btn_to_exchange" href="#">点击这里</a></h2>                <a class="btn_go" href="#">开始创作</a>            </div>        </div>        <div class="tab_view" id="tab2" style="display:none;">            <div class="exchange">                <h2>请输入兑换券编码：</h2>                <div class="exchange_input">                    <a class="btn_exchange" href="#"></a>                    <input>                </div>            </div>            <div class="exchange_bar">                <a class="btn_second btn_back" href="#">返回</a>            </div>        </div>    </div></div>    <div class="j_guide" id="guide_step_upload" style="left: 341.5px; top: 188px; z-index: 9999; position: absolute; width: 531px; height: 363px; background-image: url(&quot;/static/images/editor/guide/guide_step_upload.png&quot;); display: none;">        <a class="j_guide_close" style="top: 72px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a>        <a class="j_guide_next" next="color" style="bottom: 33px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;" href="#"></a>    </div>    <div class="j_guide" id="guide_step_color" style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 370px; background-image: url(/static/images/editor/guide/guide_step_color.png);">        <a class="j_guide_close" style="top: 0px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a>        <a class="j_guide_next" next="textcolor" style="bottom: 110px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;" href="#"></a>    </div>    <div class="j_guide" id="guide_step_textcolor" style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 370px; background-image: url(/static/images/editor/guide/guide_step_textcolor.png);">        <a class="j_guide_close" style="top: 0px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a>        <a class="j_guide_next" next="style" style="bottom: 110px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;" href="#"></a>    </div>    <div class="j_guide" id="guide_step_style" style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 617px; height: 290px; background-image: url(/static/images/editor/guide/guide_step_style.png);">        <a class="j_guide_close" style="top: 0px; right: 81px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a>        <a class="j_guide_next" next="pagemanger" style="bottom: 34px; right: 118px; position: absolute; width: 95px; height: 35px; display: block;" href="#"></a>    </div>    <div class="j_guide" id="guide_step_pagemanager" style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 374px; background-image: url(/static/images/editor/guide/guide_step_pagemanager.png);">        <a class="j_guide_close" style="top: 0px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a>        <a class="j_guide_next" next="pagecount" style="bottom: 118px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;" href="#"></a>    </div>    <div class="j_guide" id="guide_step_pagecount" style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 354px; background-image: url(/static/images/editor/guide/guide_step_pagecount.png);">        <a class="j_guide_close" style="top: 65px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a>        <a class="j_guide_next" next="thumbnail" style="bottom: 32px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;" href="#"></a>    </div>    <div class="j_guide" id="guide_step_thumbnail" style="display: none; left: 0px; top: 0px; z-index: 9999; position: absolute; width: 531px; height: 374px; background-image: url(/static/images/editor/guide/guide_step_thumbnail.png);">        <a class="j_guide_color" style="top: 0px; right: 0px; position: absolute; width: 45px; height: 35px; display: block;" href="#"></a>        <a class="j_guide_next" style="bottom: 110px; right: 32px; position: absolute; width: 95px; height: 35px; display: block;" href="#"></a>    </div><div style="display: none;" id="lightboxOverlay"></div><div style="display: none;" id="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image"><div class="lb-nav"><a class="lb-prev"></a><a class="lb-next"></a></div><div class="lb-loader"><a class="lb-cancel"><img src="/static/lightbox/images/loading.gif"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"><img src="/static/lightbox/images/close.png"></a></div></div></div></div><!--图像上传--><div is_init="true" id="uploader_dialog" class="uploader_dialog ui-draggable" style="position: absolute; top: 26px; margin-top: -10000px;"><div class="uploader_dialog_title"><a class="uploader_close" href="javascript:;"></a><h2 style="width: 500px;">1.您正在制作的是照片书产品，最多可上传500张相片。2.单次最多可选择80张相片</h2></div><div class="uploader_dialog_content" style="position:relative;height:528px;"><p style="position:absolute;left:217px;top:20px; font-size:12px;">如果您普通上传看不到东西,可能是由于Flash插件太旧或者没安装导致,请点击<a style="color:blue;" href="http://www.adobe.com/go/getflash" targer="_blank">这里</a>安装或升级，安装完成后重新打开本页面即可。</p><div class="upload_type_list"><div class="nav on" ref="#upload_flash" title="flash 上传">普通上传</div><div class="nav" ref="#upload_qq" id="qqupload" title="QQ传送">QQ传送</div></div><div class="upload_item_list"><div style="top: 0px;" class="upload_item_show" id="upload_flash"><div class="zip_uploader"><object style="visibility: visible;" data="/static/swf/uploader_file.swf?ver=20130524" name="zip_uploader" id="zip_uploader" type="application/x-shockwave-flash" align="middle" height="536" width="900"><param value="high" name="quality"><param value="#ffffff" name="bgcolor"><param value="true" name="allowfullscreen"><param value="always" name="allowScriptAccess"><param value="transparent" name="wmode"><param value="true" name="hasPriority"><param value="uploadUrl=http://upload.mimoprint.com/userimage/uploadfile&amp;userId=103691&amp;worksId=168664&amp;bookId=152719&amp;maxCount=200" name="flashvars"></object></div></div>                <div class="upload_item_show" style="top: -472px; overflow-y: scroll; display: none;" id="upload_qq">                    <div class="upload_item_content">                        <ul class="upload_qq_tab">                            <li><a id="zip" class="cur" href="#">以压缩文件方式</a></li>                            <li><a class="" id="floder" href="#">以文件夹方式</a></li>                        </ul>                        <div class="upload_item_tips tab_floder" style="display: none;">                            <h2>文件夹方式:</h2>                            <p>实时看到上传的图片,传送一张系统自动拉取一张,支持<b>边编辑边上传</b>。<br>                               开始传送后，可以关闭本弹出框。每当一张图片传送成功后，在编辑器顶部可以看到成功上传的图片。<br>                              【PS:推荐着急编辑的用户使用】                            </p>                        </div>                        <div style="display: block;" class="upload_item_tips tab_zip">                            <h2></h2>                            <p>推荐加QQ：1204055612 为好友，用离线文件方式传送，压缩包最大不能超过2G。过大请分批传送。                                <br>【PS:必须加QQ好友，才能发送离线文件哦。】                            </p>                        </div>                        <div class="upload_item_filename">                            <span class="action_name">压缩包名称：</span><input style="font-size:24px;letter-spacing:2px;"><a href="#" class="btn_copy"></a><a href="tencent://message?uin=1204055612" class="btn_send"></a><span>(上传的文件或者文件夹名称必须和左边的数字一样才可以!!)</span>                        </div>                        <div style="display: block;" class="upload_item_guide tab_zip">                            <h2>以下是"以压缩文件方式传送"示例</h2>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step1"></i><b>新建文件夹</b>,并以上面提供的名称命名</h2>                                <img src="/static/images/upload/upload_qq_zip_1.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step2"></i>将要上传的图片，<b>复制到</b>刚才创建的文件夹内</h2>                                <img src="/static/images/upload/upload_qq_zip_2.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step3"></i>在文件夹点击鼠标右边，选择添加到“xxx.rar”，<b>压缩文件夹</b>（支持rar、zip等格式）。</h2>                                <img src="/static/images/upload/upload_qq_zip_3.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step4"></i><b>发送到QQ号码</b>：1204055612 <a href="tencent://message?uin=1204055612">[点击发送]</a></h2>                                <img src="/static/images/upload/upload_qq_zip_4_2.jpg">                            </div>                        </div>                        <div class="upload_item_guide tab_floder" style="display: none;">                            <h2>以下是"以文件夹方式传送"示例</h2>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step1"></i><b>新建文件夹</b>,并以上面提供的名称命名</h2>                                <img src="/static/images/upload/upload_qq_zip_1.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step2"></i>将要上传的图片，<b>复制到</b>刚才创建的文件夹内</h2>                                <img src="/static/images/upload/upload_qq_zip_2.jpg">                            </div>                            <div class="upload_item_section">                                <h2><i class="upload_item_section_step3"></i><b>发送到QQ号码</b>：1204055612 <a href="tencent://message?uin=1204055612">[点击发送]</a></h2>                                <img src="/static/images/upload/upload_qq_floder_3_2.jpg">                            </div>                        </div>                    </div>                </div></div></div></div><!--图像上传最小化--><div class="uploader_dialog_min" style="display: none;"><span>上传图像中...<span id="uploader_dialog_min_progress">30</span>%</span></div></body>
 </html>

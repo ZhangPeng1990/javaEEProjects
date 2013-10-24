@@ -1,11 +1,11 @@
 /**
- * Êé±¾ÅäÖÃ
+ * ä¹¦æœ¬é…ç½®
  * @author masa
  * @namespace mimo.Upgrade
- * @description Êé±¾ÅäÖÃ
+ * @description ä¹¦æœ¬é…ç½®
  */
 mimo.Config = {
-    //PÊıÄ¿
+    //Pæ•°ç›®
     book_page: {
         "1000": [36, 48],
         "1001": [32, 48, 64, 80, 96],
@@ -22,14 +22,14 @@ mimo.Config = {
 };
 
 /**
- * ¹æ¸ñÑ¡Ôñ
+ * è§„æ ¼é€‰æ‹©
  * @author masa
  * @namespace mimo.Editor.Guider
- * @description ¹æ¸ñÑ¡Ôñ
+ * @description è§„æ ¼é€‰æ‹©
  */
 mimo.Editor.Guider = {
 
-    //PÊı
+    //Pæ•°
     book_page: {
         "1000": [24, 36, 48],
         "1001": [24, 32, 48, 64, 80, 96],
@@ -69,7 +69,7 @@ mimo.Editor.Guider = {
             '1005': 'mPad'
         };
 
-        $('.dialog_selector .product_name').html("| "+m[productId] + 'ÕÕÆ¬Êé');
+        $('.dialog_selector .product_name').html("| "+m[productId] + 'ç…§ç‰‡ä¹¦');
     },
 
     setPageCount: function (productId) {
@@ -101,12 +101,12 @@ mimo.Editor.Guider = {
     changePrice: function (productId) {
         var p = mimo.Editor.Guider;
         if (productId == 1003) {
-            $(".dialog_selector .info .info_title").html("ÄúÑ¡ÔñµÄÊÇmCard²úÆ·£¬8ÕÅ/Ì×£¬±à¼­ÖĞ¿ÉÔö¼ÓÌ×Êı");
+            $(".dialog_selector .info .info_title").html("æ‚¨é€‰æ‹©çš„æ˜¯mCardäº§å“ï¼Œ8å¼ /å¥—ï¼Œç¼–è¾‘ä¸­å¯å¢åŠ å¥—æ•°");
             $(".dialog_selector .info .info_tips").hide();
             return;
         }
-        //ÄúÑ¡ÔñµÄÊÇ:60P(¿É±à¼­57P) ËÄÉ«<span>128</span>Ôª / ÁùÉ«<span>138</span>Ôª
-        var tpl = 'ÄúÑ¡ÔñµÄÊÇ:{p}P£¨¿É±à¼­{r_p}P£© ËÄÉ«<span>{price_4}</span>Ôª / ÁùÉ«<span>{price_6}</span>Ôª';
+        //æ‚¨é€‰æ‹©çš„æ˜¯:60P(å¯ç¼–è¾‘57P) å››è‰²<span>128</span>å…ƒ / å…­è‰²<span>138</span>å…ƒ
+        var tpl = 'æ‚¨é€‰æ‹©çš„æ˜¯:{p}Pï¼ˆå¯ç¼–è¾‘{r_p}Pï¼‰ å››è‰²<span>{price_4}</span>å…ƒ / å…­è‰²<span>{price_6}</span>å…ƒ';
         var t = window.JSONPrice;
         var obj = {
             "p": p.cur_page,
@@ -119,7 +119,7 @@ mimo.Editor.Guider = {
             mimo.Template.format(tpl, obj)
             );
 
-        //ÍÆ¼öÎÄ±¾
+        //æ¨èæ–‡æœ¬
         $('.info_tips').hide();
         if (p.cur_page == p.remm_page[p.cur_productId]) {
             $('.info_tips').fadeIn(500);
@@ -143,19 +143,19 @@ mimo.Editor.Guider = {
 
     addEvent: function () {
         var p = mimo.Editor.Guider;
-        //¶Ò»»
+        //å…‘æ¢
         $(".dialog_selector .btn_to_exchange").click(function (e) {
             e.preventDefault();
             p.selectView(1);
         });
 
-        //·µ»Ø
+        //è¿”å›
         $(".dialog_selector .btn_back").click(function (e) {
             e.preventDefault();
             p.selectView(0);
         });
 
-        //¿ªÊ¼´´×÷
+        //å¼€å§‹åˆ›ä½œ
         $('.dialog_selector .btn_go').click(function (e) {
             e.preventDefault();
             if (window.ProductId == 1003) {
@@ -191,27 +191,27 @@ mimo.Editor.Guider = {
             });
         });
 
-        //¶Ò»»
+        //å…‘æ¢
         $('.dialog_selector .btn_exchange').click(function (e) {
             e.preventDefault();
 
             var code = $(".exchange_input input").val();
             if (code.length == 0) {
-                alert("±ğµ·ÂÒÁË°¡,¹Ô¹ÔÊäÈë¶Ò»»È¯±àÂë°É!");
+                alert("åˆ«æ£ä¹±äº†å•Š,ä¹–ä¹–è¾“å…¥å…‘æ¢åˆ¸ç¼–ç å§!");
                 return;
             }
 
             var works_id = window.WorksId || 0;
             var user_id = window.UserId || 0;
 
-            //ºóÌ¨ÇëÇó
+            //åå°è¯·æ±‚
             $.ajax({
                 type: "POST",
                 url: "/editor/exchange",
                 data: { "code": code, "works_id": works_id, "user_id":user_id, "product_id":window.ProductId },
                 dataType: "json",
                 success: function (response) {
-                    //ÑéÖ¤Í¨¹ı,¿ªÆôÍÆ¼öÏµÍ³
+                    //éªŒè¯é€šè¿‡,å¼€å¯æ¨èç³»ç»Ÿ
                     if (response.ret == 0) {
                         p.hide();
                         mimo.Upgrade.bootstrap(code, response.product_code);
@@ -220,7 +220,7 @@ mimo.Editor.Guider = {
                     }
                 },
                 error: function () {
-                    alert("ÍøÂç»òÕßÏµÍ³Òì³£");
+                    alert("ç½‘ç»œæˆ–è€…ç³»ç»Ÿå¼‚å¸¸");
                 }
             });
             
@@ -230,19 +230,19 @@ mimo.Editor.Guider = {
 mimo.Editor.Guider.html = '\
 <div id="dialog_selector" class="dialog_selector" style="display: none;">\
     <div class="title">\
-        <h2>¿ªÊ¼´´×÷</h2>\
+        <h2>å¼€å§‹åˆ›ä½œ</h2>\
     </div>\
     <div class="content">\
         <div class="tab_view" id="tab1">\
             <div class="bookdetail">\
                 <div class="product">\
-                    <h2 class="product_name">|MINIÕÕÆ¬Êé</h2>\
+                    <h2 class="product_name">|MINIç…§ç‰‡ä¹¦</h2>\
                     <div class="detail">\
                         <img class="c_img" src="/static/images/widebook_mid_03.jpg" width="272" height="198" />\
                     </div>\
                 </div>\
                 <div class="pagecount">\
-                    <h2>Ñ¡ÔñÒ³Êı:</h2>\
+                    <h2>é€‰æ‹©é¡µæ•°:</h2>\
                     <ul class="j_page_count">\
                         <li><a href="#">32P</a></li>\
                         <li><a href="#">48P</a></li>\
@@ -253,25 +253,25 @@ mimo.Editor.Guider.html = '\
                     </ul>\
                 </div>\
                 <div class="info">\
-                    <h2 class="info_title">ÄúÑ¡ÔñµÄÊÇ:60P(¿É±à¼­57P) ËÄÉ«<span>128</span>Ôª / ÁùÉ«<span>138</span>Ôª</h2>\
-                    <h2 class="info_tips">ÍÆ¼ö£¡ºñ¶È¡¢·­ÔÄÊÖ¸ĞºÃ£¬ĞÔ¼Û±È¸ß£¡</h2>\
+                    <h2 class="info_title">æ‚¨é€‰æ‹©çš„æ˜¯:60P(å¯ç¼–è¾‘57P) å››è‰²<span>128</span>å…ƒ / å…­è‰²<span>138</span>å…ƒ</h2>\
+                    <h2 class="info_tips">æ¨èï¼åšåº¦ã€ç¿»é˜…æ‰‹æ„Ÿå¥½ï¼Œæ€§ä»·æ¯”é«˜ï¼</h2>\
                 </div>\
             </div>\
             <div class="operator_bar">\
-                <h2>Èç¹ûÄúÓĞ¶Ò»»È¯£¬Çë <a class="btn_to_exchange" href="#">µã»÷ÕâÀï</a></h2>\
-                <a class="btn_go" href="#">¿ªÊ¼´´×÷</a>\
+                <h2>å¦‚æœæ‚¨æœ‰å…‘æ¢åˆ¸ï¼Œè¯· <a class="btn_to_exchange" href="#">ç‚¹å‡»è¿™é‡Œ</a></h2>\
+                <a class="btn_go" href="#">å¼€å§‹åˆ›ä½œ</a>\
             </div>\
         </div>\
         <div class="tab_view" id="tab2" style="display:none;">\
             <div class="exchange">\
-                <h2>ÇëÊäÈë¶Ò»»È¯±àÂë£º</h2>\
+                <h2>è¯·è¾“å…¥å…‘æ¢åˆ¸ç¼–ç ï¼š</h2>\
                 <div class="exchange_input">\
                     <a class="btn_exchange" href="#"></a>\
                     <input />\
                 </div>\
             </div>\
             <div class="exchange_bar">\
-                <a class="btn_second btn_back" href="#">·µ»Ø</a>\
+                <a class="btn_second btn_back" href="#">è¿”å›</a>\
             </div>\
         </div>\
     </div>\
@@ -280,87 +280,87 @@ mimo.Editor.Guider.html = '\
 
 
 /**
- * ÍÆ¼öÏµÍ³
+ * æ¨èç³»ç»Ÿ
  * @author masa
  * @namespace mimo.Upgrade
- * @description ÍÆ¼öÏµÍ³
+ * @description æ¨èç³»ç»Ÿ
  */
 mimo.Upgrade = {
-    //²úÆ·ĞÅÏ¢
+    //äº§å“ä¿¡æ¯
     product_info: {
         "1000": {
             "id": 1000,
             "name": "MINI",
-            "size": "14.2 ¡Á 14.2cm",
-            "spine_type": "ÈíÆ¤¾«×°",
-            "cover_type": "Í­°æÖ½¸²ÑÆÄ¤",
-            "page_type": "ÎÂÅ¯ÊÖ¸ĞÌØÖÖÖ½ Å·ÖŞ½ø¿ÚÖ½",
-            "advantage": "CD³ß´ç´óĞ¡£¬Çá±ãĞ¡ÇÉ",
+            "size": "14.2 Ã— 14.2cm",
+            "spine_type": "è½¯çš®ç²¾è£…",
+            "cover_type": "é“œç‰ˆçº¸è¦†å“‘è†œ",
+            "page_type": "æ¸©æš–æ‰‹æ„Ÿç‰¹ç§çº¸ æ¬§æ´²è¿›å£çº¸",
+            "advantage": "CDå°ºå¯¸å¤§å°ï¼Œè½»ä¾¿å°å·§",
             "link": "/product/minibook",
             "recom": [36, 4]
         },
         "1001": {
             "id": 1001,
             "name": "VIEW",
-            "size": "20 ¡Á 14.2cm",
-            "spine_type": "ÈíÆ¤¾«×°",
-            "cover_type": "Í­°æÖ½¸²ÑÆÄ¤",
-            "page_type": "ÎÂÅ¯ÊÖ¸ĞÌØÖÖÖ½ Å·ÖŞ½ø¿ÚÖ½",
-            "advantage": "¾­µäºá°æÉè¼Æ£¬¸üºÃµØ³ÊÏÖÕÕÆ¬",
+            "size": "20 Ã— 14.2cm",
+            "spine_type": "è½¯çš®ç²¾è£…",
+            "cover_type": "é“œç‰ˆçº¸è¦†å“‘è†œ",
+            "page_type": "æ¸©æš–æ‰‹æ„Ÿç‰¹ç§çº¸ æ¬§æ´²è¿›å£çº¸",
+            "advantage": "ç»å…¸æ¨ªç‰ˆè®¾è®¡ï¼Œæ›´å¥½åœ°å‘ˆç°ç…§ç‰‡",
             "link": "/product/viewbook",
             "recom": [48, 4]
         },
         "1003": {
             "id": 1003,
             "name": "mCard",
-            "size": "14.5cm ¡Á 10.5cm",
-            "spine_type": "ÎŞ",
-            "cover_type": "µ¥ÕÅ¿¨Æ¬£¬Ë«Ãæ²ÊÉ«Ó¡Ë¢",
-            "page_type": "ÎÂÅ¯ÊÖ¸ĞÌØÖÖÖ½",
-            "advantage": "ºáÊúÁ½¿î ËæÏëËæ×ö",
+            "size": "14.5cm Ã— 10.5cm",
+            "spine_type": "æ— ",
+            "cover_type": "å•å¼ å¡ç‰‡ï¼ŒåŒé¢å½©è‰²å°åˆ·",
+            "page_type": "æ¸©æš–æ‰‹æ„Ÿç‰¹ç§çº¸",
+            "advantage": "æ¨ªç«–ä¸¤æ¬¾ éšæƒ³éšåš",
             "link": "/product/mcard",
             "recom": [8, 4]
         },
         "1004": {
             "id": 1004,
             "name": "WIDE",
-            "size": "28 ¡Á 21cm£¨12 ¡Á 8 Ó¢´ç£©",
-            "spine_type": "Ó²¿Ç¾«×°",
-            "cover_type": "Í­°æÖ½¸²ÑÆÄ¤",
-            "page_type": "ÃÀ¹úÈ«¾°Ö½ Å·ÖŞ½ø¿ÚÖ½",
-            "advantage": "180¶ÈÆ½Ì¯£¬´óÊÓ¾õÏíÊÜ",
+            "size": "28 Ã— 21cmï¼ˆ12 Ã— 8 è‹±å¯¸ï¼‰",
+            "spine_type": "ç¡¬å£³ç²¾è£…",
+            "cover_type": "é“œç‰ˆçº¸è¦†å“‘è†œ",
+            "page_type": "ç¾å›½å…¨æ™¯çº¸ æ¬§æ´²è¿›å£çº¸",
+            "advantage": "180åº¦å¹³æ‘Šï¼Œå¤§è§†è§‰äº«å—",
             "link": "/product/widebook",
             "recom": [36, 4]
         },
         "1005": {
             "id": 1005,
             "name": "mPad",
-            "size": "18 ¡Á 25cm£¨7 ¡Á 10Ó¢´ç£©",
-            "spine_type": "ÈíÆ¤Êé¼®¾«×°",
-            "cover_type": "Í­°æÖ½¸²ÑÆÄ¤",
-            "page_type": "ÇáÈáÌØÖÖÖ½",
-            "advantage": "Çá±¡¡¢ÇåĞÂ¡¢ÇáÈá",
+            "size": "18 Ã— 25cmï¼ˆ7 Ã— 10è‹±å¯¸ï¼‰",
+            "spine_type": "è½¯çš®ä¹¦ç±ç²¾è£…",
+            "cover_type": "é“œç‰ˆçº¸è¦†å“‘è†œ",
+            "page_type": "è½»æŸ”ç‰¹ç§çº¸",
+            "advantage": "è½»è–„ã€æ¸…æ–°ã€è½»æŸ”",
             "link": "/product/mpadbook",
             "recom": [36, 4]
         }
     },
 
-    //Ô­²úÆ·
+    //åŸäº§å“
     cur_origin: {
         id: null,
         page: null,
         color: null
     },
 
-    //Éı¼¶²úÆ·
+    //å‡çº§äº§å“
     cur_new: {
         id: null,
         page: null,
         color: null
     },
-    //µ±Ç°¶Ò»»È¯±àÂë
+    //å½“å‰å…‘æ¢åˆ¸ç¼–ç 
     cur_code: null,
-    //µ±Ç°¶Ò»»²úÆ·±àÂë
+    //å½“å‰å…‘æ¢äº§å“ç¼–ç 
     cur_product_code: null,
     offset_price: 0,
 
@@ -375,7 +375,7 @@ mimo.Upgrade = {
         p.initProduct();
 
     },
-    // ½âÎö²úÆ·±àÂë
+    // è§£æäº§å“ç¼–ç 
     parseProductCode: function (product_code) {
         var p = mimo.Upgrade;
         var a = product_code.split("_");
@@ -451,7 +451,7 @@ mimo.Upgrade = {
         var c = mimo.Upgrade.product_info[productId];
         var h = [];
         for (var i = 0; i < t.length; i++) {
-            h.push('<li><a href="#" color="' + t[i] + '" class="j_page_color_' + t[i] + '">' + (t[i] == "4" ? "ËÄÉ«" : "ÁùÉ«") + '</a></li>');
+            h.push('<li><a href="#" color="' + t[i] + '" class="j_page_color_' + t[i] + '">' + (t[i] == "4" ? "å››è‰²" : "å…­è‰²") + '</a></li>');
         }
         $(".upgrade_pagecount ul.j_page_color").html(h.join(""));
         $(".upgrade_pagecount ul.j_page_color a.j_page_color_" + c.recom[1]).addClass("cur");
@@ -475,9 +475,9 @@ mimo.Upgrade = {
         var price = d[p.cur_product_code];
         p.cur_o_price = price;
 
-        //²úÆ·ÇøÓò
-        $(".upgrade_origin .c_detail").html(c.name + " " + (t[2] == 4 ? "ËÄÉ«" : "ÁùÉ«") + " " + t[1] + "P");
-        $(".upgrade_origin .c_price").html(price + "Ôª");
+        //äº§å“åŒºåŸŸ
+        $(".upgrade_origin .c_detail").html(c.name + " " + (t[2] == 4 ? "å››è‰²" : "å…­è‰²") + " " + t[1] + "P");
+        $(".upgrade_origin .c_price").html(price + "å…ƒ");
 
         p.cur_origin = {
             id: t[0],
@@ -494,16 +494,16 @@ mimo.Upgrade = {
         var new_price = t[[p.cur_new.id, p.cur_new.page, p.cur_new.color].join("_")];
         var offset_price = new_price - o_price;
         p.offset_price = offset_price;
-        //ÏÔÊ¾¼Û¸ñ
+        //æ˜¾ç¤ºä»·æ ¼
 
-        //²úÆ·ÇøÓò
-        $(".upgrade_new .c_detail").html(c.name + " " + (p.cur_new.color == 4 ? "ËÄÉ«" : "ÁùÉ«") + " " + p.cur_new.page + "P");
-        $(".upgrade_new .c_price").html(new_price + "Ôª");
+        //äº§å“åŒºåŸŸ
+        $(".upgrade_new .c_detail").html(c.name + " " + (p.cur_new.color == 4 ? "å››è‰²" : "å…­è‰²") + " " + p.cur_new.page + "P");
+        $(".upgrade_new .c_price").html(new_price + "å…ƒ");
 
-        //ÖĞ¼äÇøÓò
+        //ä¸­é—´åŒºåŸŸ
         $(".c_offset_money").html(offset_price);
 
-        //µ×²¿ÇøÓò
+        //åº•éƒ¨åŒºåŸŸ
         $(".c_hl_price").html(new_price);
         $(".c_hl_offset_money").html(offset_price);
 
@@ -515,11 +515,11 @@ mimo.Upgrade = {
         var p = mimo.Upgrade;
 
         if (p.offset_price < 0) {
-            alert("°¥Ñ½,ÎÒÃÇ²»Ö§³Ö²úÆ·½µ¼¶Å¶");
+            alert("å“å‘€,æˆ‘ä»¬ä¸æ”¯æŒäº§å“é™çº§å“¦");
             return;
         }
 
-        //Éı¼¶³É²»Í¬µÄ²úÆ·
+        //å‡çº§æˆä¸åŒçš„äº§å“
         if (p.cur_origin.id != p.cur_new.id) {
             $.ajax({
                 type: "POST",
@@ -528,17 +528,17 @@ mimo.Upgrade = {
                 dataType: "json",
                 success: function (response) {
                     if (response.ret == 0) {
-                        alert("Éı¼¶³É¹¦,µã»÷ºóÌø×ª");
+                        alert("å‡çº§æˆåŠŸ,ç‚¹å‡»åè·³è½¬");
                         window.location.href = '/editor/exchangeredirect?product_id=' + p.cur_new.id + '&page=' + p.cur_new.page + '&code=' + p.cur_code;
                     } else {
-                        alert("Ò»¶¨ÊÇÄÄÀï³öÎÊÌâÁË");
+                        alert("ä¸€å®šæ˜¯å“ªé‡Œå‡ºé—®é¢˜äº†");
                     }
                 }
             });
 
 
-        } else if (p.cur_origin.id == p.cur_new.id) {//Éı¼¶³ÉÍ¬Àà²úÆ·
-            //Ò³Êı²»Í¬
+        } else if (p.cur_origin.id == p.cur_new.id) {//å‡çº§æˆåŒç±»äº§å“
+            //é¡µæ•°ä¸åŒ
             if (p.cur_origin.page != p.cur_new.page) {
                 mimo.Editor.PreviewList.changePage(p.cur_new.page);
                 p.hide();
@@ -548,7 +548,7 @@ mimo.Upgrade = {
         }
 
     },
-    // ÔİÊ±²»Éı¼¶
+    // æš‚æ—¶ä¸å‡çº§
     unUpgrade: function () {
         var p = mimo.Upgrade;
         if (p.cur_origin.page != p.cur_new.page) {
@@ -586,46 +586,46 @@ mimo.Upgrade = {
 mimo.Upgrade.html = '\
     <div id="dialog_upgrade" class="dialog_upgrade" style="display: none;">\
         <div class="upgrade_title">\
-            <h2>²¹²î¼Û£¬¼´¿ÉÉı¼¶³ÉÆäËü¹æ¸ñ²úÆ·</h2>\
+            <h2>è¡¥å·®ä»·ï¼Œå³å¯å‡çº§æˆå…¶å®ƒè§„æ ¼äº§å“</h2>\
         </div>\
         <div class="upgrade_content">\
             <div class="upgrade_bookdetail">\
                 <div class="upgrade_product upgrade_origin">\
-                    <h2>| ¶Ò»»È¯Ô­²úÆ·</h2>\
+                    <h2>| å…‘æ¢åˆ¸åŸäº§å“</h2>\
                     <div class="upgrade_detail">\
                         <img class="c_img" src="/static/images/widebook_mid_03.jpg" width="210" height="150" />\
-                        <div class="price_info"><span class="price c_price">48Ôª</span><span class="detail c_detail">mini ËÄÉ« 24P</span></div>\
+                        <div class="price_info"><span class="price c_price">48å…ƒ</span><span class="detail c_detail">mini å››è‰² 24P</span></div>\
                     </div>\
                     <p>\
-                        ²úÆ·³ß´ç£º <span class="c_size">343</span><br />\
-                        ×°¶©·½Ê½£º <span class="c_spine_type">Ó²¿Ç½ğ×°</span><br />\
-                        ·âÃæÖÆ²Ä£º <span class="c_cover_type">Í¬°à</span><br />\
-                        ÄÚÒ³ÖÆ²Ä£º <span class="c_page_type">·Å´ó ´ó·ù¶È</span><br />\
-                        ÌØ¡¡¡¡µã£º <span class="c_advantage">´ò·¢´ò·¢´ó·ù¶È</span><br />\
-                        <a class="c_link" href="#" target="_blank">²é¿´¸ü¶àÏêÏ¸ĞÅÏ¢>></a>\
+                        äº§å“å°ºå¯¸ï¼š <span class="c_size">343</span><br />\
+                        è£…è®¢æ–¹å¼ï¼š <span class="c_spine_type">ç¡¬å£³é‡‘è£…</span><br />\
+                        å°é¢åˆ¶æï¼š <span class="c_cover_type">åŒç­</span><br />\
+                        å†…é¡µåˆ¶æï¼š <span class="c_page_type">æ”¾å¤§ å¤§å¹…åº¦</span><br />\
+                        ç‰¹ã€€ã€€ç‚¹ï¼š <span class="c_advantage">æ‰“å‘æ‰“å‘å¤§å¹…åº¦</span><br />\
+                        <a class="c_link" href="#" target="_blank">æŸ¥çœ‹æ›´å¤šè¯¦ç»†ä¿¡æ¯>></a>\
                     </p>\
                 </div>\
                 <div class="upgrade_up">\
                     <img src="/static/images/upgrade/upgrade_up.png" />\
-                    <p><span>¡ïÖ»Ğè¼Ó<span class="c_offset_money">10</span>Ôª</span></p>\
+                    <p><span>â˜…åªéœ€åŠ <span class="c_offset_money">10</span>å…ƒ</span></p>\
                 </div>\
                 <div class="upgrade_product upgrade_new">\
-                    <h2>|Éı¼¶²úÆ·</h2>\
+                    <h2>|å‡çº§äº§å“</h2>\
                     <div class="upgrade_detail">\
                         <img class="c_img" src="/static/images/widebook_mid_03.jpg" width="210" height="150" />\
-                        <div class="price_info"><span class="price c_price">48Ôª</span><span class="detail c_detail">mini ËÄÉ« 24P</span></div>\
+                        <div class="price_info"><span class="price c_price">48å…ƒ</span><span class="detail c_detail">mini å››è‰² 24P</span></div>\
                     </div>\
                     <p>\
-                        ²úÆ·³ß´ç£º <span class="c_size">343</span><br />\
-                        ×°¶©·½Ê½£º <span class="c_spine_type">Ó²¿Ç½ğ×°</span><br />\
-                        ·âÃæÖÆ²Ä£º <span class="c_cover_type">Í¬°à</span><br />\
-                        ÄÚÒ³ÖÆ²Ä£º <span class="c_page_type">·Å´ó ´ó·ù¶È</span><br />\
-                        ÌØ¡¡¡¡µã£º <span class="c_advantage">´ò·¢´ò·¢´ó·ù¶È</span><br />\
-                        <a class="c_link" href="#" target="_blank">²é¿´¸ü¶àÏêÏ¸ĞÅÏ¢>></a>\
+                        äº§å“å°ºå¯¸ï¼š <span class="c_size">343</span><br />\
+                        è£…è®¢æ–¹å¼ï¼š <span class="c_spine_type">ç¡¬å£³é‡‘è£…</span><br />\
+                        å°é¢åˆ¶æï¼š <span class="c_cover_type">åŒç­</span><br />\
+                        å†…é¡µåˆ¶æï¼š <span class="c_page_type">æ”¾å¤§ å¤§å¹…åº¦</span><br />\
+                        ç‰¹ã€€ã€€ç‚¹ï¼š <span class="c_advantage">æ‰“å‘æ‰“å‘å¤§å¹…åº¦</span><br />\
+                        <a class="c_link" href="#" target="_blank">æŸ¥çœ‹æ›´å¤šè¯¦ç»†ä¿¡æ¯>></a>\
                     </p>\
                 </div>\
                 <div class="upgrade_pagecount">\
-                    <h2>Ñ¡ÔñÒ³Êı£º</h2>\
+                    <h2>é€‰æ‹©é¡µæ•°ï¼š</h2>\
                     <ul class="j_page_count">\
                         <li><a href="#">32P</a></li>\
                         <li><a href="#">48P</a></li>\
@@ -634,16 +634,16 @@ mimo.Upgrade.html = '\
                         <li><a href="#">96P</a></li>\
                         <li><a href="#" class="cur">40P</a></li>\
                     </ul>\
-                    <h2>Ó¡Ë¢É«²Ê£º</h2>\
+                    <h2>å°åˆ·è‰²å½©ï¼š</h2>\
                     <ul class="j_page_color">\
-                        <li><a href="#">ËÄÉ«</a></li>\
-                        <li><a href="#">ÁùÉ«</a></li>\
+                        <li><a href="#">å››è‰²</a></li>\
+                        <li><a href="#">å…­è‰²</a></li>\
                     </ul>\
                 </div>\
             </div>\
             <div class="upgrade_selector">\
                 <div class="upgrade_selector_title">\
-                    <h2>Äú»¹¿ÉÒÔÑ¡ÔñÉı¼¶³ÉÒÔÏÂÆäËü×÷Æ·£º</h2>\
+                    <h2>æ‚¨è¿˜å¯ä»¥é€‰æ‹©å‡çº§æˆä»¥ä¸‹å…¶å®ƒä½œå“ï¼š</h2>\
                 </div>\
                 <ul>\
                     <li><a href="#" product_id="1000">\
@@ -656,8 +656,8 @@ mimo.Upgrade.html = '\
                         <img src="/static/images/upgrade/upgrade_mpad.png" /></a></li>\
                 </ul>\
                 <div class="upgrade_oprator">\
-                    <a class="btn_upgrade" href="#">ÂíÉÏÉı¼¶</a><a href="#" class="btn_go_on">ÔİÊ±²»Éı¼¶,¼ÌĞø´´×÷</a>\
-                    <p><span>Ô­¼Û<span class="hl_price c_hl_price">58</span>Ôª£¬ÏÖÖ»Òª<span class="hl_price c_hl_offset_money">10</span>Ôª£¬¼´¿ÉÓµÓĞ£¡</span></p>\
+                    <a class="btn_upgrade" href="#">é©¬ä¸Šå‡çº§</a><a href="#" class="btn_go_on">æš‚æ—¶ä¸å‡çº§,ç»§ç»­åˆ›ä½œ</a>\
+                    <p><span>åŸä»·<span class="hl_price c_hl_price">58</span>å…ƒï¼Œç°åªè¦<span class="hl_price c_hl_offset_money">10</span>å…ƒï¼Œå³å¯æ‹¥æœ‰ï¼</span></p>\
                 </div>\
             </div>\
         </div>\

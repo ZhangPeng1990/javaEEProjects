@@ -1,6 +1,6 @@
-///ÉÏ´«Íê³ÉÁË¶àÉÙÕÅÍ¼Æ¬
+///ä¸Šä¼ å®Œæˆäº†å¤šå°‘å¼ å›¾ç‰‡
 var upload_num = 0;
-//Flash¿ìËÙÉÏ´«¿Ø¼ş
+//Flashå¿«é€Ÿä¸Šä¼ æ§ä»¶
 Uploader = {
     id: 'zip_uploader',
     userId: 0,
@@ -77,7 +77,7 @@ Uploader = {
             Uploader.uploadingBar.show();
         }
     },
-    //ÉÏ´«½ø¶ÈÌõ
+    //ä¸Šä¼ è¿›åº¦æ¡
     uploadingBar: {
         show: function () {
             $("#upload_bar_holder").fadeIn();
@@ -101,7 +101,7 @@ Uploader = {
         $(".uploader_dialog_min").show();
         Uploader.close();
     },
-    //ÕıÔÚÉÏ´«£¨·µ»Øµ±Ç°½ø¶È°Ù·Ö±È£©
+    //æ­£åœ¨ä¸Šä¼ ï¼ˆè¿”å›å½“å‰è¿›åº¦ç™¾åˆ†æ¯”ï¼‰
     onProgress: function (p) {
         $("#bar_percent").text(p);
         $("#upload_curr_bar").css("width", (p * 2) + "px");
@@ -121,7 +121,7 @@ Uploader = {
         }
     },
     createContent: function () {
-        //ÉèÖÃÎ»ÖÃ
+        //è®¾ç½®ä½ç½®
         var item = $("#uploader_dialog");
         var topPx = ($(window).height() / 2 - item.height() / 2) + $(document).scrollTop();
         if (topPx < 10) {
@@ -195,145 +195,145 @@ Uploader = {
     },
     extend: {
         data: {
-            uploader_dialog_Id: '#uploader_dialog', //ÉÏ´«¿òÈİÆ÷
-            uploader_dialog_nav: 'div.upload_type_list .nav', //µ¯³ö¿ò¶¥²¿·ÖÀà±êÇ©
-            nav_qq_Id: '#qqupload',   //QQÉÏ´«nav
-            tip_pos_Id: '#mod_thumbnail_btn_prev', //ÉÏ´«Íê³Éµ¯³öÌáÊ¾Î»ÖÃ
-            tip_Id: '#upload_tips',  //µ¯³öÌáÊ¾id
-            IS_UPLOADING: false //ÊÇ·ñÕıÔÚÉÏ´«
+            uploader_dialog_Id: '#uploader_dialog', //ä¸Šä¼ æ¡†å®¹å™¨
+            uploader_dialog_nav: 'div.upload_type_list .nav', //å¼¹å‡ºæ¡†é¡¶éƒ¨åˆ†ç±»æ ‡ç­¾
+            nav_qq_Id: '#qqupload',   //QQä¸Šä¼ nav
+            tip_pos_Id: '#mod_thumbnail_btn_prev', //ä¸Šä¼ å®Œæˆå¼¹å‡ºæç¤ºä½ç½®
+            tip_Id: '#upload_tips',  //å¼¹å‡ºæç¤ºid
+            IS_UPLOADING: false //æ˜¯å¦æ­£åœ¨ä¸Šä¼ 
         },
         initDialog: function (role, opentype, filename) {
             Uploader.fixMacSafari();
             mimo.Loader.importStyle("/static/css/upload.css", "");
-            //ÉÏ´«µ¯³ö¿òhtml
-            var uploader_dialog_html = '<!--Í¼ÏñÉÏ´«-->'
+            //ä¸Šä¼ å¼¹å‡ºæ¡†html
+            var uploader_dialog_html = '<!--å›¾åƒä¸Šä¼ -->'
             + '<div id="uploader_dialog" class="uploader_dialog" style="margin-top: -10000px;display: none; position:absolute;">'
                 + '<div class="uploader_dialog_title">'
                        + '<a class="uploader_close" href="javascript:;"></a>'
-                    + '<h2 style="width: 500px;">1.ÄúÕıÔÚÖÆ×÷µÄÊÇÕÕÆ¬Êé²úÆ·£¬×î¶à¿ÉÉÏ´«500ÕÅÏàÆ¬¡£2.µ¥´Î×î¶à¿ÉÑ¡Ôñ80ÕÅÏàÆ¬</h2>'
+                    + '<h2 style="width: 500px;">1.æ‚¨æ­£åœ¨åˆ¶ä½œçš„æ˜¯ç…§ç‰‡ä¹¦äº§å“ï¼Œæœ€å¤šå¯ä¸Šä¼ 500å¼ ç›¸ç‰‡ã€‚2.å•æ¬¡æœ€å¤šå¯é€‰æ‹©80å¼ ç›¸ç‰‡</h2>'
                 + '</div>'
                 + '<div class="uploader_dialog_content" style="position:relative;height:' + Uploader.contentHeight + 'px;">'
-                    + '<p style="position:absolute;left:217px;top:20px; font-size:12px;">Èç¹ûÄúÆÕÍ¨ÉÏ´«¿´²»µ½¶«Î÷,¿ÉÄÜÊÇÓÉÓÚFlash²å¼şÌ«¾É»òÕßÃ»°²×°µ¼ÖÂ,Çëµã»÷<a style="color:blue;" href="http://www.adobe.com/go/getflash" targer="_blank">ÕâÀï</a>°²×°»òÉı¼¶£¬°²×°Íê³ÉºóÖØĞÂ´ò¿ª±¾Ò³Ãæ¼´¿É¡£</p>'
+                    + '<p style="position:absolute;left:217px;top:20px; font-size:12px;">å¦‚æœæ‚¨æ™®é€šä¸Šä¼ çœ‹ä¸åˆ°ä¸œè¥¿,å¯èƒ½æ˜¯ç”±äºFlashæ’ä»¶å¤ªæ—§æˆ–è€…æ²¡å®‰è£…å¯¼è‡´,è¯·ç‚¹å‡»<a style="color:blue;" href="http://www.adobe.com/go/getflash" targer="_blank">è¿™é‡Œ</a>å®‰è£…æˆ–å‡çº§ï¼Œå®‰è£…å®Œæˆåé‡æ–°æ‰“å¼€æœ¬é¡µé¢å³å¯ã€‚</p>'
                     + '<div class="upload_type_list">'
                         + ''
                      + '</div>'
                      + '<div class="upload_item_list">'
                     + '<div class="upload_item_show" id="upload_flash">'
                         + '<div class="zip_uploader">'
-                            + '<div id="zip_uploader"><h1 style="font-size:20px;">Äú»¹Ã»ÓĞ°²×°Flash²¥·ÅÆ÷,Çëµã»÷<a style="color:blue;" href="http://www.adobe.com/go/getflash" targer="_blank">ÕâÀï</a>°²×°£¬°²×°Íê³ÉºóÖØĞÂ´ò¿ª±¾Ò³Ãæ¼´¿É¡£</h1></div>'
+                            + '<div id="zip_uploader"><h1 style="font-size:20px;">æ‚¨è¿˜æ²¡æœ‰å®‰è£…Flashæ’­æ”¾å™¨,è¯·ç‚¹å‡»<a style="color:blue;" href="http://www.adobe.com/go/getflash" targer="_blank">è¿™é‡Œ</a>å®‰è£…ï¼Œå®‰è£…å®Œæˆåé‡æ–°æ‰“å¼€æœ¬é¡µé¢å³å¯ã€‚</h1></div>'
                         + '</div>'
                     + '</div>'
                    + '</div>'
              + '</div>'
         + '</div>'
-        + '<!--Í¼ÏñÉÏ´«×îĞ¡»¯-->'
+        + '<!--å›¾åƒä¸Šä¼ æœ€å°åŒ–-->'
         + '<div class="uploader_dialog_min" style="display: none;">'
-            + '<span>ÉÏ´«Í¼ÏñÖĞ...<span id="uploader_dialog_min_progress">30</span>%</span>'
+            + '<span>ä¸Šä¼ å›¾åƒä¸­...<span id="uploader_dialog_min_progress">30</span>%</span>'
         + '</div>';
 
-            //QQÉÏ´«Í·²¿µ¼º½
-            var nav_qq = '<div class="nav" ref="#upload_qq" id="qqupload" title="QQ´«ËÍ">QQ´«ËÍ</div>';
+            //QQä¸Šä¼ å¤´éƒ¨å¯¼èˆª
+            var nav_qq = '<div class="nav" ref="#upload_qq" id="qqupload" title="QQä¼ é€">QQä¼ é€</div>';
             var nav_qq_content = '\
                 <div class="upload_item_show" style="top: -523px; display: none;overflow-y:scroll;" id="upload_qq">\
                     <div class="upload_item_content">\
                         <ul class="upload_qq_tab">\
-                            <li><a id="zip" class="cur" href="#">ÒÔÑ¹ËõÎÄ¼ş·½Ê½</a></li>\
-                            <li><a id="floder" href="#">ÒÔÎÄ¼ş¼Ğ·½Ê½</a></li>\
+                            <li><a id="zip" class="cur" href="#">ä»¥å‹ç¼©æ–‡ä»¶æ–¹å¼</a></li>\
+                            <li><a id="floder" href="#">ä»¥æ–‡ä»¶å¤¹æ–¹å¼</a></li>\
                         </ul>\
                         <div class="upload_item_tips tab_floder" style="display:none;">\
-                            <h2>ÎÄ¼ş¼Ğ·½Ê½:</h2>\
-                            <p>ÊµÊ±¿´µ½ÉÏ´«µÄÍ¼Æ¬,´«ËÍÒ»ÕÅÏµÍ³×Ô¶¯À­È¡Ò»ÕÅ,Ö§³Ö<b>±ß±à¼­±ßÉÏ´«</b>¡£<br />\
-                               ¿ªÊ¼´«ËÍºó£¬¿ÉÒÔ¹Ø±Õ±¾µ¯³ö¿ò¡£Ã¿µ±Ò»ÕÅÍ¼Æ¬´«ËÍ³É¹¦ºó£¬ÔÚ±à¼­Æ÷¶¥²¿¿ÉÒÔ¿´µ½³É¹¦ÉÏ´«µÄÍ¼Æ¬¡£<br />\
-                              ¡¾PS:ÍÆ¼ö×Å¼±±à¼­µÄÓÃ»§Ê¹ÓÃ¡¿\
+                            <h2>æ–‡ä»¶å¤¹æ–¹å¼:</h2>\
+                            <p>å®æ—¶çœ‹åˆ°ä¸Šä¼ çš„å›¾ç‰‡,ä¼ é€ä¸€å¼ ç³»ç»Ÿè‡ªåŠ¨æ‹‰å–ä¸€å¼ ,æ”¯æŒ<b>è¾¹ç¼–è¾‘è¾¹ä¸Šä¼ </b>ã€‚<br />\
+                               å¼€å§‹ä¼ é€åï¼Œå¯ä»¥å…³é—­æœ¬å¼¹å‡ºæ¡†ã€‚æ¯å½“ä¸€å¼ å›¾ç‰‡ä¼ é€æˆåŠŸåï¼Œåœ¨ç¼–è¾‘å™¨é¡¶éƒ¨å¯ä»¥çœ‹åˆ°æˆåŠŸä¸Šä¼ çš„å›¾ç‰‡ã€‚<br />\
+                              ã€PS:æ¨èç€æ€¥ç¼–è¾‘çš„ç”¨æˆ·ä½¿ç”¨ã€‘\
                             </p>\
                         </div>\
                         <div class="upload_item_tips tab_zip">\
                             <h2></h2>\
-                            <p>ÍÆ¼ö¼ÓQQ£º1204055612 ÎªºÃÓÑ£¬ÓÃÀëÏßÎÄ¼ş·½Ê½´«ËÍ£¬Ñ¹Ëõ°ü×î´ó²»ÄÜ³¬¹ı2G¡£¹ı´óÇë·ÖÅú´«ËÍ¡£\
-                                <br />¡¾PS:±ØĞë¼ÓQQºÃÓÑ£¬²ÅÄÜ·¢ËÍÀëÏßÎÄ¼şÅ¶¡£¡¿\
+                            <p>æ¨èåŠ QQï¼š1204055612 ä¸ºå¥½å‹ï¼Œç”¨ç¦»çº¿æ–‡ä»¶æ–¹å¼ä¼ é€ï¼Œå‹ç¼©åŒ…æœ€å¤§ä¸èƒ½è¶…è¿‡2Gã€‚è¿‡å¤§è¯·åˆ†æ‰¹ä¼ é€ã€‚\
+                                <br />ã€PS:å¿…é¡»åŠ QQå¥½å‹ï¼Œæ‰èƒ½å‘é€ç¦»çº¿æ–‡ä»¶å“¦ã€‚ã€‘\
                             </p>\
                         </div>\
                         <div class="upload_item_filename">\
-                            <span class="action_name">Ñ¹Ëõ°üÃû³Æ£º</span><input style="font-size:24px;letter-spacing:2px;" /><a href="#" class="btn_copy"></a><a href="tencent://message?uin=1204055612" class="btn_send"></a><span>(ÉÏ´«µÄÎÄ¼ş»òÕßÎÄ¼ş¼ĞÃû³Æ±ØĞëºÍ×ó±ßµÄÊı×ÖÒ»Ñù²Å¿ÉÒÔ!!)</span>\
+                            <span class="action_name">å‹ç¼©åŒ…åç§°ï¼š</span><input style="font-size:24px;letter-spacing:2px;" /><a href="#" class="btn_copy"></a><a href="tencent://message?uin=1204055612" class="btn_send"></a><span>(ä¸Šä¼ çš„æ–‡ä»¶æˆ–è€…æ–‡ä»¶å¤¹åç§°å¿…é¡»å’Œå·¦è¾¹çš„æ•°å­—ä¸€æ ·æ‰å¯ä»¥!!)</span>\
                         </div>\
                         <div class="upload_item_guide tab_zip">\
-                            <h2>ÒÔÏÂÊÇ"ÒÔÑ¹ËõÎÄ¼ş·½Ê½´«ËÍ"Ê¾Àı</h2>\
+                            <h2>ä»¥ä¸‹æ˜¯"ä»¥å‹ç¼©æ–‡ä»¶æ–¹å¼ä¼ é€"ç¤ºä¾‹</h2>\
                             <div class="upload_item_section">\
-                                <h2><i class="upload_item_section_step1"></i><b>ĞÂ½¨ÎÄ¼ş¼Ğ</b>,²¢ÒÔÉÏÃæÌá¹©µÄÃû³ÆÃüÃû</h2>\
+                                <h2><i class="upload_item_section_step1"></i><b>æ–°å»ºæ–‡ä»¶å¤¹</b>,å¹¶ä»¥ä¸Šé¢æä¾›çš„åç§°å‘½å</h2>\
                                 <img  src="/static/images/upload/upload_qq_zip_1.jpg"/>\
                             </div>\
                             <div class="upload_item_section">\
-                                <h2><i class="upload_item_section_step2"></i>½«ÒªÉÏ´«µÄÍ¼Æ¬£¬<b>¸´ÖÆµ½</b>¸Õ²Å´´½¨µÄÎÄ¼ş¼ĞÄÚ</h2>\
+                                <h2><i class="upload_item_section_step2"></i>å°†è¦ä¸Šä¼ çš„å›¾ç‰‡ï¼Œ<b>å¤åˆ¶åˆ°</b>åˆšæ‰åˆ›å»ºçš„æ–‡ä»¶å¤¹å†…</h2>\
                                 <img  src="/static/images/upload/upload_qq_zip_2.jpg"/>\
                             </div>\
                             <div class="upload_item_section">\
-                                <h2><i class="upload_item_section_step3"></i>ÔÚÎÄ¼ş¼Ğµã»÷Êó±êÓÒ±ß£¬Ñ¡ÔñÌí¼Óµ½¡°xxx.rar¡±£¬<b>Ñ¹ËõÎÄ¼ş¼Ğ</b>£¨Ö§³Örar¡¢zipµÈ¸ñÊ½£©¡£</h2>\
+                                <h2><i class="upload_item_section_step3"></i>åœ¨æ–‡ä»¶å¤¹ç‚¹å‡»é¼ æ ‡å³è¾¹ï¼Œé€‰æ‹©æ·»åŠ åˆ°â€œxxx.rarâ€ï¼Œ<b>å‹ç¼©æ–‡ä»¶å¤¹</b>ï¼ˆæ”¯æŒrarã€zipç­‰æ ¼å¼ï¼‰ã€‚</h2>\
                                 <img  src="/static/images/upload/upload_qq_zip_3.jpg"/>\
                             </div>\
                             <div class="upload_item_section">\
-                                <h2><i class="upload_item_section_step4"></i><b>·¢ËÍµ½QQºÅÂë</b>£º1204055612 <a href="tencent://message?uin=1204055612">[µã»÷·¢ËÍ]</a></h2>\
+                                <h2><i class="upload_item_section_step4"></i><b>å‘é€åˆ°QQå·ç </b>ï¼š1204055612 <a href="tencent://message?uin=1204055612">[ç‚¹å‡»å‘é€]</a></h2>\
                                 <img  src="/static/images/upload/upload_qq_zip_4_2.jpg"/>\
                             </div>\
                         </div>\
                         <div class="upload_item_guide tab_floder" style="display:none;">\
-                            <h2>ÒÔÏÂÊÇ"ÒÔÎÄ¼ş¼Ğ·½Ê½´«ËÍ"Ê¾Àı</h2>\
+                            <h2>ä»¥ä¸‹æ˜¯"ä»¥æ–‡ä»¶å¤¹æ–¹å¼ä¼ é€"ç¤ºä¾‹</h2>\
                             <div class="upload_item_section">\
-                                <h2><i class="upload_item_section_step1"></i><b>ĞÂ½¨ÎÄ¼ş¼Ğ</b>,²¢ÒÔÉÏÃæÌá¹©µÄÃû³ÆÃüÃû</h2>\
+                                <h2><i class="upload_item_section_step1"></i><b>æ–°å»ºæ–‡ä»¶å¤¹</b>,å¹¶ä»¥ä¸Šé¢æä¾›çš„åç§°å‘½å</h2>\
                                 <img  src="/static/images/upload/upload_qq_zip_1.jpg"/>\
                             </div>\
                             <div class="upload_item_section">\
-                                <h2><i class="upload_item_section_step2"></i>½«ÒªÉÏ´«µÄÍ¼Æ¬£¬<b>¸´ÖÆµ½</b>¸Õ²Å´´½¨µÄÎÄ¼ş¼ĞÄÚ</h2>\
+                                <h2><i class="upload_item_section_step2"></i>å°†è¦ä¸Šä¼ çš„å›¾ç‰‡ï¼Œ<b>å¤åˆ¶åˆ°</b>åˆšæ‰åˆ›å»ºçš„æ–‡ä»¶å¤¹å†…</h2>\
                                 <img  src="/static/images/upload/upload_qq_zip_2.jpg"/>\
                             </div>\
                             <div class="upload_item_section">\
-                                <h2><i class="upload_item_section_step3"></i><b>·¢ËÍµ½QQºÅÂë</b>£º1204055612 <a href="tencent://message?uin=1204055612">[µã»÷·¢ËÍ]</a></h2>\
+                                <h2><i class="upload_item_section_step3"></i><b>å‘é€åˆ°QQå·ç </b>ï¼š1204055612 <a href="tencent://message?uin=1204055612">[ç‚¹å‡»å‘é€]</a></h2>\
                                 <img  src="/static/images/upload/upload_qq_floder_3_2.jpg"/>\
                             </div>\
                         </div>\
                     </div>\
                 </div>';
 
-            //emailÉÏ´«Í·²¿µ¼º½
-            var nav_email = '<div class="nav" ref="#upload_email" id="emailupload" title="ÓÊ¼ş´«ËÍ">ÓÊ¼ş´«ËÍ</div>';
+            //emailä¸Šä¼ å¤´éƒ¨å¯¼èˆª
+            var nav_email = '<div class="nav" ref="#upload_email" id="emailupload" title="é‚®ä»¶ä¼ é€">é‚®ä»¶ä¼ é€</div>';
             var nav_email_content = '\
                 <div class="upload_item_show" style="top: -523px; display: none;overflow-y:scroll;" id="upload_email">\
                     <div class="upload_item_content">\
                         <div class="upload_item_tips">\
-                            <h2>ÓÊ¼ş´«ËÍ:</h2>\
-                            <p>ÀûÓÃQQÓÊÏä´ó¸½¼şÎÈ¶¨£¬ËÙ¶È¿ìµÈÓÅµã£¬¿ÉÒÔ°ïÄú½ÚÊ¡ÉÏ´«Ê±¼ä£¬¼õÉÙÉÏ´«³ö´í¸ÅÂÊ£¬ÍÆ¼ö×÷Æ·Í¼Æ¬¶à£¬ÆÕÍ¨ÉÏ´«²»ÎÈ¶¨µÄÓÃ»§Ê¹ÓÃ¡£<br />\
-            ÎÒÃÇÃ¿Ìì¶¨Ê±10:00, 15:00, 18:00, 21:00, 23:00»á¶¨Ê±´¦ÀíÓÊ¼şÉÏ´«<br />\
-            ´¦ÀíÍê»áÓÊ¼şÍ¨ÖªÄú£¬Äú¾Í¿ÉÒÔ¿ªÊ¼±à¼­×÷Æ·¡£\
+                            <h2>é‚®ä»¶ä¼ é€:</h2>\
+                            <p>åˆ©ç”¨QQé‚®ç®±å¤§é™„ä»¶ç¨³å®šï¼Œé€Ÿåº¦å¿«ç­‰ä¼˜ç‚¹ï¼Œå¯ä»¥å¸®æ‚¨èŠ‚çœä¸Šä¼ æ—¶é—´ï¼Œå‡å°‘ä¸Šä¼ å‡ºé”™æ¦‚ç‡ï¼Œæ¨èä½œå“å›¾ç‰‡å¤šï¼Œæ™®é€šä¸Šä¼ ä¸ç¨³å®šçš„ç”¨æˆ·ä½¿ç”¨ã€‚<br />\
+            æˆ‘ä»¬æ¯å¤©å®šæ—¶10:00, 15:00, 18:00, 21:00, 23:00ä¼šå®šæ—¶å¤„ç†é‚®ä»¶ä¸Šä¼ <br />\
+            å¤„ç†å®Œä¼šé‚®ä»¶é€šçŸ¥æ‚¨ï¼Œæ‚¨å°±å¯ä»¥å¼€å§‹ç¼–è¾‘ä½œå“ã€‚\
                              </p>\
                          </div>\
                          <div class="upload_item_filename">\
-                             <span>Ñ¹Ëõ°üÃû³Æ£º</span><input style="font-size:24px;letter-spacing:2px;" /><a href="#" class="btn_copy"></a><a target="_blank" href="http://mail.qq.com" class="btn_send"></a><span>Éæ¶ñ´ó·ù¶È</span>\
+                             <span>å‹ç¼©åŒ…åç§°ï¼š</span><input style="font-size:24px;letter-spacing:2px;" /><a href="#" class="btn_copy"></a><a target="_blank" href="http://mail.qq.com" class="btn_send"></a><span>æ¶‰æ¶å¤§å¹…åº¦</span>\
                          </div>\
                          <div class="upload_item_emailtitle">\
-                            <span class="tips1">ÎÂÜ°ÌáĞÑ£¬ÓÊ¼ş±êÌâÇëÓÃ£º</span><span class="tips2" id="file_name">Ã×ÄªÓ¡Æ·-ÓÊ¼ş´«ËÍ-2222</span>\
+                            <span class="tips1">æ¸©é¦¨æé†’ï¼Œé‚®ä»¶æ ‡é¢˜è¯·ç”¨ï¼š</span><span class="tips2" id="file_name">ç±³è«å°å“-é‚®ä»¶ä¼ é€-2222</span>\
                         </div>\
                          <div class="upload_item_guide">\
-                             <h2>ÒÔÏÂÊÇ"ÒÔÓÊ¼ş´«ËÍ"Ê¾Àı</h2>\
+                             <h2>ä»¥ä¸‹æ˜¯"ä»¥é‚®ä»¶ä¼ é€"ç¤ºä¾‹</h2>\
                              <div class="upload_item_section">\
-                                 <h2><i class="upload_item_section_step1"></i><b>ĞÂ½¨ÎÄ¼ş¼Ğ</b>,²¢ÒÔÉÏÃæÌá¹©µÄÃû³ÆÃüÃû</h2>\
+                                 <h2><i class="upload_item_section_step1"></i><b>æ–°å»ºæ–‡ä»¶å¤¹</b>,å¹¶ä»¥ä¸Šé¢æä¾›çš„åç§°å‘½å</h2>\
                                  <img  src="/static/images/upload/upload_qq_zip_1.jpg"/>\
                              </div>\
                              <div class="upload_item_section">\
-                                 <h2><i class="upload_item_section_step2"></i>½«ÒªÉÏ´«µÄÍ¼Æ¬£¬<b>¸´ÖÆµ½</b>¸Õ²Å´´½¨µÄÎÄ¼ş¼ĞÄÚ</h2>\
+                                 <h2><i class="upload_item_section_step2"></i>å°†è¦ä¸Šä¼ çš„å›¾ç‰‡ï¼Œ<b>å¤åˆ¶åˆ°</b>åˆšæ‰åˆ›å»ºçš„æ–‡ä»¶å¤¹å†…</h2>\
                                 <img  src="/static/images/upload/upload_qq_zip_2.jpg"/>\
                             </div>\
                             <div class="upload_item_section">\
-                                <h2><i class="upload_item_section_step3"></i>ÔÚÎÄ¼ş¼Ğµã»÷Êó±êÓÒ±ß£¬Ñ¡ÔñÌí¼Óµ½¡°xxx.rar¡±£¬<b>Ñ¹ËõÎÄ¼ş¼Ğ</b>£¨Ö§³Örar¡¢zipµÈ¸ñÊ½£©¡£</h2>\
+                                <h2><i class="upload_item_section_step3"></i>åœ¨æ–‡ä»¶å¤¹ç‚¹å‡»é¼ æ ‡å³è¾¹ï¼Œé€‰æ‹©æ·»åŠ åˆ°â€œxxx.rarâ€ï¼Œ<b>å‹ç¼©æ–‡ä»¶å¤¹</b>ï¼ˆæ”¯æŒrarã€zipç­‰æ ¼å¼ï¼‰ã€‚</h2>\
                                 <img  src="/static/images/upload/upload_qq_zip_3.jpg"/>\
                             </div>\
                             <div class="upload_item_section">\
-                                <h2><i class="upload_item_section_step4"></i><b>·¢ËÍµ½QQÓÊÏä</b>£º<a target="_blank" href="http://mail.qq.com">1204055612@qq.com</a> <a target="_blank" href="http://mail.qq.com">[µã»÷Ìø×ªµ½QQÓÊÏä]</a></h2>\
+                                <h2><i class="upload_item_section_step4"></i><b>å‘é€åˆ°QQé‚®ç®±</b>ï¼š<a target="_blank" href="http://mail.qq.com">1204055612@qq.com</a> <a target="_blank" href="http://mail.qq.com">[ç‚¹å‡»è·³è½¬åˆ°QQé‚®ç®±]</a></h2>\
                                 <img  src="/static/images/upload/upload_qq_mail_3.jpg"/>\
                             </div>\
                         </div>\
                     </div>\
                 </div>';
 
-            var nav_flash = '<div class="nav on" ref="#upload_flash" title="flash ÉÏ´«">ÆÕÍ¨ÉÏ´«</div>';
+            var nav_flash = '<div class="nav on" ref="#upload_flash" title="flash ä¸Šä¼ ">æ™®é€šä¸Šä¼ </div>';
 
             var $dialog = $(uploader_dialog_html);
             $dialog.find(".upload_type_list").append(nav_flash);
@@ -347,9 +347,9 @@ Uploader = {
             }
 
             $(".upload_item_filename input").val(filename);
-            $("#file_name").text("Ã×ÄªÓ¡Æ·-ÓÊ¼ş´«ËÍ-" + filename);
-            //°ó¶¨ÊÂ¼ş
-            //QQÉÏ´«
+            $("#file_name").text("ç±³è«å°å“-é‚®ä»¶ä¼ é€-" + filename);
+            //ç»‘å®šäº‹ä»¶
+            //QQä¸Šä¼ 
             $("#zip, #floder").click(function (e) {
                 e.preventDefault();
                 $("#zip, #floder").removeClass("cur");
@@ -358,26 +358,26 @@ Uploader = {
                 if (btn.attr("id") == "zip") {
                     $("#upload_qq .tab_floder").hide();
                     $("#upload_qq .tab_zip").show();
-                    $("#upload_qq .upload_item_filename span.action_name").text("Ñ¹Ëõ°üÃû³Æ£º");
+                    $("#upload_qq .upload_item_filename span.action_name").text("å‹ç¼©åŒ…åç§°ï¼š");
                 } else {
                     $("#upload_qq .tab_floder").show();
                     $("#upload_qq .tab_zip").hide();
-                    $("#upload_qq .upload_item_filename span.action_name").text("ÎÄ¼ş¼ĞÃû³Æ£º");
+                    $("#upload_qq .upload_item_filename span.action_name").text("æ–‡ä»¶å¤¹åç§°ï¼š");
                 }
             });
 
-            //¸´ÖÆÃû³Æ°´Å¥
+            //å¤åˆ¶åç§°æŒ‰é’®
             $(".upload_item_filename .btn_copy").click(function (e) {
                 e.preventDefault();
-                prompt("Çë°´ Ctrl+C ¸´ÖÆÎÄ±¾", filename);
+                prompt("è¯·æŒ‰ Ctrl+C å¤åˆ¶æ–‡æœ¬", filename);
             });
             
         },
-        //ÉÏ´«Íê³Éµ¯³öÌáÊ¾
+        //ä¸Šä¼ å®Œæˆå¼¹å‡ºæç¤º
         tip: function (num) {
             var that = this;
             var pos = $(that.data.tip_pos_Id).offset();
-            $(that.data.tip_Id).text("+" + num + "ÕÅ").show()
+            $(that.data.tip_Id).text("+" + num + "å¼ ").show()
                                 .css('z-index', 9999)
                                 .css('left', pos.left + 40)
                                 .css('top', pos.top)
@@ -385,10 +385,10 @@ Uploader = {
                                 .animate({ opacity: 1, top: pos.top - 50 }, 1000)
                                 .animate({ opacity: 0, top: pos.top - 100 }, 1000);
         },
-        //ÊµÊ±»ñÈ¡×îĞÂÉÏ´«Êı¾İ
+        //å®æ—¶è·å–æœ€æ–°ä¸Šä¼ æ•°æ®
         getNewUpload: function (timer) {
 
-            //ÊµÊ±µ÷ÓÃÊÖ±ú
+            //å®æ—¶è°ƒç”¨æ‰‹æŸ„
             var handler = null;
             var that = this;
             var works_Id = window.WorksId;
@@ -412,7 +412,7 @@ Uploader = {
                             num = Json.data.length;
                             that.tip(num);
                             $.each(Json.data, function (i, item) {
-                                mimo.Editor.ThumbnailList.addThumbnail({ "ret": "1", "msg": "ÉÏ´«³É¹¦", "data": item });
+                                mimo.Editor.ThumbnailList.addThumbnail({ "ret": "1", "msg": "ä¸Šä¼ æˆåŠŸ", "data": item });
                                 Uploader.uploadingBar.updatePage();
                             });
                         }
@@ -427,20 +427,20 @@ Uploader = {
                 });
             }, timer);
         },
-        //ÉÏ´«ÏÔÊ¾
+        //ä¸Šä¼ æ˜¾ç¤º
         uploadItemShow: function () {
             $("#upload_flash").css("top", "-10000px");
             $("#upload_qq,#upload_email").hide();
         },
-        //²Ù×÷ÊÂ¼ş
+        //æ“ä½œäº‹ä»¶
         event: function (role, opentype, filename) {
             var that = this;
-            //³õÊ¼»¯ÉÏ´«¿ò
+            //åˆå§‹åŒ–ä¸Šä¼ æ¡†
             that.initDialog(role, opentype, filename);
-            // ÉÏ´«¿ò¿ÉÒÔÍÏ¶¯
+            // ä¸Šä¼ æ¡†å¯ä»¥æ‹–åŠ¨
             $(that.data.uploader_dialog_Id).draggable({ handle: "div.uploader_dialog_title" });
 
-            //·ÖÀàÀ¸Ä¿µã»÷ÇĞ»»
+            //åˆ†ç±»æ ç›®ç‚¹å‡»åˆ‡æ¢
             $(that.data.uploader_dialog_nav).click(function () {
                 $(that.data.uploader_dialog_nav).removeClass("on");
                 $(this).addClass("on");
@@ -453,12 +453,12 @@ Uploader = {
                 }
             });
 
-            //QQÉÏ´«À¸Ä¿ÊµÊ±¸üĞÂ×îĞÂÉÏ´«Í¼Æ¬
+            //QQä¸Šä¼ æ ç›®å®æ—¶æ›´æ–°æœ€æ–°ä¸Šä¼ å›¾ç‰‡
             $(that.data.nav_qq_Id).click(function () {
                 that.getNewUpload(30000);
             });
 
-            //Ä¬ÈÏÏÔÊ¾QQÀ¸Ä¿
+            //é»˜è®¤æ˜¾ç¤ºQQæ ç›®
            // $("#qqupload").click();
         }
     }
@@ -468,22 +468,22 @@ Uploader = {
 
 
 /*
-* ÌáÊ¾¿ò
+* æç¤ºæ¡†
 * @author yaobo
-* @description ÌáÊ¾¿ò
+* @description æç¤ºæ¡†
 */
 var EditorTips = {
     tpl: {
         firstUploaded_tpl: '<div style="width: 535px; height: 290px; z-index: 10002; background: url(\'/static/images/pop_tips/editor_tip_03.png\')  no-repeat; position: absolute; ">'
-                      + '<a href="javascript:;" title="¹Ø±Õ" id="colse" style="position: absolute; width: 34px; height: 34px;  right: 0px;"></a>'
-                      + '<a href="javascript:;" title="ÏÂÒ»²½" id="btn_next" style="position: absolute; width: 93px; height: 34px;  right: 41px; bottom: 50px;"></a>'
+                      + '<a href="javascript:;" title="å…³é—­" id="colse" style="position: absolute; width: 34px; height: 34px;  right: 0px;"></a>'
+                      + '<a href="javascript:;" title="ä¸‹ä¸€æ­¥" id="btn_next" style="position: absolute; width: 93px; height: 34px;  right: 41px; bottom: 50px;"></a>'
                     + '</div>',
         maskLayer_tpl: '<div id="J_mask_layer" class="ui-mask-layer"></div>'
     },
     /*
-* ¶¨Î»
+* å®šä½
 * @author yaobo
-* @description ¶¨Î»
+* @description å®šä½
 */
     setPosition: function (object, position, reference) {
         var refer = reference || document,
@@ -568,12 +568,12 @@ var EditorTips = {
         }
     },
     /*
-* ÏÔÊ¾Ğ§¹û
+* æ˜¾ç¤ºæ•ˆæœ
 * @author yaobo
-* @description  ÏÔÊ¾Ğ§¹û
+* @description  æ˜¾ç¤ºæ•ˆæœ
 */
     showEffect: function (panel, effect) {
-        //ÉèÖÃµ¯³öÑùÊ½
+        //è®¾ç½®å¼¹å‡ºæ ·å¼
         var speed = 300;
         switch (effect) {
             case "fade":
@@ -645,12 +645,12 @@ var EditorTips = {
         }
     },
     /*
-* Òş²ØĞ§¹û
+* éšè—æ•ˆæœ
 * @author yaobo
-* @description  Òş²ØĞ§¹û
+* @description  éšè—æ•ˆæœ
 */
     hideEffect: function (panel, effect) {
-        //ÉèÖÃµ¯³öÑùÊ½
+        //è®¾ç½®å¼¹å‡ºæ ·å¼
         var speed = 300;
         switch (effect) {
             case "fade":
@@ -685,9 +685,9 @@ var EditorTips = {
         }
     },
     /*
-    * »ñÈ¡ÕÚÕÖ²ã
+    * è·å–é®ç½©å±‚
 * @author yaobo
-* @description  »ñÈ¡ÕÚÕÖ²ã
+* @description  è·å–é®ç½©å±‚
 */
     showMask: function () {
         $("#J_mask_layer").remove();
@@ -707,17 +707,17 @@ var EditorTips = {
         $mask.fadeIn();
     },
     /*
-  * Òş²ØÕÚÕÖ²ã
+  * éšè—é®ç½©å±‚
   * @author yaobo
-  * @description  Òş²ØÕÚÕÖ²ã
+  * @description  éšè—é®ç½©å±‚
   */
     hideMask: function () {
         $("#J_mask_layer").remove();
     },
     /*
-    * »ñÈ¡µ¯´°
+    * è·å–å¼¹çª—
     * @author yaobo
-    * @description  »ñÈ¡ÕÚÕÖ²ã
+    * @description  è·å–é®ç½©å±‚
     */
     getPopup: function (html, id) {
         if (id) {
@@ -730,7 +730,7 @@ var EditorTips = {
         return $Popup;
     },
 
-    //µÚÒ»´ÎÉÏ´«³É¹¦
+    //ç¬¬ä¸€æ¬¡ä¸Šä¼ æˆåŠŸ
     firstUploaded: {
         show: function () {
             Uploader.close();
@@ -759,5 +759,5 @@ var EditorTips = {
         this.firstUploaded.event();
     }
 };
-//µ¯³öÌáÊ¾×¢²áÊÂ¼ş
+//å¼¹å‡ºæç¤ºæ³¨å†Œäº‹ä»¶
 EditorTips.event();
