@@ -60,7 +60,7 @@
 {
     width: 35px;
     margin-right: 5px;
-    background: url(../../static/images/toptoolbar-sep.png) right no-repeat;
+    background: url(../images/toptoolbar-sep.png) right no-repeat;
 }
 
 #toptoolbar .nickname-toptoolbar
@@ -94,13 +94,13 @@
     height: 40px;
     float: right;
     padding-right: 10px;
-    background: url(../../static/images/Triangle.png) no-repeat center;
+    background: url(../images/Triangle.png) no-repeat center;
 }
 
 #toptoolbar .shopboxsep
 {
     padding-right: 30px;
-    background: url(../../static/images/toptoolbar-sep.png) right no-repeat;
+    background: url(../images/toptoolbar-sep.png) right no-repeat;
 }
 
 .shopbox-toptoolbar .shopboxsep
@@ -128,7 +128,7 @@
     {
         width: 13px;
         height: 10px;
-        background: url(../../static/images/topsddm.png) no-repeat;
+        background: url(../images/topsddm.png) no-repeat;
         display: block;
         position: absolute;
         top: 16px;
@@ -140,7 +140,7 @@
     {
         width: 34px;
         height: 19px;
-        background: url(../../static/images/topsddm.png) no-repeat;
+        background: url(../images/topsddm.png) no-repeat;
         display: block;
         position: absolute;
         top: 10px;
@@ -264,7 +264,7 @@ a#headerlogo:visited
     margin-left: -30px;
     line-height: 110px;
     width: 298px;
-    background: url(../../static/images/m_logo.png) no-repeat center;
+    background: url(../images/m_logo.png) no-repeat center;
 }
 
 #header #main-menu
@@ -354,7 +354,7 @@ a#headerlogo:visited
     float: right;
     height: 79px;
     width: 79px;
-    background: url(../../static/images/day.png) no-repeat;
+    background: url(../images/day.png) no-repeat;
 }
 
     #header .day span
