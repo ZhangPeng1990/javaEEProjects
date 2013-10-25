@@ -16,6 +16,7 @@
     <result column="order_Type" property="orderType" jdbcType="CHAR" />
     <result column="product_Number" property="productNumber" jdbcType="INTEGER" />
     <result column="amount_Payable" property="amountPayable" jdbcType="DOUBLE" />
+    <result column="express_Message" property="expressMessage" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     <!--
@@ -24,7 +25,7 @@
       This element was generated on Sun Sep 15 15:26:33 CST 2013.
     -->
     id, order_Number, user_Id, product_Id, create_Time, payment_Time, order_Type, product_Number, 
-    amount_Payable
+    amount_Payable, express_Message
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     <!--
@@ -104,10 +105,11 @@
     -->
     insert into order_form (id, order_Number, user_Id, 
       product_Id, create_Time, payment_Time, 
-      order_Type, product_Number, amount_Payable)
+      order_Type, product_Number, amount_Payable, express_Message)
     values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{productId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{paymentTime,jdbcType=TIMESTAMP}, 
-      #{orderType,jdbcType=CHAR}, #{productNumber,jdbcType=INTEGER}, #{amountPayable,jdbcType=DOUBLE})
+      #{orderType,jdbcType=CHAR}, #{productNumber,jdbcType=INTEGER}, #{amountPayable,jdbcType=DOUBLE}, 
+      #{expressMessage,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="tushu.model.OrderFormDO" >
     <!--
@@ -144,6 +146,9 @@
       <if test="amountPayable != null" >
         amount_Payable,
       </if>
+      <if test="expressMessage != null" >
+        express_Message,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -172,6 +177,9 @@
       </if>
       <if test="amountPayable != null" >
         #{amountPayable,jdbcType=DOUBLE},
+      </if>
+      <if test="expressMessage != null" >
+        #{expressMessage,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -207,6 +215,9 @@
       <if test="amountPayable != null" >
         amount_Payable = #{amountPayable,jdbcType=DOUBLE},
       </if>
+      <if test="expressMessage != null" >
+        express_Message = #{expressMessage,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -235,7 +246,8 @@
       payment_Time = #{paymentTime,jdbcType=TIMESTAMP},
       order_Type = #{orderType,jdbcType=CHAR},
       product_Number = #{productNumber,jdbcType=INTEGER},
-      amount_Payable = #{amountPayable,jdbcType=DOUBLE}
+      amount_Payable = #{amountPayable,jdbcType=DOUBLE},
+      express_Message = #{expressMessage,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

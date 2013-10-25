@@ -14,6 +14,7 @@ import tushu.business.user.object.User;
 import tushu.enums.OrderType;
 import tushu.model.OrderFormDO;
 import tushu.produc.service.AddressMessageService;
+import tushu.produc.service.ExpressMessageService;
 import tushu.produc.service.OrderFormService;
 import tushu.produc.service.ProductService;
 import tushu.product.mapper.OrderFormDOMapper;
@@ -34,6 +35,9 @@ public class OrderFormServiceImpl implements OrderFormService {
 	
 	@Autowired
 	private AddressMessageService addressMessageService;
+	
+	@Autowired
+	private ExpressMessageService expressMessageService;
 	
 	@Override
 	public List<OrderForm> getOrders(User user, OrderType ...type) {
@@ -59,6 +63,7 @@ public class OrderFormServiceImpl implements OrderFormService {
 				of.setProduct(productService.getById(ofd.getProductId()));
 				of.setUser(user);
 				of.setAddress(addressMessageService.getByOrder(of));
+				of.setExpressMessage(expressMessageService.getById(ofd.getExpressMessage()));
 				lists.add(of);
 			}
 		}
@@ -130,6 +135,7 @@ public class OrderFormServiceImpl implements OrderFormService {
 			of = BeanCopyer.toOrderForm(ofdo);
 			of.setProduct(this.productService.getById(ofdo.getProductId()));
 			of.setUser(this.userService.getUserById(ofdo.getUserId()));
+			of.setExpressMessage(expressMessageService.getById(ofdo.getExpressMessage()));
 		}
 		return of;
 	}

@@ -27,6 +27,8 @@ public class OrderForm {
     
     private AddressMessage address;
     
+    private ExpressMessage expressMessage;
+    
 	public Long getId() {
 		return id;
 	}
@@ -98,6 +100,9 @@ public class OrderForm {
 	public void setAmountPayable(Double amountPayable) {
 		if(this.product != null){
 			this.amountPayable = this.product.getSellPrice() * this.productNumber;
+			if(this.expressMessage != null){
+				this.amountPayable += this.expressMessage.getExpressPrice();
+			}
 		}else{
 			this.amountPayable = amountPayable;
 		}
@@ -109,5 +114,13 @@ public class OrderForm {
 
 	public void setAddress(AddressMessage address) {
 		this.address = address;
+	}
+
+	public ExpressMessage getExpressMessage() {
+		return expressMessage;
+	}
+
+	public void setExpressMessage(ExpressMessage expressMessage) {
+		this.expressMessage = expressMessage;
 	}
 }

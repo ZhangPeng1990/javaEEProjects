@@ -135,6 +135,7 @@ public class BeanCopyer {
 		orderFormDO.setUserId(orderForm.getUser() != null ? Integer.parseInt(orderForm.getUser().getId().toString()) : null);
 		orderFormDO.setProductNumber(orderForm.getProductNumber());
 		orderFormDO.setAmountPayable(orderForm.getAmountPayable());
+		orderFormDO.setExpressMessage(orderForm.getExpressMessage() != null ? orderForm.getExpressMessage().getId() : null);
 		return orderFormDO;
 	}
 	

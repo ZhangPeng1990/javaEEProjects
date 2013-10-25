@@ -67,7 +67,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/{productId}/beginMake")
-	public String beginMake(@PathVariable("productId") Integer productId, ModelMap mm){
+	public String beginMake(@PathVariable("productId") Integer productId, ModelMap mm, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(Constans.SESSION_USER_ATTR_NAME);
+		if(user == null){
+			return "redirect:/login/returnLogin.html";
+		}
 		mm.addAttribute("productId", productId);
 		return "product/make";
 	}
