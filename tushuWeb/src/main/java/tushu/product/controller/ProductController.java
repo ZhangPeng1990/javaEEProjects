@@ -150,9 +150,9 @@ public class ProductController {
 	{
 		int newSize;
 		User user = (User) request.getSession().getAttribute(Constans.SESSION_USER_ATTR_NAME);
+		OrderForm oform = orderFormService.getById(id);
 		
 		this.orderFormService.deleteOrderForm(id);
-		
 		List<OrderForm> list = orderFormService.getOrders(user, OrderType.valueOf(type));
 		mm.addAttribute("list", list);
 		double totalAmount = 0;
@@ -160,8 +160,14 @@ public class ProductController {
 			totalAmount += of.getAmountPayable();
 		}
 		mm.addAttribute("totalAmount", totalAmount);
-		newSize = list.size();
-		request.getSession().setAttribute(Constans.Shoping_Cart, newSize);
-		return "product/cart";
+		if(oform.getOrderType().equals(OrderType.NON_PAYMENT)){
+			return "redirect:/user/" + user.getId() + "/cart.html";
+		}else if(oform.getOrderType().equals(OrderType.SHOPPING_CART)){
+			newSize = list.size();
+			request.getSession().setAttribute(Constans.Shoping_Cart, newSize);
+			return "product/cart";
+		}else{
+			return null;
+		}
 	}
 }

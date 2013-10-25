@@ -194,23 +194,27 @@ public class UserController extends BaseController {
 	public String createOrderSuccess(@PathVariable("userId") int userId, ModelMap mm, HttpServletRequest request, PayForm form){
 		double shouldPayMoney = 0.0;
 		
+		Integer emid = form.getPosts();
+		String orderNum = "";
+		ExpressMessage em = expressMessageService.getById(emid);
 		String[] ids = form.getPay_ids().split(",");
 		if(ids != null && ids.length > 0){
 			for(String sid : ids){
 				Long id = new Long(sid);
 				OrderForm of = this.orderFormService.getById(id);
+				orderNum = of.getOrderNumber();
+				of.setExpressMessage(em);
 				shouldPayMoney += of.getAmountPayable();
 				this.orderFormService.updateOrderType(id, OrderType.NON_PAYMENT);
 			}
 		}
 		
-		Integer id = form.getPosts();
-		ExpressMessage em = expressMessageService.getById(id);
 		shouldPayMoney = shouldPayMoney + em.getExpressPrice();
 		mm.addAttribute("shouldPayMoney", shouldPayMoney);
+		mm.addAttribute("orderNum", orderNum);
 		//刷新购物车
 		List<OrderForm> list = orderFormService.getOrders(userService.getUserById(userId), OrderType.SHOPPING_CART);
-		request.getSession().setAttribute(Constans.Shoping_Cart, list);
+		request.getSession().setAttribute(Constans.Shoping_Cart, list != null ? list.size() : 0);
 		
 		return "product/create_order_success";
 	}

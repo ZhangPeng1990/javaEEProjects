@@ -364,6 +364,8 @@
             <label for="bank_1" class="ml5"><img src="<%=path%>/styles/images/bank/btn_alipay.gif" class="vam"></label>
           </li>
         </ul>
+        <!-- 目前只开放一个支付宝支付方式 -->
+        <!--  
         <ul class="pl15 pt10">
           <li class="p5">
             <input class="vam" name="pay_use" value="6" id="bank_2" type="radio">
@@ -456,6 +458,7 @@
               <label for="bank_20" class="ml5"><img class="vam" src="<%=path%>/styles/images/bank/bank_unionpay.gif" alt="中国银联"></label>
             </li>
           </ul>
+          -->
         </div>
       </div>
       <div class="w860 m bbdb pt20 pb30">
@@ -492,6 +495,8 @@
                             </tbody></table>
       </div>
       <div class="w860 m bbdb pt20 pb30">
+      	<!-- 代金券-->
+        <!-- 
         <div class="lh26"><strong class="fs16">使用优惠券/代金券</strong></div>
         <div class="clearfix buyMoney">
             <div class="bm_content">
@@ -540,8 +545,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+            -->
             <div class="bm_bottom clearfix">
                 <div class="tl fs14">商品金额：<span class="fs12 fc_orange">￥9.90</span> <span id="compute"> + 运费 10元</span></div>
                 <div class="tr"><strong class="fs14">实付金额<span class="fc_orange ml10 fs20 ff_yahei">￥<span id="price_all" data-total="1990" discount="0" book_nums="1" posts="0">19.90</span>元</span></strong></div>

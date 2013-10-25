@@ -226,7 +226,7 @@
                 <table class="table_1 w860 m tc fc_gray6">
                     <tbody>
                     <tr>
-                        <th class="w57"><input class="vam mr5 keys_all" checked="true" type="checkbox">全选</th>
+                        <th class="w57"><input class="vam mr5 keys_all" checked="checked" type="checkbox">全选</th>
                         <th>商品信息</th>
                         <th>类型</th>
                         <th>单价</th>
@@ -286,7 +286,7 @@
                 </div>
                 <div class="clearfix w860 m pt20">
                     <span class="l ml10 fs13">
-                    	<input class="vam mr15 vam ml20 keys_all" checked="true" type="checkbox">全选/取消
+                    	<input class="vam mr15 vam ml20 keys_all" checked="checked" type="checkbox">全选/取消
                      	<input id="delete_bat" class="btn_gray4 vam ml20" value="批量删除" type="button">
                 </span>
 

@@ -309,10 +309,16 @@ $(document).ready(function(){
                         </td>
                         <td width="20%">${item.address.recipientsName}</td>
                         <td width="20%"><fmt:formatDate value="${item.createTime}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
-                        <td width="10%" class="fc_orange">待支付</td>
+                        <td width="10%" class="fc_orange">
+                        	<c:if test="${item.orderType eq 'NON_PAYMENT'}">待支付</c:if>
+                        	<c:if test="${item.orderType eq 'ACCOUNT_PAID'}">已支付</c:if>
+                        </td>
                         <td width="10%">￥${item.amountPayable}元</td>
                         <td width="10%">
+                        	<c:if test="${item.orderType eq 'NON_PAYMENT'}">
                             <a href="javascript:;" onclick="pay_dialog('2521716')" class="orderBtn_orange">支付</a>
+                            <a href="<%=path%>/product/deleteOrderForm/NON_PAYMENT/${item.id}.html" class="orderBtn_gray" onclick="return confirm('确认取消吗?订单将被删除');">取消订单</a>
+                            </c:if>
                             <a href="javascript:;" onclick="order_detail(25217)" class="orderBtn_gray">详情</a>
                             <a href="javascript:;" onclick="kuaidi100('2521716')" class="orderBtn_gray">查看物流</a>
                         </td>

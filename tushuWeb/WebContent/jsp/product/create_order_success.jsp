@@ -226,11 +226,12 @@
             <div class="buyBox fc_gray6 pt60 pb60">
                 <div class="pt20 pb30 img_true w320 m">
                     <strong class="block">订单提交成功，请您尽快付款！</strong>
-                    <div class="mt5">订单号：2521114<span class="ml10 mr10 fc_gray9">|</span>应付金额：<span class="fc_red">29.80元</span></div>
+                    <div class="mt5">订单号：${orderNum}<span class="ml10 mr10 fc_gray9">|</span>应付金额：<span class="fc_red">${shouldPayMoney}元</span></div>
                 </div>
                 <!--div class="tc"><span class="start_tip">8月6日-15日，下单并支付成功24小时内可获得LOMO卡免费券（即10元代金券）一张，每个账号参与一次。</span></div-->
                 <div class="tc mt5 w560 m btdb pl30 pr30 pt20 pb20">涂书网在线编辑器商品的制作周期为3-5天（不包括配送时间），请您耐心等待</div>
-                <div class="clearfix w780 m tc pt30 pb30"><a href="javascript:;" class="btn_orange vam mr15 js_goto_pay">马上支付</a><a href="/my/order.html" class="btn_gray5 vam">稍后支付</a></div>
+                <div class="clearfix w780 m tc pt30 pb30"><a href="javascript:;" class="btn_orange vam mr15 js_goto_pay">马上支付</a>
+                <a href="<%=path%>/user/${sessionUserName.id}/order.html" class="btn_gray5 vam">稍后支付</a></div>
             </div>
         </div>
     </div>
