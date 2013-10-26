@@ -161,7 +161,7 @@ public class ProductController {
 		}
 		mm.addAttribute("totalAmount", totalAmount);
 		if(oform.getOrderType().equals(OrderType.NON_PAYMENT)){
-			return "redirect:/user/" + user.getId() + "/cart.html";
+			return "redirect:/user/" + user.getId() + "/order.html";
 		}else if(oform.getOrderType().equals(OrderType.SHOPPING_CART)){
 			newSize = list.size();
 			request.getSession().setAttribute(Constans.Shoping_Cart, newSize);
