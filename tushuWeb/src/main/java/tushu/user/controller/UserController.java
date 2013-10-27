@@ -38,6 +38,9 @@ import tushu.produc.service.OrderFormService;
 import tushu.user.service.InformService;
 import tushu.user.service.UserService;
 import tushu.utils.FileTools;
+import tushu.utils.JpegTool;
+import tushu.utils.JpegToolException;
+import tushu.utils.ReNmaeUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -267,20 +270,43 @@ public class UserController extends BaseController {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;    
         Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
         String ctxPath = this.getUserPath(multipartRequest, userId);
+        String tempCtxPath = ctxPath + "\\temp";
         //创建文件夹  
         File file = new File(ctxPath);    
+        File tempFile = new File(tempCtxPath);
         if (!file.exists()) {    
             file.mkdirs();    
         }    
+        
+        if (!tempFile.exists()) {    
+        	tempFile.mkdirs();    
+        } 
+        
         String fileName = null;
         for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {
             // 上传文件名    
             MultipartFile mf = entity.getValue();
             fileName = URLDecoder.decode(mf.getOriginalFilename(), "UTF-8");
+            String newName = ReNmaeUtils.reName(fileName);
+            String tempName = ReNmaeUtils.getNewName(newName, "-temp");
             
-            File uploadFile = new File(ctxPath + File.separator + fileName);    
+            File uploadFile = new File(ctxPath + File.separator + newName);    
             try {  
-                FileCopyUtils.copy(mf.getBytes(), uploadFile); 
+                FileCopyUtils.copy(mf.getBytes(), uploadFile);
+                //生成缩略图
+                JpegTool j = new JpegTool();
+        		try {
+        			j.SetScale(0.7);
+        			j.SetSmallHeight(70);
+        			j.SetSmallWidth(70);
+        			j.doFinal(ctxPath + File.separator + newName,tempCtxPath + File.separator + tempName);
+        		} catch (JpegToolException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}finally{
+        			j = null;
+        		}
+        		
                 responseStr="上传成功";
         } catch (IOException e) {
             responseStr="上传失败";  
