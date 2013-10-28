@@ -1270,7 +1270,7 @@
 							<param name="hasPriority" value="true">
 							<!-- value="uploadUrl=http://upload.mimoprint.com/userimage/uploadfile&amp;userId=103691&amp;worksId=169391&amp;bookId=153296&amp;maxCount=200" -->
 							<param name="flashvars" 
-							value="uploadUrl=http://upload.mimoprint.com/userimage/uploadfile&amp;userId=103691&amp;worksId=169391&amp;bookId=153296&amp;maxCount=200" >
+							value="uploadUrl=<%=path%>/user/${sessionUserName.id}/uploadFile.html&amp;userId=103691&amp;worksId=169391&amp;bookId=153296&amp;maxCount=200">
 								
 						</object>
 					</div>

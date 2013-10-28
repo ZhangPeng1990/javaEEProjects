@@ -34,6 +34,7 @@ import tushu.enums.OrderType;
 import tushu.enums.UserOperation;
 import tushu.produc.service.AddressMessageService;
 import tushu.produc.service.ExpressMessageService;
+import tushu.produc.service.ImagesService;
 import tushu.produc.service.OrderFormService;
 import tushu.user.service.InformService;
 import tushu.user.service.UserService;
@@ -60,6 +61,9 @@ public class UserController extends BaseController {
 	
 	@Autowired
 	private ExpressMessageService expressMessageService;
+	
+	@Autowired
+	private ImagesService imagesService;
 	
 	String operation = "";
 	
@@ -293,6 +297,11 @@ public class UserController extends BaseController {
             File uploadFile = new File(ctxPath + File.separator + newName);    
             try {  
                 FileCopyUtils.copy(mf.getBytes(), uploadFile);
+                Images image = new Images();
+                image.setName(newName);
+                image.setIndex(0);
+                image.setUrl("//" + Constans.User_Pic_Path + userId + "//" + newName);
+                this.imagesService.addImages(image);
                 //生成缩略图
                 JpegTool j = new JpegTool();
         		try {

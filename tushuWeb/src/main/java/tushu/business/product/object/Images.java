@@ -1,6 +1,5 @@
 package tushu.business.product.object;
 
-import tushu.business.user.object.User;
 
 public class Images {
 
@@ -12,8 +11,6 @@ public class Images {
 	
 	private Integer index;
 	
-//	private User user;//需要加
-
 	public Integer getId() {
 		return id;
 	}

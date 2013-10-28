@@ -24,4 +24,10 @@ public class ImagesServiceImpl implements ImagesService {
 		return images;
 	}
 
+	public Images addImages(Images images){
+		ImagesDO imagesDO = BeanCopyer.toImagesDO(images);
+		imagesDOMapper.insert(imagesDO);
+		images.setId(imagesDO.getId());
+		return images;
+	}
 }
