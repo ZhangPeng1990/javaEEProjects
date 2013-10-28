@@ -1,5 +1,6 @@
 package tushu.business.product.object;
 
+
 import tushu.enums.IndexShowImageType;
 
 public class Product {
@@ -41,7 +42,7 @@ public class Product {
 	private Integer viewCount;
 	
 	private Integer saledCount;
-
+	
 	public Integer getProductId() {
 		return productId;
 	}

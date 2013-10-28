@@ -8,6 +8,7 @@ import tushu.business.product.object.IndexShowType;
 import tushu.business.product.object.OrderForm;
 import tushu.business.product.object.Product;
 import tushu.business.product.object.ProductType;
+import tushu.business.product.object.Work;
 import tushu.enums.IndexShowImageType;
 import tushu.enums.OrderType;
 import tushu.enums.Types;
@@ -18,6 +19,7 @@ import tushu.model.IndexShowTypeDO;
 import tushu.model.OrderFormDO;
 import tushu.model.ProductDO;
 import tushu.model.ProductTypeDO;
+import tushu.model.WorkDO;
 
 
 public class BeanCopyer {
@@ -199,5 +201,19 @@ public class BeanCopyer {
 		expressMessageDO.setExpressPrice(expressMessage.getExpressPrice());
 		expressMessageDO.setId(expressMessage.getId());
 		return expressMessageDO;
+	}
+	
+	public static Work toWork(WorkDO workDO){
+		Work work = new Work();
+		work.setId(workDO.getId());
+		return work;
+	}
+	
+	public static WorkDO toWorkDO(Work work){
+		WorkDO workDO = new WorkDO();
+		workDO.setId(work.getId());
+		workDO.setProductId(work.getProduct() != null ? work.getProduct().getProductId() : null);
+		workDO.setUserId(work.getUser() != null ? work.getUser().getId() : null);
+		return workDO;
 	}
 }
