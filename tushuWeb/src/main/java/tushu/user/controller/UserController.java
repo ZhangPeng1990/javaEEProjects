@@ -300,7 +300,7 @@ public class UserController extends BaseController {
                 Images image = new Images();
                 image.setName(newName);
                 image.setIndex(0);
-                image.setUrl("//" + Constans.User_Pic_Path + userId + "//" + newName);
+                image.setUrl("/" + Constans.User_Pic_Path + userId + "/" + newName);
                 this.imagesService.addImages(image);
                 //生成缩略图
                 JpegTool j = new JpegTool();
