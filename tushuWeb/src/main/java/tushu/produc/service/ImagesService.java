@@ -7,4 +7,6 @@ public interface ImagesService {
 	public Images getImages(Integer id);
 	
 	public Images addImages(Images images);
+	
+	public boolean deleteByUrl(String url);
 }

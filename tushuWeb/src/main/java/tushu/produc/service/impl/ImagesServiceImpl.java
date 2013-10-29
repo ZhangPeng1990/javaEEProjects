@@ -30,4 +30,12 @@ public class ImagesServiceImpl implements ImagesService {
 		images.setId(imagesDO.getId());
 		return images;
 	}
+	
+	public boolean deleteByUrl(String url){
+		int i = this.imagesDOMapper.deleteByUrl(url);
+		if(i > 0){
+			return true;
+		}
+		return false;
+	}
 }

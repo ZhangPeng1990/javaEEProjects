@@ -87,7 +87,9 @@ public class ProductController {
 		
 		String userPicFolderPath = "";
 		
-		if(user != null){
+		if(user == null){
+			return "redirect:/login/returnLogin.html";
+		}else{
 			userPicFolderPath = this.getUserPath(request, user.getId().intValue());
 			
 			File file = new File(userPicFolderPath);

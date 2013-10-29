@@ -14,7 +14,8 @@ Uploader = {
         if ((window.navigator.userAgent.indexOf("Macintosh") > -1 && window.navigator.userAgent.indexOf("Safari") > -1)) {
             Uploader.swfUrl = '/static/swf/uploadimage_unzip.swf?ver=20130524';
             Uploader.contentHeight = 602;
-            Uploader.uploadUrl = '/userimage/upload';
+//          Uploader.uploadUrl = '/userimage/upload';
+            Uploader.uploadUrl = 'user/' + $("#sessionUserId").val() + '/uploadFile.html';
         }
     },
     show: function (userId, bookId, worksId) {
@@ -28,23 +29,23 @@ Uploader = {
             }
             Uploader.uploadingBar.hide(3000);
             Uploader.uploading = false;
-        }
+        },
         window.onUploaded = function (objStr)
         {
             //alert(objStr);
             var obj = $.parseJSON(objStr.replace(/\\/g, "\\\\"));
             Uploader.onUploaded(obj);
-        }
+        },
         window.onStartEdit = function () {
             Uploader.close();
             Uploader.min();
-        }
+        },
         window.goEdit = function () {
             Uploader.close();
-        }
+        },
         window.onStartUpload = function () {
             Uploader.uploading = true;
-        }
+        },
         window.onProgress = function (p) {
             Uploader.onProgress(p);
         };

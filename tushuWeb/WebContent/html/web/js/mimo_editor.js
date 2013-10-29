@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 /*
 事件列表
     
@@ -118,7 +118,7 @@ mimo.Editor = {
     },
     initData: function () {
 
-        window.BOOK_DATA = window.JSONBookInfo
+        window.BOOK_DATA = window.JSONBookInfo;
 
         // 把list转成hashmap
         BOOK_DATA.list = {};
@@ -261,7 +261,7 @@ mimo.Editor = {
             $("#pop_setting .confirm").click(function (e) {
                 e.preventDefault();
                 mimo.Editor.PreviewList.changePage(sel.val());
-                pop.hide()
+                pop.hide();
             });
 
             $("#pop_setting .cancel").click(function (e) {
@@ -296,7 +296,7 @@ mimo.Editor = {
         }
         if (window.EndDate) {
             $("#end_date").html('您的作品的截稿日期已经延长到 <b>' + window.EndDate + '</b>, 请抓紧时间完成作品出版哦!').show("slow");
-            setTimeout(function () { $("#end_date").hide("slow") }, 5000);
+            setTimeout(function () { $("#end_date").hide("slow"); }, 5000);
         }
     },
 
@@ -352,7 +352,7 @@ mimo.Editor = {
 
         //});
     }
-}
+},
 
 /**
  * 公用方法
@@ -430,7 +430,7 @@ mimo.Editor.PageEdit = {
         r = {
             "txt1": unescape(escape(mimo.Editor.TextEditor.toRn(t1)).replace(/%A0/g, " ")),
             "txt2": unescape(escape(mimo.Editor.TextEditor.toRn(t2)).replace(/%A0/g, " "))
-        }
+        };
         BOOK_DATA.spine_info = r;
     },
 
@@ -536,7 +536,7 @@ mimo.Editor.PageEdit = {
         if (num == "author_info") {
             page = $("#author_info");
         }
-        var page_num = num;
+//        var page_num = num;
         var template_name = page.attr("name");
         var background_color = page.attr("background_color");
         var text_color = page.attr("color");
@@ -854,10 +854,10 @@ mimo.Editor.PageEdit = {
         var t_color = num == "copyright" ? "#000000" : pageData.text_color;
 
         // 设置页面属性
-        page.css("background-color", b_color)
+        page.css("background-color", b_color);
         page.css("color", t_color);
 
-        page.attr("background_color", b_color)
+        page.attr("background_color", b_color);
         page.attr("color", t_color);
 
         var item;
@@ -898,10 +898,10 @@ mimo.Editor.PageEdit = {
                 var bcolor = pd.background_color;
                 var tcolor = pd.text_color;
                 // 设置页面属性
-                page.css("background-color", bcolor)
+                page.css("background-color", bcolor);
                 page.css("color", tcolor);
 
-                page.attr("background_color", bcolor)
+                page.attr("background_color", bcolor);
                 page.attr("color", tcolor);
 
                 if (bcolor == "#ffffff") {
@@ -950,13 +950,13 @@ mimo.Editor.PageEdit = {
         var p = mimo.Editor.PageEdit;
         var warp = $("#edit_area_warp");
         if (side == "left") {
-            warp.removeClass("edit_area_warp_right")
-            warp.addClass("edit_area_warp_left")
+            warp.removeClass("edit_area_warp_right");
+            warp.addClass("edit_area_warp_left");
             p.currentEditSide = "left";
             p.currentEditPage = $("#pagelayout_left_side_edit");
         } else {
-            warp.removeClass("edit_area_warp_left")
-            warp.addClass("edit_area_warp_right")
+            warp.removeClass("edit_area_warp_left");
+            warp.addClass("edit_area_warp_right");
             p.currentEditSide = "right";
             p.currentEditPage = $("#pagelayout_right_side_edit");
         }
@@ -1034,7 +1034,7 @@ mimo.Editor.PageEdit = {
                         mimo.Editor.ImageTools.fire($(this));
                     });
                     p.checkDPI(imgBox, ui.draggable.data("imageid"));
-                }
+                },
                 //end editImage onload
                 editImage.src = ui.draggable.attr("data-url") + "_edit.jpg";
                 $(editImage).attr("imageid", ui.draggable.data("imageid"));
@@ -1291,7 +1291,7 @@ mimo.Editor.PageEdit = {
                     $("#bottom_img1").attr("src", '/static/images/m_logo.png');
                     $("#page_bottom").addClass("pagelayout_bg").addClass("blank").css("background-color", "#ffffff");
                     //处理折页和书脊字体颜色
-                    $(".spine, #author_info").css("color", "#000000").attr("color", "#000000")
+                    $(".spine, #author_info").css("color", "#000000").attr("color", "#000000");
                 }
             }
 
@@ -1316,7 +1316,7 @@ mimo.Editor.PageEdit = {
 
         // 监听字体颜色事件
         mimo.Event.addEventListener("MIMO_TEXT_COLOR_PICKER_EVENT", function (eventObj, dataObj) {
-            var item = p.currentEditPage
+            var item = p.currentEditPage;
             if (item.attr("num") == "0" || item.attr("num") == "copyright") {
                 alert("扉页字体根据底色自动调整，无需手动调整。");
                 return;
@@ -1631,7 +1631,7 @@ mimo.Editor.ThumbnailList = {
 
         for (var k in data) {
             if (data[k] && data[k].page_data) {
-                t = data[k].page_data.imagebox_list
+                t = data[k].page_data.imagebox_list;
                 if (t) {
                     for (var i = 0, len = t.length; i < len; i++) {
                         if (t[i].imageid) {
@@ -1992,7 +1992,7 @@ mimo.Editor.PagelayoutPicker = {
         $("#layout_arrow_out").attr("class", "pop-arrow-up");
         $("#layout_arrow_in").attr("class", "pop-arrow-up-in");
         if (window.isMpad) {
-            pop.css({ "top": y - $("#pop_layout").height() - 45 })
+            pop.css({ "top": y - $("#pop_layout").height() - 45 });
             $("#layout_arrow_out").attr("class", "pop-arrow-down");
             $("#layout_arrow_in").attr("class", "pop-arrow-down-in");
         }
@@ -2405,7 +2405,7 @@ mimo.Editor.PreviewList = {
         $("#mod_preview_thumnail_list a").each(function (i, v) {
             num = $(v).attr("num");
             if (!isNaN(num)) {
-                template_name = $(v).attr("template_name")
+                template_name = $(v).attr("template_name");
                 layout_info = mimo.Editor.Common.getLayoutInfo(num, template_name);
                 if (layout_info && layout_info.cross_type == "T") {
                     mimo.Editor.PreviewList.setCrossStyle(num, true);
@@ -2885,14 +2885,14 @@ mimo.Editor.Preview = {
         }
     },
     edit: function () {
-        var p = mimo.Editor.Preview
+        var p = mimo.Editor.Preview;
         var num = mimo.Editor.Preview.getRightPageNum();
-        mimo.Editor.PreviewList.selectPage(num)
+        mimo.Editor.PreviewList.selectPage(num);
         p.hide();
     },
     // 显示大图
     showBig: function (path) {
-        var p = mimo.Editor.Preview
+        var p = mimo.Editor.Preview;
         var item = $("#preview_2x");
         var height = 640;
         //设置位置
@@ -3023,7 +3023,7 @@ mimo.Editor.TextEditor = {
     //显示文本框
     show: function (textBox) {
         mimo.Editor.showMaskLayout(0.1);
-        var p = mimo.Editor.TextEditor
+        var p = mimo.Editor.TextEditor;
         var item = $(textBox);
         var line = item.attr("max_line");
         var length = item.attr("max_length");
@@ -3114,7 +3114,7 @@ mimo.Editor.TextEditor = {
     },
     setContent: function (isCancel, content) {
 
-        var p = mimo.Editor.TextEditor
+        var p = mimo.Editor.TextEditor;
         var val = isCancel ? content : p.textArea.val();
         if (val.length == 0) {
             //没有内容,要把底色加上
@@ -3173,7 +3173,7 @@ mimo.Editor.TextEditor = {
         }
     },
     confirm: function () {
-        var p = mimo.Editor.TextEditor
+        var p = mimo.Editor.TextEditor;
         p.checkContent(function (data) {
             if (data.index == 0) {
                 p.setContent();
@@ -3387,7 +3387,7 @@ mimo.Editor.TextEditor = {
         //输入框事件
         $("#pop_texteditor .edit_area input,#pop_texteditor .edit_area textarea").bind("keyup", function (e) {
             p.checkInput(e);
-            p.setContent()
+            p.setContent();
         });
     },
     lisentEvent: function () {
@@ -3517,8 +3517,8 @@ mimo.Editor.DataCenter = {
 mimo.Editor.Checker = {
     init: function () {
         var p = mimo.Editor.Checker;
-        p.addStep1Event()
-        p.addStep2Event()
+        p.addStep1Event();
+        p.addStep2Event();
     },
     // 触发检查
     check: function () {
@@ -3995,7 +3995,7 @@ mimo.Editor.PageManager = {
     changeToSingle: function () {
         var ul = $("#page_manager_list");
         var page = $("li a", ul);
-        var newUl = $('<ul>')
+        var newUl = $('<ul>');
         var li;
         var len = page.length - 4;
         page.each(function (index, obj) {
@@ -4015,7 +4015,7 @@ mimo.Editor.PageManager = {
     changeToCross: function () {
         var ul = $("#page_manager_list");
         var page = $("li a", ul);
-        var newUl = $('<ul>')
+        var newUl = $('<ul>');
         var li;
         var len = page.length - 5;
         var counter = 0;
@@ -4077,7 +4077,7 @@ mimo.Editor.PageManager = {
             if ($(this).attr("num") != undefined) {
                 ary.push($(this).attr("num"));
             }
-        })
+        });
         return ary;
     },
     // 提交数据
@@ -4119,17 +4119,17 @@ mimo.Editor.PageManager = {
             e.preventDefault();
             //alert(p.getNewSequence().join(";"));
             p.submit();
-        })
+        });
 
         $("#page_sort_cross").click(function (e) {
             //e.preventDefault();
             p.changeToCross();
-        })
+        });
 
         $("#page_sort_single").click(function (e) {
             //e.preventDefault();
             p.changeToSingle();
-        })
+        });
     }
 };
 
@@ -4343,7 +4343,7 @@ mimo.Editor.ImageTools = {
 
         if (wScale > hScale) {
             h = bh;
-            w = ow / hScale
+            w = ow / hScale;
 
             //水平居中
             x = (bw / 2) - (w / 2);

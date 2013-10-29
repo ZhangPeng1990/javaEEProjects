@@ -6,13 +6,13 @@ Uploader = {
     userId: 0,
     bookId: 0,
     uploading: false,
-    swfUrl: '/static/swf/uploader_file.swf?ver=20130524',
+    swfUrl: '../../flash/swf/uploader_file.swf?ver=20130524',
     uploadUrl: '/userimage/uploadfile',
     needRerfesh: false,
     contentHeight:528,
     fixMacSafari: function () {
         if ((window.navigator.userAgent.indexOf("Macintosh") > -1 && window.navigator.userAgent.indexOf("Safari") > -1)) {
-            Uploader.swfUrl = '/static/swf/uploadimage_unzip.swf?ver=20130524';
+            Uploader.swfUrl = '../../flash/swf/uploadimage_unzip.swf?ver=20130524';
             Uploader.contentHeight = 602;
             Uploader.uploadUrl = '/userimage/upload';
         }

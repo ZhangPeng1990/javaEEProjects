@@ -35,6 +35,10 @@
     delete from images
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByUrl" parameterType="java.lang.String" >
+    delete from images
+    where url = #{url,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="tushu.model.ImagesDO" useGeneratedKeys="true" keyProperty="id">
     <selectKey resultType="int" order="AFTER" keyProperty="id">
 	select LAST_INSERT_ID() as id 
