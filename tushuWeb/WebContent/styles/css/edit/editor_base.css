@@ -429,7 +429,7 @@ ul.blk li
 #logo
 {
     float: left;
-    background: url(../../static/images/m_logo.png) 0 0 no-repeat;
+    background: url(../../images/edit/m_logo.png) 0 0 no-repeat;
     height: 85px;
     width: 250px;
     position: relative;

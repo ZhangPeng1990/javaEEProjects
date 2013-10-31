@@ -105,9 +105,60 @@ public class ProductController {
 				}
 			}
 			mm.addAttribute("images", images);
+			
+			//取缩略图集合
+			String smallPicPath = userPicFolderPath + File.separator + "temp";
+			File smallPic = new File(smallPicPath);
+			File[] smallPicFiles = smallPic.listFiles();
+			List<Images> smallImages = null;
+			if(smallPicFiles != null && smallPicFiles.length > 0){
+				smallImages = new ArrayList<Images>();
+				for(File f : smallPicFiles){
+					Images image = new Images();
+					image.setName(f.getName());
+					image.setUrl(request.getContextPath() + "/" + Constans.User_Pic_Path + user.getId().intValue() + "/temp/" + image.getName());
+					String fatherName = image.getName().replace("-temp", "");
+					image.setFatherUrl(request.getContextPath() + "/" + Constans.User_Pic_Path + user.getId().intValue() + "/" + fatherName);
+					smallImages.add(image);
+				}
+			}
+			mm.addAttribute("smallImages", smallImages);
 		}
 			
-		return "product/booklet";
+		return "product/photoBookEditer";
+	}
+	
+	@RequestMapping("/{productId}/making2")
+	public String making2(@PathVariable("productId") Integer productId, ModelMap mm, HttpServletRequest request){
+		Product product = this.productService.getById(productId);
+		mm.addAttribute("product", product);
+		
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(Constans.SESSION_USER_ATTR_NAME);
+		
+		String userPicFolderPath = "";
+		
+		if(user == null){
+			return "redirect:/login/returnLogin.html";
+		}else{
+			userPicFolderPath = this.getUserPath(request, user.getId().intValue());
+			
+			File file = new File(userPicFolderPath);
+			File[] files = file.listFiles();
+			List<Images> images = null;
+			if(files != null && files.length > 0){
+				images = new ArrayList<Images>();
+				for(File f : files){
+					Images image = new Images();
+					image.setName(f.getName());
+					image.setUrl(request.getContextPath() + "/" + Constans.User_Pic_Path + user.getId().intValue() + "/" + image.getName());
+					images.add(image);
+				}
+			}
+			mm.addAttribute("images", images);
+		}
+			
+		return "product/mimoprint";
 	}
 	
 	private String getUserPath(HttpServletRequest request, int userId){

@@ -9,6 +9,8 @@ public class Images {
 	
 	private String url;
 	
+	private String fatherUrl;
+	
 	private Integer index;
 	
 	public Integer getId() {
@@ -41,5 +43,13 @@ public class Images {
 
 	public void setIndex(Integer index) {
 		this.index = index;
+	}
+
+	public String getFatherUrl() {
+		return fatherUrl;
+	}
+
+	public void setFatherUrl(String fatherUrl) {
+		this.fatherUrl = fatherUrl;
 	}
 }
