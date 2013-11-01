@@ -20,6 +20,7 @@ import tushu.business.product.object.Images;
 import tushu.business.product.object.OrderForm;
 import tushu.business.product.object.Product;
 import tushu.business.product.object.ProductType;
+import tushu.business.product.object.Template;
 import tushu.business.user.object.User;
 import tushu.constans.Constans;
 import tushu.enums.OrderType;
@@ -27,6 +28,7 @@ import tushu.enums.ProductColumn;
 import tushu.produc.service.OrderFormService;
 import tushu.produc.service.ProductService;
 import tushu.produc.service.ProductTypeService;
+import tushu.produc.service.TemplateService;
 
 @Controller
 @RequestMapping("/product")
@@ -40,6 +42,9 @@ public class ProductController {
 	
 	@Autowired
 	private OrderFormService orderFormService;
+	
+	@Autowired
+	private TemplateService templateService;
 	
 	@RequestMapping("/details/{id}")
 	public String details(@PathVariable("id") int id, ModelMap mm){
@@ -77,6 +82,7 @@ public class ProductController {
 		return "product/make";
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/{productId}/making")
 	public String making(@PathVariable("productId") Integer productId, ModelMap mm, HttpServletRequest request){
 		Product product = this.productService.getById(productId);
@@ -123,6 +129,14 @@ public class ProductController {
 				}
 			}
 			mm.addAttribute("smallImages", smallImages);
+			
+			//模板集合
+			List<Template> templates = (List<Template>) session.getAttribute(Constans.template_Path);
+			if(templates == null || templates.size() < 1){
+				templates = templateService.getAll();
+			}
+			mm.addAttribute("templates", templates);
+			session.setAttribute(Constans.template_Path, templates);
 		}
 			
 		return "product/photoBookEditer";

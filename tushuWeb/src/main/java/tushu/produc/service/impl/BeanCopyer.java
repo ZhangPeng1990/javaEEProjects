@@ -8,6 +8,7 @@ import tushu.business.product.object.IndexShowType;
 import tushu.business.product.object.OrderForm;
 import tushu.business.product.object.Product;
 import tushu.business.product.object.ProductType;
+import tushu.business.product.object.Template;
 import tushu.business.product.object.Work;
 import tushu.enums.IndexShowImageType;
 import tushu.enums.OrderType;
@@ -19,6 +20,7 @@ import tushu.model.IndexShowTypeDO;
 import tushu.model.OrderFormDO;
 import tushu.model.ProductDO;
 import tushu.model.ProductTypeDO;
+import tushu.model.TemplateDO;
 import tushu.model.WorkDO;
 
 
@@ -215,5 +217,23 @@ public class BeanCopyer {
 		workDO.setProductId(work.getProduct() != null ? work.getProduct().getProductId() : null);
 		workDO.setUserId(work.getUser() != null ? work.getUser().getId() : null);
 		return workDO;
+	}
+	
+	public static Template toTemplate(TemplateDO templateDO){
+		Template template = new Template();
+		template.setA_Class(templateDO.getaClass());
+		template.setId(templateDO.getId());
+		template.setLi_Class(templateDO.getLiClass());
+		template.setName(templateDO.getName());
+		return template;
+	}
+	
+	public static TemplateDO toTemplateDO(Template template){
+		TemplateDO templateDO = new TemplateDO();
+		templateDO.setaClass(template.getA_Class());
+		templateDO.setId(template.getId());
+		templateDO.setLiClass(template.getLi_Class());
+		templateDO.setName(template.getName());
+		return templateDO;
 	}
 }

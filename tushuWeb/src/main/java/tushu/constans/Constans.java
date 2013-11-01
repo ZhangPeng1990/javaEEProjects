@@ -13,4 +13,6 @@ public class Constans {
 	public static final String Shoping_Cart = "shopingCart";//购物车
 	
 	public static final String User_Pic_Path = "imageSpace/users/";//用户图片空间路径
+	
+	public static final String template_Path = "TEMPLATE_PATH";//模板集合session key
 }

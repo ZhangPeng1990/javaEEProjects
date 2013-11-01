@@ -9,7 +9,9 @@ import org.junit.Test;
 import org.springframework.util.Assert;
 
 import tushu.business.product.object.AddressMessage;
+import tushu.business.product.object.Template;
 import tushu.model.AddressMessageDO;
+import tushu.model.TemplateDO;
 
 public class AppCopy2 {
 
@@ -48,8 +50,8 @@ public class AppCopy2 {
 	
 	@Test
 	public void test() throws IntrospectionException{
-		AddressMessage addressMessage = new AddressMessage();
-		AddressMessageDO addressMessageDO = new AddressMessageDO();
-		this.printOut(addressMessage,addressMessageDO);
+		TemplateDO templateDO = new TemplateDO();
+		Template template = new Template();
+		this.printOut(templateDO,template);
 	}
 }
