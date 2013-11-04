@@ -175,6 +175,39 @@ public class ProductController {
 		return "product/mimoprint";
 	}
 	
+	@RequestMapping("/{productId}/making3")
+	public String making3(@PathVariable("productId") Integer productId, ModelMap mm, HttpServletRequest request){
+		Product product = this.productService.getById(productId);
+		mm.addAttribute("product", product);
+		
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(Constans.SESSION_USER_ATTR_NAME);
+		
+		String userPicFolderPath = "";
+		
+		if(user == null){
+			return "redirect:/login/returnLogin.html";
+		}else{
+			userPicFolderPath = this.getUserPath(request, user.getId().intValue());
+			
+			File file = new File(userPicFolderPath);
+			File[] files = file.listFiles();
+			List<Images> images = null;
+			if(files != null && files.length > 0){
+				images = new ArrayList<Images>();
+				for(File f : files){
+					Images image = new Images();
+					image.setName(f.getName());
+					image.setUrl(request.getContextPath() + "/" + Constans.User_Pic_Path + user.getId().intValue() + "/" + image.getName());
+					images.add(image);
+				}
+			}
+			mm.addAttribute("images", images);
+		}
+			
+		return "product/flashEdit";
+	}
+	
 	private String getUserPath(HttpServletRequest request, int userId){
 		String userPicFolderPath = "";
 		HttpSession session = request.getSession();
