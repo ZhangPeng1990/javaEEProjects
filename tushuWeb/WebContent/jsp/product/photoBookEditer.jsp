@@ -66,7 +66,10 @@
                             <c:forEach var="smallPic" items="${smallImages}">
                             	<li class="">                
 	                            	<img class="j_thumbnail ui-draggable" title="点击查看大图" 
-	                            		src="${smallPic.url}" bigImageUrl="${smallPic.fatherUrl}" onclick="showBigImage('${smallPic.fatherUrl}')">                
+	                            		src="${smallPic.url}" bigImageUrl="${smallPic.fatherUrl}" onclick="showBigImage('${smallPic.fatherUrl}')">
+	                            	<div style="position: absolute; display: none;">
+	                            		<img src="${smallPic.url}">
+	                            	</div>               
 	                            	<span class="counter" title="图像被使用次数">0</span>
 	                            	<span class="thumbnail_operats">
 	                            	<a title="旋转" href="javascript:;" class="btn_rotate_left"></a>
@@ -305,7 +308,7 @@
                 <ul style="" class="blk layout_list bg_cont pagelayout_mpadbook">
                 <c:forEach var="item" items="${templates}">
                 	<li class="${item.li_Class}">
-                        <a type="COVER" name="${item.name}" class="${item.a_Class}" onclick="loadXML('${item.name}');"></a>
+                        <a type="COVER" name="${item.name}" class="${item.a_Class}" onclick="leftLoadXML('${item.name}');"></a>
                     </li>
                 </c:forEach>
                 </ul>

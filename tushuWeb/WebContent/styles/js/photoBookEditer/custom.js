@@ -34,6 +34,20 @@ $(function(){
 			$(this).siblings().children("a").removeClass("hl_border");
 		});
 	});
+	
+	$('img[class|="j_thumbnail ui-draggable"]').each(function(key,value){
+		$(this).mousedown(function(e){
+			$(this).mousemove(function(e){
+				$(this).next().css("display","block");
+				$(this).next().css("left",e.pageX).css("top",e.pageY);
+			});
+			
+			$(this).mouseup(function(e){
+				$(this).unbind("mousemove");
+				$(this).next().css("display","none");
+			});
+		});
+	});
 });
 
 //控制上传对话框
