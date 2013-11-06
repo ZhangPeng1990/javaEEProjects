@@ -101,12 +101,14 @@
                             <div align="left" contenteditable="true" class="text_box txt2" id="spine_txt2" name="txt1" x="79" y="18" width="4" height="180" space="0" leading="9.6" max_line="1" max_length="14" pt="8" px="6" direction="vertical" style="left: 8px; top: 227px; width: 10px; height: 112px; font-size: 7px; letter-spacing: 4px;" tips_info="在此输入作者信息">在此输入作者信息</div>
                         </div>
                         <div class="backbone_bg"></div>
+                        
                         <div class="pagelayout_left_side_warp">
-                            <div id="pagelayout_left_side_edit" class="pagelayout_edit" background_color="#ffffff" color="#000000" style="background-color: rgb(255, 255, 255);"><div class="trim_line_top"></div><div class="trim_line_left"></div><div class="trim_line_bottom"></div><div class="trim_line_right"></div><div style="left: 181px; top: 309px; width: 93px; height: 21px;position: absolute;" height="9.5" width="42" y="113" x="15.5" name="img1" class="img1 "><img width="110" class="ui-draggable" style="position: relative; left: 0px; top: 0px;" src="<%=path%>/styles/images/edit/m_logo_b.png" id="bottom_img1"></div></div>
+                        
                         </div>
                         <div class="pagelayout_right_side_warp" style="display: block;">
-                            <div color="#000000" background_color="#ffffff" id="pagelayout_right_side_edit" class="pagelayout_edit pageedit_cover" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); width: 480px; height: 624px;" has_edited="false" num="cover" name="C1" width="197" height="256" page_type="C" product_type="MPAD" space_type="B" margin_type="A" side_type="M" cross_type="O"><div class="trim_line_top"></div><div class="trim_line_left"></div><div class="trim_line_bottom"></div><div class="trim_line_right"></div><div class="image_box img1 ui-droppable" id="img1" name="img1" x="3" y="0" width="191" height="256" style="left: 7px; top: 0px; width: 466px; height: 624px;"><div class="drag_here"></div><div class="dpi_info">1880x2520</div></div><div align="left" class="text_box text_box_background txt1" id="txt1" name="txt1" x="21" y="18" width="160" height="8.467" space="28.8" leading="0" max_line="1" max_length="15" pt="24" px="18" direction="horizontal" style="left: 51px; top: 44px; width: 390px; height: 21px; font-size: 18px;">在此输入文字~</div><div align="left" class="text_box text_box_background txt2" id="txt2" name="txt2" x="21" y="33" width="160" height="6" space="12" leading="0" max_line="1" max_length="34" pt="12" px="8" direction="horizontal" style="left: 51px; top: 80px; width: 390px; height: 15px; font-size: 9px;">在此输入文字~</div><div align="left" class="text_box text_box_background txt3" id="txt3" name="txt3" x="21" y="39" width="50" height="6" space="0" leading="0" max_line="1" max_length="10" pt="12" px="8" direction="horizontal" style="left: 51px; top: 95px; width: 122px; height: 15px; font-size: 9px;">在此输入文字~</div></div>
+                        
                         </div>
+                        
                         <div class="layout_tools">
                             <ul class="tool_bot">
                                 <li class="lf left_btn">
@@ -302,7 +304,7 @@
                 <ul style="" class="blk layout_list bg_cont pagelayout_mpadbook">
                 <c:forEach var="item" items="${templates}">
                 	<li class="${item.li_Class}">
-                        <a type="COVER" name="${item.name}" href="#" class="${item.a_Class}"></a>
+                        <a type="COVER" name="${item.name}" class="${item.a_Class}" onclick="loadXML('${item.name}');"></a>
                     </li>
                 </c:forEach>
                 </ul>

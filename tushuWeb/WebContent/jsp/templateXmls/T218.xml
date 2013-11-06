@@ -1,0 +1,11 @@
+<div id="pagelayout_left_side_edit" class="pagelayout_edit pageedit_2" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); width: 892px; height: 624px;" has_edited="true" num="2" name="T218" width="366" height="256" page_type="P" product_type="MPAD" space_type="B" margin_type="A" side_type="M" cross_type="T" background_color="#ffffff" color="#000000">
+  <div class="trim_line_top"/>
+  <div class="trim_line_left"/>
+  <div class="trim_line_bottom"/>
+  <div class="trim_line_right"/>
+  <div class="image_box img1 ui-droppable" id="img1" name="img1" x="121" y="14.5" width="227" height="227" style="left: 295px; top: 35px; width: 553px; height: 553px;">
+    <div class="drag_here"/>
+    <div class="dpi_info">2234x2234</div>
+  </div>
+  <div align="left" class="text_box text_box_background txt1" id="txt1" name="txt1" x="105.5" y="14.5" width="7.5" height="227" space="0" leading="15" max_line="1" max_length="70" pt="8" px="6" direction="vertical" style="left: 257px; top: 35px; width: 9px; height: 553px; font-size: 9px; letter-spacing: 4px;">在此输入文字~</div>
+</div>

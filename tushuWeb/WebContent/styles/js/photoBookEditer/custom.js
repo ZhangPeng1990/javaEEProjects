@@ -27,6 +27,13 @@ $(function(){
 	$("#uploader_close").click(function(){
 		hideUploader_dialog();
 	});
+	
+	$('div[class|="pop-inner"] ul[class|="blk layout_list bg_cont pagelayout_mpadbook"] li').each(function(key,value){
+		$(this).click(function(){
+			$(this).children("a").addClass("hl_border");
+			$(this).siblings().children("a").removeClass("hl_border");
+		});
+	});
 });
 
 //控制上传对话框
@@ -89,4 +96,23 @@ function controllPagelayout(){
     }else if(status == "block"){
     	$("#pop_layout").css("display","none");
     }
+}
+
+//加载模板
+function loadXML(name){
+	var url = '../../jsp/templateXmls/' + name + '.xml';
+	$.ajax({  
+        url: url,
+        type: 'GET',  
+        dataType: 'html',  
+        timeout: 1000,  //设定超时  
+        cache: false,   //禁用缓存  
+        error: function(xml) {  
+            alert("加载XML文档出错!");  
+        },  
+        success: function(xml) {
+//        	$('div[class|="pagelayout_left_side_warp"]').html(xml);
+        	$('div[class|="pagelayout_right_side_warp"]').html(xml);
+        }
+    });
 }

@@ -12,6 +12,7 @@ import tushu.business.product.object.Template;
 import tushu.business.product.object.Work;
 import tushu.enums.IndexShowImageType;
 import tushu.enums.OrderType;
+import tushu.enums.TemplateType;
 import tushu.enums.Types;
 import tushu.model.AddressMessageDO;
 import tushu.model.ExpressMessageDO;
@@ -225,6 +226,7 @@ public class BeanCopyer {
 		template.setId(templateDO.getId());
 		template.setLi_Class(templateDO.getLiClass());
 		template.setName(templateDO.getName());
+		template.setType(templateDO.getType() != null ? TemplateType.valueOf(templateDO.getType()) : null);
 		return template;
 	}
 	
@@ -234,6 +236,7 @@ public class BeanCopyer {
 		templateDO.setId(template.getId());
 		templateDO.setLiClass(template.getLi_Class());
 		templateDO.setName(template.getName());
+		templateDO.setType(template.getType() != null ? template.getType().toString() : null);
 		return templateDO;
 	}
 }
