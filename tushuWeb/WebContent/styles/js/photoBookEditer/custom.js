@@ -99,7 +99,7 @@ function controllPagelayout(){
 }
 
 //加载模板
-function loadXML(name){
+function leftLoadXML(name){
 	var url = '../../jsp/templateXmls/' + name + '.xml';
 	$.ajax({  
         url: url,
@@ -111,7 +111,23 @@ function loadXML(name){
             alert("加载XML文档出错!");  
         },  
         success: function(xml) {
-//        	$('div[class|="pagelayout_left_side_warp"]').html(xml);
+        	$('div[class|="pagelayout_left_side_warp"]').html(xml);
+        }
+    });
+}
+
+function rightLoadXML(name){
+	var url = '../../jsp/templateXmls/' + name + '.xml';
+	$.ajax({  
+        url: url,
+        type: 'GET',  
+        dataType: 'html',  
+        timeout: 1000,  //设定超时  
+        cache: false,   //禁用缓存  
+        error: function(xml) {  
+            alert("加载XML文档出错!");  
+        },  
+        success: function(xml) {
         	$('div[class|="pagelayout_right_side_warp"]').html(xml);
         }
     });

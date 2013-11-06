@@ -121,6 +121,7 @@
                                     </a>
                                 </li>
                             </ul>
+                            
                             <ul id="background_color_bar" class="color_bar" style="display: none;">
                                 <li class="white_bg color_page" data-color="#ffffff" title="白色"></li>
                                 <li class="black_bg color_page" data-color="#000000" title="黑色"></li>
