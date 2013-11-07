@@ -182,55 +182,17 @@
                     <a id="mod_preview_thumnail_btn_pre" class="arrow_retangle_lf btn lf"></a>
                     <div class="preview_thumbnail">
                         <ul id="mod_preview_thumnail_list" class="blk" style="left: 0px;">  
-                              
-                        	<li index="0" class="active">            
-                        		<a page_type="none" page_side="left" num="bottom" href="javascript:;" id="page_bottom" class="pagelayout_bg blank" style="background-color: rgb(255, 255, 255);"></a>             
-                        		<em class="img_page">封底</em>
-								<a template_name="C1" page_type="COVER" page_side="right" num="cover" href="javascript:;" id="page_cover" class="pagelayout_bg pc1_r"></a>            
-								<em class="img_page_right">封面</em>        
-							</li>
 							
-							<li index="1" class="">            
-								<a _template_name="AUTHORINFO" page_side="left" num="0left" href="javascript:;" id="page_0left" class="pagelayout_bg blank"></a>            
-								<em class="img_page">封面折页</em>            
-								<a template_name="T1" page_side="right" num="0" href="javascript:;" id="page_0" class="pagelayout_bg pt1_r"></a>
-								<em class="img_page_right">扉页</em>        
-							</li>        
-							
-							<li index="2" class="">            
-								<a page_side="left" num="1_left" href="javascript:;" id="page_1_left" class="pagelayout_bg blank"></a>
-								<em class="img_page">扉页对页</em>            
-								<a template_name="T8" page_side="right" num="1" href="javascript:;" id="page_1" class="pagelayout_bg pt8_r"></a>
-								<em class="img_page_right">1</em>        
+							<c:forEach var="page" items="${pages}">
+							<li index="${page.index}" class="cross_li ${page.index == 1 ? 'active' : ''}">                    
+								<a href="javascript:;" class="pagelayout_bg pt8_l"></a>
+								<em class="img_page">${page.leftPage.pageNum}</em>                    
+								<a href="javascript:;" class="pagelayout_bg pt11_r" style="display: none;"></a>
+								<em class="img_page_right">${page.rightPage.pageNum}</em>                
 							</li>                
+							</c:forEach>
 							
-							<li index="3" class="cross_li">                    
-								<a template_name="T215" page_side="left" num="2" href="javascript:;" id="page_2" class="pagelayout_bg pt8_l"></a>
-								<em class="img_page">2</em>                    
-								<a template_name="T11" page_side="right" num="3" href="javascript:;" id="page_3" class="pagelayout_bg pt11_r" style="display: none;"></a>
-								<em class="img_page_right">3</em>                
-							</li>                
-							
-							<li index="4" class="">                    
-								<a template_name="T5" page_side="left" num="4" href="javascript:;" id="page_4" class="pagelayout_bg pt5_l"></a>
-								<em class="img_page">4</em>                    
-								<a template_name="T5" page_side="right" num="5" href="javascript:;" id="page_5" class="pagelayout_bg pt5_r"></a> 
-							    <em class="img_page_right">5</em>                
-							</li>
-							                
-							<li index="5" class="">                    
-								<a template_name="T17" page_side="left" num="6" href="javascript:;" id="page_6" class="pagelayout_bg pt17_l"></a>
-								<em class="img_page">6</em>                    
-								<a template_name="T20" page_side="right" num="7" href="javascript:;" id="page_7" class="pagelayout_bg pt20_r"></a>
-								<em class="img_page_right">7</em>                
-							</li>               
-							
-							<li index="6" class="">                    
-								<a template_name="T20" page_side="left" num="8" href="javascript:;" id="page_8" class="pagelayout_bg pt20_l"></a>
-								<em class="img_page">8</em>
-								<a template_name="T13" page_side="right" num="9" href="javascript:;" id="page_9" class="pagelayout_bg pt13_r"></a>
-								<em class="img_page_right">9</em>                
-							</li>                <li index="7" class="">                    <a template_name="T6" page_side="left" num="10" href="javascript:;" id="page_10" class="pagelayout_bg pt6_l">                                            </a>                    <em class="img_page">10</em>                    <a template_name="T9" page_side="right" num="11" href="javascript:;" id="page_11" class="pagelayout_bg pt9_r">                                            </a>                    <em class="img_page_right">11</em>                </li>                <li index="8" class="">                    <a template_name="T9" page_side="left" num="12" href="javascript:;" id="page_12" class="pagelayout_bg pt9_l">                                            </a>                    <em class="img_page">12</em>                    <a template_name="T3" page_side="right" num="13" href="javascript:;" id="page_13" class="pagelayout_bg pt3_r">                                            </a>                    <em class="img_page_right">13</em>                </li>                <li index="9" class="">                    <a template_name="T6" page_side="left" num="14" href="javascript:;" id="page_14" class="pagelayout_bg pt6_l">                                            </a>                    <em class="img_page">14</em>                    <a template_name="T6" page_side="right" num="15" href="javascript:;" id="page_15" class="pagelayout_bg pt6_r">                                            </a>                    <em class="img_page_right">15</em>                </li>                <li index="10" class="">                    <a template_name="T18" page_side="left" num="16" href="javascript:;" id="page_16" class="pagelayout_bg pt18_l">                                            </a>                    <em class="img_page">16</em>                    <a template_name="T11" page_side="right" num="17" href="javascript:;" id="page_17" class="pagelayout_bg pt11_r">                                            </a>                    <em class="img_page_right">17</em>                </li>                <li index="11" class="">                    <a template_name="T11" page_side="left" num="18" href="javascript:;" id="page_18" class="pagelayout_bg pt11_l">                                            </a>                    <em class="img_page">18</em>                    <a template_name="T14" page_side="right" num="19" href="javascript:;" id="page_19" class="pagelayout_bg pt14_r">                                            </a>                    <em class="img_page_right">19</em>                </li>                <li index="12" class="">                    <a template_name="T7" page_side="left" num="20" href="javascript:;" id="page_20" class="pagelayout_bg pt7_l">                                            </a>                    <em class="img_page">20</em>                    <a template_name="T7" page_side="right" num="21" href="javascript:;" id="page_21" class="pagelayout_bg pt7_r">                                            </a>                    <em class="img_page_right">21</em>                </li>                <li index="13" class="">                    <a template_name="T20" page_side="left" num="22" href="javascript:;" id="page_22" class="pagelayout_bg pt20_l">                                            </a>                    <em class="img_page">22</em>                    <a template_name="T4" page_side="right" num="23" href="javascript:;" id="page_23" class="pagelayout_bg pt4_r">                                            </a>                    <em class="img_page_right">23</em>                </li>                <li index="14" class="">                    <a template_name="T4" page_side="left" num="24" href="javascript:;" id="page_24" class="pagelayout_bg pt4_l">                                            </a>                    <em class="img_page">24</em>                    <a template_name="T16" page_side="right" num="25" href="javascript:;" id="page_25" class="pagelayout_bg pt16_r">                                            </a>                    <em class="img_page_right">25</em>                </li>                <li index="15" class="">                    <a template_name="T19" page_side="left" num="26" href="javascript:;" id="page_26" class="pagelayout_bg pt19_l">                                            </a>                    <em class="img_page">26</em>                    <a template_name="T12" page_side="right" num="27" href="javascript:;" id="page_27" class="pagelayout_bg pt12_r">                                            </a>                    <em class="img_page_right">27</em>                </li>                <li index="16" class="">                    <a template_name="T12" page_side="left" num="28" href="javascript:;" id="page_28" class="pagelayout_bg pt12_l">                                            </a>                    <em class="img_page">28</em>                    <a template_name="T5" page_side="right" num="29" href="javascript:;" id="page_29" class="pagelayout_bg pt5_r">                                            </a>                    <em class="img_page_right">29</em>                </li>                <li index="17" class="">                    <a template_name="T8" page_side="left" num="30" href="javascript:;" id="page_30" class="pagelayout_bg pt8_l">                                            </a>                    <em class="img_page">30</em>                    <a template_name="T8" page_side="right" num="31" href="javascript:;" id="page_31" class="pagelayout_bg pt8_r">                                            </a>                    <em class="img_page_right">31</em>                </li>                <li index="18" class="">                    <a template_name="T2" page_side="left" num="32" href="javascript:;" id="page_32" class="pagelayout_bg pt2_l">                                            </a>                    <em class="img_page">32</em>                    <a data-side="right" num="last" href="javascript:;" id="page_blank" class="pagelayout_bg blank">                    </a>                    <em class="img_page_right"></em>                </li>                <li index="19">                    <a template_name="COPYRIGHT" page_side="left" num="copyright" href="javascript:;" id="page_copyright" class="pagelayout_bg pcopyright">                                            </a>                    <em class="img_page">版权</em>                    <a data-side="right" num="last_bottom" href="javascript:;" id="page_blank" class="pagelayout_bg blank">                    </a>                    <em class="img_page_right">封底</em>                </li></ul>
+						</ul>
                     </div>
                     <a id="mod_preview_thumnail_btn_next" class="arrow_retangle_rt btn_arrow btn lf"></a>
                 </div>

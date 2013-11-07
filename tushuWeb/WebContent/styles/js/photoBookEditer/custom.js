@@ -48,6 +48,13 @@ $(function(){
 			});
 		});
 	});
+	
+	//BigPage
+	$('ul[id|="mod_preview_thumnail_list"] li').each(function(key,value){
+		$(this).click(function(){
+			$(this).addClass("active").siblings().removeClass("active");
+		});
+	});
 });
 
 //控制上传对话框

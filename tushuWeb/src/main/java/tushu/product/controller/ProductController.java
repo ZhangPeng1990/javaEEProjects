@@ -2,6 +2,7 @@ package tushu.product.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,14 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import tushu.business.product.object.BigPage;
 import tushu.business.product.object.Images;
 import tushu.business.product.object.OrderForm;
+import tushu.business.product.object.Page;
 import tushu.business.product.object.Product;
 import tushu.business.product.object.ProductType;
 import tushu.business.product.object.Template;
 import tushu.business.user.object.User;
 import tushu.constans.Constans;
 import tushu.enums.OrderType;
+import tushu.enums.PageType;
 import tushu.enums.ProductColumn;
 import tushu.produc.service.OrderFormService;
 import tushu.produc.service.ProductService;
@@ -137,6 +141,54 @@ public class ProductController {
 			}
 			mm.addAttribute("templates", templates);
 			session.setAttribute(Constans.template_Path, templates);
+			
+			//页面
+			List<Page> pages = new LinkedList<Page>();
+			List<BigPage> showPages = new LinkedList<BigPage>();
+			int totalPage = product.getPages();
+			int temp = 1;
+			for(int i = 0; i < totalPage; i++){
+				Page page = new Page();
+				page.setPageNum(i + 1);
+				if(i % 2 == 0){
+					page.setPageType(PageType.LEFT);
+				}else{
+					page.setPageType(PageType.RIGHT);
+				}
+				pages.add(page);
+				if(i < totalPage - 1 && pages.size() == 2){
+					BigPage bigPage = new BigPage();
+					bigPage.setIndex(temp);
+					Page[] spages = new Page[2];
+					spages = (Page[]) pages.toArray(spages);
+					bigPage.setPages(spages);
+					bigPage.setLeftPage(spages[0]);
+					bigPage.setRightPage(spages[1]);
+					pages.clear();
+					temp++;
+					showPages.add(bigPage);
+				}else if(i == totalPage - 1 && pages.size() == 1){
+					BigPage bigPage = new BigPage();
+					bigPage.setIndex(temp);
+					Page[] spages = new Page[1]; 
+					spages = (Page[]) pages.toArray(spages);
+					bigPage.setPages(spages);
+					bigPage.setLeftPage(spages[0]);
+					pages.clear();
+					showPages.add(bigPage);
+				}else if(i == totalPage - 1 && pages.size() == 2){
+					BigPage bigPage = new BigPage();
+					bigPage.setIndex(temp);
+					Page[] spages = new Page[2]; 
+					spages = (Page[]) pages.toArray(spages);
+					bigPage.setPages(spages);
+					bigPage.setLeftPage(spages[0]);
+					bigPage.setRightPage(spages[1]);
+					pages.clear();
+					showPages.add(bigPage);
+				}
+			}
+			mm.addAttribute("pages", showPages);
 		}
 			
 		return "product/photoBookEditer";
