@@ -43,11 +43,12 @@
             <a href="###"><span id="logo"></span></a>
             <span id="works_title" class="works_title"></span>
             <div id="tools_bar">
-
                 &nbsp;&nbsp;<a href="#" id="btn_preview" class="btn" title="预览">预览</a>
-                <a href="#" id="btn_save" class="btn" title="保存&amp;加入购物车" onclick="addToShoppingCart(1)">保存</a>
+                <a href="#" id="btn_save" class="btn" title="保存作品" >保存</a>
+                <!--  
                 <a href="#" id="btn_setting" class="btn btn4" title="书本设置">页数设置</a>
-                <a href="#" id="btn_print" class="btn btn_reg_green" title="印刷">印刷</a>
+                -->
+                <a href="#" id="btn_print" class="btn btn_reg_green" title="放入购物车" onclick="addToShoppingCart(${product.productId})">购物车</a>
             </div>
         </div>
         <!--end -->

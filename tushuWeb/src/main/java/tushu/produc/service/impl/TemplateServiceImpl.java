@@ -36,4 +36,11 @@ public class TemplateServiceImpl implements TemplateService {
 		this.templateDOMapper.insert(tdo);
 	}
 
+	@Override
+	public Template getById(Integer id) {
+		TemplateDO tdo = this.templateDOMapper.selectByPrimaryKey(id);
+		Template template = BeanCopyer.toTemplate(tdo);
+		return template;
+	}
+
 }

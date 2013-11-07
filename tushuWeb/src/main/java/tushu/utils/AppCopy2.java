@@ -8,10 +8,8 @@ import java.beans.PropertyDescriptor;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
-import tushu.business.product.object.AddressMessage;
-import tushu.business.product.object.Template;
-import tushu.model.AddressMessageDO;
-import tushu.model.TemplateDO;
+import tushu.business.product.object.Page;
+import tushu.model.PageDO;
 
 public class AppCopy2 {
 
@@ -50,8 +48,8 @@ public class AppCopy2 {
 	
 	@Test
 	public void test() throws IntrospectionException{
-		TemplateDO templateDO = new TemplateDO();
-		Template template = new Template();
-		this.printOut(templateDO,template);
+		PageDO pageDO = new PageDO();
+		Page page = new Page();
+		this.printOut(pageDO,page);
 	}
 }

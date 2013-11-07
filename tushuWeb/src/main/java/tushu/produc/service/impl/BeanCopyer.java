@@ -6,12 +6,14 @@ import tushu.business.product.object.ExpressMessage;
 import tushu.business.product.object.Images;
 import tushu.business.product.object.IndexShowType;
 import tushu.business.product.object.OrderForm;
+import tushu.business.product.object.Page;
 import tushu.business.product.object.Product;
 import tushu.business.product.object.ProductType;
 import tushu.business.product.object.Template;
 import tushu.business.product.object.Work;
 import tushu.enums.IndexShowImageType;
 import tushu.enums.OrderType;
+import tushu.enums.PageType;
 import tushu.enums.TemplateType;
 import tushu.enums.Types;
 import tushu.model.AddressMessageDO;
@@ -19,6 +21,7 @@ import tushu.model.ExpressMessageDO;
 import tushu.model.ImagesDO;
 import tushu.model.IndexShowTypeDO;
 import tushu.model.OrderFormDO;
+import tushu.model.PageDO;
 import tushu.model.ProductDO;
 import tushu.model.ProductTypeDO;
 import tushu.model.TemplateDO;
@@ -238,5 +241,41 @@ public class BeanCopyer {
 		templateDO.setName(template.getName());
 		templateDO.setType(template.getType() != null ? template.getType().toString() : null);
 		return templateDO;
+	}
+	
+	public static PageDO toPageDO(Page page){
+		PageDO pageDO = new PageDO();
+		pageDO.setId(page.getId());
+		if(page.getDes() != null && page.getDes().length > 0){
+			String temp = "";
+			for(String s : page.getDes()){
+				if(s.contains("##")){
+					s.replace("##", "");
+				}
+				temp += s;
+			}
+			pageDO.setPageDesc(temp);
+		}else{
+			pageDO.setPageDesc(null);
+		}
+		pageDO.setPageNum(page.getPageNum());
+		pageDO.setPageType(page.getPageType() != null ? page.getPageType().toString() : null);
+		pageDO.setTemplateId(page.getTemplate() != null ? page.getTemplate().getId() : null);
+		pageDO.setWorkId(page.getWork() != null ? page.getWork().getId() : null);
+		return pageDO;
+	}
+	
+	public static Page toPage(PageDO pageDO){
+		Page page = new Page();
+		page.setId(pageDO.getId());
+		if(pageDO.getPageDesc() != null && pageDO.getPageDesc().trim().length() > 0){
+			String[] temp = pageDO.getPageDesc().split("##");
+			page.setDes(temp);
+		}else{
+			page.setDes(null);
+		}
+		page.setPageNum(pageDO.getPageNum());
+		page.setPageType(pageDO.getPageType() != null ? PageType.valueOf(pageDO.getPageType()) : null);
+		return page;
 	}
 }

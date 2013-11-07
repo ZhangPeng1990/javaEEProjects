@@ -9,4 +9,6 @@ public interface TemplateService {
 	public List<Template> getAll();
 	
 	public void addTemplate(Template template);
+	
+	public Template getById(Integer id);
 }
