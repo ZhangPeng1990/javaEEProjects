@@ -2,6 +2,12 @@ window.onbeforeunload=function(){
   return '如果现在关闭窗口，请确定该涂书已经保存。';
 };
 
+String.prototype.replaceAll=function(os, ns){
+	return this.replace(new RegExp(os,"gm"),ns);
+};
+
+var smallPic = '<img src="#smallUrl#" bigPath="#bigUrl#" style="position: absolute;">';
+
 //添加到购物车 操作
 function addToShoppingCart(productId){
 	$.ajax({
@@ -36,17 +42,25 @@ $(function(){
 	});
 	
 	$('img[class|="j_thumbnail ui-draggable"]').each(function(key,value){
+		
 		$(this).mousedown(function(e){
 			$(this).mousemove(function(e){
-				$(this).next().css("display","block");
-				$(this).next().css("left",e.pageX).css("top",e.pageY);
+				//每个缩略图生成一个对应的隐藏图片
+				var newHtml = smallPic.replaceAll("#smallUrl#", $(this).attr('src')).replaceAll("#bigUrl#",$(this).attr('bigImageUrl'));
+				$("#hideSamllPics").html(newHtml);
+				$("#hideSamllPics").css("display","block");
+				$("#hideSamllPics").css("left",e.pageX).css("top",e.pageY);
+				$(this).mousemove(function(e){
+					$("#hideSamllPics").css("left",e.pageX).css("top",e.pageY);
+				});
 			});
 			
 			$(this).mouseup(function(e){
-				$(this).unbind("mousemove");
-				$(this).next().css("display","none");
+				$("#hideSamllPics").unbind("mousemove");
+				$("#hideSamllPics").css("display","none");
 			});
 		});
+		
 	});
 	
 	//BigPage
