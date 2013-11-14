@@ -8,6 +8,8 @@ String.prototype.replaceAll=function(os, ns){
 
 var smallPic = '<img src="#smallUrl#" bigPath="#bigUrl#" style="position: absolute;">';
 
+var showPic = '<img class="ui-draggable" src="#bigUrl#" height="#height#" width="#width#">';
+
 //添加到购物车 操作
 function addToShoppingCart(productId){
 	$.ajax({
@@ -50,8 +52,10 @@ $(function(){
 				$("#hideSamllPics").html(newHtml);
 				$("#hideSamllPics").css("display","block");
 				$("#hideSamllPics").css("left",e.pageX).css("top",e.pageY);
-				$(this).mousemove(function(e){
-					$("#hideSamllPics").css("left",e.pageX).css("top",e.pageY);
+				$("#hideSamllPics").mousemove(function(e){
+					$("#hideSamllPics").mousemove(function(e){
+						$("#hideSamllPics").css("left",e.pageX).css("top",e.pageY);
+					});
 				});
 			});
 			
@@ -166,4 +170,19 @@ function rightLoadXML(name){
         	$('div[class|="pagelayout_right_side_warp"]').html(xml);
         }
     });
+}
+
+function drag_here_Click(domDiv){
+	var $div = $(domDiv);//被点击的 拖动图片到此 的div
+	var status = $("#hideSamllPics").css('display');
+	if(status == 'block'){
+		var height = $div.parent().css("height");
+		var width = $div.parent().css("width");
+		var newHtml = showPic.replaceAll("#bigUrl#",$('div[id|="hideSamllPics"] img').attr("bigPath"))
+				.replaceAll("#height#",height).replaceAll("#width#",width);
+		$div.parent().html(newHtml);
+		$div.next().css("display","none");
+		$div.css("display","none");
+		$("#hideSamllPics").css("display","none");
+	}
 }

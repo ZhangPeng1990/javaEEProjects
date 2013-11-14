@@ -277,7 +277,7 @@
     </div>
 	</div>
 	<!-- =========================隐藏的缩略图，用于拖动效果================================= -->
-	<div id="hideSamllPics" style="position: absolute;">
+	<div id="hideSamllPics" style="position: absolute; display: none;">
 	</div>
 </body>
 </html>
