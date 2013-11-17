@@ -138,7 +138,7 @@ function controllPagelayout(){
 }
 
 //加载模板
-function leftLoadXML(name){
+function loadXML(name,type){
 	var url = '../../jsp/templateXmls/' + name + '.xml';
 	$.ajax({  
         url: url,
@@ -150,24 +150,23 @@ function leftLoadXML(name){
             alert("加载XML文档出错!");  
         },  
         success: function(xml) {
-        	$('div[class|="pagelayout_left_side_warp"]').html(xml);
-        }
-    });
-}
-
-function rightLoadXML(name){
-	var url = '../../jsp/templateXmls/' + name + '.xml';
-	$.ajax({  
-        url: url,
-        type: 'GET',  
-        dataType: 'html',  
-        timeout: 1000,  //设定超时  
-        cache: false,   //禁用缓存  
-        error: function(xml) {  
-            alert("加载XML文档出错!");  
-        },  
-        success: function(xml) {
-        	$('div[class|="pagelayout_right_side_warp"]').html(xml);
+        	//判断页面选择的是左边还是右边
+        	var $getDiv = $("#edit_area_warp");
+        	if($getDiv.hasClass("edit_area_warp_left")){
+        		if(type == 'WIDE'){
+        			$('div[class|="pagelayout_right_side_warp"]').html("");
+        		}
+        		$('div[class|="pagelayout_left_side_warp"]').html(xml);
+        	}
+        	
+        	if($getDiv.hasClass("edit_area_warp_right")){
+        		if(type == 'WIDE'){
+        			alert("右边页面不支持跨页版式哦,请选择左边页面");
+        			return;
+        		}
+        		$('div[class|="pagelayout_right_side_warp"]').html(xml);
+        	}
+        	
         }
     });
 }
@@ -186,3 +185,52 @@ function drag_here_Click(domDiv){
 		$("#hideSamllPics").css("display","none");
 	}
 }
+
+//左右页切换，点击左边页则底部工具栏转到左边，点击右边则转到右边-->start
+function skipToLeft(){
+	var $getDiv = $("#edit_area_warp");
+	if($getDiv.hasClass("edit_area_warp_right")){
+		$getDiv.removeClass("edit_area_warp_right").addClass("edit_area_warp_left");
+	}
+}
+
+function skipToRight(){
+	var $getDiv = $("#edit_area_warp");
+	if($getDiv.hasClass("edit_area_warp_left")){
+		$getDiv.removeClass("edit_area_warp_left").addClass("edit_area_warp_right");
+	}
+}
+//左右页切换，点击左边页则底部工具栏转到左边，点击右边则转到右边-->end
+
+//控制文字输入框-->start
+function showTextInput(textInput){
+	var $textDiv = $(textInput);
+	var top = $textDiv.offset().top;
+	var left = $textDiv.offset().left;
+	$("#pop_texteditor").css("left",left);
+	$("#pop_texteditor").css("top",top);
+	$("#page_mask_layer").css("display","block");
+	$("#pop_texteditor").css("display","block");
+	
+	$("#makesure_text_input").click(function(){
+		var inputText = $("#text_imput").val();
+		$textDiv.html(inputText);
+		$("#text_imput").val('');
+		var postion = $("#text_imput").css("text-align");
+		$textDiv.attr("align",postion);
+		$("#page_mask_layer").css("display","none");
+		$("#pop_texteditor").css("display","none");
+	});
+}
+
+function cancel_text_input(){
+	$("#page_mask_layer").css("display","none");
+	$("#pop_texteditor").css("display","none");
+	$("#text_imput").val('');
+}
+
+function changeTextInputPostion(postion){
+	$("#text_imput").css("text-align",postion);
+}
+
+//控制文字输入框-->end

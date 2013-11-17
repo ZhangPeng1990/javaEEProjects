@@ -49,6 +49,7 @@
                 <a href="#" id="btn_setting" class="btn btn4" title="书本设置">页数设置</a>
                 -->
                 <a href="#" id="btn_print" class="btn btn_reg_green" title="放入购物车" onclick="addToShoppingCart(${product.productId})">购物车</a>
+                <div onclick="javascript:showTextInput($(this));">aa</div>
             </div>
         </div>
         <!--end -->
@@ -95,21 +96,23 @@
                 </div>
 
                 <!--begin 版式自定义编辑 -->
-                <div id="section_layout_edit" class="edit_spine">
-                    <div id="edit_area_warp" class="edit_area_warp edit_area_warp_right">
+                <div id="section_layout_edit" ><!-- 去掉class则变短 (class="edit_spine")-->
+                    <div id="edit_area_warp" class="edit_area_warp edit_area_warp_left">
                         <div id="spine" class="spine" num="spine">
                             <div align="left" contenteditable="true" class="text_box txt1" id="spine_txt1" name="txt1" x="79" y="18" width="4" height="180" space="0" leading="9.6" max_line="1" max_length="25" pt="8" px="6" direction="vertical" style="left: 8px; top: 10px; width: 10px; height: 204px; font-size: 7px; letter-spacing: 4px;" tips_info="在此输入作品主标题">在此输入作品主标题</div>
                             <div align="left" contenteditable="true" class="text_box txt2" id="spine_txt2" name="txt1" x="79" y="18" width="4" height="180" space="0" leading="9.6" max_line="1" max_length="14" pt="8" px="6" direction="vertical" style="left: 8px; top: 227px; width: 10px; height: 112px; font-size: 7px; letter-spacing: 4px;" tips_info="在此输入作者信息">在此输入作者信息</div>
                         </div>
                         <div class="backbone_bg"></div>
                         
-                        <div class="pagelayout_left_side_warp">
-                        
-                        </div>
-                        <div class="pagelayout_right_side_warp" style="display: block;">
-                        
+                        <div class="pagelayout_left_side_warp" onclick="skipToLeft();">
+                        	
                         </div>
                         
+                        <div class="pagelayout_right_side_warp" style="display: block;" onclick="skipToRight();">
+                        	
+                        </div>
+                        
+                        <!-- ====================================================== -->
                         <div class="layout_tools">
                             <ul class="tool_bot">
                                 <li class="lf left_btn">
@@ -150,6 +153,8 @@
                                 <li class="suancheng_bg" data-color="#D2DCA0" title="酸橙"></li>
                             </ul>
                         </div>
+                        <!-- ====================================================== -->
+                        
                     </div>
                 </div>
                 <!--end版式自定义编辑 -->
@@ -268,7 +273,7 @@
                 <ul style="" class="blk layout_list bg_cont pagelayout_mpadbook">
                 <c:forEach var="item" items="${templates}">
                 	<li class="${item.li_Class}">
-                        <a type="COVER" name="${item.name}" class="${item.a_Class}" onclick="leftLoadXML('${item.name}');"></a>
+                        <a type="COVER" name="${item.name}" class="${item.a_Class}" onclick="loadXML('${item.name}','${item.type}');"></a>
                     </li>
                 </c:forEach>
                 </ul>
@@ -279,5 +284,36 @@
 	<!-- =========================隐藏的缩略图，用于拖动效果================================= -->
 	<div id="hideSamllPics" style="position: absolute; display: none;">
 	</div>
+	<!-- =========================写文字输入框================================= -->
+	<div style="left: 179.5px; top: 729px; display: none;" class="pop_texteditor" id="pop_texteditor">
+        <div class="pop-inner">
+            <span id="arrow_out"></span><!-- class="pop-arrow-down" -->
+            <span id="arrow_in"></span><!-- class="pop-arrow-down-in" -->
+            <a class="close j-close" href="javascript:void(0);">
+            	<i class="icon i-pop-close"></i>
+            </a>
+            <div class="pop-bd">
+                <div class="text_edit">
+                    <div class="tools_bar">
+                        <h2 id="pop_texteditor_tips">你还可以输入96/96个字符(共48个中文)</h2>
+                        <a class="right" onclick="changeTextInputPostion('right')"></a>
+                        <a class="center" onclick="changeTextInputPostion('center')"></a>
+                        <a class="left" onclick="changeTextInputPostion('left')"></a>
+                    </div>
+                    <div class="edit_area">
+                        <input id="text_imput" type="text" style="height: 25px; text-align: left;">
+                        <textarea style="display: none;"></textarea>
+                    </div>
+                    <div class="bottom_bar">
+                    	<a id="makesure_text_input" style="width: 46px; text-align: center;" class="confirm btn_primary mr5">&nbsp;确定&nbsp;</a>
+                    	<a id="cancel_text_input" onclick="cancel_text_input();" class="cancel btn_second">&nbsp;取消&nbsp;</a>
+                    	<span class="text_tips">文字排版有偏差，请以预览图为准，特殊符号无法印刷</span> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- =========================蒙层效果================================= -->
+    <div id="page_mask_layer" class="mask_layout" style="position: absolute; top: 0px; left: 0px; margin-left: 0px; margin-top: 0px; background-color: rgb(0, 0, 0); height: 1127px; opacity: 0.1; overflow: hidden; width: 1349px; z-index: 1000; display: none;"></div>
 </body>
 </html>
