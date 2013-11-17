@@ -18,7 +18,7 @@ public class ExpressMessageServiceImpl implements ExpressMessageService {
 	private ExpressMessageDOMapper expressMessageDOMapper;
 	
 	public ExpressMessage addExpressMessage(ExpressMessage expressMessage){
-		ExpressMessageDO emdo = BeanCopyer.toExpressMessageDO(expressMessage);
+		ExpressMessageDO emdo = BeanCopier.toExpressMessageDO(expressMessage);
 		int id = this.expressMessageDOMapper.insert(emdo);
 		expressMessage.setId(id);
 		return expressMessage;
@@ -28,7 +28,7 @@ public class ExpressMessageServiceImpl implements ExpressMessageService {
 		ExpressMessage em = null;
 		ExpressMessageDO emdo = this.expressMessageDOMapper.selectByPrimaryKey(id);
 		if(emdo != null){
-			em = BeanCopyer.toExpressMessage(emdo);
+			em = BeanCopier.toExpressMessage(emdo);
 		}
 		return em;
 	}
@@ -40,7 +40,7 @@ public class ExpressMessageServiceImpl implements ExpressMessageService {
 			list = new ArrayList<ExpressMessage>();
 			for(ExpressMessageDO emdo : listDO){
 				ExpressMessage em = null;
-				em = BeanCopyer.toExpressMessage(emdo);
+				em = BeanCopier.toExpressMessage(emdo);
 				list.add(em);
 			}
 		}

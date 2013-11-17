@@ -28,7 +28,7 @@ public class WorkServiceImpl implements WorkService {
 	
 	@Override
 	public void add(Work work) {
-		WorkDO workDO = BeanCopyer.toWorkDO(work);
+		WorkDO workDO = BeanCopier.toWorkDO(work);
 		this.workDOMapper.insert(workDO);
 		
 		List<Images> images = work.getImages();

@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
 		List<ProductDO> dos = this.productDOMapper.getByIndexShowType(type.getId());
 		if(dos != null){
 			for(ProductDO pd : dos){
-				Product p = BeanCopyer.toProduct(pd);
+				Product p = BeanCopier.toProduct(pd);
 				Images images = iamgesService.getImages(pd.getIndexShowImage());
 				p.setIndexShowImage(images);
 				list.add(p);
@@ -42,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
 		Product p = null;
 		ProductDO pdo = this.productDOMapper.selectByPrimaryKey(id);
 		if(pdo != null){
-			p = BeanCopyer.toProduct(pdo);
+			p = BeanCopier.toProduct(pdo);
 		}
 		return p;
 	}
@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
 		List<ProductDO> pdos = this.productDOMapper.getByColumn(column.toString(), size);
 		if(pdos != null){
 			for(ProductDO pdo : pdos){
-				Product p = BeanCopyer.toProduct(pdo);
+				Product p = BeanCopier.toProduct(pdo);
 				ps.add(p);
 			}
 		}
@@ -72,7 +72,7 @@ public class ProductServiceImpl implements ProductService {
 		List<ProductDO> pdos = this.productDOMapper.getAll();
 		if(pdos != null){
 			for(ProductDO pdo : pdos){
-				Product p = BeanCopyer.toProduct(pdo);
+				Product p = BeanCopier.toProduct(pdo);
 				ps.add(p);
 			}
 		}

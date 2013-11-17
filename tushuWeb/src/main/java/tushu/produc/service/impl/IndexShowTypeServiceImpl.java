@@ -28,7 +28,7 @@ public class IndexShowTypeServiceImpl implements IndexShowTypeService {
 		List<IndexShowType<Product>> list = new ArrayList<IndexShowType<Product>>();
 		if(typeDO != null){
 			for(IndexShowTypeDO dos : typeDO){
-				IndexShowType<Product> it = BeanCopyer.toIndexShowType(dos);
+				IndexShowType<Product> it = BeanCopier.toIndexShowType(dos);
 				List<Product> products = this.productService.getByIndexShowType(it);
 				it.setObjects(products);
 				list.add(it);

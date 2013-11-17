@@ -9,11 +9,13 @@ import tushu.business.product.object.OrderForm;
 import tushu.business.product.object.Page;
 import tushu.business.product.object.Product;
 import tushu.business.product.object.ProductType;
+import tushu.business.product.object.SysConfig;
 import tushu.business.product.object.Template;
 import tushu.business.product.object.Work;
 import tushu.enums.IndexShowImageType;
 import tushu.enums.OrderType;
 import tushu.enums.PageType;
+import tushu.enums.SysConfigKey;
 import tushu.enums.TemplateType;
 import tushu.enums.Types;
 import tushu.model.AddressMessageDO;
@@ -24,11 +26,12 @@ import tushu.model.OrderFormDO;
 import tushu.model.PageDO;
 import tushu.model.ProductDO;
 import tushu.model.ProductTypeDO;
+import tushu.model.SysConfigDO;
 import tushu.model.TemplateDO;
 import tushu.model.WorkDO;
 
 
-public class BeanCopyer {
+public class BeanCopier {
 
 	public static ProductTypeDO toProductTypeDO(ProductType productType){
 		ProductTypeDO productTypeDO = new ProductTypeDO();
@@ -277,5 +280,22 @@ public class BeanCopyer {
 		page.setPageNum(pageDO.getPageNum());
 		page.setPageType(pageDO.getPageType() != null ? PageType.valueOf(pageDO.getPageType()) : null);
 		return page;
+	}
+	
+	public static SysConfig toSysConfig(SysConfigDO sysConfigDO){
+		SysConfig sysConfig = new SysConfig();
+		sysConfig.setId(sysConfigDO.getId());
+		sysConfig.setConfigValue(sysConfigDO.getConfigValue());
+		sysConfig.setConfigKey(sysConfigDO.getConfigKey() != null ? 
+								SysConfigKey.valueOf(sysConfigDO.getConfigKey()) : null);
+		return sysConfig;
+	}
+	
+	public static SysConfigDO toSysConfigDO(SysConfig sysConfig){
+		SysConfigDO sysCofigDO = new SysConfigDO();
+		sysCofigDO.setId(sysConfig.getId());
+		sysCofigDO.setConfigValue(sysConfig.getConfigValue());
+		sysCofigDO.setConfigKey(sysConfig.getConfigKey() != null ? sysConfig.getConfigKey().toString() : null);
+		return sysCofigDO;
 	}
 }

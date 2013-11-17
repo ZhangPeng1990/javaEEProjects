@@ -59,7 +59,7 @@ public class OrderFormServiceImpl implements OrderFormService {
 		List<OrderFormDO> dos = orderFormDOMapper.getOrders(Integer.parseInt(user.getId().toString()), shopping_cart, non_payment, account_paid);
 		if(dos != null && dos.size() > 0){
 			for(OrderFormDO ofd : dos){
-				OrderForm of = BeanCopyer.toOrderForm(ofd);
+				OrderForm of = BeanCopier.toOrderForm(ofd);
 				of.setProduct(productService.getById(ofd.getProductId()));
 				of.setUser(user);
 				of.setAddress(addressMessageService.getByOrder(of));
@@ -91,7 +91,7 @@ public class OrderFormServiceImpl implements OrderFormService {
 				}
 				of.setOrderNumber(GUID.generatorGUID());
 				
-				OrderFormDO ofd = BeanCopyer.toOrderFormDO(of);
+				OrderFormDO ofd = BeanCopier.toOrderFormDO(of);
 				this.orderFormDOMapper.insert(ofd);
 			}
 		}else{
@@ -107,7 +107,7 @@ public class OrderFormServiceImpl implements OrderFormService {
 			}
 			of.setOrderNumber(GUID.generatorGUID());
 			
-			OrderFormDO ofd = BeanCopyer.toOrderFormDO(of);
+			OrderFormDO ofd = BeanCopier.toOrderFormDO(of);
 			this.orderFormDOMapper.insert(ofd);
 		}
 		return this.getOrders(user, type);
@@ -119,7 +119,7 @@ public class OrderFormServiceImpl implements OrderFormService {
 	}
 
 	public List<OrderForm> updateOrder(User user, OrderForm orderForm, OrderType type){
-		OrderFormDO ofdo = BeanCopyer.toOrderFormDO(orderForm);
+		OrderFormDO ofdo = BeanCopier.toOrderFormDO(orderForm);
 		orderFormDOMapper.updateByPrimaryKey(ofdo);
 		return this.getOrders(user, type);
 	}
@@ -132,7 +132,7 @@ public class OrderFormServiceImpl implements OrderFormService {
 		OrderForm of = null;
 		OrderFormDO ofdo = this.orderFormDOMapper.selectByPrimaryKey(id);
 		if(ofdo != null){
-			of = BeanCopyer.toOrderForm(ofdo);
+			of = BeanCopier.toOrderForm(ofdo);
 			of.setProduct(this.productService.getById(ofdo.getProductId()));
 			of.setUser(this.userService.getUserById(ofdo.getUserId()));
 			of.setExpressMessage(expressMessageService.getById(ofdo.getExpressMessage()));

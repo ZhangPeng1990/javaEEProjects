@@ -27,7 +27,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 		LinkedList<ProductTypeDO> typeDos = productTypeDOMapper.getByFather(productType.getId());
 		if(typeDos != null){
 			for(ProductTypeDO priductTypeDO : typeDos){
-				ProductType p = BeanCopyer.toProductType(priductTypeDO);
+				ProductType p = BeanCopier.toProductType(priductTypeDO);
 				grandchild = this.getProductTypeByFather(p);
 				p.setSons(grandchild);
 				p.setProdcut(productService.getById(priductTypeDO.getProductId()));
@@ -44,7 +44,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 		List<ProductTypeDO> typeDos = this.productTypeDOMapper.getRoot();
 		if(typeDos != null){
 			for(ProductTypeDO priductTypeDO : typeDos){
-				ProductType productType = BeanCopyer.toProductType(priductTypeDO);
+				ProductType productType = BeanCopier.toProductType(priductTypeDO);
 				sons = this.getProductTypeByFather(productType);
 				productType.setSons(sons);
 				types.add(productType);
@@ -58,7 +58,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 		ProductType productType = null;
 		ProductTypeDO typeDo = productTypeDOMapper.selectByPrimaryKey(id);
 		if(typeDo != null){
-			productType = BeanCopyer.toProductType(typeDo);
+			productType = BeanCopier.toProductType(typeDo);
 			productType.setProdcut(productService.getById(typeDo.getProductId()));
 		}
 		return productType;

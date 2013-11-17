@@ -28,7 +28,7 @@ public class PageServiceImpl implements PageService {
 	
 	@Override
 	public Page addPage(Page page) {
-		PageDO pageDO = BeanCopyer.toPageDO(page);
+		PageDO pageDO = BeanCopier.toPageDO(page);
 		this.pageDOMapper.insert(pageDO);
 		page.setId(pageDO.getId());
 		return page;
@@ -41,7 +41,7 @@ public class PageServiceImpl implements PageService {
 		if(list != null && list.size() > 0){
 			pages = new ArrayList<Page>();
 			for(PageDO pageDO : list){
-				Page page = BeanCopyer.toPage(pageDO);
+				Page page = BeanCopier.toPage(pageDO);
 				page.setTemplate(this.templateService.getById(pageDO.getTemplateId()));
 				page.setWork(work);
 			}

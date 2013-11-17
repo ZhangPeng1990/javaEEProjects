@@ -25,7 +25,7 @@ public class AddressMessageServiceImpl implements AddressMessageService {
 		List<AddressMessageDO> amsdo = this.addressMessageDOMapper.getByUserId(user.getId());
 		if(amsdo != null){
 			for(AddressMessageDO dos : amsdo){
-				AddressMessage am = BeanCopyer.toAddressMessage(dos);
+				AddressMessage am = BeanCopier.toAddressMessage(dos);
 				ams.add(am);
 			}
 		}
@@ -37,7 +37,7 @@ public class AddressMessageServiceImpl implements AddressMessageService {
 		AddressMessage am = null;
 		AddressMessageDO dos = this.addressMessageDOMapper.getByOrderFormId(order.getId());
 		if(dos != null){
-			am = BeanCopyer.toAddressMessage(dos);
+			am = BeanCopier.toAddressMessage(dos);
 		}
 		return am;
 	}
@@ -47,14 +47,14 @@ public class AddressMessageServiceImpl implements AddressMessageService {
 		AddressMessage am = null;
 		AddressMessageDO dos = this.addressMessageDOMapper.selectByPrimaryKey(id);
 		if(dos != null){
-			am = BeanCopyer.toAddressMessage(dos);
+			am = BeanCopier.toAddressMessage(dos);
 		}
 		return am;
 	}
 
 	@Override
 	public void addAddressMessage(AddressMessage addressMessage) {
-		AddressMessageDO dos = BeanCopyer.toAddressMessageDO(addressMessage);
+		AddressMessageDO dos = BeanCopier.toAddressMessageDO(addressMessage);
 		this.addressMessageDOMapper.insert(dos);
 	}
 

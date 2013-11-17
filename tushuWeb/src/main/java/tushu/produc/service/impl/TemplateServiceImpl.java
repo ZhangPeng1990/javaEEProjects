@@ -24,7 +24,7 @@ public class TemplateServiceImpl implements TemplateService {
 		if(listDOS != null){
 			list = new ArrayList<Template>();
 			for(TemplateDO tdo : listDOS){
-				list.add(BeanCopyer.toTemplate(tdo));
+				list.add(BeanCopier.toTemplate(tdo));
 			}
 		}
 		return list;
@@ -32,14 +32,14 @@ public class TemplateServiceImpl implements TemplateService {
 
 	@Override
 	public void addTemplate(Template template) {
-		TemplateDO tdo = BeanCopyer.toTemplateDO(template);
+		TemplateDO tdo = BeanCopier.toTemplateDO(template);
 		this.templateDOMapper.insert(tdo);
 	}
 
 	@Override
 	public Template getById(Integer id) {
 		TemplateDO tdo = this.templateDOMapper.selectByPrimaryKey(id);
-		Template template = BeanCopyer.toTemplate(tdo);
+		Template template = BeanCopier.toTemplate(tdo);
 		return template;
 	}
 

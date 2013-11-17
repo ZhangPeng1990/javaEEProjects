@@ -19,13 +19,13 @@ public class ImagesServiceImpl implements ImagesService {
 		Images images = null;
 		ImagesDO imagesDO = this.imagesDOMapper.selectByPrimaryKey(id);
 		if(imagesDO != null){
-			images = BeanCopyer.toImage(imagesDO);
+			images = BeanCopier.toImage(imagesDO);
 		}
 		return images;
 	}
 
 	public Images addImages(Images images){
-		ImagesDO imagesDO = BeanCopyer.toImagesDO(images);
+		ImagesDO imagesDO = BeanCopier.toImagesDO(images);
 		imagesDOMapper.insert(imagesDO);
 		images.setId(imagesDO.getId());
 		return images;
