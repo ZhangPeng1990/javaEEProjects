@@ -49,7 +49,6 @@
                 <a href="#" id="btn_setting" class="btn btn4" title="书本设置">页数设置</a>
                 -->
                 <a href="#" id="btn_print" class="btn btn_reg_green" title="放入购物车" onclick="addToShoppingCart(${product.productId})">购物车</a>
-                <div onclick="javascript:showTextInput($(this));">aa</div>
             </div>
         </div>
         <!--end -->
@@ -104,11 +103,11 @@
                         </div>
                         <div class="backbone_bg"></div>
                         
-                        <div class="pagelayout_left_side_warp" onclick="skipToLeft();">
+                        <div class="pagelayout_left_side_warp" showid="" onclick="skipToLeft();">
                         	
                         </div>
                         
-                        <div class="pagelayout_right_side_warp" style="display: block;" onclick="skipToRight();">
+                        <div class="pagelayout_right_side_warp" showid="" style="display: block;" onclick="skipToRight();">
                         	
                         </div>
                         
@@ -185,15 +184,14 @@
                     <div class="preview_thumbnail">
                         <ul id="mod_preview_thumnail_list" class="blk" style="left: 0px;">  
 							
-							<c:forEach var="page" items="${pages}">
-							<li index="${page.index}" class="cross_li ${page.index == 1 ? 'active' : ''}">                    
+							<c:forEach var="page" items="${pages}" varStatus="index">
+							<li index="${page.index}" hideid="smallPage_${index.count}" class="cross_li"><!--  ${page.index == 1 ? 'active' : ''} -->        
 								<a href="javascript:;" class="pagelayout_bg pt8_l"></a>
 								<em class="img_page">${page.leftPage.pageNum}</em>                    
 								<a href="javascript:;" class="pagelayout_bg pt11_r" style="display: none;"></a>
 								<em class="img_page_right">${page.rightPage.pageNum}</em>                
 							</li>                
 							</c:forEach>
-							
 						</ul>
                     </div>
                     <a id="mod_preview_thumnail_btn_next" class="arrow_retangle_rt btn_arrow btn lf"></a>
@@ -300,7 +298,7 @@
                         <a class="center" onclick="changeTextInputPostion('center')"></a>
                         <a class="left" onclick="changeTextInputPostion('left')"></a>
                     </div>
-                    <div class="edit_area">
+                    <div class="edit_area">w
                         <input id="text_imput" type="text" style="height: 25px; text-align: left;">
                         <textarea style="display: none;"></textarea>
                     </div>
@@ -314,6 +312,10 @@
         </div>
     </div>
     <!-- =========================蒙层效果================================= -->
-    <div id="page_mask_layer" class="mask_layout" style="position: absolute; top: 0px; left: 0px; margin-left: 0px; margin-top: 0px; background-color: rgb(0, 0, 0); height: 1127px; opacity: 0.1; overflow: hidden; width: 1349px; z-index: 1000; display: none;"></div>
+    <div id="page_mask_layer" class="mask_layout" style="position: absolute; top: 0px; left: 0px; margin-left: 0px; margin-top: 0px; background-color: rgb(0, 0, 0); height: 1127px; opacity: 0.1; overflow: hidden; width: 1349px; z-index: 1000; display: none;">
+    	
+    </div>
+    <!-- =========================用于储存每个页面的信息================================= -->
+    <div id="store_page_message" style="display: none;"></div>
 </body>
 </html>

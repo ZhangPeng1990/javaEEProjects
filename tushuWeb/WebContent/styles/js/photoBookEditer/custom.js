@@ -67,10 +67,45 @@ $(function(){
 		
 	});
 	
+	var savePageXmlDiv ='<div id="#hideId#" style="display: none;">\
+		<div pageclass="pagelayout_left_side_warp"></div>\
+		<div pageclass="pagelayout_right_side_warp"></div>\
+	 </div>';
+	
 	//BigPage
 	$('ul[id|="mod_preview_thumnail_list"] li').each(function(key,value){
+		
+		//生成储存页面信息的div
+		var newHtml = $("#store_page_message").html() + savePageXmlDiv.replaceAll("#hideId#",$(this).attr('hideid'));
+		$("#store_page_message").html(newHtml);
+		
 		$(this).click(function(){
 			$(this).addClass("active").siblings().removeClass("active");
+			
+			var hideId = $(".pagelayout_left_side_warp").attr("showid");
+			$(".pagelayout_left_side_warp").attr("showid",$(this).attr("hideid"));
+			$(".pagelayout_right_side_warp").attr("showid",$(this).attr("hideid"));
+			var tempDiv = document.getElementById(hideId);
+			var $div = $(tempDiv);
+			var leftDiv = $div.children('[pageclass=pagelayout_left_side_warp]');
+			var rightDiv = $div.children('[pageclass=pagelayout_right_side_warp]');
+			
+			var leftMess = $(".pagelayout_left_side_warp").html();
+			var rightMess = $(".pagelayout_right_side_warp").html();
+			$(".pagelayout_left_side_warp").html("");
+			$(".pagelayout_right_side_warp").html("");
+			
+			leftDiv.html(leftMess);
+			rightDiv.html(rightMess);
+			
+			var nowHideId = $(this).attr("hideid");
+			var nowTempDiv = document.getElementById(nowHideId);
+			var $nowDiv = $(nowTempDiv);
+			var nowLeftDiv = $nowDiv.children('[pageclass=pagelayout_left_side_warp]');
+			var nowRightDiv = $nowDiv.children('[pageclass=pagelayout_right_side_warp]');
+			$(".pagelayout_left_side_warp").html(nowLeftDiv.html());
+			$(".pagelayout_right_side_warp").html(nowRightDiv.html());
+			
 		});
 	});
 });
@@ -137,8 +172,27 @@ function controllPagelayout(){
     }
 }
 
+//判断用户是否已经选择了要进行排版的页面
+function canSelectTemplate(){
+	var canSelect = false;
+	$('ul[id|="mod_preview_thumnail_list"] li').each(function(key,value){
+		if($(this).hasClass("active")){
+			canSelect = true;
+			return canSelect;
+		}
+	});
+	return canSelect;		
+}
+
 //加载模板
 function loadXML(name,type){
+	
+	//在加载模板之前判断用户是否已经选择了要进行排版的页面
+	if(!canSelectTemplate()){
+		alert("请先在页面下方选择要进行编辑的页面");
+		return;
+	}
+	
 	var url = '../../jsp/templateXmls/' + name + '.xml';
 	$.ajax({  
         url: url,
