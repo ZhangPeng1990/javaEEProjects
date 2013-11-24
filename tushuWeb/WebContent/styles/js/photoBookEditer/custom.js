@@ -75,7 +75,7 @@ $(function(){
 	//BigPage
 	$('ul[id|="mod_preview_thumnail_list"] li').each(function(key,value){
 		
-		//生成储存页面信息的div
+		//在新建作品时生成储存页面信息的div，如果是编辑则跳过这步
 		var newHtml = $("#store_page_message").html() + savePageXmlDiv.replaceAll("#hideId#",$(this).attr('hideid'));
 		$("#store_page_message").html(newHtml);
 		
@@ -109,6 +109,26 @@ $(function(){
 		});
 	});
 });
+
+//保存作品到数据库 saveToDB
+function saveToDB(){
+	var requestPath = $("#requestSavePath").val();
+	var productId = $("#productId").val();
+	var contentHtml = $("#store_page_message").html();
+	
+	$.ajax({
+        type:"post",
+        url:requestPath,
+        data: {"productId":productId,
+        	   "htmlContent":contentHtml},
+        success:function(newSize){
+            alert("成功");
+        },
+		error:function(){
+			alert("error");
+		}
+});
+}
 
 //控制上传对话框
 function showUploader_dialog(){//显示

@@ -1,7 +1,5 @@
 package tushu.business.product.object;
 
-import java.util.List;
-
 import tushu.business.user.object.User;
 
 public class Work {
@@ -12,7 +10,7 @@ public class Work {
 	
 	private User user;
 	
-	private List<Images> images;
+	private String contentPath;
 
 	public Integer getId() {
 		return id;
@@ -38,11 +36,11 @@ public class Work {
 		this.user = user;
 	}
 
-	public List<Images> getImages() {
-		return images;
+	public String getContentPath() {
+		return contentPath;
 	}
 
-	public void setImages(List<Images> images) {
-		this.images = images;
+	public void setContentPath(String contentPath) {
+		this.contentPath = contentPath;
 	}
 }

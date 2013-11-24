@@ -215,6 +215,7 @@ public class BeanCopier {
 	public static Work toWork(WorkDO workDO){
 		Work work = new Work();
 		work.setId(workDO.getId());
+		work.setContentPath(workDO.getContentPath());
 		return work;
 	}
 	
@@ -223,6 +224,7 @@ public class BeanCopier {
 		workDO.setId(work.getId());
 		workDO.setProductId(work.getProduct() != null ? work.getProduct().getProductId() : null);
 		workDO.setUserId(work.getUser() != null ? work.getUser().getId() : null);
+		workDO.setContentPath(work.getContentPath());
 		return workDO;
 	}
 	

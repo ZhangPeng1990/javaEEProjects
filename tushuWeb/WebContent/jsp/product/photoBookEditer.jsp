@@ -44,7 +44,7 @@
             <span id="works_title" class="works_title"></span>
             <div id="tools_bar">
                 &nbsp;&nbsp;<a href="#" id="btn_preview" class="btn" title="预览">预览</a>
-                <a href="#" id="btn_save" class="btn" title="保存作品" >保存</a>
+                <a id="btn_save" class="btn" title="保存作品" onclick="saveToDB();">保存</a>
                 <!--  
                 <a href="#" id="btn_setting" class="btn btn4" title="书本设置">页数设置</a>
                 -->
@@ -317,5 +317,7 @@
     </div>
     <!-- =========================用于储存每个页面的信息================================= -->
     <div id="store_page_message" style="display: none;"></div>
+    <input type="hidden" id="productId" value="${product.productId}">
+    <input type="hidden" id="requestSavePath" value="<%=path%>/user/${sessionUserName.id}/addWork.html">
 </body>
 </html>

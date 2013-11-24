@@ -1,12 +1,17 @@
 package tushu.user.controller;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +24,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -27,18 +33,24 @@ import tushu.business.product.object.AddressMessage;
 import tushu.business.product.object.ExpressMessage;
 import tushu.business.product.object.Images;
 import tushu.business.product.object.OrderForm;
+import tushu.business.product.object.Work;
 import tushu.business.user.object.Inform;
 import tushu.business.user.object.User;
 import tushu.constans.Constans;
 import tushu.enums.OrderType;
+import tushu.enums.SysConfigKey;
 import tushu.enums.UserOperation;
 import tushu.produc.service.AddressMessageService;
 import tushu.produc.service.ExpressMessageService;
 import tushu.produc.service.ImagesService;
 import tushu.produc.service.OrderFormService;
+import tushu.produc.service.ProductService;
+import tushu.produc.service.SysConfigService;
+import tushu.produc.service.WorkService;
 import tushu.user.service.InformService;
 import tushu.user.service.UserService;
 import tushu.utils.FileTools;
+import tushu.utils.GlobalUtils;
 import tushu.utils.JpegTool;
 import tushu.utils.JpegToolException;
 import tushu.utils.ReNmaeUtils;
@@ -46,6 +58,8 @@ import tushu.utils.ReNmaeUtils;
 @Controller
 @RequestMapping("/user")
 public class UserController extends BaseController {
+	
+	private final static String CRLF = System.getProperty("line.separator");
 	
 	@Autowired
 	private UserService userService;
@@ -64,6 +78,15 @@ public class UserController extends BaseController {
 	
 	@Autowired
 	private ImagesService imagesService;
+	
+	@Autowired
+	private SysConfigService sysConfigService;
+	
+	@Autowired
+	private ProductService productService;
+	
+	@Autowired
+	private WorkService workService;
 	
 	String operation = "";
 	
@@ -326,4 +349,54 @@ public class UserController extends BaseController {
         return responseStr; 
 	}
 	
+	@RequestMapping(value="{userId}/addWork", method = RequestMethod.POST)
+    @ResponseBody
+    public String addWork(HttpServletRequest request, HttpServletResponse response, 
+    		@PathVariable("userId") int userId, @RequestParam("htmlContent") String htmlContent, 
+    		@RequestParam("productId") int productId){
+		
+		System.out.println(htmlContent);
+		String bdPath = weiteToService(htmlContent);
+		
+		Work work = new Work();
+		work.setContentPath(bdPath);
+		work.setUser((User)request.getSession().getAttribute(Constans.SESSION_USER_ATTR_NAME));
+		work.setProduct(productService.getById(productId));
+		workService.add(work);
+		return "SUCCESS";
+	}
+	
+	private String weiteToService(String content){
+		BufferedWriter out = null;
+		String newdbFilename = null;
+		try {
+			String newFilename = UUID.randomUUID().toString().replace("-", "") + ".txt";
+			String datedir = GlobalUtils.dateDir(new Date());
+			String newfilePath = sysConfigService.getSysConfig(SysConfigKey.User_Work_Save_Path).getConfigValue() + datedir;
+			if (!new File(newfilePath).exists())
+			{
+				new File(newfilePath).mkdirs();
+			}
+			String newFullFilepath = newfilePath + newFilename;
+			newdbFilename = datedir + newFilename;
+			
+			out = new BufferedWriter(new FileWriter(newFullFilepath));
+			System.out.println(content);
+			out.write(content);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(out != null){
+					out.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return newdbFilename;
+	}
 }
