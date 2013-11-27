@@ -298,7 +298,7 @@
                         <a class="center" onclick="changeTextInputPostion('center')"></a>
                         <a class="left" onclick="changeTextInputPostion('left')"></a>
                     </div>
-                    <div class="edit_area">w
+                    <div class="edit_area">
                         <input id="text_imput" type="text" style="height: 25px; text-align: left;">
                         <textarea style="display: none;"></textarea>
                     </div>
@@ -315,6 +315,9 @@
     <div id="page_mask_layer" class="mask_layout" style="position: absolute; top: 0px; left: 0px; margin-left: 0px; margin-top: 0px; background-color: rgb(0, 0, 0); height: 1127px; opacity: 0.1; overflow: hidden; width: 1349px; z-index: 1000; display: none;">
     	
     </div>
+    <!-- =========================保存成功提示================================= -->
+    <div id="action_success" class="succeed" style="position: absolute; top: 190px; left: 50%; z-index: 500; margin-left: -90px; display: none; " ></div>
+    
     <!-- =========================用于储存每个页面的信息================================= -->
     <div id="store_page_message" style="display: none;"></div>
     <input type="hidden" id="productId" value="${product.productId}">

@@ -112,6 +112,8 @@ $(function(){
 
 //保存作品到数据库 saveToDB
 function saveToDB(){
+	
+	$("#page_mask_layer").css("display","block");
 	var requestPath = $("#requestSavePath").val();
 	var productId = $("#productId").val();
 	var contentHtml = $("#store_page_message").html();
@@ -122,10 +124,16 @@ function saveToDB(){
         data: {"productId":productId,
         	   "htmlContent":contentHtml},
         success:function(newSize){
-            alert("成功");
+        	$("#action_success").html('保存成功');
+            $("#action_success").fadeIn('slow');
+            $("#action_success").fadeOut('slow');
+            $("#page_mask_layer").css("display","none");
         },
 		error:function(){
-			alert("error");
+			$("#action_success").html('出错了');
+            $("#action_success").fadeIn('slow');
+            $("#action_success").fadeOut(3000);
+            $("#page_mask_layer").css("display","none");
 		}
 });
 }
