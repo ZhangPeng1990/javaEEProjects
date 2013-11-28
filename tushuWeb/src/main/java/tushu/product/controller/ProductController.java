@@ -26,6 +26,7 @@ import tushu.business.product.object.ProductType;
 import tushu.business.product.object.Template;
 import tushu.business.user.object.User;
 import tushu.constans.Constans;
+import tushu.enums.BookEditType;
 import tushu.enums.OrderType;
 import tushu.enums.PageType;
 import tushu.enums.ProductColumn;
@@ -189,6 +190,8 @@ public class ProductController {
 				}
 			}
 			mm.addAttribute("pages", showPages);
+			
+			mm.addAttribute("bookEditType", BookEditType.ADD_New);
 		}
 			
 		return "product/photoBookEditer";

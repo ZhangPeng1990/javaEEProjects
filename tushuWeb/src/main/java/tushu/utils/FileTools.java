@@ -1,6 +1,10 @@
 package tushu.utils;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +12,35 @@ import java.util.List;
 
 public class FileTools {
 
+	public static String readTxt(File file){
+		StringBuffer buffer = null;
+		BufferedReader br = null;
+		String content = null;
+		System.out.println("正在解析txt文件...");
+		buffer = new StringBuffer();
+		try {
+			br = new BufferedReader(new FileReader(file));
+			try {
+				while ((content = br.readLine()) != null) {
+					buffer.append(content);
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}finally{
+			if(br != null){
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return buffer != null ? buffer.toString() : null;
+	}
 	/**
 	 * 列出所有硬盘分区
 	 * @return

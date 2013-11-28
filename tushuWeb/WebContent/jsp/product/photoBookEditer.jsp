@@ -319,8 +319,15 @@
     <div id="action_success" class="succeed" style="position: absolute; top: 190px; left: 50%; z-index: 500; margin-left: -90px; display: none; " ></div>
     
     <!-- =========================用于储存每个页面的信息================================= -->
-    <div id="store_page_message" style="display: none;"></div>
+    <div id="store_page_message" style="display: none;">
+    	<c:if test="${bookEditType eq 'Edit_Existing'}">
+    		${content}
+    	</c:if>
+    </div>
+    
     <input type="hidden" id="productId" value="${product.productId}">
     <input type="hidden" id="requestSavePath" value="<%=path%>/user/${sessionUserName.id}/addWork.html">
+    <input type="hidden" id="saveSuccessRequestPath" value="<%=path%>/user/listWorks/${sessionUserName.id}.html">
+    <input type="hidden" id="bookEditType" value="${bookEditType}">
 </body>
 </html>

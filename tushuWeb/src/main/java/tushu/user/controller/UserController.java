@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -30,14 +31,20 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import tushu.business.product.object.AddressMessage;
+import tushu.business.product.object.BigPage;
 import tushu.business.product.object.ExpressMessage;
 import tushu.business.product.object.Images;
 import tushu.business.product.object.OrderForm;
+import tushu.business.product.object.Page;
+import tushu.business.product.object.Product;
+import tushu.business.product.object.Template;
 import tushu.business.product.object.Work;
 import tushu.business.user.object.Inform;
 import tushu.business.user.object.User;
 import tushu.constans.Constans;
+import tushu.enums.BookEditType;
 import tushu.enums.OrderType;
+import tushu.enums.PageType;
 import tushu.enums.SysConfigKey;
 import tushu.enums.UserOperation;
 import tushu.produc.service.AddressMessageService;
@@ -46,6 +53,7 @@ import tushu.produc.service.ImagesService;
 import tushu.produc.service.OrderFormService;
 import tushu.produc.service.ProductService;
 import tushu.produc.service.SysConfigService;
+import tushu.produc.service.TemplateService;
 import tushu.produc.service.WorkService;
 import tushu.user.service.InformService;
 import tushu.user.service.UserService;
@@ -88,6 +96,9 @@ public class UserController extends BaseController {
 	@Autowired
 	private WorkService workService;
 	
+	@Autowired
+	private TemplateService templateService;
+	
 	String operation = "";
 	
 	@RequestMapping("informs/{userId}")
@@ -101,6 +112,133 @@ public class UserController extends BaseController {
 		operation = UserOperation.INFORMS.toString();
 		mm.addAttribute("operation", operation);
 		return "user/informs";
+	}
+	
+	@RequestMapping("listWorks/{userId}")
+	public String listWorks(@PathVariable("userId") int userId, ModelMap mm){
+		User user = userService.getUserById(userId);
+		
+		List<Work> works = workService.getByUser(user);
+		mm.put("works", works);
+		
+		operation = UserOperation.WORKS.toString();
+		mm.addAttribute("operation", operation);
+		return "user/my_work";
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("editWork/{workId}")
+	public String editWork(@PathVariable("workId") int workId, ModelMap mm, HttpServletRequest request){
+		Work work = this.workService.getById(workId);
+		Product product = work.getProduct();
+		mm.addAttribute("product", product);
+		
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(Constans.SESSION_USER_ATTR_NAME);
+		
+		String userPicFolderPath = "";
+		
+		if(user == null){
+			return "redirect:/login/returnLogin.html";
+		}else{
+			userPicFolderPath = this.getUserPath(request, user.getId().intValue());
+			
+			File file = new File(userPicFolderPath);
+			File[] files = file.listFiles();
+			List<Images> images = null;
+			if(files != null && files.length > 0){
+				images = new ArrayList<Images>();
+				for(File f : files){
+					Images image = new Images();
+					image.setName(f.getName());
+					image.setUrl(request.getContextPath() + "/" + Constans.User_Pic_Path + user.getId().intValue() + "/" + image.getName());
+					images.add(image);
+				}
+			}
+			mm.addAttribute("images", images);
+			
+			//取缩略图集合
+			String smallPicPath = userPicFolderPath + File.separator + "temp";
+			File smallPic = new File(smallPicPath);
+			File[] smallPicFiles = smallPic.listFiles();
+			List<Images> smallImages = null;
+			if(smallPicFiles != null && smallPicFiles.length > 0){
+				smallImages = new ArrayList<Images>();
+				for(File f : smallPicFiles){
+					Images image = new Images();
+					image.setName(f.getName());
+					image.setUrl(request.getContextPath() + "/" + Constans.User_Pic_Path + user.getId().intValue() + "/temp/" + image.getName());
+					String fatherName = image.getName().replace("-temp", "");
+					image.setFatherUrl(request.getContextPath() + "/" + Constans.User_Pic_Path + user.getId().intValue() + "/" + fatherName);
+					smallImages.add(image);
+				}
+			}
+			mm.addAttribute("smallImages", smallImages);
+			
+			//模板集合
+			List<Template> templates = (List<Template>) session.getAttribute(Constans.template_Path);
+			if(templates == null || templates.size() < 1){
+				templates = templateService.getAll();
+			}
+			mm.addAttribute("templates", templates);
+			session.setAttribute(Constans.template_Path, templates);
+			
+			//页面
+			List<Page> pages = new LinkedList<Page>();
+			List<BigPage> showPages = new LinkedList<BigPage>();
+			int totalPage = product.getPages();
+			int temp = 1;
+			for(int i = 0; i < totalPage; i++){
+				Page page = new Page();
+				page.setPageNum(i + 1);
+				if(i % 2 == 0){
+					page.setPageType(PageType.LEFT);
+				}else{
+					page.setPageType(PageType.RIGHT);
+				}
+				pages.add(page);
+				if(i < totalPage - 1 && pages.size() == 2){
+					BigPage bigPage = new BigPage();
+					bigPage.setIndex(temp);
+					Page[] spages = new Page[2];
+					spages = (Page[]) pages.toArray(spages);
+					bigPage.setPages(spages);
+					bigPage.setLeftPage(spages[0]);
+					bigPage.setRightPage(spages[1]);
+					pages.clear();
+					temp++;
+					showPages.add(bigPage);
+				}else if(i == totalPage - 1 && pages.size() == 1){
+					BigPage bigPage = new BigPage();
+					bigPage.setIndex(temp);
+					Page[] spages = new Page[1]; 
+					spages = (Page[]) pages.toArray(spages);
+					bigPage.setPages(spages);
+					bigPage.setLeftPage(spages[0]);
+					pages.clear();
+					showPages.add(bigPage);
+				}else if(i == totalPage - 1 && pages.size() == 2){
+					BigPage bigPage = new BigPage();
+					bigPage.setIndex(temp);
+					Page[] spages = new Page[2]; 
+					spages = (Page[]) pages.toArray(spages);
+					bigPage.setPages(spages);
+					bigPage.setLeftPage(spages[0]);
+					bigPage.setRightPage(spages[1]);
+					pages.clear();
+					showPages.add(bigPage);
+				}
+			}
+			mm.addAttribute("pages", showPages);
+			
+			mm.addAttribute("bookEditType", BookEditType.Edit_Existing);
+			String content = null;
+			File txtFile = new File(sysConfigService.getSysConfig(SysConfigKey.User_Work_Save_Path).getConfigValue() + work.getContentPath());
+			content = FileTools.readTxt(txtFile);
+			mm.addAttribute("content", content);
+		}
+		
+		return "product/photoBookEditer";
 	}
 	
 	@RequestMapping("address/{userId}")

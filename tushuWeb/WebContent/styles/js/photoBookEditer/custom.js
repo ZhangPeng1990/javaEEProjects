@@ -72,12 +72,15 @@ $(function(){
 		<div pageclass="pagelayout_right_side_warp"></div>\
 	 </div>';
 	
+	var bookEditType = $("#bookEditType").val();
 	//BigPage
 	$('ul[id|="mod_preview_thumnail_list"] li').each(function(key,value){
 		
 		//在新建作品时生成储存页面信息的div，如果是编辑则跳过这步
-		var newHtml = $("#store_page_message").html() + savePageXmlDiv.replaceAll("#hideId#",$(this).attr('hideid'));
-		$("#store_page_message").html(newHtml);
+		if(bookEditType == 'ADD_New'){
+			var newHtml = $("#store_page_message").html() + savePageXmlDiv.replaceAll("#hideId#",$(this).attr('hideid'));
+			$("#store_page_message").html(newHtml);
+		}
 		
 		$(this).click(function(){
 			$(this).addClass("active").siblings().removeClass("active");
@@ -110,7 +113,7 @@ $(function(){
 	});
 });
 
-//保存作品到数据库 saveToDB
+//保存作品到数据库 saveToDB-->start
 function saveToDB(){
 	
 	$("#page_mask_layer").css("display","block");
@@ -127,16 +130,20 @@ function saveToDB(){
         	$("#action_success").html('保存成功');
             $("#action_success").fadeIn('slow');
             $("#action_success").fadeOut('slow');
-            $("#page_mask_layer").css("display","none");
+            setTimeout(function(){
+            	var requestPath = $("#saveSuccessRequestPath").val();
+                location.href = requestPath;
+            },2000);
         },
 		error:function(){
 			$("#action_success").html('出错了');
             $("#action_success").fadeIn('slow');
-            $("#action_success").fadeOut(3000);
+            $("#action_success").fadeOut(5000);
             $("#page_mask_layer").css("display","none");
 		}
 });
 }
+//保存作品到数据库 saveToDB-->end
 
 //控制上传对话框
 function showUploader_dialog(){//显示

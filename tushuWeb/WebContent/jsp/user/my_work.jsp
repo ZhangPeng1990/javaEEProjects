@@ -253,19 +253,6 @@
 <script>
 $(document).ready(function(){
 
-	$.ajax({
-		type : "GET",
-		url : "/user/generate_invite_url",
-		dataType:'json',
-		success : function(data) {
-			if (data.status==200) {
-				$("#dynamic").val(data.msg);
-				return;
-			} else {
-			}
-		}
-	})
-
 	$('img#copy-dynamic').zclip({
 	path:'/js/ZeroClipboard.swf',
 	copy:function(){return $('input#dynamic').val();}
@@ -280,315 +267,31 @@ $(document).ready(function(){
         <div class="clearfix selectedBox2">
 			<%@ include file="../user/leftPanel.jsp"%> 
             <div class="r selectRight2">
-                <div class="pb30 bst4 fc_gray4 pt30 minH340">
-                 <table class="table_1 w780 m tc fc_gray6">
-                    <tbody>
-                    <tr>
-                        <th>订单编号</th>
-                        <th class="w175">订单产品</th>
-                        <th>收货人</th>
-                        <th>下单时间</th>
-                        <th>状态</th>
-                        <th>金额</th>
-                        <th class="w57">操作</th>
-                    </tr>
-                    <c:forEach var="item" items="${list}">
-                    <tr>
-                        <td width="20%"><a href="###">${item.orderNumber}</a></td>
-                        <td width="10%">
-                            <div class="orderBox">
-                                <ul style="height: 85px;" true-h="85" class="clearfix orderList">
-                                        <li class="l">
-	                                        <a target="_blank" href="###">
-	                                        <i class="icon_see"></i><img src="http://platform.tushu.com/book/88059?thumb&amp;wrap=70" alt="">
-	                                        </a>
-                                        </li>
-                                    </ul>
-                                <div style="display: none;" class="clearfix h10"><a href="javascript:;" class="openOrder r" title="展开">open</a></div>
-                            </div>
-                        </td>
-                        <td width="20%">${item.address.recipientsName}</td>
-                        <td width="20%"><fmt:formatDate value="${item.createTime}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
-                        <td width="10%" class="fc_orange">
-                        	<c:if test="${item.orderType eq 'NON_PAYMENT'}">待支付</c:if>
-                        	<c:if test="${item.orderType eq 'ACCOUNT_PAID'}">已支付</c:if>
-                        </td>
-                        <td width="10%">￥${item.amountPayable}元</td>
-                        <td width="10%">
-                        	<c:if test="${item.orderType eq 'NON_PAYMENT'}">
-                            <a href="javascript:;" onclick="pay_dialog('2521716')" class="orderBtn_orange">支付</a>
-                            <a href="<%=path%>/product/deleteOrderForm/NON_PAYMENT/${item.id}.html" class="orderBtn_gray" onclick="return confirm('确认取消吗?订单将被删除');">取消订单</a>
-                            </c:if>
-                            <a href="javascript:;" onclick="order_detail(25217)" class="orderBtn_gray">详情</a>
-                            <a href="javascript:;" onclick="kuaidi100('2521716')" class="orderBtn_gray">查看物流</a>
-                        </td>
-                    </tr>
-                    </c:forEach>
-                </tbody>
-                </table>
-              </div>
+                <div class="selectListBox bst4 pl40">
+			<ul class="clearfix pt10">
+				<!-- 作品 -->
+				<c:forEach var="item" items="${works}">
+				
+				<li class="l por">
+					<a class="bookEdit" target="_blank"	href="<%=path%>/user/editWork/${item.id}.html">
+					<i class="icon_see"></i>
+					<b>${item.product.name}</b>
+					<img alt="" src="http://platform.tushu.com/img/2295307.jpeg?thumb"></a>
+					<em acl="2" booktype="6013" bookid="88059" class="bookEditEm">
+						<a class="icon_no l" title="保密" href="javascript:;"></a> 
+						<a class="icon_rem l" bookid="88059" href="javascript:;">&nbsp;</a> 
+						<a class="icon_print r" title="添加到购物车" href="javascript:;"></a>
+					</em>
+				</li>
+				
+				</c:forEach>
+			</ul>
+			<div class="tr pt10 pb30 pr30 mr10 fc_gray6">隐私声明：您在涂书网注册的信息、资料、照片及作品内容，涂书网均严格保密，确保您的隐私安全。</div>
+			</div>
             </div>
         </div>
     </div>
 </div>
-<!-- 支付方式 -->
-<div id="dialog_pay" style="display:none;">
-    <input id="snid" type="hidden">
-    <div class="w560">
-        <div class="pl15 ml15">
-            <ul class="pt10">
-                <li class="p5"><input name="pay_ment" class="vam" id="blank_1" value="1" type="radio"><label for="blank_1" class="ml5"><img src="/images/blank/1.jpg" class="vam"></label></li>
-            </ul>
-			<!--
-            <ul class="">
-                <li class="p5"><input type="radio" name="pay_ment" class="vam" id="blank_2" value="6" /><label for="blank_2" class="ml5"><img src="/images/blank/2.jpg" class="vam" /></label></li>
-            </ul>
-			-->
-            <ul class="clearfix w560">
-                <li class="l mr10 p5"><input name="pay_ment" class="vam" id="blank_3" value="1025" type="radio"><label for="blank_3" class="ml10"><img src="/images/blank/3.jpg" class="vam"></label></li>
-                <li class="l mr10 p5"><input name="pay_ment" class="vam" id="blank_4" value="305" type="radio"><label for="blank_4" class="ml10"><img src="/images/blank/4.jpg" class="vam"></label></li>
-                <li class="l mr10 p5"><input name="pay_ment" class="vam" id="blank_5" value="308" type="radio"><label for="blank_5" class="ml10"><img src="/images/blank/5.jpg" class="vam"></label></li>
-                <li class="l mr10 p5"><input name="pay_ment" class="vam" id="blank_6" value="105" type="radio"><label for="blank_6" class="ml10"><img src="/images/blank/6.jpg" class="vam"></label></li>
-                <li class="l mr10 p5"><input name="pay_ment" class="vam" id="blank_7" value="103" type="radio"><label for="blank_7" class="ml10"><img src="/images/blank/7.jpg" class="vam"></label></li>
-                <li class="l mr10 p5"><input name="pay_ment" class="vam" id="blank_8" value="104" type="radio"><label for="blank_8" class="ml10"><img src="/images/blank/8.jpg" class="vam"></label></li>
-                <li class="l mr10 p5"><input name="pay_ment" class="vam" id="blank_9" value="301" type="radio"><label for="blank_9" class="ml10"><img src="/images/blank/9.jpg" class="vam"></label></li>
-                <li class="l mr10 p5"><input name="pay_ment" class="vam" id="blank_10" value="311" type="radio"><label for="blank_10" class="ml10"><img src="/images/blank/10.jpg" class="vam"></label></li>
-                <li class="l mr10 p5"><input name="pay_ment" class="vam" id="blank_11" value="309" type="radio"><label for="blank_11" class="ml10"><img src="/images/blank/11.jpg" class="vam"></label></li>
-            </ul>
-            <ul class="clearfix w560 pl15 js_hidebank" style="display:none;">
-                <li class="l mr15 p5"><input class="vam" name="pay_ment" id="bank_12" value="306" type="radio"><label for="bank_12" class="ml5"><img class="vam" src="/img/bank/bank_gdfz.gif" alt="广东发展银行"></label></li>
-                <li class="l mr15 p5"><input class="vam" name="pay_ment" id="bank_13" value="307" type="radio"><label for="bank_13" class="ml5"><img class="vam" src="/img/bank/bank_szfz.gif" alt="深圳发展银行"></label></li>
-                <li class="l mr15 p5"><input class="vam" name="pay_ment" id="bank_14" value="314" type="radio"><label for="bank_14" class="ml5"><img class="vam" src="/img/bank/bank_pfyh.gif" alt="上海浦东发展银行"></label></li>
-                <li class="l mr15 p5"><input class="vam" name="pay_ment" id="bank_15" value="313" type="radio"><label for="bank_15" class="ml5"><img class="vam" src="/img/bank/bank_zxyh.gif" alt="中信银行"></label></li>
-                <li class="l mr15 p5"><input class="vam" name="pay_ment" id="bank_16" value="312" type="radio"><label for="bank_16" class="ml5"><img class="vam" src="/img/bank/bank_gdyh.gif" alt="光大银行"></label></li>
-                <li class="l mr15 p5"><input class="vam" name="pay_ment" id="bank_17" value="316" type="radio"><label for="bank_17" class="ml5"><img class="vam" src="/img/bank/bank_njyh.gif" alt="南京银行"></label></li>
-                <li class="l mr15 p5"><input class="vam" name="pay_ment" id="bank_18" value="317" type="radio"><label for="bank_18" class="ml5"><img class="vam" src="/img/bank/bank_bhyh.gif" alt="渤海银行"></label></li>
-                <li class="l mr15 p5"><input class="vam" name="pay_ment" id="bank_19" value="3279" type="radio"><label for="bank_19" class="ml5"><img class="vam" src="/img/bank/bank_psbc.gif" alt="邮政储蓄银行"></label></li>
-                <li class="l mr15 p5"><input class="vam" name="pay_ment" id="bank_20" value="327" type="radio"><label for="bank_20" class="ml5"><img class="vam" src="/img/bank/bank_unionpay.gif" alt="中国银联"></label></li>
-            </ul>
-        </div>
-        <div class="pl45 pt20">
-            <a href="javascript:;" onclick="$(this).hide();$('.js_hidebank').slideDown();" class="fc_orange">[选择其他银行]</a>
-            <div class="pt20 pb20"><a href="javascript:;" class="diaBtn_1" id="pay_now">确定</a><a href="javascript:;" onclick="close_dialog()" class="diaBtn_2 ml20">稍后支付</a></div>
-        </div>
-    </div>
-</div>
-<!-- 订单详情 -->
-<div id="dialog_orderinfo" style="display:none;">
-    <div class="w560 pb10">
-        <div class="bbdb pl10 pr10 pb10">
-            <div class="pt10 pb10"><strong class="fs13 lh28">订单状态</strong></div>
-            <div class="clearfix">
-                <span class="l fs13">当前状态为：<span class="fc_orange" id="d_status"></span></span><span class="r" id="showstatus" style="display:none;"><a href="javascript:;" onclick="pay_dialog()" class="diaBtn_1">马上支付</a><a href="javascript:;" onclick="close_dialog()" class="diaBtn_2 ml10">稍后支付</a></span>
-            </div>
-        </div>
-        <div class="bbdb pl10 pr10 pb20">
-            <div class="pt10 pb10"><strong class="fs13 lh28">结算信息</strong></div>
-            <div class="clearfix fs13">
-                <span class="l" id="d_pay_info"></span>
-                <strong class="r fc_orange" id="d_pay_money"></strong>
-            </div>
-        </div>
-        <div class="bbdb pl10 pr10 pb20">
-            <div class="pt10 pb10"><strong class="fs13 lh28">商品详情</strong><span>（当前订单号 <span class="fc_orange" id="d_order_sn"></span>）</span></div>
-            <div>
-                <table class="table_1 w540 m tc bg_fff">
-                    <tbody><tr id="d_book_title"><th class="">商品信息</th><th>商品类型</th><th>原价</th><th>应付金额</th><th class="w57">数量</th></tr>
-                </tbody></table>
-            </div>
-        </div>
-        <div class="pl10 pr10">
-            <div class="pt10 pb10"><strong class="fs13 lh28">收货信息</strong></div>
-            <div>
-                <ul class="pl15 fs13 lh24 pt10">
-                    <li><span class="inline w90 pr5 tr">收货人姓名：</span><span id="d_name"></span></li>
-                    <li><span class="inline w90 pr5 tr">地址：</span><span id="d_address"></span></li>
-                    <li><span class="inline w90 pr5 tr">手机号码：</span><span id="d_mobile"></span></li>
-                    <li><span class="inline w90 pr5 tr">固定电话：</span><span id="d_tel"></span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 物流信息 -->
-<div id="kuaidi" style="display:none;">
-    <div class="w540">
-        <div class="pl10 pr10 pb20 fs14">
-            <div class="pt10 pb20 tc">（以下跟踪信息由快递100提供，如有疑问请到物流公司官网查询）</div>
-            <div>
-                <table class="table_1 w540 m tc bg_fff">
-                    <tbody><tr><th class="w120">发货方式</th><td class="tl pl40" id="logistics_type"></td></tr>
-                    <tr><th class="w120">物流公司</th><td class="tl pl40" id="logistics_name"></td></tr>
-                    <tr><th class="w120">运单号码</th><td class="tl pl40" id="logistics_no"></td></tr>
-                </tbody></table>
-                <table class="table_1 w540 m tc bg_fff mt10">
-                    <tbody><tr>
-                        <th class="lh28" colspan="2">订单跟踪</th>
-                    </tr>
-                    <tr>
-                        <td class="tl p5" colspan="2">
-                            <table class="table_2">
-                                <tbody><tr id="d_logistics_title"><th>处理时间</th><th>处理信息</th></tr>
-                            </tbody></table>
-                        </td>
-                    </tr>
-                </tbody></table>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 支付 -->
-<div id="dialog_pay_confirm" style="display:none;">
-    <div class="w450 pt10 pb10">
-        <div class="fs15 lh28 pl80 ml70 diaErr_1 pt20 pb20">请在打开的新页面进行付款后选择</div>
-        <ul class="pt20 pb10 pl40 ml30">
-            <li class="pt10">付款成功：<a href="http://www.tushu.com/my/order.html" class="fc_gray6 ml20">[查看订单详情]</a><a href="http://www.tushu.com/cdbook.html" class="fc_gray6 ml20">[继续制作]</a></li>
-            <li class="pt10">付款失败：<a href="http://www.tushu.com/novice.html" class="fc_gray6 ml20">[查看支付帮助]</a><a href="javascript:;" onclick="close_dialog()" class="fc_gray6 ml20">[选择其他支付方式]</a></li>
-        </ul>
-    </div>
-</div>
-<script type="text/javascript">
-$(function(){
-	var ol = $(".orderList").length;
-	for(var i=0;i<ol;i++){
-		var h = $(".orderList").eq(i).height();
-		$(".orderList").eq(i).attr("true-h",h)
-		if(h < 90){
-			$(".orderList").eq(i).next().hide();
-		}
-	}
-	$(".orderList").height(85);
-
-	$(".openOrder").live("click",function(){
-		var $this = $(this);
-		var $ul = $this.parent().prev();
-		var th = $ul.attr("true-h");
-		$this.fadeOut("fast");
-
-		$ul.animate({height:th},300,function(){
-			$this.removeClass("openOrder").addClass("closeOrder").fadeIn("fast").attr("title","收起");
-		});
-		return false;
-	});
-	$(".closeOrder").live("click",function(){
-		var $this = $(this);
-		var $ul = $this.parent().prev();
-		var th = $ul.attr("true-h");
-		$this.fadeOut("fast");
-
-		$ul.animate({height:85},300,function(){
-			$this.removeClass("closeOrder").addClass("openOrder").fadeIn("fast").attr("title","展开");
-		});
-		return false;
-	});
-});
-
-$('#pay_now, #info_pay').live('click', function(){
-	var pay_type = $('input[name="pay_ment"]:checked').val();
-	var sn = $('#snid').val();
-	if (!pay_type)
-	{
-		adialog('提示信息', '请选择一个支付方式', 1);
-		return false;
-	}
-	if (!sn)
-	{
-		adialog('提示信息', '订单编号无效,请刷新页面重试', 1);
-		return false;
-	}
-	close_dialog();
-	adialog('登录网上银行进行付款', document.getElementById('dialog_pay_confirm'), 1);
-	window.open("/flow/payfor/"+sn+"/"+pay_type);
-});
-
-function order_detail(order_id)
-{
-	var diaobj = document.getElementById('dialog_orderinfo');
-	var _callback = function(result){
-		if(result.status == 200)
-		{
-			if(result.data.status=='待支付'){
-				$("#showstatus").show();
-			}
-			$('#d_status').html(result.data.status);
-			$('#d_pay_info').html(result.data.pay_info_format);
-			$('#d_pay_money').html(result.data.pay_money_format);
-			$('#d_order_sn').html(result.data.sn);
-			$('#d_name').html(result.data.consignee.name);
-			$('#d_address').html(result.data.consignee.addres);
-			$('#d_mobile').html(result.data.consignee.tel);
-			$('#d_tel').html(result.data.consignee.phone);
-
-			_books = '';
-			$.each(result.data.book , function(i, v){
-				_books += '<tr><td class="orderBox w147"><ul class="clearfix orderList pl30 pt10 pb10">';
-				_books += '<li class="l"><a href="'+v.url+'"><i class="icon_see"></i><img src="'+v.cover_url+'" width="78" />';
-				_books += '</a></li></ul></td>';
-				_books += '<td>'+v.book_type_name+'</td><td>￥ '+v.market_price+'元</td><td class="fc_orange">￥ '+v.book_price+'元</td><td>'+v.count+'</td></tr>';
-			});
-
-			$('#d_book_title').siblings().empty();
-			$('#d_book_title').after(_books);
-
-			$('#snid').val(result.data.sn);
-
-			photoDialog('订单详情', diaobj, 0, close_dialog, null, 'adialog_order_detail');
-		}
-		else
-		{
-			adialog('提示信息', result.data.message, 1, null, null, 'adialog_order_detail');
-		}
-	};
-	$.ajax({type: 'GET', url: '/user/get_order_detail', data: 'ajax=1&order_id='+order_id, dataType: 'json', success: _callback});
-}
-
-function kuaidi100(order_sn)
-{
-	$('#logistics_type').html('');
-	$('#logistics_name').html('');
-	$('#logistics_no').html('');
-	$('#d_logistics_title').siblings().empty();
-	diaobj = document.getElementById('kuaidi');
-	adialog('物流信息', diaobj, 0);
-	var kuaidi_callback = function(result){
-
-		if(result.status == 200)
-		{
-			$('#logistics_type').html(result.data.logistics_type);
-			$('#logistics_name').html(result.data.logistics_name);
-			$('#logistics_no').html(result.data.logistics_no);
-
-			var _html = '';
-			if(result.data.list.length){
-				$.each(result.data.list , function(i, v){
-					_html += '<tr><td>'+v.time+'</td><td>'+v.context+'</td></tr>';
-				});
-			}
-			$('#d_logistics_title').siblings().empty();
-			$('#d_logistics_title').after(_html);
-		}
-	};
-	$.ajax({type: 'GET', url: '/user/get_kuaidi', data: 'order_sn='+order_sn, dataType: 'json', success: kuaidi_callback});
-}
-
-function pay_dialog(order_sn)
-{
-	if (order_sn)
-	{
-		$('#snid').val(order_sn);
-	}
-	close_dialog();
-	adialog('请选择支付方式', document.getElementById('dialog_pay'), 0);
-}
-
-function close_dialog()
-{
-	var list = art.dialog.list;
-	for (var i in list) {
-		list[i].close();
-	};
-}
-</script>
 
 <%@ include file="../footer.jsp"%>
 <!--谷歌Google Analytics代码-->
