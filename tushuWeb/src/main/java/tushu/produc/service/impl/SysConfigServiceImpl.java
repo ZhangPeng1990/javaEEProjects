@@ -23,4 +23,10 @@ public class SysConfigServiceImpl implements SysConfigService {
 		return sysConfig;
 	}
 
+	@Override
+	public SysConfig updateSysConfig(SysConfig sysConfig){
+		SysConfigDO sysConfigDO = BeanCopier.toSysConfigDO(sysConfig);
+		this.sysConfigDOMapper.updateByPrimaryKey(sysConfigDO);
+		return sysConfig;
+	}
 }
