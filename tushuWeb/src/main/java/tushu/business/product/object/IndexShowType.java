@@ -1,10 +1,13 @@
 package tushu.business.product.object;
 
+import java.io.Serializable;
 import java.util.List;
 
 import tushu.enums.Types;
 
-public class IndexShowType<E> {
+public class IndexShowType<E> implements Serializable {
+
+	private static final long serialVersionUID = 5493547015721337479L;
 
 	private Integer id;
 	

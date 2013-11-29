@@ -1,8 +1,12 @@
 package tushu.business.product.object;
 
+import java.io.Serializable;
+
 import tushu.enums.TemplateType;
 
-public class Template {
+public class Template implements Serializable {
+
+	private static final long serialVersionUID = -5134616458167548668L;
 
 	private Integer id;
 	

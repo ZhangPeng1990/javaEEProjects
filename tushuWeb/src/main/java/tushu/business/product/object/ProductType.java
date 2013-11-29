@@ -1,8 +1,11 @@
 package tushu.business.product.object;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class ProductType {
+public class ProductType implements Serializable {
+
+	private static final long serialVersionUID = -4363224711087280946L;
 
 	private Integer id;
 
