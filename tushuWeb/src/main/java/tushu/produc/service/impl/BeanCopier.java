@@ -143,6 +143,7 @@ public class BeanCopier {
 		orderFormDO.setOrderType(orderForm.getOrderType() != null ? orderForm.getOrderType().toString() : null);
 		orderFormDO.setPaymentTime(orderForm.getPaymentTime());
 		orderFormDO.setProductId(orderForm.getProduct() != null ? orderForm.getProduct().getProductId() : null);
+		orderFormDO.setWorkId(orderForm.getWork() != null ? orderForm.getWork().getId() : null);
 		orderFormDO.setUserId(orderForm.getUser() != null ? Integer.parseInt(orderForm.getUser().getId().toString()) : null);
 		orderFormDO.setProductNumber(orderForm.getProductNumber());
 		orderFormDO.setAmountPayable(orderForm.getAmountPayable());

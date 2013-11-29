@@ -12,4 +12,6 @@ public interface WorkService {
 	public List<Work> getByUser(User user);
 	
 	public Work getById(Integer id);
+	
+	public void deleteById(Work work);
 }

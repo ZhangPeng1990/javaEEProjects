@@ -19,6 +19,12 @@
 
 <script src="<%=path%>/styles/js/photoBookEditer/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="<%=path%>/styles/js/photoBookEditer/custom.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+		window.onbeforeunload=function(){
+			  return '如果现在关闭窗口，请确定该涂书已经保存。';
+			};
+</script>
 </head>
 <body class="mpadbook">
 	<!-- ========================================================== -->
@@ -48,7 +54,7 @@
                 <!--  
                 <a href="#" id="btn_setting" class="btn btn4" title="书本设置">页数设置</a>
                 -->
-                <a href="#" id="btn_print" class="btn btn_reg_green" title="放入购物车" onclick="addToShoppingCart(${product.productId})">购物车</a>
+                <a href="#" id="btn_print" class="btn btn_reg_green" title="放入购物车" onclick="addToShoppingCart(${work.id})">购物车</a>
             </div>
         </div>
         <!--end -->
@@ -173,7 +179,7 @@
                         </a>
                         &nbsp;&nbsp;<span>加减页数</span>
                     </div>
-                    <span class="page_info">已完成&nbsp;<span id="complete_count">0</span>P，可编辑&nbsp;<span id="edit_count">33</span>P，总共&nbsp;<span id="total_count">36</span>P&nbsp;</span>
+                    <span class="page_info">已完成&nbsp;<span id="complete_count">0</span>P，可编辑&nbsp;<span id="edit_count">33</span>P，总共&nbsp;<span id="total_count">${product.pages}</span>P&nbsp;</span>
                 </div>
             </div>
 
@@ -329,5 +335,6 @@
     <input type="hidden" id="requestSavePath" value="<%=path%>/user/${sessionUserName.id}/addWork.html">
     <input type="hidden" id="saveSuccessRequestPath" value="<%=path%>/user/listWorks/${sessionUserName.id}.html">
     <input type="hidden" id="bookEditType" value="${bookEditType}">
+    <input type="hidden" id="addOrderRequestPath" value="<%=path%>/product/addShoppingCart.html">
 </body>
 </html>

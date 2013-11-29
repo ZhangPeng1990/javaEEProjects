@@ -63,5 +63,5 @@ public interface OrderFormDOMapper {
     List<OrderFormDO> getOrders(@Param("user_Id") Integer user_Id, @Param("shopping_cart") String shopping_cart, 
     		@Param("non_payment") String non_payment, @Param("account_paid") String account_paid);
     
-    OrderFormDO getOrder(@Param("user_Id") Integer user_Id, @Param("type") String type, @Param("productId") Integer productId);
+    OrderFormDO getOrder(@Param("user_Id") Integer user_Id, @Param("type") String type, @Param("workId") Integer workId);
 }

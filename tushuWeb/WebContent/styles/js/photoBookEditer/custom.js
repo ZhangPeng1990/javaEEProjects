@@ -1,7 +1,3 @@
-window.onbeforeunload=function(){
-  return '如果现在关闭窗口，请确定该涂书已经保存。';
-};
-
 String.prototype.replaceAll=function(os, ns){
 	return this.replace(new RegExp(os,"gm"),ns);
 };
@@ -11,11 +7,12 @@ var smallPic = '<img src="#smallUrl#" bigPath="#bigUrl#" style="position: absolu
 var showPic = '<img class="ui-draggable" src="#bigUrl#" height="#height#" width="#width#">';
 
 //添加到购物车 操作
-function addToShoppingCart(productId){
+function addToShoppingCart(workId){
+	var path = $("#addOrderRequestPath").val();
 	$.ajax({
         type:"post",
-        url:"addShoppingCart.html",
-        data: {"productId":productId,
+        url:path,
+        data: {"workId":workId,
         	   "type":"SHOPPING_CART"},
         success:function(newSize){
             $("#shopping_cart").html(newSize);

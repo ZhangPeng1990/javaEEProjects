@@ -4,11 +4,11 @@ window.onbeforeunload=function(){
 
 
 //添加到购物车 操作
-function addToShoppingCart(productId){
+function addToShoppingCart(workId){
 	$.ajax({
         type:"post",
         url:"addShoppingCart.html",
-        data: {"productId":productId,
+        data: {"workId":workId,
         	   "type":"SHOPPING_CART"},
         success:function(newSize){
             $("#shopping_cart").html(newSize);

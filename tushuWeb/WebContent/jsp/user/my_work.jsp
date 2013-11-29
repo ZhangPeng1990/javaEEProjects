@@ -24,6 +24,7 @@
 <script src="http://www.google-analytics.com/ga.js" async="" type="text/javascript"></script>
 <script type="text/javascript" src="<%=path%>/styles/js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="<%=path%>/styles/js/js.js?1380270927"></script>
+<script src="<%=path%>/styles/js/photoBookEditer/custom.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		showPopup();
@@ -231,9 +232,6 @@
                 <div class="clearfix bb_d padde">
                                         <div class="l grName">123456</div>
                                         <div class="r mt10 pt10">
-                        <span for="dynamic" class="vam">邀请链接：</span>
-                        <input size="60" class="vam ml5 h20 w300" id="dynamic" value="" type="text">
-                        <img src="/images/cp_03.jpg" id="copy-dynamic" class="vam">
                     <div style="position: absolute; left: 1061px; top: 148px; width: 60px; height: 25px; z-index: 99;" id="zclip-ZeroClipboardMovie_1" class="zclip"><embed id="ZeroClipboardMovie_1" src="/js/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboardMovie_1" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=60&amp;height=25" wmode="transparent" align="middle" height="25" width="60"></div></div>
                 </div>
                 <div class="bt_f padde2 lh26">
@@ -262,6 +260,7 @@ $(document).ready(function(){
 
 </script>
 <script type="text/javascript" src="/js/avatar/js/artDialog.js"></script>
+<input type="hidden" id="addOrderRequestPath" value="<%=path%>/product/addShoppingCart.html">
 <div class="contentBox pb20">
     <div class="m w980">
         <div class="clearfix selectedBox2">
@@ -277,10 +276,10 @@ $(document).ready(function(){
 					<i class="icon_see"></i>
 					<b>${item.product.name}</b>
 					<img alt="" src="http://platform.tushu.com/img/2295307.jpeg?thumb"></a>
-					<em acl="2" booktype="6013" bookid="88059" class="bookEditEm">
+					<em class="bookEditEm">
 						<a class="icon_no l" title="保密" href="javascript:;"></a> 
-						<a class="icon_rem l" bookid="88059" href="javascript:;">&nbsp;</a> 
-						<a class="icon_print r" title="添加到购物车" href="javascript:;"></a>
+						<a class="icon_rem l" title="删除" onclick="return confirm('确认删除作品吗?删除后将不可恢复');" href="<%=path%>/user/deleteWork/${item.id}.html">&nbsp;</a> 
+						<a class="icon_print r" title="添加到购物车" onclick="addToShoppingCart(${item.id})"></a>
 					</em>
 				</li>
 				

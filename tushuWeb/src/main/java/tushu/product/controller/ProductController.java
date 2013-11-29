@@ -24,6 +24,7 @@ import tushu.business.product.object.Page;
 import tushu.business.product.object.Product;
 import tushu.business.product.object.ProductType;
 import tushu.business.product.object.Template;
+import tushu.business.product.object.Work;
 import tushu.business.user.object.User;
 import tushu.constans.Constans;
 import tushu.enums.BookEditType;
@@ -34,6 +35,7 @@ import tushu.produc.service.OrderFormService;
 import tushu.produc.service.ProductService;
 import tushu.produc.service.ProductTypeService;
 import tushu.produc.service.TemplateService;
+import tushu.produc.service.WorkService;
 
 @Controller
 @RequestMapping("/product")
@@ -50,6 +52,9 @@ public class ProductController {
 	
 	@Autowired
 	private TemplateService templateService;
+	
+	@Autowired
+	private WorkService workService;
 	
 	@RequestMapping("/details/{id}")
 	public String details(@PathVariable("id") int id, ModelMap mm){
@@ -273,27 +278,27 @@ public class ProductController {
 	
 	@RequestMapping("/details/addToShoppingCart")
 	@ResponseBody
-	public String addToShoppingCart(HttpServletRequest request, HttpServletResponse reponse, @RequestParam("productId") Integer productId, @RequestParam("type") String type)
+	public String addToShoppingCart(HttpServletRequest request, HttpServletResponse reponse, @RequestParam("workId") Integer workId, @RequestParam("type") String type)
 	{
 		int newSize;
 		User user = (User) request.getSession().getAttribute(Constans.SESSION_USER_ATTR_NAME);
-		Product product = this.productService.getById(productId); 
+		Work work = this.workService.getById(workId);
 		OrderType ot = OrderType.valueOf(type);
-		newSize = this.orderFormService.addOrders(user, ot, product).size();
+		newSize = this.orderFormService.addOrders(user, ot, work).size();
 		reponse.setStatus(200);
 		request.getSession().setAttribute(Constans.Shoping_Cart, newSize);
 		return String.valueOf(newSize);
 	}
 	
-	@RequestMapping("/{productId}/addShoppingCart")
+	@RequestMapping("/addShoppingCart")
 	@ResponseBody
-	public String addShoppingCart(HttpServletRequest request, HttpServletResponse reponse, @PathVariable ("productId") Integer productId, @RequestParam ("type") String type)
+	public String addShoppingCart(HttpServletRequest request, HttpServletResponse reponse, @RequestParam("workId") Integer workId, @RequestParam ("type") String type)
 	{
 		int newSize;
 		User user = (User) request.getSession().getAttribute(Constans.SESSION_USER_ATTR_NAME);
-		Product product = this.productService.getById(productId); 
+		Work work = this.workService.getById(workId); 
 		OrderType ot = OrderType.valueOf(type);
-		newSize = this.orderFormService.addOrders(user, ot, product).size();
+		newSize = this.orderFormService.addOrders(user, ot, work).size();
 		reponse.setStatus(200);
 		request.getSession().setAttribute(Constans.Shoping_Cart, newSize);
 		return String.valueOf(newSize);

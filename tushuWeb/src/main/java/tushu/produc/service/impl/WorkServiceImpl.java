@@ -70,4 +70,7 @@ public class WorkServiceImpl implements WorkService {
 		return work;
 	}
 
+	public void deleteById(Work work){
+		this.workDOMapper.deleteByPrimaryKey(work.getId());
+	}
 }

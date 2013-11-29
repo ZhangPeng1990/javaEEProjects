@@ -15,6 +15,8 @@ public class OrderForm {
 
     private Product product;
 
+    private Work work;
+    
     private Date createTime;
 
     private Date paymentTime;
@@ -122,5 +124,13 @@ public class OrderForm {
 
 	public void setExpressMessage(ExpressMessage expressMessage) {
 		this.expressMessage = expressMessage;
+	}
+
+	public Work getWork() {
+		return work;
+	}
+
+	public void setWork(Work work) {
+		this.work = work;
 	}
 }

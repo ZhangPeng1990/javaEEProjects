@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import tushu.business.product.object.OrderForm;
-import tushu.business.product.object.Product;
+import tushu.business.product.object.Work;
 import tushu.business.user.object.User;
 import tushu.enums.OrderType;
 import tushu.model.OrderFormDO;
@@ -17,6 +17,7 @@ import tushu.produc.service.AddressMessageService;
 import tushu.produc.service.ExpressMessageService;
 import tushu.produc.service.OrderFormService;
 import tushu.produc.service.ProductService;
+import tushu.produc.service.WorkService;
 import tushu.product.mapper.OrderFormDOMapper;
 import tushu.user.service.UserService;
 import tushu.utils.GUID;
@@ -38,6 +39,9 @@ public class OrderFormServiceImpl implements OrderFormService {
 	
 	@Autowired
 	private ExpressMessageService expressMessageService;
+	
+	@Autowired
+	private WorkService workService;
 	
 	@Override
 	public List<OrderForm> getOrders(User user, OrderType ...type) {
@@ -61,6 +65,7 @@ public class OrderFormServiceImpl implements OrderFormService {
 			for(OrderFormDO ofd : dos){
 				OrderForm of = BeanCopier.toOrderForm(ofd);
 				of.setProduct(productService.getById(ofd.getProductId()));
+				of.setWork(workService.getById(ofd.getWorkId()));
 				of.setUser(user);
 				of.setAddress(addressMessageService.getByOrder(of));
 				of.setExpressMessage(expressMessageService.getById(ofd.getExpressMessage()));
@@ -70,21 +75,22 @@ public class OrderFormServiceImpl implements OrderFormService {
 		return lists;
 	}
 	
-	public List<OrderForm> addOrders(User user, OrderType type, Product product){
+	public List<OrderForm> addOrders(User user, OrderType type, Work work){
 		
 		if(type.toString().equals(OrderType.SHOPPING_CART.toString())){
-			OrderFormDO ofdo = this.orderFormDOMapper.getOrder(Integer.parseInt(user.getId().toString()), type.toString(), product.getProductId());
+			OrderFormDO ofdo = this.orderFormDOMapper.getOrder(Integer.parseInt(user.getId().toString()), type.toString(), work.getId());
 			if(ofdo != null){
 				ofdo.setProductNumber(ofdo.getProductNumber() + 1);
-				ofdo.setAmountPayable(product.getSellPrice() * ofdo.getProductNumber());
+				ofdo.setAmountPayable(work.getProduct().getSellPrice() * ofdo.getProductNumber());
 				this.orderFormDOMapper.updateByPrimaryKey(ofdo);
 			}else{
 				OrderForm of = new OrderForm();
 				of.setUser(user);
-				of.setProduct(product);
+				of.setWork(work);
+				of.setProduct(work.getProduct());
 				of.setOrderType(type);
 				of.setProductNumber(1);
-				of.setAmountPayable(product.getSellPrice());
+				of.setAmountPayable(work.getProduct().getSellPrice());
 				of.setCreateTime(new Date());
 				if(type.toString().equals(OrderType.ACCOUNT_PAID.toString())){
 					of.setPaymentTime(new Date());
@@ -97,10 +103,10 @@ public class OrderFormServiceImpl implements OrderFormService {
 		}else{
 			OrderForm of = new OrderForm();
 			of.setUser(user);
-			of.setProduct(product);
+			of.setProduct(work.getProduct());
 			of.setOrderType(type);
 			of.setProductNumber(1);
-			of.setAmountPayable(product.getSellPrice());
+			of.setAmountPayable(work.getProduct().getSellPrice());
 			of.setCreateTime(new Date());
 			if(type.toString().equals(OrderType.ACCOUNT_PAID.toString())){
 				of.setPaymentTime(new Date());
@@ -134,6 +140,7 @@ public class OrderFormServiceImpl implements OrderFormService {
 		if(ofdo != null){
 			of = BeanCopier.toOrderForm(ofdo);
 			of.setProduct(this.productService.getById(ofdo.getProductId()));
+			of.setWork(workService.getById(ofdo.getWorkId()));
 			of.setUser(this.userService.getUserById(ofdo.getUserId()));
 			of.setExpressMessage(expressMessageService.getById(ofdo.getExpressMessage()));
 		}

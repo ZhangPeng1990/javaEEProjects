@@ -126,6 +126,25 @@ public class UserController extends BaseController {
 		return "user/my_work";
 	}
 	
+	@RequestMapping("deleteWork/{workId}")
+	public String deleteWork(@PathVariable("workId") int workId, ModelMap mm, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(Constans.SESSION_USER_ATTR_NAME);
+		
+		Work work = workService.getById(workId);
+		String txtPath = sysConfigService.getSysConfig(SysConfigKey.User_Work_Save_Path).getConfigValue() + work.getContentPath();
+		
+		File file = new File(txtPath);
+		if(file.exists()){
+			file.delete();
+		}
+		
+		this.workService.deleteById(work);
+		
+		String url = "/user/listWorks/" + user.getId() + ".html";
+		return "redirect:" + url;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("editWork/{workId}")
 	public String editWork(@PathVariable("workId") int workId, ModelMap mm, HttpServletRequest request){
