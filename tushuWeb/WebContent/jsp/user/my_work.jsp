@@ -18,6 +18,7 @@
 <title>涂书网 - 个性图书定制分享平台</title>
 <link type="text/css" rel="stylesheet" href="<%=path%>/styles/css/base.css?1380270927">
 <link type="text/css" rel="stylesheet" href="<%=path%>/styles/css/common.css?1380270927">
+<link rel="stylesheet" type="text/css" href="<%=path%>/styles/css/edit/editor_base.css">
 <link href="<%=path%>/styles/images/favicon.ico" mce_href="images/favicon.ico" rel="bookmark" type="image/x-icon">
 <link href="<%=path%>/styles<%=path%>/styles/images/favicon.ico" mce_href="images/favicon.ico" rel="icon" type="image/x-icon">
 <link href="/images/favicon.ico" mce_href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -291,6 +292,10 @@ $(document).ready(function(){
         </div>
     </div>
 </div>
+<!-- =========================蒙层效果================================= -->
+<div id="page_mask_layer" class="mask_layout" style="position: absolute; top: 0px; left: 0px; margin-left: 0px; margin-top: 0px; background-color: rgb(0, 0, 0); height: 1127px; opacity: 0.1; overflow: hidden; width: 1349px; z-index: 1000; display: none;"></div>
+<!-- =========================保存成功提示================================= -->
+<div id="action_success" class="succeed" style="position: absolute; top: 190px; left: 50%; z-index: 500; margin-left: -90px; display: none; " ></div>
 
 <%@ include file="../footer.jsp"%>
 <!--谷歌Google Analytics代码-->

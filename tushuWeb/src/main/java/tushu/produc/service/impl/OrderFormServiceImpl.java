@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 import tushu.business.product.object.OrderForm;
 import tushu.business.product.object.Work;
 import tushu.business.user.object.User;
+import tushu.enums.OrderProgress;
 import tushu.enums.OrderType;
 import tushu.model.OrderFormDO;
 import tushu.produc.service.AddressMessageService;
@@ -59,14 +60,14 @@ public class OrderFormServiceImpl implements OrderFormService {
 				if(ot.toString().equals(OrderType.SHOPPING_CART.toString())) shopping_cart = ot.toString();
 			}
 		}
-		
-		List<OrderFormDO> dos = orderFormDOMapper.getOrders(Integer.parseInt(user.getId().toString()), shopping_cart, non_payment, account_paid);
+		Integer userId = user.getId() != null ? Integer.parseInt(user.getId().toString()) : null;
+		List<OrderFormDO> dos = orderFormDOMapper.getOrders(userId, shopping_cart, non_payment, account_paid);
 		if(dos != null && dos.size() > 0){
 			for(OrderFormDO ofd : dos){
 				OrderForm of = BeanCopier.toOrderForm(ofd);
 				of.setProduct(productService.getById(ofd.getProductId()));
 				of.setWork(workService.getById(ofd.getWorkId()));
-				of.setUser(user);
+				of.setUser(userService.getUserById(ofd.getUserId()));
 				of.setAddress(addressMessageService.getByOrder(of));
 				of.setExpressMessage(expressMessageService.getById(ofd.getExpressMessage()));
 				lists.add(of);
@@ -149,5 +150,9 @@ public class OrderFormServiceImpl implements OrderFormService {
 	
 	public void updateOrderType(Long id, OrderType type){
 		this.orderFormDOMapper.updateOrderType(id, type.toString());
+	}
+	
+	public void updateOrderProgress(Long id, OrderProgress progress){
+		this.orderFormDOMapper.updateOrderProgress(id, progress.toString());
 	}
 }

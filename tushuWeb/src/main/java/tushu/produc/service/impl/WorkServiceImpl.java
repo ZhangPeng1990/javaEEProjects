@@ -57,6 +57,12 @@ public class WorkServiceImpl implements WorkService {
 		}
 		return list;
 	}
+	
+	public Work updateWork(Work work){
+		WorkDO workDO = BeanCopier.toWorkDO(work);
+		this.workDOMapper.updateByPrimaryKey(workDO);
+		return work;
+	}
 
 	@Override
 	public Work getById(Integer id) {

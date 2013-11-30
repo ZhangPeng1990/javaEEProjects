@@ -77,6 +77,8 @@ public class OrderFormDO implements Serializable {
      *
      * @mbggenerated Sun Sep 15 15:26:33 CST 2013
      */
+    private String orderProgress;
+    
     public Long getId() {
         return id;
     }
@@ -267,5 +269,13 @@ public class OrderFormDO implements Serializable {
 
 	public void setWorkId(Integer workId) {
 		this.workId = workId;
+	}
+
+	public String getOrderProgress() {
+		return orderProgress;
+	}
+
+	public void setOrderProgress(String orderProgress) {
+		this.orderProgress = orderProgress;
 	}
 }

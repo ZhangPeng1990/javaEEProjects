@@ -16,7 +16,14 @@ function addToShoppingCart(workId){
         	   "type":"SHOPPING_CART"},
         success:function(newSize){
             $("#shopping_cart").html(newSize);
-            alert("已成功加入到购物车");
+            $("#shopping_cart").css("display","inline-block");
+            $("#page_mask_layer").css("display","block");
+            $("#action_success").html('添加成功');
+            $("#action_success").fadeIn('slow');
+            setTimeout(function(){
+            	$("#action_success").fadeOut('slow');
+            	$("#page_mask_layer").css("display","none");
+            },2000);
         },
 		error:function(){
 			//alert("error");
@@ -117,12 +124,16 @@ function saveToDB(){
 	var requestPath = $("#requestSavePath").val();
 	var productId = $("#productId").val();
 	var contentHtml = $("#store_page_message").html();
+	var type = $("#bookEditType").val();
+	var workId = $("#workId").val();
 	
 	$.ajax({
         type:"post",
         url:requestPath,
         data: {"productId":productId,
-        	   "htmlContent":contentHtml},
+        	   "htmlContent":contentHtml,
+        	   "type":type,
+        	   "workId":workId},
         success:function(newSize){
         	$("#action_success").html('保存成功');
             $("#action_success").fadeIn('slow');

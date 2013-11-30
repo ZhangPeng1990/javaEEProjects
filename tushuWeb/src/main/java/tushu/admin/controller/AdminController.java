@@ -14,14 +14,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import tushu.business.product.object.IndexShowType;
+import tushu.business.product.object.OrderForm;
 import tushu.business.product.object.Product;
 import tushu.business.product.object.ProductType;
 import tushu.business.user.object.User;
 import tushu.constans.Constans;
 import tushu.enums.AdminOperation;
+import tushu.enums.OrderType;
 import tushu.enums.UserType;
 import tushu.produc.service.ImagesService;
 import tushu.produc.service.IndexShowTypeService;
+import tushu.produc.service.OrderFormService;
 import tushu.produc.service.ProductService;
 import tushu.produc.service.ProductTypeService;
 import tushu.user.service.UserService;
@@ -41,6 +44,9 @@ public class AdminController {
 	
 	@Autowired
 	private ProductTypeService productTypeService;
+	
+	@Autowired
+	private OrderFormService orderFormService;
 	
 	@Autowired
 	private IndexShowTypeService indexShowTypeService;
@@ -71,6 +77,24 @@ public class AdminController {
 		List<User> users = userService.getAll();
 		mm.addAttribute("users", users);
 		return "admin/user_admin";
+	}
+	
+	@RequestMapping("orders")
+	public String orders(HttpServletRequest request, ModelMap mm){
+		//身份判断
+		User loginUser = (User) request.getSession().getAttribute(Constans.SESSION_USER_ATTR_NAME);
+		if(loginUser == null || !loginUser.getUserType().equals(UserType.ADMIN)){
+			return "forbid";
+		}
+		//身份判断
+		
+		operation = AdminOperation.ORDERS.toString();
+		mm.addAttribute("operation", operation);
+		List<OrderForm> orders = null;
+		loginUser.setId(null);
+		orders = this.orderFormService.getOrders(loginUser, OrderType.ACCOUNT_PAID, OrderType.NON_PAYMENT);
+		mm.addAttribute("orders", orders);
+		return "admin/orders_admin";
 	}
 	
 	@RequestMapping("deluser/{id}")

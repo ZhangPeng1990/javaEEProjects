@@ -19,12 +19,13 @@
 
 <script src="<%=path%>/styles/js/photoBookEditer/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="<%=path%>/styles/js/photoBookEditer/custom.js" type="text/javascript"></script>
-
+<!--  
 <script type="text/javascript">
 		window.onbeforeunload=function(){
 			  return '如果现在关闭窗口，请确定该涂书已经保存。';
 			};
 </script>
+-->
 </head>
 <body class="mpadbook">
 	<!-- ========================================================== -->
@@ -332,6 +333,7 @@
     </div>
     
     <input type="hidden" id="productId" value="${product.productId}">
+    <input type="hidden" id="workId" value="${work.id}">
     <input type="hidden" id="requestSavePath" value="<%=path%>/user/${sessionUserName.id}/addWork.html">
     <input type="hidden" id="saveSuccessRequestPath" value="<%=path%>/user/listWorks/${sessionUserName.id}.html">
     <input type="hidden" id="bookEditType" value="${bookEditType}">

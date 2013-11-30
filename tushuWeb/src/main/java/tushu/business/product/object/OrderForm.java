@@ -3,6 +3,7 @@ package tushu.business.product.object;
 import java.util.Date;
 
 import tushu.business.user.object.User;
+import tushu.enums.OrderProgress;
 import tushu.enums.OrderType;
 
 public class OrderForm {
@@ -30,6 +31,8 @@ public class OrderForm {
     private AddressMessage address;
     
     private ExpressMessage expressMessage;
+    
+    private OrderProgress orderProgress;
     
 	public Long getId() {
 		return id;
@@ -132,5 +135,13 @@ public class OrderForm {
 
 	public void setWork(Work work) {
 		this.work = work;
+	}
+
+	public OrderProgress getOrderProgress() {
+		return orderProgress;
+	}
+
+	public void setOrderProgress(OrderProgress orderProgress) {
+		this.orderProgress = orderProgress;
 	}
 }

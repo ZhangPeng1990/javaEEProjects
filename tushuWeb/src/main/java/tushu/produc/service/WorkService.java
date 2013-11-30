@@ -13,5 +13,7 @@ public interface WorkService {
 	
 	public Work getById(Integer id);
 	
+	public Work updateWork(Work work);
+	
 	public void deleteById(Work work);
 }

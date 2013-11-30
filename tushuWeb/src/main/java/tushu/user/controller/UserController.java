@@ -151,6 +151,7 @@ public class UserController extends BaseController {
 		Work work = this.workService.getById(workId);
 		Product product = work.getProduct();
 		mm.addAttribute("product", product);
+		mm.addAttribute("work", work);
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(Constans.SESSION_USER_ATTR_NAME);
@@ -510,16 +511,28 @@ public class UserController extends BaseController {
     @ResponseBody
     public String addWork(HttpServletRequest request, HttpServletResponse response, 
     		@PathVariable("userId") int userId, @RequestParam("htmlContent") String htmlContent, 
-    		@RequestParam("productId") int productId){
+    		@RequestParam("productId") int productId, @RequestParam("type") String type, @RequestParam("workId") Integer workId){
 		
+		Work work = null;
 		System.out.println(htmlContent);
 		String bdPath = weiteToService(htmlContent);
+		if(type.equals(BookEditType.ADD_New.toString())){
+			work = new Work();
+			work.setContentPath(bdPath);
+			work.setUser((User)request.getSession().getAttribute(Constans.SESSION_USER_ATTR_NAME));
+			work.setProduct(productService.getById(productId));
+			workService.add(work);
+		}else if(type.equals(BookEditType.Edit_Existing.toString())){
+			work = this.workService.getById(workId);
+			String oldPath = sysConfigService.getSysConfig(SysConfigKey.User_Work_Save_Path).getConfigValue() + work.getContentPath();
+			File file = new File(oldPath);
+			if(file.exists()){
+				file.delete();
+			}
+			work.setContentPath(bdPath);
+			workService.updateWork(work);
+		}
 		
-		Work work = new Work();
-		work.setContentPath(bdPath);
-		work.setUser((User)request.getSession().getAttribute(Constans.SESSION_USER_ATTR_NAME));
-		work.setProduct(productService.getById(productId));
-		workService.add(work);
 		return "SUCCESS";
 	}
 	

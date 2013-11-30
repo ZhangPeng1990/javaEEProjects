@@ -29,10 +29,16 @@
             	-->
             </a><span class="h_hr"></span>
             
-			<a href="<%=path%>/user/${sessionUserName.id}/cart.html">购物车<span style="display: none;" id="showcarttip" class="redNum"></span>
-				<c:if test="${shopingCart > 0}">
-            		<span id="shopping_cart" class="redNum" style="display: inline-block;">${shopingCart}</span>
-            	</c:if>
+			<a href="<%=path%>/user/${sessionUserName.id}/cart.html">
+				购物车
+				<c:choose>
+					<c:when test="${shopingCart > 0}">
+						<span id="shopping_cart" class="redNum" style="display: inline-block;">${shopingCart}</span>
+					</c:when>
+					<c:otherwise>
+						<span id="shopping_cart" class="redNum" style="display: none;"></span>
+					</c:otherwise>
+				</c:choose>
 			</a><span class="h_hr"></span>
 			
             <a href="<%=path%>/login/loginOut.html" id="href_logout">退出</a>

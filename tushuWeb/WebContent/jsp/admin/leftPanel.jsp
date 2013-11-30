@@ -7,6 +7,9 @@
 </head>
 <body>
 	<ul class="l selectLeft2">
+		<li class="${operation eq 'ORDERS' ? 'on' : ''}">
+			<a href="<%=path%>/admin/orders.html" class="noBg">订单管理</a>
+		</li>
 		<li class="${operation eq 'USER' ? 'on' : ''}">
 			<a href="<%=path%>/admin/users.html" class="noBg">用户管理</a>
 		</li>

@@ -5,6 +5,7 @@ import java.util.List;
 import tushu.business.product.object.OrderForm;
 import tushu.business.product.object.Work;
 import tushu.business.user.object.User;
+import tushu.enums.OrderProgress;
 import tushu.enums.OrderType;
 
 public interface OrderFormService {
@@ -22,4 +23,6 @@ public interface OrderFormService {
 	public OrderForm getById(Long id);
 	
 	public void updateOrderType(Long id, OrderType type);
+	
+	public void updateOrderProgress(Long id, OrderProgress progress);
 }

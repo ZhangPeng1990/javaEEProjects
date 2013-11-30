@@ -13,6 +13,7 @@ import tushu.business.product.object.SysConfig;
 import tushu.business.product.object.Template;
 import tushu.business.product.object.Work;
 import tushu.enums.IndexShowImageType;
+import tushu.enums.OrderProgress;
 import tushu.enums.OrderType;
 import tushu.enums.PageType;
 import tushu.enums.SysConfigKey;
@@ -148,6 +149,7 @@ public class BeanCopier {
 		orderFormDO.setProductNumber(orderForm.getProductNumber());
 		orderFormDO.setAmountPayable(orderForm.getAmountPayable());
 		orderFormDO.setExpressMessage(orderForm.getExpressMessage() != null ? orderForm.getExpressMessage().getId() : null);
+		orderFormDO.setOrderProgress(orderForm.getOrderProgress() != null ? orderForm.getOrderProgress().toString() : null);
 		return orderFormDO;
 	}
 	
@@ -160,6 +162,7 @@ public class BeanCopier {
 		orderForm.setPaymentTime(orderFormDO.getPaymentTime());
 		orderForm.setProductNumber(orderFormDO.getProductNumber());
 		orderForm.setAmountPayable(orderFormDO.getAmountPayable());
+		orderForm.setOrderProgress(orderFormDO.getOrderProgress() != null ? OrderProgress.valueOf(orderFormDO.getOrderProgress()) : null);
 		return orderForm;
 	}
 	
