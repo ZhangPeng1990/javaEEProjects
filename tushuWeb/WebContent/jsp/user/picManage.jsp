@@ -226,15 +226,17 @@
         <div class="clearfix pb10">
             <div class="l photoBg2" id="test00">
                 <a href="http://www.tushu.com/my/info.html#nav"><span class="photoTxt">修改头像</span>
-                                        <img src="<%=path%>/styles/images" alt="123456" id="user_face">
+                                        <img src="<%=path%>/styles/images" alt="${sessionUserName.userName}" id="user_face">
                                     </a>
             </div>
             <div class="r w780 pr30 fc_gray6">
                 <div class="clearfix bb_d padde">
-                                        <div class="l grName">123456</div>
+                                        <div class="l grName">${sessionUserName.userName}</div>
                                         <div class="r mt10 pt10">
+                        <!--            
                         <span for="dynamic" class="vam">邀请链接：</span>
                         <input size="60" class="vam ml5 h20 w300" id="dynamic" value="" type="text">
+                        -->
                         <img src="<%=path%>/styles/images/cp_03.jpg" id="copy-dynamic" class="vam">
                     <div style="position: absolute; left: 1061px; top: 148px; width: 60px; height: 25px; z-index: 99;" id="zclip-ZeroClipboardMovie_1" class="zclip">
                     <embed id="ZeroClipboardMovie_1" src="<%=path%>/styles/flash/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboardMovie_1" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=60&amp;height=25" wmode="transparent" align="middle" height="25" width="60"></div></div>

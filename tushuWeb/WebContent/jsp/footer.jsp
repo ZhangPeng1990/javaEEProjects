@@ -31,41 +31,40 @@
 	<div class="clearfix w980 m bt_f foot_mid bb_d">
 		<ul class="l">
 			<li><strong>关于涂书网</strong></li>
-			<li><a target="_blank" href="###">关于我们</a></li>
-			<li><a target="_blank" href="###">招贤纳士</a></li>
-			<li><a target="_blank" href="###">服务条款</a></li>
-			<li><a target="_blank" href="###">隐私政策</a></li>
-			<li><a target="_blank" href="###">站点地图</a></li>
-			<li><a target="_blank" href="###">最新动态</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">关于我们</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">招贤纳士</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">服务条款</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">隐私政策</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">站点地图</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">最新动态</a></li>
 		</ul>
 		<ul class="l">
 			<li><strong>我们的服务</strong></li>
-			<li><a target="_blank" href="/lists-21000.html?book">涂书</a></li>
-			<li><a target="_blank" href="/lists-22000.html?cart">卡片</a></li>
-			<li><a target="_blank" href="/lists-23000.html?bill">海报</a></li>
-			<li><a target="_blank" href="/lists-24000.html?balendar">日历</a></li>
-			<!--li><a target="_blank" href="/vip.html?vip">VIP定制</a></li-->
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">涂书</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">卡片</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">海报</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">日历</a></li>
 		</ul>
 		<ul class="l">
 			<li><strong>情景主题</strong></li>
-			<li><a target="_blank" href="/travel.html">旅游主题</a></li>
-			<li><a target="_blank" href="/family.html">亲子主题</a></li>
-			<li><a target="_blank" href="/wedding.html">婚恋主题</a></li>
-			<li><a target="_blank" href="/portrait.html">写真主题</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">旅游主题</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">亲子主题</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">婚恋主题</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">写真主题</a></li>
 		</ul>
 		<ul class="l">
 			<li><strong>涂书活动</strong></li>
-			<li><a target="_blank" href="/serveCon/weibo">官方微博</a></li>
-			<li><a target="_blank" href="/links.html">友情链接</a></li>
-			<li><a target="_blank" href="/activity.html">活动专区</a></li>
-			<li><a target="_blank" href="/topic.html">专题汇总</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">官方微博</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">友情链接</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">活动专区</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">专题汇总</a></li>
 		</ul>
 		<ul class="l">
 			<li><strong>帮助中心</strong></li>
-			<li><a target="_blank" href="/novice.html">常见问题</a></li>
-			<li><a target="_blank" href="/contact.html">联系客服</a></li>
-			<li><a target="_blank" href="/question.html">意见反馈</a></li>
-			<li><a target="_blank" href="/score.html">会员专区</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">常见问题</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">联系客服</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">意见反馈</a></li>
+			<li><a target="_blank" href="<%=path%>/webMessage/aboutUs.html">会员专区</a></li>
 		</ul>
 		<div class="r">
 			<div class="l w220">

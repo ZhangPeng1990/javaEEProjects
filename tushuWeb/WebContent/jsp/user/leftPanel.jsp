@@ -7,8 +7,10 @@
 </head>
 <body>
 	<ul class="l selectLeft2">
+		<!--  
 		<li class="${operation eq 'ACCOUNT' ? 'on' : ''}">
 			<a href="###" class="noBg">账号资料</a></li>
+		-->
 		<li class="${operation eq 'ORDER' ? 'on' : ''}">
 			<a href="<%=path%>/user/${sessionUserName.id}/order.html" class="noBg">我的订单</a>
 		</li>

@@ -180,10 +180,13 @@
 					<div class="clearfix bb_d padde">
 						<div class="l grName">${sessionUserName.userName}</div>
 						<div class="r mt10 pt10">
+							<!--  
 							<span for="dynamic" class="vam">邀请链接：</span> <input size="60"
 								class="vam ml5 h20 w300" id="dynamic"
 								value="###"
-								type="text"> <img src="images/cp_03.jpg"
+								type="text">
+								-->
+								 <img src="images/cp_03.jpg"
 								id="copy-dynamic" class="vam">
 							<div
 								style="position: absolute; left: 1061px; top: 148px; width: 60px; height: 25px; z-index: 99;"

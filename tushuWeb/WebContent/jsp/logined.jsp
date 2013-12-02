@@ -18,7 +18,8 @@
             	<c:if test="${informNum > 0}">
             		<span id="showcarttip" class="redNum" style="display: inline-block;">${informNum}</span>
             	</c:if>
-            </a><span class="h_hr"></span>
+            </a>
+            <span class="h_hr"></span>
            	 	
             <a href="<%=path%>/user/listWorks/${sessionUserName.id}.html">我的作品
             </a><span class="h_hr"></span>

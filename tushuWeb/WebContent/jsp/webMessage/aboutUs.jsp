@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="../include.inc.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%
 	String path = request.getContextPath();
 %>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="renderer" content="webkit">
@@ -16,16 +16,21 @@
 <meta name="keywords" content="涂书网、自制图书、同学录、个人写真、纪念册、生日礼物、结婚纪念、创意礼物、个性化定制、珍藏、成长日记、影集、制作照片、涂书网、涂书">
 <meta name="description" content="涂书网是为那些热爱生活、善于分享的人,提供记录生活、分享感动、实现创意的个性图书定制分享平台。向用户提供自制图书、旅行日志、婚恋纪念册、宝宝成长录的画册设计和印制，让用户享受三分钟DIY照片书的乐趣。记录生活感动与真实，和朋友、同事一同分享无处不在的喜悦和感动。涂书网做自己的书">
 <title>涂书网 - 个性图书定制分享平台</title>
-<link type="text/css" rel="stylesheet" href="<%=path%>/styles/css/base.css?1380270927">
-<link type="text/css" rel="stylesheet" href="<%=path%>/styles/css/common.css?1380270927">
-<link rel="stylesheet" type="text/css" href="<%=path%>/styles/css/edit/editor_base.css">
-<link href="<%=path%>/styles/images/favicon.ico" mce_href="images/favicon.ico" rel="bookmark" type="image/x-icon">
-<link href="<%=path%>/styles<%=path%>/styles/images/favicon.ico" mce_href="images/favicon.ico" rel="icon" type="image/x-icon">
-<link href="/images/favicon.ico" mce_href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-<script src="http://www.google-analytics.com/ga.js" async="" type="text/javascript"></script>
-<script type="text/javascript" src="<%=path%>/styles/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="<%=path%>/styles/js/js.js?1380270927"></script>
-<script src="<%=path%>/styles/js/photoBookEditer/custom.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet"
+	href="<%=path%>/styles/css/base.css">
+<link type="text/css" rel="stylesheet"
+	href="<%=path%>/styles/css/common.css">
+	
+<link href="http://www.tushu.com/images/favicon.ico"
+	mce_href="images/favicon.ico" rel="bookmark" type="image/x-icon">
+<link href="http://www.tushu.com/images/favicon.ico"
+	mce_href="images/favicon.ico" rel="icon" type="image/x-icon">
+<link href="http://www.tushu.com/images/favicon.ico"
+	mce_href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	
+<script src="<%=path%>/styles/js/ga.js" async="" type="text/javascript"></script>
+<script type="text/javascript" src="<%=path%>/styles/js/jquery-1.js"></script>
+<script type="text/javascript" src="<%=path%>/styles/js/js.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		showPopup();
@@ -52,8 +57,8 @@
 
     .fgf{margin:0 3px;color:#ddd;}
     .noBorder{border:none!important;}
-    .nl_book{background:url(<%=path%>/styles/images/index/bg/book.jpg) no-repeat bottom right #fff;padding:10px 15px 62px;}
-    .nl_log{background:url(<%=path%>/styles/images/index/bg/log.jpg) no-repeat top right #fff;padding:7px 190px 30px 20px;;width:313px;}
+    .nl_book{background:url(<%=path%>/styles/images/bg/book.jpg) no-repeat bottom right #fff;padding:10px 15px 62px;}
+    .nl_log{background:url(/images/index/bg/log.jpg) no-repeat top right #fff;padding:7px 190px 90px 20px;;width:313px;}
     .nl_log ul{width:255px;}
 </style>
 <style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
@@ -187,8 +192,10 @@
     pointer-events: auto !important;
 }
 </style>
+
 </head>
 <body>
+
 <c:choose>
 	<c:when test="${sessionUserName != null}">
 		<%@ include file="../logined.jsp"%>
@@ -197,136 +204,93 @@
 		<%@ include file="../not_login.jsp"%>
 	</c:otherwise>
 </c:choose>
-<%@ include file="../header.jsp"%>
+	<%@ include file="../header.jsp"%>
+
 
     <script type="text/javascript">
-        $(".index_nav > li").hover(function(){
-            $(this).children(".nav_link").addClass("nav_link_hover");
-            $(this).children(".nav_list").show();
+
+        var sto = 0,stc = 0;;
+        var showStoFun,hideStoFun;
+
+        $(".index_nav > li").not($(".index_nav > li:first")).hover(function(){
+
+                showNav($(this));
+
         },function(){
-            $(this).children(".nav_link").removeClass("nav_link_hover");
-            $(this).children(".nav_list").hide();
+            hideNav($(this));
         });
+
+
+
+        function showNav(e){
+            var _e = e;
+            if(sto == 0){
+                sto = 1;
+                showStoFun = setTimeout(function(){
+                    e.children(".nav_link").addClass("nav_link_hover");
+                    e.children(".nav_list").show();
+                    sto = 0;
+
+                },100);
+            }else{
+                clearTimeout(showStoFun);
+                    $(".nav_link").removeClass("nav_link_hover");
+                    $(".nav_list").hide();
+                    _e.children(".nav_link").addClass("nav_link_hover");
+                    _e.children(".nav_list").show();
+                sto = 0;
+            }
+
+        }
+        function hideNav(e){
+            if(stc == 0){
+                stc = 1;
+                hideStoFun = setTimeout(function(){
+                    $(".nav_link").removeClass("nav_link_hover");
+                    $(".nav_list").hide();
+                    stc = 0;
+                },100);
+            }else if(stc == 0 && sto == 0){
+                $(".nav_link").removeClass("nav_link_hover");
+                $(".nav_list").hide();
+            }else{
+                clearTimeout(hideStoFun);
+                    e.children(".nav_list").show();
+                    e.children(".nav_link").addClass("nav_link_hover");
+                stc = 0;
+            }
+        }
     </script>
 
 
-
-	<script type="text/javascript">
-		$(".header_link_box").hover(function(){
-			$(this).addClass("header_link_hover");
-		},function(){
-			$(this).removeClass("header_link_hover");
-		});
-	</script>
 <div class="pathBg">
-    <div class="w980 m"><a href="http://www.tushu.com/">首页</a>&gt;<a href="http://www.tushu.com/my/book.html">会员中心</a>&gt;<span>我的订单</span></div>
-</div>
-<div class="contentBox pt10">
-    <div class="m w980">
-        <div class="clearfix pb10">
-            <div class="l photoBg2" id="test00">
-                <a href="http://www.tushu.com/my/info.html#nav"><span class="photoTxt">修改头像</span>
-                                        <img src="/img/ad/ad_hyheader.jpg" alt="${sessionUserName.userName}" id="user_face">
-                                    </a>
-            </div>
-            <div class="r w780 pr30 fc_gray6">
-                <div class="clearfix bb_d padde">
-                                        <div class="l grName">${sessionUserName.userName}</div>
-                                        <div class="r mt10 pt10">
-                    <div style="position: absolute; left: 1061px; top: 148px; width: 60px; height: 25px; z-index: 99;" id="zclip-ZeroClipboardMovie_1" class="zclip"><embed id="ZeroClipboardMovie_1" src="/js/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboardMovie_1" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=60&amp;height=25" wmode="transparent" align="middle" height="25" width="60"></div></div>
-                </div>
-                <div class="bt_f padde2 lh26">
-                    <strong class="fc_orange inline">
-                    普通用户                    </strong>
-                                            <span class="icon_mail_true"><span>邮箱已验证</span></span>
-                                        <span class="ml20 fc_gray9">
-                        <!--积分：70分--> [今年已消费￥0元
-                        ]
-                    </span>
-                </div>
-            </div>
-        </div>
+<div class="w980 m"><a href="/">首页</a>&gt;&nbsp;关于涂书网</div>
     </div>
+    <div class="pt10 pb30 bg_fff">
+        <div class="m w980 clearfix pt20">
+        <%@ include file="leftPanel.jsp"%>
+	<div class="r aboutMain">
+            <img src="<%=path%>/styles/images/bg/about.png" alt="">
+            <div class="pt30">
+
+			<p>涂书网隶属于北京景华印通网络科技有限公司，景华印通是中国境内按需印刷品数字解决方案提供商。作为一家专注于图书印刷一体化的提供商，景华印通集印刷品规划、创意设计、新品研发、网络多媒体制作、生产加工、物流配送为一体，自成立以来，致力于为客户提供全方位、多角度、高水准、便捷化的一站式印刷服务，公司拥有顶尖的印刷设备和完善的企业资源管理系统，为您创造最高性价比的产品和服务。</p>
+			<h4>记录生活、分享感动、随心所印</h4>
+			<p>你热爱生活吗？你喜欢分享吗？你喜欢用图片表达心情，用文字抒写人生吗？</p>
+			<p>无论你是小资青年，文艺青年，还是普通青年，涂书网为你打开一扇窗。繁忙的工作，压抑的生活，互联网信息的高度密集，是否可以通过涂书网的温情商品，让你找到浮躁的出口，给内心深处的叙述和表达找到栖息地，把生活中的美好瞬间和感动用纸张留存起来 ，当指间触摸翻阅的时候，那些场景就在眼前，记忆随之变得有色彩 ，有温度。
+			</p>
+			<h4>随时随地，分享心情</h4>
+			<p>无论是零散的心情随记，还是宝宝成长的点点滴滴，青涩岁月中经历的烦恼和欢喜，与伙伴分享旅行的意义。用图文的方式记录生活的轨迹，用纸张的气息感悟生活的甜蜜，用涂书网商品回味生活带给我们的无限创意。无论是远在大洋彼岸，还是近在咫尺，不需要华丽的辞藻，随时随地分享你的照片心情。</p>
+			<h4>简约设计，DIY创意</h4>
+			<p>来涂书网，轻松完成属于自己的个性印品，畅享DIY的乐趣；完美的编辑排版，独一无二的风格设计，简约随性。用纸张记录雕刻时光，回归最初的美好；用纸张抒写记忆，拉近内心的距离。</p>
+			<h4>专业印刷</h4>
+			<p>涂书网快印中心具有创意设计、文件编录、制作输出、装订封包等一系列严谨的服务流程，生产中心配备国内最先进的HP indigoW7200、HP indigo 7500、 HP indigo 5500数码打印机和专业的技术人员，可满足不同用户的个性化需求，为您提供顶尖的数码印刷服务。</p>
+			
+		</div>
+	</div>
 </div>
-<script type="text/javascript" src="/js/jquery.zclip.js"></script>
-<script>
-$(document).ready(function(){
-
-	$('img#copy-dynamic').zclip({
-	path:'/js/ZeroClipboard.swf',
-	copy:function(){return $('input#dynamic').val();}
-	});
-
-});
-
-</script>
-<script type="text/javascript" src="/js/avatar/js/artDialog.js"></script>
-<input type="hidden" id="addOrderRequestPath" value="<%=path%>/product/addShoppingCart.html">
-<div class="contentBox pb20">
-    <div class="m w980">
-        <div class="clearfix selectedBox2">
-			<%@ include file="../user/leftPanel.jsp"%> 
-            <div class="r selectRight2">
-                <div class="selectListBox bst4 pl40">
-			<ul class="clearfix pt10">
-				<!-- 作品 -->
-				<c:forEach var="item" items="${works}">
-				
-				<li class="l por">
-					<a class="bookEdit" target="_blank"	href="<%=path%>/user/editWork/${item.id}.html">
-					<i class="icon_see"></i>
-					<b>${item.product.name}</b>
-					<img alt="" src="http://platform.tushu.com/img/2295307.jpeg?thumb"></a>
-					<em class="bookEditEm">
-						<a class="icon_no l" title="保密" href="javascript:;"></a> 
-						<a class="icon_rem l" title="删除" onclick="return confirm('确认删除作品吗?删除后将不可恢复');" href="<%=path%>/user/deleteWork/${item.id}.html">&nbsp;</a> 
-						<a class="icon_print r" title="添加到购物车" onclick="addToShoppingCart(${item.id})"></a>
-					</em>
-				</li>
-				
-				</c:forEach>
-			</ul>
-			<div class="tr pt10 pb30 pr30 mr10 fc_gray6">隐私声明：您在涂书网注册的信息、资料、照片及作品内容，涂书网均严格保密，确保您的隐私安全。</div>
-			</div>
-            </div>
-        </div>
-    </div>
 </div>
-<!-- =========================蒙层效果================================= -->
-<div id="page_mask_layer" class="mask_layout" style="position: absolute; top: 0px; left: 0px; margin-left: 0px; margin-top: 0px; background-color: rgb(0, 0, 0); height: 1127px; opacity: 0.1; overflow: hidden; width: 1349px; z-index: 1000; display: none;"></div>
-<!-- =========================保存成功提示================================= -->
-<div id="action_success" class="succeed" style="position: absolute; top: 190px; left: 50%; z-index: 500; margin-left: -90px; display: none; " ></div>
 
 <%@ include file="../footer.jsp"%>
-<!--谷歌Google Analytics代码-->
-<script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-27037508-1']);
-	_gaq.push(['_trackPageview']);
 
-	(function() {
-	  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
-</script>
-<!--****-->
-
-<div style="display: none;">
-	<!--百度统计代码-->
-	<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F20301d57224db44ce1820fbf43208d85' type='text/javascript'%3E%3C/script%3E"));
-
-
-
-
-
-</script><script src="http://hm.baidu.com/h.js?20301d57224db44ce1820fbf43208d85" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=20301d57224db44ce1820fbf43208d85" target="_blank"><img src="http://eiv.baidu.com/hmt/icon/21.gif" border="0" height="20" width="20"></a>
-</div>
-<!--****-->
-
-
-<div class="aui_focus" style="display: none;"><div class="aui_outer"><table style="" class="aui_table aui_outerTable"><tbody><tr><td class="aui_border aui_nw"></td><td class="aui_border aui_n"></td><td class="aui_border aui_ne"></td></tr><tr><td class="aui_border aui_w"></td><td class="aui_center"></td><td class="aui_border aui_e"></td></tr><tr><td class="aui_border aui_sw"></td><td class="aui_border aui_s"></td><td style="cursor: se-resize;" class="aui_border aui_se"></td></tr></tbody></table></div></div>
 </body>
 </html>

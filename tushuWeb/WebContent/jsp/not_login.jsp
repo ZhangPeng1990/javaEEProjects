@@ -16,8 +16,8 @@
             -->
             <a href="<%=path%>/login/returnLogin.html" class="h_icon_1">登录</a><span class="h_hr"></span>
             <a href="<%=path%>/login/returnRegister.html" class="h_icon_2">注册</a><span class="h_hr"></span>
-            <a href="###" class="h_icon_3">帮助</a>
-            <a href="###" class="ml10">用户晒单</a>
+            <a href="<%=path%>/webMessage/aboutUs.html" class="h_icon_3">帮助</a>
+            <a href="<%=path%>/webMessage/aboutUs.html" class="ml10">用户晒单</a>
             <!-- 
             <a href="http://www.tushu.com/library.html" class="ml10">涂书精选</a>
             -->

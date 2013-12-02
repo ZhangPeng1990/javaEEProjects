@@ -50,12 +50,14 @@
             <a href="###"><span id="logo"></span></a>
             <span id="works_title" class="works_title"></span>
             <div id="tools_bar">
-                &nbsp;&nbsp;<a href="#" id="btn_preview" class="btn" title="预览">预览</a>
-                <a id="btn_save" class="btn" title="保存作品" onclick="saveToDB();">保存</a>
+                &nbsp;&nbsp;
+                <a id="btn_save" class="btn btn_reg_green" title="保存作品" onclick="saveToDB();">保存</a>
                 <!--  
+                <a href="#" id="btn_preview" class="btn" title="预览">预览</a>
                 <a href="#" id="btn_setting" class="btn btn4" title="书本设置">页数设置</a>
-                -->
                 <a href="#" id="btn_print" class="btn btn_reg_green" title="放入购物车" onclick="addToShoppingCart(${work.id})">购物车</a>
+                -->
+                
             </div>
         </div>
         <!--end -->
@@ -122,8 +124,10 @@
                         <div class="layout_tools">
                             <ul class="tool_bot">
                                 <li class="lf left_btn">
+                                	<!--  
                                     <a href="javascript:;" id="background_color_picker_btn" class="editor_bg"><span>底色</span><i></i></a>
                                     <a href="#" id="text_color_picker_btn" class="editor_color"><span>文字颜色</span><i></i></a>
+                                    -->
                                 </li>
                                 <li class="rt right_btn">
                                     <a id="pagelayout_picker_btn" class="editor_format" onclick="controllPagelayout();">
@@ -170,7 +174,7 @@
             <div id="mod_tools" class="sections mod_tools">
                 <div class="section">
                     <span class="btn_area">工具栏：
-                        <a id="btn_page_manager" class="btn_round_mid btn" title="管理页面顺序">页面管理</a>                    
+                        <!-- <a id="btn_page_manager" class="btn_round_mid btn" title="管理页面顺序">页面管理</a> -->                 
                     </span>
 
                     <div id="page_count" class="page_controll" style="display: none;">
@@ -180,7 +184,7 @@
                         </a>
                         &nbsp;&nbsp;<span>加减页数</span>
                     </div>
-                    <span class="page_info">已完成&nbsp;<span id="complete_count">0</span>P，可编辑&nbsp;<span id="edit_count">33</span>P，总共&nbsp;<span id="total_count">${product.pages}</span>P&nbsp;</span>
+                    <span class="page_info">已完成&nbsp;<span id="complete_count">0</span>P，可编辑&nbsp;<span id="edit_count">${product.pages}</span>P，总共&nbsp;<span id="total_count">${product.pages}</span>P&nbsp;</span>
                 </div>
             </div>
 
@@ -242,12 +246,15 @@
     <div id="uploader_dialog" class="uploader_dialog ui-draggable" style="position: absolute; top: 36px; display: none;">
 		<div class="uploader_dialog_title">
 			<a id="uploader_close" class="uploader_close" href="javascript:;"></a>
+			<!-- 
 			<h2 style="width: 800px;">1.您正在制作的是照片书产品，最多可上传500张相片。2.单次最多可选择80张相片。
 				3.<font color="red">上传完成请点击保存，然后刷新页面</font></h2>
+			 -->
+			<h2 style="width: 800px;">如果您普通上传看不到东西,可能是由于Flash插件太旧或者没安装导致,请点击<a style="color: blue;" href="http://www.adobe.com/go/getflash" targer="_blank">这里</a>安装或升级，安装完成后重新打开本页面即可。</h2>
 		</div>
 		<div class="uploader_dialog_content" style="position: relative; height: 528px;">
-			<p style="position: absolute; left: 217px; top: 20px; font-size: 12px;">
-				如果您普通上传看不到东西,可能是由于Flash插件太旧或者没安装导致,请点击<a style="color: blue;" href="http://www.adobe.com/go/getflash" targer="_blank">这里</a>安装或升级，安装完成后重新打开本页面即可。
+			<p style="position: absolute; left: 217px; top: 20px; font-size: 18px;">
+				<font color="red">上传完成后请刷新页面</font>
 			</p>
 			<div class="upload_type_list">
 				<div class="nav on" ref="#upload_flash" title="flash 上传">普通上传</div>
