@@ -7,6 +7,6 @@
     <div class="drag_here" onclick="drag_here_Click(this);"/>
     <div class="dpi_info">2441x1614</div>
   </div>
-  <div align="left" onclick="showTextInput(this);" class="text_box text_box_background txt1" id="txt1" name="txt1" x="21.5" y="18" width="67" height="164" space="0" leading="15" max_line="31" max_length="713" pt="8" px="6" direction="horizontal" style="left: 52px; top: 44px; width: 163px; height: 400px; font-size: 9px;">在此输入文字~</div>
-  <div align="right" onclick="showTextInput(this);" class="text_box text_box_background txt2" id="txt2" name="txt2" x="203.5" y="187" width="140" height="25" space="0" leading="15" max_line="5" max_length="245" pt="8" px="6" direction="horizontal" style="left: 496px; top: 456px; width: 341px; height: 61px; font-size: 9px;">在此输入文字~</div>
+  <div align="left" onclick="showTextInput(this);" class="text_box text_box_background txt1" x="21.5" y="18" width="67" height="164" space="0" leading="15" max_line="31" max_length="713" pt="8" px="6" direction="horizontal" style="left: 52px; top: 44px; width: 163px; height: 400px; font-size: 9px;">在此输入文字~</div>
+  <div align="right" onclick="showTextInput(this);" class="text_box text_box_background txt2" x="203.5" y="187" width="140" height="25" space="0" leading="15" max_line="5" max_length="245" pt="8" px="6" direction="horizontal" style="left: 496px; top: 456px; width: 341px; height: 61px; font-size: 9px;">在此输入文字~</div>
 </div>

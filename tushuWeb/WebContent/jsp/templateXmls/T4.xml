@@ -7,5 +7,5 @@
 		<div class="drag_here" onclick="drag_here_Click(this);"/>
 		<div class="dpi_info">1575x1048</div>
 	</div>
-	<div align="center" onclick="showTextInput(this);" class="text_box text_box_background txt1" id="txt1" name="txt1" x="33" y="139.5" width="120" height="96.5" space="0" leading="16" max_line="17" max_length="714" pt="8" px="6" direction="horizontal" style="left: 80px; top: 340px; width: 293px; height: 235px; font-size: 9px;">在此输入文字~</div>
+	<div align="center" onclick="showTextInput(this);" class="text_box text_box_background txt1" x="33" y="139.5" width="120" height="96.5" space="0" leading="16" max_line="17" max_length="714" pt="8" px="6" direction="horizontal" style="left: 80px; top: 340px; width: 293px; height: 235px; font-size: 9px;">在此输入文字~</div>
 </div>

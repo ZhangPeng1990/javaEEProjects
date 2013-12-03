@@ -309,7 +309,7 @@ function showTextInput(textInput){
 	$("#page_mask_layer").css("display","block");
 	$("#pop_texteditor").css("display","block");
 	
-	$("#makesure_text_input").click(function(){
+	$("#makesure_text_input").one("click",function(){
 		var inputText = $("#text_imput").val();
 		$textDiv.html(inputText);
 		$("#text_imput").val('');

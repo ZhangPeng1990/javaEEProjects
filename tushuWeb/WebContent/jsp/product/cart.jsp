@@ -273,7 +273,7 @@
                         <td><fmt:formatDate value="${item.createTime}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
                         <td id="tds_36162">暂无优惠</td>
                         <td class="w57">
-							<a href="/book-84985.html" target="_blank" class="orderBtn_orange">预览</a>
+							<a href="<%=path%>/user/editWork/${item.work.id}.html" target="_blank" class="orderBtn_orange">预览</a>
                             <a href="<%=path%>/product/deleteOrderForm/SHOPPING_CART/${item.id}.html" class="orderBtn_gray" onclick="return confirm('确认删除吗?');">删除</a>
                         </td>
                     </tr>
